@@ -20,6 +20,7 @@
 		CB421FBC29E5B2060014DC4F /* LabelListSectionCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB421FBB29E5B2060014DC4F /* LabelListSectionCase.swift */; };
 		CB421FC229E5B3180014DC4F /* LabelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB421FC129E5B3180014DC4F /* LabelCoordinator.swift */; };
 		CB421FC729E5B8AD0014DC4F /* LabelTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB421FC629E5B8AD0014DC4F /* LabelTextCell.swift */; };
+		CB6613BF2A092B4800515AED /* LabelSettingListCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6613BE2A092B4800515AED /* LabelSettingListCellFactory.swift */; };
 		CB7CA7842A03B16C00574395 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CA7832A03B16C00574395 /* MainViewModel.swift */; };
 		CB7CA7862A03B28000574395 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CA7852A03B28000574395 /* MainModel.swift */; };
 		CB80B1CF29E5393600298F3C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = CB80B1CE29E5393600298F3C /* .swiftlint.yml */; };
@@ -68,6 +69,7 @@
 		CB421FBB29E5B2060014DC4F /* LabelListSectionCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListSectionCase.swift; sourceTree = "<group>"; };
 		CB421FC129E5B3180014DC4F /* LabelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCoordinator.swift; sourceTree = "<group>"; };
 		CB421FC629E5B8AD0014DC4F /* LabelTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTextCell.swift; sourceTree = "<group>"; };
+		CB6613BE2A092B4800515AED /* LabelSettingListCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelSettingListCellFactory.swift; sourceTree = "<group>"; };
 		CB7CA7832A03B16C00574395 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		CB7CA7852A03B28000574395 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		CB80B1CE29E5393600298F3C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -137,8 +139,8 @@
 				CB421FC629E5B8AD0014DC4F /* LabelTextCell.swift */,
 				CBDE6E6429E5599B0068BA0A /* LabelColorCell.swift */,
 				CB421FB329E5AA670014DC4F /* LabelFontCell.swift */,
-				CB33D35829E83A5400FDAAAF /* LabelAlignmentCell.swift */,
 				CBAAA24B2A08D26C00773E0C /* LabelFontSizeCell.swift */,
+				CB33D35829E83A5400FDAAAF /* LabelAlignmentCell.swift */,
 			);
 			path = LabelSettingListCell;
 			sourceTree = "<group>";
@@ -166,9 +168,9 @@
 		CB421FBF29E5B2360014DC4F /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				CBAAA25D2A09108700773E0C /* BaseViewControllerConstants.swift */,
 				CBAAA24D2A08D5D300773E0C /* MainViewController */,
 				CBAAA24E2A08D5DB00773E0C /* LabelViewController */,
-				CBAAA25D2A09108700773E0C /* BaseViewControllerConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -269,6 +271,7 @@
 				CBDE6E2029E54B220068BA0A /* LabelPresenter.swift */,
 				CBDE6E1D29E54B170068BA0A /* LabelViewController.swift */,
 				CB33D35329E82EB500FDAAAF /* LabelViewModel.swift */,
+				CB6613BE2A092B4800515AED /* LabelSettingListCellFactory.swift */,
 				CB33D35729E839C800FDAAAF /* LabelSettingListCell */,
 			);
 			path = LabelViewcontroller;
@@ -456,6 +459,7 @@
 				CB7CA7862A03B28000574395 /* MainModel.swift in Sources */,
 				CBAAA2462A08CCB600773E0C /* ViewModelProtocol.swift in Sources */,
 				CB7CA7842A03B16C00574395 /* MainViewModel.swift in Sources */,
+				CB6613BF2A092B4800515AED /* LabelSettingListCellFactory.swift in Sources */,
 				CB421FAC29E5A7F60014DC4F /* UISystemFontWeightCase.swift in Sources */,
 				CBC6074529C1D09D008B6BA9 /* Object.swift in Sources */,
 				CB80B1D729E53B7B00298F3C /* MainCoordinator.swift in Sources */,

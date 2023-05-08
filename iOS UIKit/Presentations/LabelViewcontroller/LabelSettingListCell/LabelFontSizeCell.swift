@@ -20,6 +20,7 @@ final class LabelFontSizeCell: UITableViewCell, UITableViewCellReigster {
         let label = UILabel()
         label.text = LabelFontSizeCellConstants.minNumLabelText
         label.font = LabelViewConstants.defaultFont
+        label.textAlignment = .center
         label.textColor = .secondaryLabel
         label.setContentHuggingPriority(
             LabelFontSizeCellConstants.numLabelContentCompressionResistancePriority,
@@ -32,6 +33,7 @@ final class LabelFontSizeCell: UITableViewCell, UITableViewCellReigster {
         let label = UILabel()
         label.text = LabelFontSizeCellConstants.maxNumLabelText
         label.font = LabelViewConstants.defaultFont
+        label.textAlignment = .center
         label.textColor = .secondaryLabel
         label.setContentHuggingPriority(
             LabelFontSizeCellConstants.numLabelContentCompressionResistancePriority,
@@ -42,7 +44,6 @@ final class LabelFontSizeCell: UITableViewCell, UITableViewCellReigster {
     
     private lazy var fontSizeSlider: UISlider = {
         let slider = UISlider()
-        slider.value = LabelFontSizeCellConstants.sliderValue
         slider.minimumValue = LabelFontSizeCellConstants.sliderMinimumValue
         slider.maximumValue = LabelFontSizeCellConstants.sliderMaximimValue
         return slider
@@ -98,6 +99,7 @@ final class LabelFontSizeCell: UITableViewCell, UITableViewCellReigster {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         attribute()
         layout()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -106,6 +108,8 @@ final class LabelFontSizeCell: UITableViewCell, UITableViewCellReigster {
     
     func bind(_ viewModel: LabelViewModel) {
         fontSizeSlider.rx.value
+            .map { Int($0) }
+            .distinctUntilChanged()
             .bind(to: viewModel.fontSizeCellRelay)
             .disposed(by: disposeBag)
         
@@ -116,17 +120,20 @@ final class LabelFontSizeCell: UITableViewCell, UITableViewCellReigster {
     
 }
 
-
 private extension LabelFontSizeCell {
     func attribute() {
         backgroundColor = .systemBackground
         selectionStyle = .none
+        fontSizeSlider.setValue(LabelFontSizeCellConstants.sliderValue, animated: true)
     }
     
     func layout() {
         contentView.addSubview(containerStackView)
         
         NSLayoutConstraint.activate([
+            minNumLabel.widthAnchor.constraint(equalToConstant: LabelFontSizeCellConstants.numLabelWidth),
+            maxNumLabel.widthAnchor.constraint(equalToConstant: LabelFontSizeCellConstants.numLabelWidth),
+            
             containerStackView.topAnchor.constraint(
                 equalTo: contentView.safeAreaLayoutGuide.topAnchor,
                 constant: LabelViewConstants.defaultOffset
@@ -148,7 +155,7 @@ private extension LabelFontSizeCell {
 }
 
 extension Reactive where Base: LabelFontSizeCell {
-    var sliderText: Binder<Float> {
+    var sliderText: Binder<Int> {
         return Binder(base) { base, value in
             base.sliderValueLabel.text = "\(value)"
         }

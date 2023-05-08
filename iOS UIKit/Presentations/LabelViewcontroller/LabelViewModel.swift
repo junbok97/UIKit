@@ -5,7 +5,7 @@
 //  Created by 이준복 on 2023/04/13.
 //
 
-import Foundation
+import UIKit
 import RxSwift
 import RxCocoa
 
@@ -29,9 +29,8 @@ final class LabelViewModel {
     let alignmentCellRelay = PublishRelay<Int>()
     
     // FontSizeCell
-    let fontSizeCellRelay = PublishRelay<Float>()
-    let fontSizeCellDriver: Driver<Float>
-    
+    let fontSizeCellRelay = PublishRelay<Int>()
+    let fontSizeCellDriver: Driver<Int>
     
     // ViewModel -> View
     let targetText: Driver<String>
@@ -40,26 +39,18 @@ final class LabelViewModel {
     let targetBackgroundColor: Driver<UIColor>
     let targetAlignment: Driver<NSTextAlignment>
     
-    let fontPublishRelay = PublishRelay<UIFont>()
-    
     // View -> ViewModel
     
     init() {
         targetText = textCellRelay
             .asDriver(onErrorDriveWith: .empty())
         
-        targetFont = fontPublishRelay
-            .asDriver(onErrorDriveWith: .empty())
-        
-        fontCellRelay
-            .map {
-                UISystemFontWeightCase(rawValue: $0)?
-                    .font(ofSize: LabelViewConstants.defaultFontSize) ?? LabelViewConstants.defaultFont
+        targetFont = Observable
+            .combineLatest(fontCellRelay, fontSizeCellRelay) { (rawValue, ofSize) -> UIFont in
+                UISystemFontWeightCase(rawValue: rawValue)?.font(ofSize: CGFloat(ofSize)) ?? LabelViewConstants.defaultFont
             }
-            .bind(to: fontPublishRelay)
-            .disposed(by: disposeBag)
-            
-        
+            .asDriver(onErrorDriveWith: .empty())
+  
         targetTextColor = textColorCellRelay
             .asDriver(onErrorDriveWith: .empty())
         
@@ -71,15 +62,6 @@ final class LabelViewModel {
                 AlignmentCase(rawValue: $0)?.aligment ?? .center
             }
             .asDriver(onErrorDriveWith: .empty())
-        
-        
-        fontSizeCellRelay
-            .withLatestFrom(fontCellRelay) { ofSize, fontRawValue in
-                UISystemFontWeightCase(rawValue: fontRawValue)?
-                    .font(ofSize: CGFloat(ofSize)) ?? LabelViewConstants.defaultFont
-            }
-            .bind(to: fontPublishRelay)
-            .disposed(by: disposeBag)
         
         fontSizeCellDriver = fontSizeCellRelay
             .asDriver(onErrorDriveWith: .empty())

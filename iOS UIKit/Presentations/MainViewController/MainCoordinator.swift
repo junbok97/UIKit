@@ -14,8 +14,6 @@ protocol MainCoordinatorProtocol: CoordinatorProtocol {
 
 final class MainCoordinator: MainCoordinatorProtocol {
     
-
-    
     var navigationController: UINavigationController
     var childCoordinators: [CoordinatorProtocol] = []
     let mainViewModel = MainViewModel()

@@ -41,8 +41,6 @@ enum UISystemFontWeightCase: Int, CaseIterable {
         }
     }
     
-    
-    
     func font(ofSize: CGFloat) -> UIFont {
         
         switch self {

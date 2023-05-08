@@ -46,6 +46,7 @@ final class LabelViewController: UIViewController {
         tableView.dataSource = presenter
         LabelTextCell.register(target: tableView)
         LabelFontCell.register(target: tableView)
+        LabelFontSizeCell.register(target: tableView)
         LabelColorCell.register(target: tableView)
         LabelAlignmentCell.register(target: tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -90,6 +91,15 @@ extension LabelViewController: LabelViewControllerProtocol {
         viewModel.targetAlignment
             .drive(self.rx.targetAlignment)
             .disposed(by: disposeBag)
+        
+        Observable.just(UISystemFontWeightCase.regular.rawValue)
+            .bind(to: viewModel.fontCellRelay)
+            .disposed(by: disposeBag)
+        
+        Observable.just(Int(LabelFontSizeCellConstants.sliderValue))
+            .bind(to: viewModel.fontSizeCellRelay)
+            .disposed(by: disposeBag)
+            
     }
     
     func attribute() {
