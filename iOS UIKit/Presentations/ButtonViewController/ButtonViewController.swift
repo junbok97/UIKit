@@ -11,6 +11,7 @@ final class ButtonViewController: UIViewController {
     
     let targetButton: UIButton = {
         let button = UIButton()
+        
         return button
     }()
     

@@ -20,6 +20,7 @@
 		CB421FBC29E5B2060014DC4F /* LabelListSectionCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB421FBB29E5B2060014DC4F /* LabelListSectionCase.swift */; };
 		CB421FC229E5B3180014DC4F /* LabelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB421FC129E5B3180014DC4F /* LabelCoordinator.swift */; };
 		CB421FC729E5B8AD0014DC4F /* LabelTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB421FC629E5B8AD0014DC4F /* LabelTextCell.swift */; };
+		CB5714D62A0A098F00365646 /* ButtonViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5714D52A0A098F00365646 /* ButtonViewControllerConstants.swift */; };
 		CB6613BF2A092B4800515AED /* LabelSettingListCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6613BE2A092B4800515AED /* LabelSettingListCellFactory.swift */; };
 		CB6613C12A093A6900515AED /* LabelNumberOfLinesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6613C02A093A6900515AED /* LabelNumberOfLinesCell.swift */; };
 		CB6613C32A093A9700515AED /* LabelNumberOfLinesCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6613C22A093A9700515AED /* LabelNumberOfLinesCellConstants.swift */; };
@@ -71,6 +72,7 @@
 		CB421FBB29E5B2060014DC4F /* LabelListSectionCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListSectionCase.swift; sourceTree = "<group>"; };
 		CB421FC129E5B3180014DC4F /* LabelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCoordinator.swift; sourceTree = "<group>"; };
 		CB421FC629E5B8AD0014DC4F /* LabelTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTextCell.swift; sourceTree = "<group>"; };
+		CB5714D52A0A098F00365646 /* ButtonViewControllerConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewControllerConstants.swift; sourceTree = "<group>"; };
 		CB6613BE2A092B4800515AED /* LabelSettingListCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelSettingListCellFactory.swift; sourceTree = "<group>"; };
 		CB6613C02A093A6900515AED /* LabelNumberOfLinesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelNumberOfLinesCell.swift; sourceTree = "<group>"; };
 		CB6613C22A093A9700515AED /* LabelNumberOfLinesCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelNumberOfLinesCellConstants.swift; sourceTree = "<group>"; };
@@ -176,8 +178,17 @@
 				CBAAA25D2A09108700773E0C /* BaseViewControllerConstants.swift */,
 				CBAAA24D2A08D5D300773E0C /* MainViewController */,
 				CBAAA24E2A08D5DB00773E0C /* LabelViewController */,
+				CB5714D42A0A097800365646 /* ButtonViewController */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		CB5714D42A0A097800365646 /* ButtonViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB5714D52A0A098F00365646 /* ButtonViewControllerConstants.swift */,
+			);
+			path = ButtonViewController;
 			sourceTree = "<group>";
 		};
 		CB80B1D029E53A8D00298F3C /* Presentations */ = {
@@ -493,6 +504,7 @@
 				CB80B1D529E53B0000298F3C /* CoordinatorProtocol.swift in Sources */,
 				CBAAA24C2A08D26C00773E0C /* LabelFontSizeCell.swift in Sources */,
 				CB421FC229E5B3180014DC4F /* LabelCoordinator.swift in Sources */,
+				CB5714D62A0A098F00365646 /* ButtonViewControllerConstants.swift in Sources */,
 				CBAAA2442A08CC8200773E0C /* ButtonViewController.swift in Sources */,
 				CBDE6E2129E54B220068BA0A /* LabelPresenter.swift in Sources */,
 				CBAAA2522A08D61900773E0C /* LabelTextCellConstants.swift in Sources */,
