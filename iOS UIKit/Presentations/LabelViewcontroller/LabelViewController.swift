@@ -49,6 +49,7 @@ final class LabelViewController: UIViewController {
         LabelFontSizeCell.register(target: tableView)
         LabelColorCell.register(target: tableView)
         LabelAlignmentCell.register(target: tableView)
+        LabelNumberOfLinesCell.register(target: tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -90,6 +91,10 @@ extension LabelViewController: LabelViewControllerProtocol {
         
         viewModel.targetAlignment
             .drive(self.rx.targetAlignment)
+            .disposed(by: disposeBag)
+        
+        viewModel.targetNumberOfLines
+            .drive(self.rx.targetNumberOfLines)
             .disposed(by: disposeBag)
         
         Observable.just(UISystemFontWeightCase.regular.rawValue)
@@ -162,6 +167,12 @@ extension Reactive where Base: LabelViewController {
     var targetAlignment: Binder<NSTextAlignment> {
         return Binder(base) { base, alignment in
             base.targetLabel.textAlignment = alignment
+        }
+    }
+    
+    var targetNumberOfLines: Binder<Int> {
+        return Binder(base) { base, numberOfLines in
+            base.targetLabel.numberOfLines = numberOfLines
         }
     }
     

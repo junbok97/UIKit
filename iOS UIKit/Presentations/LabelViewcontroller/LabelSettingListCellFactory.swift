@@ -38,6 +38,10 @@ final class LabelSettingListCellFactory {
             let cell = LabelAlignmentCell.dequeueReusableCell(target: tableView, indexPath: indexPath)
             cell.setup(AlignmentCase(rawValue: row) ?? .natural)
             return cell
+        case .numberOfLines:
+            let cell = LabelNumberOfLinesCell.dequeueReusableCell(target: tableView, indexPath: indexPath)
+            cell.bind(viewModel)
+            return cell
         }
     }
 }

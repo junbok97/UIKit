@@ -32,12 +32,17 @@ final class LabelViewModel {
     let fontSizeCellRelay = PublishRelay<Int>()
     let fontSizeCellDriver: Driver<Int>
     
+    // NumberOfLinesCell
+    let linesCellRelay = PublishRelay<Int>()
+    let linesCellDriveer: Driver<Int>
+    
     // ViewModel -> View
     let targetText: Driver<String>
     let targetFont: Driver<UIFont>
     let targetTextColor: Driver<UIColor>
     let targetBackgroundColor: Driver<UIColor>
     let targetAlignment: Driver<NSTextAlignment>
+    let targetNumberOfLines: Driver<Int>
     
     // View -> ViewModel
     
@@ -63,7 +68,13 @@ final class LabelViewModel {
             }
             .asDriver(onErrorDriveWith: .empty())
         
+        targetNumberOfLines = linesCellRelay
+            .asDriver(onErrorDriveWith: .empty())
+        
         fontSizeCellDriver = fontSizeCellRelay
+            .asDriver(onErrorDriveWith: .empty())
+        
+        linesCellDriveer = linesCellRelay
             .asDriver(onErrorDriveWith: .empty())
     }
     

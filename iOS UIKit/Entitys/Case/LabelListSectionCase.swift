@@ -13,19 +13,18 @@ enum LabelListSectionCase: Int, CaseIterable {
     case font
     case fontSize
     case alignment
+    case numberOfLines
     
     var sectionCounts: Int {
         switch self {
-        case .text:
-            return 1
         case .color:
             return LabelColorCase.allCases.count
         case .font:
             return UISystemFontWeightCase.allCases.count
-        case .fontSize:
-            return 1
         case .alignment:
             return AlignmentCase.allCases.count
+        default:
+            return 1
         }
     }
     
@@ -41,6 +40,8 @@ enum LabelListSectionCase: Int, CaseIterable {
             return "FontSize"
         case .alignment:
             return "Alignment"
+        case .numberOfLines:
+            return "Number Of Lines"
         }
     }
 

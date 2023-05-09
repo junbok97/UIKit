@@ -8,7 +8,7 @@
 import UIKit
 
 struct MainViewControllerConstants {
-    static let title = "UIKit"
+    static let title = "Objects"
     static let defaultOffset: CGFloat = 12.0
     static let defaultFont: UIFont = .systemFont(ofSize: 20)
 }
