@@ -33,6 +33,24 @@ final class SFSymbolsViewController: UIViewController {
         layout()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        coordinator?.finish()
+    }
+    
+    func bind(_ viewModel: SFSymbolsViewModel) {
+        searchController.searchBar.rx.text
+            .map { $0 ?? "" }
+            .bind(to: viewModel.serachSFSymbol)
+            .disposed(by: disposeBag)
+        
+        viewModel.symbolListDriver
+            .drive(collectionView.rx.items(cellIdentifier: SFSymbolsCollectionViewCell.cellId, cellType: SFSymbolsCollectionViewCell.self)) { index, item, cell in
+                cell.setup(item)
+            }
+            .disposed(by: disposeBag)
+    }
+    
 }
 
 extension SFSymbolsViewController: UICollectionViewDataSource {

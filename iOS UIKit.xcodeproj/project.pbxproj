@@ -30,6 +30,8 @@
 		CB5715072A0A2A7E00365646 /* SFSymbolsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5715062A0A2A7E00365646 /* SFSymbolsCollectionViewCell.swift */; };
 		CB57150A2A0A2AC300365646 /* SFSymbolsCollectionViewCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5715092A0A2AC300365646 /* SFSymbolsCollectionViewCellConstants.swift */; };
 		CB57150C2A0A2E1300365646 /* SFSymbolsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB57150B2A0A2E1300365646 /* SFSymbolsCoordinator.swift */; };
+		CB5715112A0A359900365646 /* SFSymbolsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5715102A0A359900365646 /* SFSymbolsViewModel.swift */; };
+		CB5715132A0A35F400365646 /* SFSymbolsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5715122A0A35F400365646 /* SFSymbolsModel.swift */; };
 		CB6613BF2A092B4800515AED /* LabelSettingListCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6613BE2A092B4800515AED /* LabelSettingListCellFactory.swift */; };
 		CB6613C12A093A6900515AED /* LabelNumberOfLinesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6613C02A093A6900515AED /* LabelNumberOfLinesCell.swift */; };
 		CB6613C32A093A9700515AED /* LabelNumberOfLinesCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6613C22A093A9700515AED /* LabelNumberOfLinesCellConstants.swift */; };
@@ -91,6 +93,8 @@
 		CB5715062A0A2A7E00365646 /* SFSymbolsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolsCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB5715092A0A2AC300365646 /* SFSymbolsCollectionViewCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolsCollectionViewCellConstants.swift; sourceTree = "<group>"; };
 		CB57150B2A0A2E1300365646 /* SFSymbolsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolsCoordinator.swift; sourceTree = "<group>"; };
+		CB5715102A0A359900365646 /* SFSymbolsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolsViewModel.swift; sourceTree = "<group>"; };
+		CB5715122A0A35F400365646 /* SFSymbolsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolsModel.swift; sourceTree = "<group>"; };
 		CB6613BE2A092B4800515AED /* LabelSettingListCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelSettingListCellFactory.swift; sourceTree = "<group>"; };
 		CB6613C02A093A6900515AED /* LabelNumberOfLinesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelNumberOfLinesCell.swift; sourceTree = "<group>"; };
 		CB6613C22A093A9700515AED /* LabelNumberOfLinesCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelNumberOfLinesCellConstants.swift; sourceTree = "<group>"; };
@@ -233,6 +237,8 @@
 			children = (
 				CB57150B2A0A2E1300365646 /* SFSymbolsCoordinator.swift */,
 				CB5714FE2A0A22D300365646 /* SFSymbolsViewController.swift */,
+				CB5715102A0A359900365646 /* SFSymbolsViewModel.swift */,
+				CB5715122A0A35F400365646 /* SFSymbolsModel.swift */,
 				CB5715082A0A2A8500365646 /* SFSymbolsCollectionViewCell */,
 			);
 			path = SFSymbolsController;
@@ -542,6 +548,8 @@
 				CBF4396B29C1C014003E85B3 /* AppDelegate.swift in Sources */,
 				CB5715072A0A2A7E00365646 /* SFSymbolsCollectionViewCell.swift in Sources */,
 				CB7CA7862A03B28000574395 /* MainModel.swift in Sources */,
+				CB5715132A0A35F400365646 /* SFSymbolsModel.swift in Sources */,
+				CB5715112A0A359900365646 /* SFSymbolsViewModel.swift in Sources */,
 				CBAAA2462A08CCB600773E0C /* ViewModelProtocol.swift in Sources */,
 				CB5714E52A0A103900365646 /* ButtonTypeCase.swift in Sources */,
 				CB7CA7842A03B16C00574395 /* MainViewModel.swift in Sources */,
