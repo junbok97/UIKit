@@ -21,6 +21,15 @@
 		CB421FC229E5B3180014DC4F /* LabelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB421FC129E5B3180014DC4F /* LabelCoordinator.swift */; };
 		CB421FC729E5B8AD0014DC4F /* LabelTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB421FC629E5B8AD0014DC4F /* LabelTextCell.swift */; };
 		CB5714D62A0A098F00365646 /* ButtonViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5714D52A0A098F00365646 /* ButtonViewControllerConstants.swift */; };
+		CB5714E32A0A0E6D00365646 /* ButtonStyleCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5714E22A0A0E6D00365646 /* ButtonStyleCase.swift */; };
+		CB5714E52A0A103900365646 /* ButtonTypeCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5714E42A0A103900365646 /* ButtonTypeCase.swift */; };
+		CB5714FA2A0A1BA100365646 /* SFSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5714F92A0A1BA100365646 /* SFSymbols.swift */; };
+		CB5714FF2A0A22D300365646 /* SFSymbolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5714FE2A0A22D300365646 /* SFSymbolsViewController.swift */; };
+		CB5715032A0A232400365646 /* SFSymbolsViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5715022A0A232400365646 /* SFSymbolsViewControllerConstants.swift */; };
+		CB5715052A0A2A5F00365646 /* UICollectionViewCellRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5715042A0A2A5F00365646 /* UICollectionViewCellRegister.swift */; };
+		CB5715072A0A2A7E00365646 /* SFSymbolsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5715062A0A2A7E00365646 /* SFSymbolsCollectionViewCell.swift */; };
+		CB57150A2A0A2AC300365646 /* SFSymbolsCollectionViewCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5715092A0A2AC300365646 /* SFSymbolsCollectionViewCellConstants.swift */; };
+		CB57150C2A0A2E1300365646 /* SFSymbolsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB57150B2A0A2E1300365646 /* SFSymbolsCoordinator.swift */; };
 		CB6613BF2A092B4800515AED /* LabelSettingListCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6613BE2A092B4800515AED /* LabelSettingListCellFactory.swift */; };
 		CB6613C12A093A6900515AED /* LabelNumberOfLinesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6613C02A093A6900515AED /* LabelNumberOfLinesCell.swift */; };
 		CB6613C32A093A9700515AED /* LabelNumberOfLinesCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6613C22A093A9700515AED /* LabelNumberOfLinesCellConstants.swift */; };
@@ -73,6 +82,15 @@
 		CB421FC129E5B3180014DC4F /* LabelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCoordinator.swift; sourceTree = "<group>"; };
 		CB421FC629E5B8AD0014DC4F /* LabelTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTextCell.swift; sourceTree = "<group>"; };
 		CB5714D52A0A098F00365646 /* ButtonViewControllerConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewControllerConstants.swift; sourceTree = "<group>"; };
+		CB5714E22A0A0E6D00365646 /* ButtonStyleCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyleCase.swift; sourceTree = "<group>"; };
+		CB5714E42A0A103900365646 /* ButtonTypeCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTypeCase.swift; sourceTree = "<group>"; };
+		CB5714F92A0A1BA100365646 /* SFSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbols.swift; sourceTree = "<group>"; };
+		CB5714FE2A0A22D300365646 /* SFSymbolsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolsViewController.swift; sourceTree = "<group>"; };
+		CB5715022A0A232400365646 /* SFSymbolsViewControllerConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolsViewControllerConstants.swift; sourceTree = "<group>"; };
+		CB5715042A0A2A5F00365646 /* UICollectionViewCellRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCellRegister.swift; sourceTree = "<group>"; };
+		CB5715062A0A2A7E00365646 /* SFSymbolsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolsCollectionViewCell.swift; sourceTree = "<group>"; };
+		CB5715092A0A2AC300365646 /* SFSymbolsCollectionViewCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolsCollectionViewCellConstants.swift; sourceTree = "<group>"; };
+		CB57150B2A0A2E1300365646 /* SFSymbolsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolsCoordinator.swift; sourceTree = "<group>"; };
 		CB6613BE2A092B4800515AED /* LabelSettingListCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelSettingListCellFactory.swift; sourceTree = "<group>"; };
 		CB6613C02A093A6900515AED /* LabelNumberOfLinesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelNumberOfLinesCell.swift; sourceTree = "<group>"; };
 		CB6613C22A093A9700515AED /* LabelNumberOfLinesCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelNumberOfLinesCellConstants.swift; sourceTree = "<group>"; };
@@ -155,10 +173,8 @@
 		CB421FAF29E5A8E30014DC4F /* Case */ = {
 			isa = PBXGroup;
 			children = (
-				CB421FBB29E5B2060014DC4F /* LabelListSectionCase.swift */,
-				CB421FB929E5ADDC0014DC4F /* LabelColorCase.swift */,
-				CB421FAB29E5A7F60014DC4F /* UISystemFontWeightCase.swift */,
-				CB421FAD29E5A8B50014DC4F /* AlignmentCase.swift */,
+				CB5714DD2A0A0D0D00365646 /* LabelViewController */,
+				CB5714E12A0A0DAD00365646 /* ButtonViewController */,
 			);
 			path = Case;
 			sourceTree = "<group>";
@@ -179,6 +195,7 @@
 				CBAAA24D2A08D5D300773E0C /* MainViewController */,
 				CBAAA24E2A08D5DB00773E0C /* LabelViewController */,
 				CB5714D42A0A097800365646 /* ButtonViewController */,
+				CB5715002A0A22F700365646 /* SFSymbolsViewController */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -191,6 +208,54 @@
 			path = ButtonViewController;
 			sourceTree = "<group>";
 		};
+		CB5714DD2A0A0D0D00365646 /* LabelViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB421FBB29E5B2060014DC4F /* LabelListSectionCase.swift */,
+				CB421FB929E5ADDC0014DC4F /* LabelColorCase.swift */,
+				CB421FAB29E5A7F60014DC4F /* UISystemFontWeightCase.swift */,
+				CB421FAD29E5A8B50014DC4F /* AlignmentCase.swift */,
+			);
+			path = LabelViewController;
+			sourceTree = "<group>";
+		};
+		CB5714E12A0A0DAD00365646 /* ButtonViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB5714E22A0A0E6D00365646 /* ButtonStyleCase.swift */,
+				CB5714E42A0A103900365646 /* ButtonTypeCase.swift */,
+			);
+			path = ButtonViewController;
+			sourceTree = "<group>";
+		};
+		CB5714FD2A0A22BC00365646 /* SFSymbolsController */ = {
+			isa = PBXGroup;
+			children = (
+				CB57150B2A0A2E1300365646 /* SFSymbolsCoordinator.swift */,
+				CB5714FE2A0A22D300365646 /* SFSymbolsViewController.swift */,
+				CB5715082A0A2A8500365646 /* SFSymbolsCollectionViewCell */,
+			);
+			path = SFSymbolsController;
+			sourceTree = "<group>";
+		};
+		CB5715002A0A22F700365646 /* SFSymbolsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB5714F92A0A1BA100365646 /* SFSymbols.swift */,
+				CB5715022A0A232400365646 /* SFSymbolsViewControllerConstants.swift */,
+				CB5715092A0A2AC300365646 /* SFSymbolsCollectionViewCellConstants.swift */,
+			);
+			path = SFSymbolsViewController;
+			sourceTree = "<group>";
+		};
+		CB5715082A0A2A8500365646 /* SFSymbolsCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CB5715062A0A2A7E00365646 /* SFSymbolsCollectionViewCell.swift */,
+			);
+			path = SFSymbolsCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		CB80B1D029E53A8D00298F3C /* Presentations */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +263,7 @@
 				CB80B1D329E53AA700298F3C /* MainViewController */,
 				CBDE6E1C29E54B0A0068BA0A /* LabelViewcontroller */,
 				CBAAA2422A08CC6C00773E0C /* ButtonViewController */,
+				CB5714FD2A0A22BC00365646 /* SFSymbolsController */,
 			);
 			path = Presentations;
 			sourceTree = "<group>";
@@ -277,6 +343,7 @@
 				CB80B1D429E53B0000298F3C /* CoordinatorProtocol.swift */,
 				CB11069929E6E229005FFC2D /* BaseViewController.swift */,
 				CBAAA2452A08CCB600773E0C /* ViewModelProtocol.swift */,
+				CB5715042A0A2A5F00365646 /* UICollectionViewCellRegister.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -473,16 +540,22 @@
 				CB11069A29E6E229005FFC2D /* BaseViewController.swift in Sources */,
 				CB421FC729E5B8AD0014DC4F /* LabelTextCell.swift in Sources */,
 				CBF4396B29C1C014003E85B3 /* AppDelegate.swift in Sources */,
+				CB5715072A0A2A7E00365646 /* SFSymbolsCollectionViewCell.swift in Sources */,
 				CB7CA7862A03B28000574395 /* MainModel.swift in Sources */,
 				CBAAA2462A08CCB600773E0C /* ViewModelProtocol.swift in Sources */,
+				CB5714E52A0A103900365646 /* ButtonTypeCase.swift in Sources */,
 				CB7CA7842A03B16C00574395 /* MainViewModel.swift in Sources */,
 				CB6613BF2A092B4800515AED /* LabelSettingListCellFactory.swift in Sources */,
 				CB421FAC29E5A7F60014DC4F /* UISystemFontWeightCase.swift in Sources */,
 				CBC6074529C1D09D008B6BA9 /* Object.swift in Sources */,
 				CB80B1D729E53B7B00298F3C /* MainCoordinator.swift in Sources */,
+				CB5715032A0A232400365646 /* SFSymbolsViewControllerConstants.swift in Sources */,
 				CB6613C32A093A9700515AED /* LabelNumberOfLinesCellConstants.swift in Sources */,
 				CB33D35429E82EB600FDAAAF /* LabelViewModel.swift in Sources */,
+				CB57150A2A0A2AC300365646 /* SFSymbolsCollectionViewCellConstants.swift in Sources */,
 				CBC6074B29C1D28F008B6BA9 /* UITableViewHeaderFooterViewRegister.swift in Sources */,
+				CB57150C2A0A2E1300365646 /* SFSymbolsCoordinator.swift in Sources */,
+				CB5715052A0A2A5F00365646 /* UICollectionViewCellRegister.swift in Sources */,
 				CB80B1F729E5468200298F3C /* ObjectListCell.swift in Sources */,
 				CB421FAE29E5A8B50014DC4F /* AlignmentCase.swift in Sources */,
 				CB80B1DD29E53F3300298F3C /* MainViewControllerConstants.swift in Sources */,
@@ -491,6 +564,7 @@
 				CBDE6E6529E5599B0068BA0A /* LabelColorCell.swift in Sources */,
 				CBAAA2542A08D65400773E0C /* LabelColorCellConstants.swift in Sources */,
 				CBF4396D29C1C014003E85B3 /* SceneDelegate.swift in Sources */,
+				CB5714E32A0A0E6D00365646 /* ButtonStyleCase.swift in Sources */,
 				CBC323832A0604DD00C5B6D1 /* ObjectListCellConstants.swift in Sources */,
 				CBAAA2562A08D67E00773E0C /* LabelFontCellConstants.swift in Sources */,
 				CB6613C12A093A6900515AED /* LabelNumberOfLinesCell.swift in Sources */,
@@ -499,6 +573,7 @@
 				CBAAA25E2A09108700773E0C /* BaseViewControllerConstants.swift in Sources */,
 				CB421FB829E5ABAA0014DC4F /* LabelViewConstants.swift in Sources */,
 				CBAAA25A2A08D6BF00773E0C /* LabelFontSizeCellConstants.swift in Sources */,
+				CB5714FA2A0A1BA100365646 /* SFSymbols.swift in Sources */,
 				CB33D35B29E8446D00FDAAAF /* ChildCoordinatorFactory.swift in Sources */,
 				CBDE6E1E29E54B170068BA0A /* LabelViewController.swift in Sources */,
 				CB80B1D529E53B0000298F3C /* CoordinatorProtocol.swift in Sources */,
@@ -508,6 +583,7 @@
 				CBAAA2442A08CC8200773E0C /* ButtonViewController.swift in Sources */,
 				CBDE6E2129E54B220068BA0A /* LabelPresenter.swift in Sources */,
 				CBAAA2522A08D61900773E0C /* LabelTextCellConstants.swift in Sources */,
+				CB5714FF2A0A22D300365646 /* SFSymbolsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

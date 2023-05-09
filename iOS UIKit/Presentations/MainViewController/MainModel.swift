@@ -18,6 +18,12 @@ final class MainModel {
             items: [
                 Object(type: .label)
             ]
+        ),
+        ObjectSectionModel(
+            sectionHeader: .system,
+            items: [
+                Object(type: .sfSymbols)
+            ]
         )
     ]
     

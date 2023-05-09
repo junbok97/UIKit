@@ -23,6 +23,10 @@ final class ChildCoordinatorFactory {
             let labelCoordinator =  LabelCoordinator(navigationController: navigationController)
             labelCoordinator.parentCoordinator = self.parentCoordinator
             return labelCoordinator
+        case .sfSymbols:
+            let sfSymbolsCoordinator = SFSymbolsCoordinator(navigationController: navigationController)
+            sfSymbolsCoordinator.parentCoordinator = self.parentCoordinator
+            return sfSymbolsCoordinator
         default:
             let labelCoordinator =  LabelCoordinator(navigationController: navigationController)
             labelCoordinator.parentCoordinator = self.parentCoordinator

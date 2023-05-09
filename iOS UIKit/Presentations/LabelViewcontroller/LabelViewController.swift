@@ -15,7 +15,14 @@ final class LabelViewController: UIViewController {
     
     private lazy var presenter: LabelPresenter = LabelPresenter(viewController: self)
     
-    private let disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
+    
+    lazy var containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .secondarySystemBackground
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     lazy var targetLabel: UILabel = {
         let label = UILabel()
@@ -29,13 +36,6 @@ final class LabelViewController: UIViewController {
         label.backgroundColor = .systemBackground
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }()
-    
-    private lazy var containerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .secondarySystemBackground
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
     }()
     
     private lazy var labelSettingList: UITableView = {

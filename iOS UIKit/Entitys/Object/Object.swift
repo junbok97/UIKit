@@ -10,8 +10,7 @@ import UIKit
 enum ObjectType: String {
     case label = "Label"
     case button = "Button"
-    case view = "View"
-    case tapBar = "TapBar"
+    case sfSymbols = "SF Symbols"
 }
 
 struct Object {
