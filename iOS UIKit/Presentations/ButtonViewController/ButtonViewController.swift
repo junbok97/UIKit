@@ -11,7 +11,8 @@ final class ButtonViewController: UIViewController {
     
     let targetButton: UIButton = {
         let button = UIButton()
-        
+        let config = UIButton.Configuration.filled()
+        config.imagePlacement
         return button
     }()
     

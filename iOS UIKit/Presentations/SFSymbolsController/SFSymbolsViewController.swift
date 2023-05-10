@@ -13,11 +13,22 @@ final class SFSymbolsViewController: UIViewController {
     weak var coordinator: SFSymbolsCoordinatorProtocol?
     
     private let disposeBag = DisposeBag()
+    private var viewModel: SFSymbolsViewModel!
+    
+    static func create(
+        _ viewModel: SFSymbolsViewModel,
+        _ coordinator: SFSymbolsCoordinator
+    ) -> SFSymbolsViewController {
+        let sfSymbolsViewController = SFSymbolsViewController()
+        sfSymbolsViewController.viewModel = viewModel
+        sfSymbolsViewController.coordinator = coordinator
+        sfSymbolsViewController.bind()
+        return sfSymbolsViewController
+    }
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
         SFSymbolsCollectionViewCell.register(target: collectionView)
-        collectionView.dataSource = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
@@ -38,30 +49,18 @@ final class SFSymbolsViewController: UIViewController {
         coordinator?.finish()
     }
     
-    func bind(_ viewModel: SFSymbolsViewModel) {
+    func bind() {
         searchController.searchBar.rx.text
-            .map { $0 ?? "" }
+            .compactMap { $0 }
             .bind(to: viewModel.serachSFSymbol)
             .disposed(by: disposeBag)
         
         viewModel.symbolListDriver
-            .drive(collectionView.rx.items(cellIdentifier: SFSymbolsCollectionViewCell.cellId, cellType: SFSymbolsCollectionViewCell.self)) { index, item, cell in
+            .drive(collectionView.rx.items(cellIdentifier: SFSymbolsCollectionViewCell.cellId, cellType: SFSymbolsCollectionViewCell.self)) { _, item, cell in
                 cell.setup(item)
             }
             .disposed(by: disposeBag)
-    }
-    
-}
-
-extension SFSymbolsViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        SFSymbols.symbolsName.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = SFSymbolsCollectionViewCell.dequeueReusableCell(target: collectionView, indexPath: indexPath)
-        cell.setup( SFSymbols.symbolsName[indexPath.row])
-        return cell
+        
     }
     
 }

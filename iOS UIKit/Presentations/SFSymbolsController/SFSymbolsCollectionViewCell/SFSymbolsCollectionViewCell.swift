@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class SFSymbolsCollectionViewCell: UICollectionViewCell, UICollectionViewCellRegister {
     static var cellId: String = SFSymbolsCollectionViewCellConstants.cellId
     static var isFromNib: Bool = false
+    
+    private let disposeBag = DisposeBag()
     
     private lazy var symbolImageView: UIImageView = {
         let imageView = UIImageView()
@@ -54,6 +58,21 @@ final class SFSymbolsCollectionViewCell: UICollectionViewCell, UICollectionViewC
             self?.symbolNameLabel.text = systemName
             self?.symbolImageView.image = UIImage(systemName: systemName)
         }
+        
+        self.rx.isSelected
+            .subscribe(onNext: {  select in
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    if select {
+                        self.symbolImageView.layer.borderWidth = SFSymbolsCollectionViewCellConstants.selectedBorderWidth
+                        self.symbolImageView.layer.borderColor = UIColor.tintColor.cgColor
+                    } else {
+                        self.symbolImageView.layer.borderWidth = SFSymbolsCollectionViewCellConstants.notSelectedBorderWidth
+                        self.symbolImageView.layer.borderColor = nil
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
 }
@@ -86,5 +105,16 @@ private extension SFSymbolsCollectionViewCell {
                 constant: -SFSymbolsCollectionViewCellConstants.defaultOffset
             )
         ])
+    }
+}
+
+extension Reactive where Base: UICollectionViewCell {
+    var isSelected: ControlEvent<Bool> {
+        let source = self.methodInvoked(#selector(setter: Base.isSelected))
+            .map { values -> Bool in
+                return values[0] as? Bool ?? false
+            }
+
+        return ControlEvent(events: source)
     }
 }

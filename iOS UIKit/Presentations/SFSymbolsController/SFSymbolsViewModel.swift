@@ -18,8 +18,9 @@ final class SFSymbolsViewModel {
     
     // View -> ViewModel
     let serachSFSymbol = PublishRelay<String>()
+    let itemSelected = PublishRelay<IndexPath>()
     
-    let symbolListStream = PublishRelay<[String]>()
+    let symbolListStream = ReplayRelay<[String]>.create(bufferSize: 1)
     
     init() {
         let model = SFSymbolsModel()

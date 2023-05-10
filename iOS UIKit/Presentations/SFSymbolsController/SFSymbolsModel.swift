@@ -12,9 +12,8 @@ struct SFSymbolsModel {
     ]
 
     func getName(_ text: String) -> [String] {
-        let filterSybolList = symbolsNameList.filter { $0.range(of: text, options: .caseInsensitive) != nil }
-        return filterSybolList.count == 0 ? symbolsNameList : filterSybolList
+        if text == "" { return symbolsNameList }
+        return symbolsNameList.filter { $0.range(of: text, options: .caseInsensitive) != nil }
     }
     
 }
-

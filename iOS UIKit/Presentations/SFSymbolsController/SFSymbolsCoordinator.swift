@@ -22,8 +22,8 @@ final class SFSymbolsCoordinator: SFSymbolsCoordinatorProtocol {
     }
     
     func start() {
-        let viewController = SFSymbolsViewController()
-        viewController.coordinator = self
+        let viewModel = SFSymbolsViewModel()
+        let viewController = SFSymbolsViewController.create(viewModel, self)
         navigationController.pushViewController(viewController, animated: true)
     }
 

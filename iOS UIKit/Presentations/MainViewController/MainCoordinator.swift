@@ -16,7 +16,6 @@ final class MainCoordinator: MainCoordinatorProtocol {
     
     var navigationController: UINavigationController
     var childCoordinators: [CoordinatorProtocol] = []
-    let mainViewModel = MainViewModel()
     
     lazy var factory = ChildCoordinatorFactory(parentCoordinator: self, navigationController: self.navigationController)
     
@@ -25,8 +24,8 @@ final class MainCoordinator: MainCoordinatorProtocol {
     }
     
     func start() {
+        let mainViewModel = MainViewModel()
         let mainViewController = MainViewController.create(mainViewModel, self)
-        mainViewController.bind()
         navigationController.pushViewController(mainViewController, animated: true)
     }
     

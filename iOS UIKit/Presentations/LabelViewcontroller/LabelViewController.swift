@@ -14,8 +14,7 @@ final class LabelViewController: UIViewController {
     weak var coordinator: LabelCoordinatorProtocol?
     
     private lazy var presenter: LabelPresenter = LabelPresenter(viewController: self)
-    
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     
     lazy var containerView: UIView = {
         let view = UIView()

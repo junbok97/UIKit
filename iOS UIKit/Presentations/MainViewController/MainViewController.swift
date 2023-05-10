@@ -12,9 +12,10 @@ import RxDataSources
 
 final class MainViewController: UIViewController {
     
+    weak var coordinator: MainCoordinatorProtocol?
+    
     private let disposeBag = DisposeBag()
     private var viewModel: MainViewModel!
-    weak var coordinator: MainCoordinatorProtocol?
     
     static func create(
         _ viewModel: MainViewModel,
@@ -23,6 +24,7 @@ final class MainViewController: UIViewController {
         let mainViewController = MainViewController()
         mainViewController.viewModel = viewModel
         mainViewController.coordinator = coordinator
+        mainViewController.bind()
         return mainViewController
     }
     
