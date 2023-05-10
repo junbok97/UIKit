@@ -49,6 +49,7 @@ final class LabelViewController: UIViewController {
         LabelColorCell.register(target: tableView)
         LabelAlignmentCell.register(target: tableView)
         LabelNumberOfLinesCell.register(target: tableView)
+        CodeViewCell.register(target: tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()

@@ -43,4 +43,19 @@ enum AlignmentCase: Int, CaseIterable {
             return .justified
         }
     }
+    
+    var code: String {
+        switch self {
+        case .natural:
+            return ".natural"
+        case .left:
+            return ".left"
+        case .center:
+            return ".center"
+        case .right:
+            return ".right"
+        case .justified:
+            return ".justified"
+        }
+    }
 }

@@ -59,7 +59,7 @@
 		CBC6073F29C1C733008B6BA9 /* UITableViewCellReigster.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC6073E29C1C733008B6BA9 /* UITableViewCellReigster.swift */; };
 		CBC6074529C1D09D008B6BA9 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC6074429C1D09D008B6BA9 /* Object.swift */; };
 		CBC6074B29C1D28F008B6BA9 /* UITableViewHeaderFooterViewRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC6074A29C1D28F008B6BA9 /* UITableViewHeaderFooterViewRegister.swift */; };
-		CBD2FC7C2A0B6D73008033CF /* CodeTextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2FC7B2A0B6D73008033CF /* CodeTextViewCell.swift */; };
+		CBD2FC7C2A0B6D73008033CF /* CodeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2FC7B2A0B6D73008033CF /* CodeViewCell.swift */; };
 		CBD2FC7E2A0B6DBF008033CF /* CodeTextViewCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2FC7D2A0B6DBF008033CF /* CodeTextViewCellConstants.swift */; };
 		CBDE6E1E29E54B170068BA0A /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE6E1D29E54B170068BA0A /* LabelViewController.swift */; };
 		CBDE6E2129E54B220068BA0A /* LabelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE6E2029E54B220068BA0A /* LabelPresenter.swift */; };
@@ -125,7 +125,7 @@
 		CBC6073E29C1C733008B6BA9 /* UITableViewCellReigster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellReigster.swift; sourceTree = "<group>"; };
 		CBC6074429C1D09D008B6BA9 /* Object.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
 		CBC6074A29C1D28F008B6BA9 /* UITableViewHeaderFooterViewRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewHeaderFooterViewRegister.swift; sourceTree = "<group>"; };
-		CBD2FC7B2A0B6D73008033CF /* CodeTextViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTextViewCell.swift; sourceTree = "<group>"; };
+		CBD2FC7B2A0B6D73008033CF /* CodeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewCell.swift; sourceTree = "<group>"; };
 		CBD2FC7D2A0B6DBF008033CF /* CodeTextViewCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTextViewCellConstants.swift; sourceTree = "<group>"; };
 		CBDE6E1D29E54B170068BA0A /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
 		CBDE6E2029E54B220068BA0A /* LabelPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelPresenter.swift; sourceTree = "<group>"; };
@@ -201,6 +201,7 @@
 		CB421FBF29E5B2360014DC4F /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				CBD2FC802A0B6EB4008033CF /* CodeViewCell */,
 				CBAAA25D2A09108700773E0C /* BaseViewControllerConstants.swift */,
 				CBAAA24D2A08D5D300773E0C /* MainViewController */,
 				CBAAA24E2A08D5DB00773E0C /* LabelViewController */,
@@ -272,13 +273,12 @@
 		CB80B1D029E53A8D00298F3C /* Presentations */ = {
 			isa = PBXGroup;
 			children = (
-				CBD2FC7B2A0B6D73008033CF /* CodeTextViewCell.swift */,
 				CB33D35A29E8446D00FDAAAF /* ChildCoordinatorFactory.swift */,
+				CBD2FC7F2A0B6E2D008033CF /* CodeViewCell */,
 				CB80B1D329E53AA700298F3C /* MainViewController */,
 				CBDE6E1C29E54B0A0068BA0A /* LabelViewcontroller */,
 				CBAAA2422A08CC6C00773E0C /* ButtonViewController */,
 				CB5714FD2A0A22BC00365646 /* SFSymbolsController */,
-				CBD2FC7D2A0B6DBF008033CF /* CodeTextViewCellConstants.swift */,
 			);
 			path = Presentations;
 			sourceTree = "<group>";
@@ -361,6 +361,22 @@
 				CB5715042A0A2A5F00365646 /* UICollectionViewCellRegister.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CBD2FC7F2A0B6E2D008033CF /* CodeViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CBD2FC7B2A0B6D73008033CF /* CodeViewCell.swift */,
+			);
+			path = CodeViewCell;
+			sourceTree = "<group>";
+		};
+		CBD2FC802A0B6EB4008033CF /* CodeViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CBD2FC7D2A0B6DBF008033CF /* CodeTextViewCellConstants.swift */,
+			);
+			path = CodeViewCell;
 			sourceTree = "<group>";
 		};
 		CBDE6E1C29E54B0A0068BA0A /* LabelViewcontroller */ = {
@@ -576,7 +592,7 @@
 				CBC6074B29C1D28F008B6BA9 /* UITableViewHeaderFooterViewRegister.swift in Sources */,
 				CB57150C2A0A2E1300365646 /* SFSymbolsCoordinator.swift in Sources */,
 				CB5715052A0A2A5F00365646 /* UICollectionViewCellRegister.swift in Sources */,
-				CBD2FC7C2A0B6D73008033CF /* CodeTextViewCell.swift in Sources */,
+				CBD2FC7C2A0B6D73008033CF /* CodeViewCell.swift in Sources */,
 				CB80B1F729E5468200298F3C /* ObjectListCell.swift in Sources */,
 				CB421FAE29E5A8B50014DC4F /* AlignmentCase.swift in Sources */,
 				CB80B1DD29E53F3300298F3C /* MainViewControllerConstants.swift in Sources */,

@@ -14,6 +14,7 @@ enum LabelListSectionCase: Int, CaseIterable {
     case fontSize
     case alignment
     case numberOfLines
+    case code
     
     var sectionCounts: Int {
         switch self {
@@ -42,6 +43,8 @@ enum LabelListSectionCase: Int, CaseIterable {
             return "Alignment"
         case .numberOfLines:
             return "Number Of Lines"
+        case .code:
+            return "Code"
         }
     }
 

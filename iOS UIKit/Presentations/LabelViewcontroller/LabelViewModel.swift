@@ -18,9 +18,9 @@ final class LabelViewModel {
     let textCellRelay = PublishRelay<String>()
     
     // ColorCell
-    private lazy var colorCellRelays: [PublishRelay<UIColor>] = [textColorCellRelay, backgroundCellRelay]
+    private lazy var colorCellRelays: [PublishRelay<UIColor>] = [textColorCellRelay, backgroundColorCellRelay]
     private let textColorCellRelay = PublishRelay<UIColor>()
-    private let backgroundCellRelay = PublishRelay<UIColor>()
+    private let backgroundColorCellRelay = PublishRelay<UIColor>()
     
     // FontCell
     let fontCellRelay = PublishRelay<Int>()
@@ -35,6 +35,9 @@ final class LabelViewModel {
     // NumberOfLinesCell
     let linesCellRelay = PublishRelay<Int>()
     let linesCellDriveer: Driver<Int>
+    
+    // CodeTextViewCell
+    let codeViewCellDriver: Driver<String>
     
     // ViewModel -> View
     let targetText: Driver<String>
@@ -55,11 +58,11 @@ final class LabelViewModel {
                 UISystemFontWeightCase(rawValue: rawValue)?.font(ofSize: CGFloat(ofSize)) ?? LabelViewConstants.defaultFont
             }
             .asDriver(onErrorDriveWith: .empty())
-  
+        
         targetTextColor = textColorCellRelay
             .asDriver(onErrorDriveWith: .empty())
         
-        targetBackgroundColor = backgroundCellRelay
+        targetBackgroundColor = backgroundColorCellRelay
             .asDriver(onErrorDriveWith: .empty())
         
         targetAlignment = alignmentCellRelay
@@ -76,8 +79,25 @@ final class LabelViewModel {
         
         linesCellDriveer = linesCellRelay
             .asDriver(onErrorDriveWith: .empty())
+        
+        codeViewCellDriver = Observable
+            .combineLatest(textCellRelay, textColorCellRelay, backgroundColorCellRelay, fontCellRelay, fontSizeCellRelay, alignmentCellRelay, linesCellRelay) { text, textColor, backgroudColor, font, fontSize, alignment, lines in
+                """
+                private lazy var label: UILabel = {
+                    let label = UILabel()
+                    label.text = \(text)
+                    label.textColor = \(textColor)
+                    label.backgroundColor = \(backgroudColor)
+                    label.textAlignment = \(AlignmentCase(rawValue: alignment)!.code)
+                    label.font = \(UISystemFontWeightCase(rawValue: font)!.code(ofSize: CGFloat(fontSize)))
+                    label.numberOfLines = \(lines)
+                    return label
+                }()
+                """
+            }
+            .asDriver(onErrorDriveWith: .empty())
+            
     }
-    
     func getColorRelay(_ row: Int) -> PublishRelay<UIColor> {
         return colorCellRelays[row]
     }

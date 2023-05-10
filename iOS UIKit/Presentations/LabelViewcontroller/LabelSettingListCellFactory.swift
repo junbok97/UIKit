@@ -42,6 +42,10 @@ final class LabelSettingListCellFactory {
             let cell = LabelNumberOfLinesCell.dequeueReusableCell(target: tableView, indexPath: indexPath)
             cell.bind(viewModel)
             return cell
+        case .code:
+            let cell = CodeViewCell.dequeueReusableCell(target: tableView, indexPath: indexPath)
+            cell.bind(viewModel)
+            return cell
         }
     }
 }
