@@ -9,14 +9,19 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class LabelColorCell: UITableViewCell, UITableViewCellReigster {
+final class LabelColorCell: DefaultLabelSettingListCell {
     
-    static var cellId: String = LabelColorCellConstants.cellId
-    static var isFromNib: Bool = false
+    static override var cellId: String { LabelColorCellConstants.cellId }
     
-    private let disposeBag = DisposeBag()
     private let selectedColorSubject = ReplaySubject<UIColor>.create(bufferSize: 1)
-    fileprivate var colorType: LabelColorType = .backgroundColor
+    fileprivate var colorType: LabelColorType = .textColor {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.titleLabel.text = colorType.rawValue
+            }
+        }
+    }
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -47,28 +52,17 @@ final class LabelColorCell: UITableViewCell, UITableViewCellReigster {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(title: String) {
-        DispatchQueue.main.async { [weak self] in
-            self?.titleLabel.text = title
-        }
+    override func setup(_ item: LabelSettingListSectionItemType) {
+        guard case let .colorSectionItem(colorType: colorType) = item else { return }
+        self.colorType = colorType
     }
     
-    func bind(_ relay: PublishRelay<UIColor>) {
-        selectedColorSubject
-            .bind(to: relay)
-            .disposed(by: disposeBag)
-    }
-    
-    func bind(_ viewModel: LabelColorCellViewModel) {
-        viewModel.colorType
-            .bind(to: self.rx.colorType)
-            .disposed(by: disposeBag)
-        
+    override func bind(_ viewModel: LabelViewModel) {
         selectedColorSubject
             .map { color in
                 LabelColor(colorType: self.colorType, color: color)
             }
-            .bind(to: viewModel.selectedColorSubject)
+            .bind(to: viewModel.colorCellDidSelected)
             .disposed(by: disposeBag)
     }
     

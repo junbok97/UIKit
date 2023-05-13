@@ -24,9 +24,9 @@ final class MainCoordinator: MainCoordinatorProtocol {
     }
     
     func start() {
-        let mainViewModel = MainViewModel()
-        let mainViewController = MainViewController.create(mainViewModel, self)
-        navigationController.pushViewController(mainViewController, animated: true)
+        let viewModel = MainViewModel()
+        let viewController = MainViewController.create(viewModel, self)
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     func finish() {}

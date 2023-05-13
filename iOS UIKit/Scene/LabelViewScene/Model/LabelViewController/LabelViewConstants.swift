@@ -15,8 +15,16 @@ struct LabelViewConstants {
     static let title: String = "Label"
     static let containerViewHeight: CGFloat = 200.0
     
+    static let targetLabelFontSize: Float = 50.0
+    static let targetLabelFont: UIFont = .systemFont(ofSize: 50)
     static let targetLabelOffset: CGFloat = 16.0
     static let targetLabelCornerRadius: CGFloat = 8.0
     static let targetLabelNumberOfLines: Int = 0
-
+    
+    static let textCode: String = "\"Label\""
+    static let textColorCode: String = ".label"
+    static let backgroundColorCode: String = ".systemBackground"
+    static let fontCode: String = ".systemFont(ofSize: 50)"
+    static let alignmentCode: String = ".center"
+    static let numberOfLinesCode: String = "0"
 }

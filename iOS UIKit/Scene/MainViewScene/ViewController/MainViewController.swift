@@ -19,7 +19,7 @@ final class MainViewController: UIViewController {
     
     static func create(
         _ viewModel: MainViewModel,
-        _ coordinator: MainCoordinator
+        _ coordinator: MainCoordinatorProtocol
     ) -> MainViewController {
         let mainViewController = MainViewController()
         mainViewController.viewModel = viewModel
@@ -35,7 +35,7 @@ final class MainViewController: UIViewController {
     
     private lazy var objectListView: UITableView = {
        let tableView = UITableView()
-        ObjectListCell.register(target: tableView)
+        ObjectListCell.register(tableView: tableView)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.backgroundColor = .systemBackground
         tableView.translatesAutoresizingMaskIntoConstraints = false

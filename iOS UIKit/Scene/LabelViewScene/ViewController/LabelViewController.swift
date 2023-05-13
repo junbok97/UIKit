@@ -13,8 +13,19 @@ final class LabelViewController: UIViewController {
     
     weak var coordinator: LabelCoordinatorProtocol?
     
-    private lazy var presenter: LabelPresenter = LabelPresenter(viewController: self)
     private let disposeBag = DisposeBag()
+    private var viewModel: LabelViewModel!
+    
+    static func create(
+        _ viewModel: LabelViewModel,
+        _ coordinator: LabelCoordinatorProtocol
+    ) -> LabelViewController {
+        let labelViewController = LabelViewController()
+        labelViewController.viewModel = viewModel
+        labelViewController.coordinator = coordinator
+        labelViewController.bind()
+        return labelViewController
+    }
     
     lazy var containerView: UIView = {
         let view = UIView()
@@ -27,7 +38,7 @@ final class LabelViewController: UIViewController {
         let label = UILabel()
         label.textColor = .label
         label.text = LabelViewConstants.title
-        label.font = LabelViewConstants.defaultFont
+        label.font = LabelViewConstants.targetLabelFont
         label.numberOfLines = LabelViewConstants.targetLabelNumberOfLines
         label.clipsToBounds = true
         label.layer.cornerRadius = LabelViewConstants.targetLabelCornerRadius
@@ -41,22 +52,21 @@ final class LabelViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.backgroundColor = .secondarySystemBackground
         tableView.separatorStyle = .singleLine
-        tableView.delegate = presenter
-        tableView.dataSource = presenter
-        LabelTextCell.register(target: tableView)
-        LabelFontCell.register(target: tableView)
-        LabelFontSizeCell.register(target: tableView)
-        LabelColorCell.register(target: tableView)
-        LabelAlignmentCell.register(target: tableView)
-        LabelNumberOfLinesCell.register(target: tableView)
-        CodeLabelCell.register(target: tableView)
+        LabelTextCell.register(tableView: tableView)
+        LabelFontCell.register(tableView: tableView)
+        LabelFontSizeCell.register(tableView: tableView)
+        LabelColorCell.register(tableView: tableView)
+        LabelAlignmentCell.register(tableView: tableView)
+        LabelNumberOfLinesCell.register(tableView: tableView)
+        CodeLabelCell.register(tableView: tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.viewDidLoad()
+        attribute()
+        layout()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -69,10 +79,19 @@ final class LabelViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-}
-
-extension LabelViewController: LabelViewControllerProtocol {
-    func bind(_ viewModel: LabelViewModel) {
+    func bind() {
+        let dataSource = viewModel.labelSettingListDataSource()
+        viewModel.labelSettingListCellDatas
+            .drive(labelSettingList.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
+        labelSettingList.rx.itemSelected
+            .map { indexPath in
+                dataSource[indexPath.section].items[indexPath.row]
+            }
+            .bind(to: viewModel.didItemSelectedLabelSettingList)
+            .disposed(by: disposeBag)
+            
         viewModel.targetText
             .drive(self.rx.targetText)
             .disposed(by: disposeBag)
@@ -81,12 +100,8 @@ extension LabelViewController: LabelViewControllerProtocol {
             .drive(self.rx.targetFont)
             .disposed(by: disposeBag)
         
-        viewModel.targetTextColor
-            .drive(self.rx.targetTextColor)
-            .disposed(by: disposeBag)
-        
-        viewModel.targetBackgroundColor
-            .drive(self.rx.targetBackgroundColor)
+        viewModel.targetColor
+            .drive(self.rx.targetColor)
             .disposed(by: disposeBag)
         
         viewModel.targetAlignment
@@ -96,17 +111,11 @@ extension LabelViewController: LabelViewControllerProtocol {
         viewModel.targetNumberOfLines
             .drive(self.rx.targetNumberOfLines)
             .disposed(by: disposeBag)
-        
-        Observable.just(UISystemFontWeightType.regular.rawValue)
-            .bind(to: viewModel.fontCellRelay)
-            .disposed(by: disposeBag)
-        
-        Observable.just(Int(LabelFontSizeCellConstants.sliderValue))
-            .bind(to: viewModel.fontSizeCellRelay)
-            .disposed(by: disposeBag)
-            
     }
     
+}
+
+private extension LabelViewController {
     func attribute() {
         view.backgroundColor = .secondarySystemBackground
         let appearance = UINavigationBarAppearance()
@@ -152,21 +161,20 @@ extension Reactive where Base: LabelViewController {
         }
     }
     
-    var targetTextColor: Binder<UIColor> {
-        return Binder(base) { base, textColor in
-            base.targetLabel.textColor = textColor
+    var targetColor: Binder<LabelColor> {
+        return Binder(base) { base, labelColor in
+            switch labelColor.colorType {
+            case .textColor:
+                base.targetLabel.textColor = labelColor.color
+            case .backgroundColor:
+                base.targetLabel.backgroundColor = labelColor.color
+            }
         }
     }
     
-    var targetBackgroundColor: Binder<UIColor> {
-        return Binder(base) { base, textColor in
-            base.targetLabel.backgroundColor = textColor
-        }
-    }
-    
-    var targetAlignment: Binder<NSTextAlignment> {
+    var targetAlignment: Binder<LabelAlignmentType> {
         return Binder(base) { base, alignment in
-            base.targetLabel.textAlignment = alignment
+            base.targetLabel.textAlignment = alignment.aligment
         }
     }
     

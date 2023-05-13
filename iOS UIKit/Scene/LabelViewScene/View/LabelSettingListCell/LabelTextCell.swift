@@ -9,12 +9,9 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class LabelTextCell: UITableViewCell, UITableViewCellReigster {
+final class LabelTextCell: DefaultLabelSettingListCell {
     
-    static var cellId: String = LabelTextCellConstants.cellId
-    static var isFromNib: Bool = false
-    
-    private let disposeBag = DisposeBag()
+    static override var cellId: String { LabelTextCellConstants.cellId }
     
     private lazy var textField: UITextField = {
        let textField = UITextField()
@@ -35,14 +32,10 @@ final class LabelTextCell: UITableViewCell, UITableViewCellReigster {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(delegate: UITextFieldDelegate) {
-        textField.delegate = delegate
-    }
-    
-    func bind(_ viewModel: LabelViewModel) {
+    override func bind(_ viewModel: LabelViewModel) {
         textField.rx.text
             .compactMap { $0 == "" ? LabelViewConstants.title : $0 }
-            .bind(to: viewModel.textCellRelay)
+            .bind(to: viewModel.textCellDidChangedTextField)
             .disposed(by: disposeBag)
     }
     

@@ -7,14 +7,21 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
-final class LabelFontCell: UITableViewCell, UITableViewCellReigster {
+final class LabelFontCell: DefaultLabelSettingListCell {
     
-    static var cellId: String = LabelFontCellConstants.cellId
-    static var isFromNib: Bool = false
+    static override var cellId: String { LabelFontCellConstants.cellId }
     
-    private let disposeBag = DisposeBag()
-    private let wegiht: UISystemFontWeightType = .regular
+    fileprivate var fontType: LabelFontType = .regular {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.fontLabel.text = fontType.rawValue
+                self.fontLabel.font = fontType.font(ofSize: LabelViewConstants.defaultFontSize)
+            }
+        }
+    }
     
     private lazy var fontLabel: UILabel = {
         let label = UILabel()
@@ -34,13 +41,19 @@ final class LabelFontCell: UITableViewCell, UITableViewCellReigster {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    func setup(_ weightCase: UISystemFontWeightType) {
-        DispatchQueue.main.async { [weak self] in
-            self?.fontLabel.text = weightCase.title
-            self?.fontLabel.font = weightCase.font(ofSize: LabelViewConstants.defaultFontSize)
-        }
+    
+    override func setup(_ item: LabelSettingListSectionItemType) {
+        guard case let .fontSectionItem(fontType: fontType) = item else { return }
+        self.fontType = fontType
     }
+    
+//    override func bind(_ viewModel: LabelViewModel) {
+//        self.rx.isSelected
+//            .startWith(.regular)
+//            .bind(to: viewModel.fontCellDidSelected)
+//            .disposed(by: disposeBag)
+//    }
+    
 }
 
 private extension LabelFontCell {
@@ -60,4 +73,12 @@ private extension LabelFontCell {
         ])
     }
     
+}
+
+extension Reactive where Base: LabelFontCell {
+    var isSelected: ControlEvent<LabelFontType> {
+        let source = self.methodInvoked(#selector(setter: Base.isSelected))
+            .map { _ in base.fontType }
+        return ControlEvent(events: source)
+    }
 }

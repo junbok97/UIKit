@@ -8,12 +8,9 @@
 import UIKit
 import RxSwift
 
-final class LabelNumberOfLinesCell: UITableViewCell, UITableViewCellReigster {
+final class LabelNumberOfLinesCell: DefaultLabelSettingListCell {
     
-    static var cellId: String = LabelNumberOfLinesCellConstants.cellId
-    static var isFromNib: Bool = false
-    
-    private let disposeBag = DisposeBag()
+    static override var cellId: String { LabelNumberOfLinesCellConstants.cellId }
     
     private lazy var linesLabel: UILabel = {
         let label = UILabel()
@@ -59,13 +56,13 @@ final class LabelNumberOfLinesCell: UITableViewCell, UITableViewCellReigster {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func bind(_ viewModel: LabelViewModel) {
+    override func bind(_ viewModel: LabelViewModel) {
         lineStepper.rx.value
             .map { Int($0) }
-            .bind(to: viewModel.linesCellRelay)
+            .bind(to: viewModel.numberOfLinesCellDidChangedLineStepper)
             .disposed(by: disposeBag)
         
-        viewModel.linesCellDriveer
+        viewModel.numberOfLinesCellStepperValueLabelText
             .drive(self.rx.stepperValueLabelText)
             .disposed(by: disposeBag)
     }

@@ -37,11 +37,11 @@ final class MainViewModel {
         let dataSource = RxTableViewSectionedReloadDataSource<ObjectSectionModel> { dataSource, tableView, indexPath, item in
             switch dataSource[indexPath.section].sectionHeader {
             case .label:
-                let cell = ObjectListCell.dequeueReusableCell(target: tableView, indexPath: indexPath)
+                let cell = ObjectListCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
                 cell.setup(object: item)
                 return cell
             default:
-                let cell = ObjectListCell.dequeueReusableCell(target: tableView, indexPath: indexPath)
+                let cell = ObjectListCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
                 cell.setup(object: item)
                 return cell
             }

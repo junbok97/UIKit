@@ -8,11 +8,9 @@
 import UIKit
 import RxSwift
 
-final class CodeLabelCell: UITableViewCell, UITableViewCellReigster {
-    static var cellId: String = CodeLabelCellConstants.cellId
-    static var isFromNib: Bool = false
+final class CodeLabelCell: DefaultLabelSettingListCell {
     
-    private let disposeBag = DisposeBag()
+    static override var cellId: String { CodeLabelCellConstants.cellId }
     
     lazy var codeLabel: UILabel = {
         let label = UILabel()
@@ -34,8 +32,8 @@ final class CodeLabelCell: UITableViewCell, UITableViewCellReigster {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func bind(_ viewModel: LabelViewModel) {
-        viewModel.codeViewCellDriver
+    override func bind(_ viewModel: LabelViewModel) {
+        viewModel.codeCellCodeLabelText
             .drive(self.rx.codeText)
             .disposed(by: disposeBag)
     }

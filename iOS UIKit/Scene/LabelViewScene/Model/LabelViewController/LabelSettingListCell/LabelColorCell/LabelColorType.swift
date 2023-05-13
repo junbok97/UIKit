@@ -7,16 +7,7 @@
 
 import Foundation
 
-enum LabelColorType: Int, CaseIterable {
-    case textColor
-    case backgroundColor
-    
-    var title: String {
-        switch self {
-        case .textColor:
-            return "TextColor"
-        case .backgroundColor:
-            return "BackgroundColor"
-        }
-    }
+enum LabelColorType: String {
+    case textColor = "TextColor"
+    case backgroundColor = "BackgroundColor"
 }

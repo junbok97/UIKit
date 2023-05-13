@@ -9,12 +9,9 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class LabelFontSizeCell: UITableViewCell, UITableViewCellReigster {
+final class LabelFontSizeCell: DefaultLabelSettingListCell {
     
-    private let disposeBag = DisposeBag()
-    
-    static var cellId: String = LabelFontSizeCellConstants.cellId
-    static var isFromNib: Bool = false
+    static override var cellId: String { LabelFontSizeCellConstants.cellId }
     
     private lazy var minNumLabel: UILabel = {
         let label = UILabel()
@@ -106,14 +103,15 @@ final class LabelFontSizeCell: UITableViewCell, UITableViewCellReigster {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func bind(_ viewModel: LabelViewModel) {
+    override func bind(_ viewModel: LabelViewModel) {
         fontSizeSlider.rx.value
+            .startWith(LabelViewConstants.targetLabelFontSize)
             .map { Int($0) }
             .distinctUntilChanged()
-            .bind(to: viewModel.fontSizeCellRelay)
+            .bind(to: viewModel.fontSizeCellDidChangedFontSizeSlider)
             .disposed(by: disposeBag)
         
-        viewModel.fontSizeCellDriver
+        viewModel.fontSizeCellSliderText
             .drive(self.rx.sliderText)
             .disposed(by: disposeBag)
     }

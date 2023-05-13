@@ -7,13 +7,21 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
-final class LabelAlignmentCell: UITableViewCell, UITableViewCellReigster {
+final class LabelAlignmentCell: DefaultLabelSettingListCell {
     
-    static var cellId: String = LabelAlignmentCellConstants.cellId
-    static var isFromNib: Bool = false
+    static override var cellId: String { LabelAlignmentCellConstants.cellId }
     
-    private let disposeBag = DisposeBag()
+    fileprivate var alignmentType: LabelAlignmentType = .center {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.alignmentLabel.text = alignmentType.rawValue
+                self.alignmentLabel.textAlignment = alignmentType.aligment
+            }
+        }
+    }
     
     private lazy var alignmentLabel: UILabel = {
         let label = UILabel()
@@ -34,12 +42,19 @@ final class LabelAlignmentCell: UITableViewCell, UITableViewCellReigster {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(_ alignmentType: AlignmentType) {
-        DispatchQueue.main.async { [weak self] in
-            self?.alignmentLabel.text = alignmentType.title
-            self?.alignmentLabel.textAlignment = alignmentType.aligment
+    override func setup(_ item: LabelSettingListSectionItemType) {
+        guard case let .alignmentSectionItem(alignmentType) = item else {
+            return
         }
+        self.alignmentType = alignmentType
     }
+    
+//    override func bind(_ viewModel: LabelViewModel) {
+//        self.rx.isSelected
+//            .bind(to: viewModel.alignmentCellDidSelected)
+//            .disposed(by: disposeBag)
+//    }
+
 }
 
 private extension LabelAlignmentCell {
@@ -59,4 +74,12 @@ private extension LabelAlignmentCell {
         ])
     }
     
+}
+
+extension Reactive where Base: LabelAlignmentCell {
+    var isSelected: ControlEvent<LabelAlignmentType> {
+        let source = self.methodInvoked(#selector(setter: Base.isSelected))
+            .map { _ in base.alignmentType }
+        return ControlEvent(events: source)
+    }
 }

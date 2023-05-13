@@ -8,106 +8,157 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 final class LabelViewModel {
     
     private let disposeBag = DisposeBag()
     
-    // 외부로부터 전달받을 값
-    // TextCell
-    let textCellRelay = PublishRelay<String>()
-    
-    // ColorCell
-    private lazy var colorCellRelays: [PublishRelay<UIColor>] = [textColorCellRelay, backgroundColorCellRelay]
-    private let textColorCellRelay = PublishRelay<UIColor>()
-    private let backgroundColorCellRelay = PublishRelay<UIColor>()
-    
-    // FontCell
-    let fontCellRelay = PublishRelay<Int>()
-    
-    // AlignmentCell
-    let alignmentCellRelay = PublishRelay<Int>()
-    
-    // FontSizeCell
-    let fontSizeCellRelay = PublishRelay<Int>()
-    let fontSizeCellDriver: Driver<Int>
-    
-    // NumberOfLinesCell
-    let linesCellRelay = PublishRelay<Int>()
-    let linesCellDriveer: Driver<Int>
-    
-    // CodeTextViewCell
-    let colorCellViewModel: LabelColorCellViewModel
-    let codeViewCellDriver: Driver<String>
+    // View -> ViewModel
+    let codeCellCodeLabelText: Driver<String>
+    let textCellDidChangedTextField = PublishRelay<String>()
+    let colorCellDidSelected = PublishRelay<LabelColor>()
+    let fontCellDidSelected = PublishRelay<LabelFontType>()
+    let fontSizeCellDidChangedFontSizeSlider = PublishRelay<Int>()
+    let fontSizeCellSliderText: Driver<Int>
+    let alignmentCellDidSelected = PublishRelay<LabelAlignmentType>()
+    let numberOfLinesCellDidChangedLineStepper = PublishRelay<Int>()
+    let numberOfLinesCellStepperValueLabelText: Driver<Int>
+    let didItemSelectedLabelSettingList = PublishRelay<LabelSettingListSectionItemType>()
     
     // ViewModel -> View
     let targetText: Driver<String>
     let targetFont: Driver<UIFont>
-    let targetTextColor: Driver<UIColor>
-    let targetBackgroundColor: Driver<UIColor>
-    let targetAlignment: Driver<NSTextAlignment>
+    let targetColor: Driver<LabelColor>
+    let targetAlignment: Driver<LabelAlignmentType>
     let targetNumberOfLines: Driver<Int>
-    
-    // View -> ViewModel
+    let labelSettingListCellDatas: Driver<[LabelSettingListSectionModel]>
     
     init() {
-        self.colorCellViewModel = LabelColorCellViewModel(colorCaseRawValue: <#T##Int#>)
+        let labelModel = LabelModel()
+        labelSettingListCellDatas = labelModel.labelSettingListCellDatas
+            .asDriver(onErrorDriveWith: .empty())
+              
+        didItemSelectedLabelSettingList
+            .compactMap { labelSettingListSectionItemType -> LabelFontType? in
+                guard case let .fontSectionItem(fontType) = labelSettingListSectionItemType else { return nil }
+                return fontType
+            }
+            .bind(to: fontCellDidSelected)
+            .disposed(by: disposeBag)
         
-        targetText = textCellRelay
+        didItemSelectedLabelSettingList
+            .compactMap { labelSettingListSectionItemType -> LabelAlignmentType? in
+                guard case let .alignmentSectionItem(alignmentType) = labelSettingListSectionItemType else { return nil }
+                return alignmentType
+            }
+            .bind(to: alignmentCellDidSelected)
+            .disposed(by: disposeBag)
+              
+        targetText = textCellDidChangedTextField
+            .asDriver(onErrorDriveWith: .empty())
+        
+        targetColor = colorCellDidSelected
             .asDriver(onErrorDriveWith: .empty())
         
         targetFont = Observable
-            .combineLatest(fontCellRelay, fontSizeCellRelay) { (rawValue, ofSize) -> UIFont in
-                UISystemFontWeightType(rawValue: rawValue)?.font(ofSize: CGFloat(ofSize)) ?? LabelViewConstants.defaultFont
+            .combineLatest(fontCellDidSelected, fontSizeCellDidChangedFontSizeSlider) { (fontType, ofSize) -> UIFont in
+                fontType.font(ofSize: CGFloat(ofSize))
             }
             .asDriver(onErrorDriveWith: .empty())
         
-        targetTextColor = textColorCellRelay
+        fontSizeCellSliderText = fontSizeCellDidChangedFontSizeSlider
             .asDriver(onErrorDriveWith: .empty())
         
-        targetBackgroundColor = backgroundColorCellRelay
+        targetAlignment = alignmentCellDidSelected
             .asDriver(onErrorDriveWith: .empty())
         
-        targetAlignment = alignmentCellRelay
-            .map {
-                AlignmentType(rawValue: $0)?.aligment ?? .center
+        targetNumberOfLines = numberOfLinesCellDidChangedLineStepper
+            .asDriver(onErrorDriveWith: .empty())
+        
+        numberOfLinesCellStepperValueLabelText = numberOfLinesCellDidChangedLineStepper
+            .asDriver(onErrorDriveWith: .empty())
+        
+        let textCode = textCellDidChangedTextField
+            .startWith(LabelViewConstants.textCode)
+        
+        let textColorCode = colorCellDidSelected
+            .filter { $0.colorType == .textColor }
+            .map { "\($0.color)" }
+            .startWith(LabelViewConstants.textColorCode)
+        
+        let backgroundColorCode = colorCellDidSelected
+            .filter { $0.colorType == .backgroundColor }
+            .map { "\($0.color)" }
+            .startWith(LabelViewConstants.backgroundColorCode)
+        
+        let fontCode = Observable
+            .combineLatest(fontCellDidSelected, fontSizeCellDidChangedFontSizeSlider) { font, ofSize in
+                font.code(ofSize: CGFloat(ofSize))
             }
-            .asDriver(onErrorDriveWith: .empty())
+            .startWith(LabelViewConstants.fontCode)
         
-        targetNumberOfLines = linesCellRelay
-            .asDriver(onErrorDriveWith: .empty())
+        let alignmentCode = alignmentCellDidSelected
+            .map { $0.code }
+            .startWith(LabelViewConstants.alignmentCode)
         
-        fontSizeCellDriver = fontSizeCellRelay
-            .asDriver(onErrorDriveWith: .empty())
+        let numberOfLinesCode = numberOfLinesCellDidChangedLineStepper
+            .map { "\($0)" }
+            .startWith(LabelViewConstants.numberOfLinesCode)
         
-        linesCellDriveer = linesCellRelay
+        codeCellCodeLabelText = Observable
+            .combineLatest(textCode, textColorCode, backgroundColorCode, fontCode, alignmentCode, numberOfLinesCode, resultSelector: labelModel.codeLabelText)
             .asDriver(onErrorDriveWith: .empty())
-        
-        codeViewCellDriver = Observable
-            .combineLatest(textCellRelay, textColorCellRelay, backgroundColorCellRelay, fontCellRelay, fontSizeCellRelay, alignmentCellRelay, linesCellRelay) { text, textColor, backgroudColor, font, fontSize, alignment, lines in
-                """
-                let label = UILabel()
-                label.text = \(text)
-                label.textColor = \(textColor)
-                label.backgroundColor = \(backgroudColor)
-                label.textAlignment = \(AlignmentType(rawValue: alignment)!.code)
-                label.font = \(UISystemFontWeightType(rawValue: font)!.code(ofSize: CGFloat(fontSize)))
-                label.numberOfLines = \(lines)    
-                """
-            }
-            .startWith("""
-            let label = UILabel()
-            label.text = "Label"
-            label.textColor = .label
-            label.backgroundColor = .systemBackground
-            label.textAlignment = .center
-            label.font = .systemFont(ofSize: 50)
-            label.numberOfLines = 1
-            """)
-            .asDriver(onErrorDriveWith: .empty())
+    }
+    
+    func labelSettingListDataSource() -> RxTableViewSectionedReloadDataSource<LabelSettingListSectionModel> {
+        let dataSource = RxTableViewSectionedReloadDataSource<LabelSettingListSectionModel> { dataSource, tableView, indexPath, sectionModelItem in
             
-    }
-    func getColorRelay(_ row: Int) -> PublishRelay<UIColor> {
-        return colorCellRelays[row]
-    }
+            switch dataSource[indexPath.section].sectionHeader {
+            case .code:
+                let cell = CodeLabelCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+                cell.setup(sectionModelItem)
+                cell.bind(self)
+                return cell
+            case .text:
+                let cell = LabelTextCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+                cell.setup(sectionModelItem)
+                cell.bind(self)
+                return cell
+            case .color:
+                let cell = LabelColorCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+                cell.setup(sectionModelItem)
+                cell.bind(self)
+                return cell
+            case .font:
+                let cell = LabelFontCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+                cell.setup(sectionModelItem)
+                cell.bind(self)
+                return cell
+            case .fontSize:
+                let cell = LabelFontSizeCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+                cell.setup(sectionModelItem)
+                cell.bind(self)
+                return cell
+            case .alignment:
+                let cell = LabelAlignmentCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+                cell.setup(sectionModelItem)
+                cell.bind(self)
+                return cell
+            case .numberOfLines:
+                let cell = LabelNumberOfLinesCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+                cell.setup(sectionModelItem)
+                cell.bind(self)
+                return cell
+            } // Switch
+        } // RxTableViewSectionedReloadDataSource
+        
+        dataSource.titleForHeaderInSection = { dataSource, index in
+            dataSource.sectionModels[index].sectionHeader.rawValue
+        }
+        
+        return dataSource
+        
+    } // func labelSettingListDataSource
+    
 }
