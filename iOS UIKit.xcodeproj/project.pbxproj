@@ -12,14 +12,17 @@
 		CB33D35429E82EB600FDAAAF /* LabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB33D35329E82EB500FDAAAF /* LabelViewModel.swift */; };
 		CB33D35929E83A5400FDAAAF /* LabelAlignmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB33D35829E83A5400FDAAAF /* LabelAlignmentCell.swift */; };
 		CB33D35B29E8446D00FDAAAF /* ChildCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB33D35A29E8446D00FDAAAF /* ChildCoordinatorFactory.swift */; };
-		CB421FAC29E5A7F60014DC4F /* UISystemFontWeightCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB421FAB29E5A7F60014DC4F /* UISystemFontWeightCase.swift */; };
-		CB421FAE29E5A8B50014DC4F /* AlignmentCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB421FAD29E5A8B50014DC4F /* AlignmentCase.swift */; };
+		CB421FAC29E5A7F60014DC4F /* UISystemFontWeightType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB421FAB29E5A7F60014DC4F /* UISystemFontWeightType.swift */; };
+		CB421FAE29E5A8B50014DC4F /* AlignmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB421FAD29E5A8B50014DC4F /* AlignmentType.swift */; };
 		CB421FB429E5AA670014DC4F /* LabelFontCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB421FB329E5AA670014DC4F /* LabelFontCell.swift */; };
 		CB421FB829E5ABAA0014DC4F /* LabelViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB421FB729E5ABAA0014DC4F /* LabelViewConstants.swift */; };
-		CB421FBA29E5ADDC0014DC4F /* LabelColorCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB421FB929E5ADDC0014DC4F /* LabelColorCase.swift */; };
-		CB421FBC29E5B2060014DC4F /* LabelListSectionCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB421FBB29E5B2060014DC4F /* LabelListSectionCase.swift */; };
+		CB421FBA29E5ADDC0014DC4F /* LabelColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB421FB929E5ADDC0014DC4F /* LabelColorType.swift */; };
+		CB421FBC29E5B2060014DC4F /* LabelListSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB421FBB29E5B2060014DC4F /* LabelListSectionType.swift */; };
 		CB421FC229E5B3180014DC4F /* LabelCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB421FC129E5B3180014DC4F /* LabelCoordinator.swift */; };
 		CB421FC729E5B8AD0014DC4F /* LabelTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB421FC629E5B8AD0014DC4F /* LabelTextCell.swift */; };
+		CB4D1EC82A0D1691000EC05C /* LabelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4D1EC72A0D1691000EC05C /* LabelModel.swift */; };
+		CB4D1EDE2A0D180A000EC05C /* LabelColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4D1EDD2A0D180A000EC05C /* LabelColor.swift */; };
+		CB4D1EE02A0E0171000EC05C /* LabelColorCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4D1EDF2A0E0171000EC05C /* LabelColorCellViewModel.swift */; };
 		CB5714D62A0A098F00365646 /* ButtonViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5714D52A0A098F00365646 /* ButtonViewControllerConstants.swift */; };
 		CB5714E32A0A0E6D00365646 /* ButtonStyleCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5714E22A0A0E6D00365646 /* ButtonStyleCase.swift */; };
 		CB5714E52A0A103900365646 /* ButtonTypeCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5714E42A0A103900365646 /* ButtonTypeCase.swift */; };
@@ -54,13 +57,14 @@
 		CBAAA2582A08D6A000773E0C /* LabelAlignmentCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAA2572A08D6A000773E0C /* LabelAlignmentCellConstants.swift */; };
 		CBAAA25A2A08D6BF00773E0C /* LabelFontSizeCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAA2592A08D6BF00773E0C /* LabelFontSizeCellConstants.swift */; };
 		CBAAA25E2A09108700773E0C /* BaseViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAA25D2A09108700773E0C /* BaseViewControllerConstants.swift */; };
+		CBBEBC322A0FC90200A0DFE0 /* LabelListSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBEBC312A0FC90200A0DFE0 /* LabelListSectionModel.swift */; };
 		CBC323832A0604DD00C5B6D1 /* ObjectListCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC323822A0604DD00C5B6D1 /* ObjectListCellConstants.swift */; };
 		CBC323972A06BF5100C5B6D1 /* ObjectSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC323962A06BF5100C5B6D1 /* ObjectSectionModel.swift */; };
 		CBC6073F29C1C733008B6BA9 /* UITableViewCellReigster.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC6073E29C1C733008B6BA9 /* UITableViewCellReigster.swift */; };
 		CBC6074529C1D09D008B6BA9 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC6074429C1D09D008B6BA9 /* Object.swift */; };
 		CBC6074B29C1D28F008B6BA9 /* UITableViewHeaderFooterViewRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC6074A29C1D28F008B6BA9 /* UITableViewHeaderFooterViewRegister.swift */; };
-		CBD2FC7C2A0B6D73008033CF /* CodeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2FC7B2A0B6D73008033CF /* CodeViewCell.swift */; };
-		CBD2FC7E2A0B6DBF008033CF /* CodeTextViewCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2FC7D2A0B6DBF008033CF /* CodeTextViewCellConstants.swift */; };
+		CBD2FC7C2A0B6D73008033CF /* CodeLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2FC7B2A0B6D73008033CF /* CodeLabelCell.swift */; };
+		CBD2FC7E2A0B6DBF008033CF /* CodeLabelCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2FC7D2A0B6DBF008033CF /* CodeLabelCellConstants.swift */; };
 		CBDE6E1E29E54B170068BA0A /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE6E1D29E54B170068BA0A /* LabelViewController.swift */; };
 		CBDE6E2129E54B220068BA0A /* LabelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE6E2029E54B220068BA0A /* LabelPresenter.swift */; };
 		CBDE6E6529E5599B0068BA0A /* LabelColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE6E6429E5599B0068BA0A /* LabelColorCell.swift */; };
@@ -78,14 +82,17 @@
 		CB33D35329E82EB500FDAAAF /* LabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewModel.swift; sourceTree = "<group>"; };
 		CB33D35829E83A5400FDAAAF /* LabelAlignmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAlignmentCell.swift; sourceTree = "<group>"; };
 		CB33D35A29E8446D00FDAAAF /* ChildCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCoordinatorFactory.swift; sourceTree = "<group>"; };
-		CB421FAB29E5A7F60014DC4F /* UISystemFontWeightCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISystemFontWeightCase.swift; sourceTree = "<group>"; };
-		CB421FAD29E5A8B50014DC4F /* AlignmentCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentCase.swift; sourceTree = "<group>"; };
+		CB421FAB29E5A7F60014DC4F /* UISystemFontWeightType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISystemFontWeightType.swift; sourceTree = "<group>"; };
+		CB421FAD29E5A8B50014DC4F /* AlignmentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentType.swift; sourceTree = "<group>"; };
 		CB421FB329E5AA670014DC4F /* LabelFontCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFontCell.swift; sourceTree = "<group>"; };
 		CB421FB729E5ABAA0014DC4F /* LabelViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewConstants.swift; sourceTree = "<group>"; };
-		CB421FB929E5ADDC0014DC4F /* LabelColorCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelColorCase.swift; sourceTree = "<group>"; };
-		CB421FBB29E5B2060014DC4F /* LabelListSectionCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListSectionCase.swift; sourceTree = "<group>"; };
+		CB421FB929E5ADDC0014DC4F /* LabelColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelColorType.swift; sourceTree = "<group>"; };
+		CB421FBB29E5B2060014DC4F /* LabelListSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListSectionType.swift; sourceTree = "<group>"; };
 		CB421FC129E5B3180014DC4F /* LabelCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCoordinator.swift; sourceTree = "<group>"; };
 		CB421FC629E5B8AD0014DC4F /* LabelTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTextCell.swift; sourceTree = "<group>"; };
+		CB4D1EC72A0D1691000EC05C /* LabelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelModel.swift; sourceTree = "<group>"; };
+		CB4D1EDD2A0D180A000EC05C /* LabelColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelColor.swift; sourceTree = "<group>"; };
+		CB4D1EDF2A0E0171000EC05C /* LabelColorCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelColorCellViewModel.swift; sourceTree = "<group>"; };
 		CB5714D52A0A098F00365646 /* ButtonViewControllerConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewControllerConstants.swift; sourceTree = "<group>"; };
 		CB5714E22A0A0E6D00365646 /* ButtonStyleCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyleCase.swift; sourceTree = "<group>"; };
 		CB5714E42A0A103900365646 /* ButtonTypeCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTypeCase.swift; sourceTree = "<group>"; };
@@ -120,13 +127,14 @@
 		CBAAA2572A08D6A000773E0C /* LabelAlignmentCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAlignmentCellConstants.swift; sourceTree = "<group>"; };
 		CBAAA2592A08D6BF00773E0C /* LabelFontSizeCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFontSizeCellConstants.swift; sourceTree = "<group>"; };
 		CBAAA25D2A09108700773E0C /* BaseViewControllerConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControllerConstants.swift; sourceTree = "<group>"; };
+		CBBEBC312A0FC90200A0DFE0 /* LabelListSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListSectionModel.swift; sourceTree = "<group>"; };
 		CBC323822A0604DD00C5B6D1 /* ObjectListCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectListCellConstants.swift; sourceTree = "<group>"; };
 		CBC323962A06BF5100C5B6D1 /* ObjectSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSectionModel.swift; sourceTree = "<group>"; };
 		CBC6073E29C1C733008B6BA9 /* UITableViewCellReigster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellReigster.swift; sourceTree = "<group>"; };
 		CBC6074429C1D09D008B6BA9 /* Object.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
 		CBC6074A29C1D28F008B6BA9 /* UITableViewHeaderFooterViewRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewHeaderFooterViewRegister.swift; sourceTree = "<group>"; };
-		CBD2FC7B2A0B6D73008033CF /* CodeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewCell.swift; sourceTree = "<group>"; };
-		CBD2FC7D2A0B6DBF008033CF /* CodeTextViewCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTextViewCellConstants.swift; sourceTree = "<group>"; };
+		CBD2FC7B2A0B6D73008033CF /* CodeLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeLabelCell.swift; sourceTree = "<group>"; };
+		CBD2FC7D2A0B6DBF008033CF /* CodeLabelCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeLabelCellConstants.swift; sourceTree = "<group>"; };
 		CBDE6E1D29E54B170068BA0A /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
 		CBDE6E2029E54B220068BA0A /* LabelPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelPresenter.swift; sourceTree = "<group>"; };
 		CBDE6E6429E5599B0068BA0A /* LabelColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelColorCell.swift; sourceTree = "<group>"; };
@@ -167,9 +175,156 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		CB1BE6792A0CE74D00485B4F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB80B1D129E53AA200298F3C /* MainViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CB1BE67A2A0CE75600485B4F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CB80B1D629E53B7B00298F3C /* MainCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		CB1BE67B2A0CE75E00485B4F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CB7CA7832A03B16C00574395 /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CB1BE67C2A0CE76100485B4F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CBBEBC262A0F9ABC00A0DFE0 /* MainViewController */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CB1BE67D2A0CE76B00485B4F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CBC323802A0604BE00C5B6D1 /* ObjectListCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CB1BE67E2A0CE7AC00485B4F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CB33D35A29E8446D00FDAAAF /* ChildCoordinatorFactory.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		CB1BE67F2A0CE7B800485B4F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CB6613BE2A092B4800515AED /* LabelSettingListCellFactory.swift */,
+				CB33D35729E839C800FDAAAF /* LabelSettingListCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CB1BE6802A0CE7C000485B4F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CBBEBC292A0F9B1600A0DFE0 /* LabelViewController */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CB1BE6812A0CE7C200485B4F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CB33D35329E82EB500FDAAAF /* LabelViewModel.swift */,
+				CB4D1EDF2A0E0171000EC05C /* LabelColorCellViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CB1BE6822A0CE7C500485B4F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CBDE6E1D29E54B170068BA0A /* LabelViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CB1BE6832A0CE7D200485B4F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CB421FC129E5B3180014DC4F /* LabelCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		CB1BE6842A0CE7F700485B4F /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CBDE6E2029E54B220068BA0A /* LabelPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CB1BE6852A0CE80500485B4F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CBAAA2432A08CC8200773E0C /* ButtonViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CB1BE6862A0CE81100485B4F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CB5715082A0A2A8500365646 /* SFSymbolsCollectionViewCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CB1BE6872A0CE81500485B4F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CB5715122A0A35F400365646 /* SFSymbolsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CB1BE6882A0CE81700485B4F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CB5715102A0A359900365646 /* SFSymbolsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CB1BE6892A0CE81C00485B4F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CB5714FE2A0A22D300365646 /* SFSymbolsViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CB1BE68A2A0CE82100485B4F /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CB57150B2A0A2E1300365646 /* SFSymbolsCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		CB33D35729E839C800FDAAAF /* LabelSettingListCell */ = {
 			isa = PBXGroup;
 			children = (
+				CBD2FC7B2A0B6D73008033CF /* CodeLabelCell.swift */,
 				CB421FC629E5B8AD0014DC4F /* LabelTextCell.swift */,
 				CBDE6E6429E5599B0068BA0A /* LabelColorCell.swift */,
 				CB421FB329E5AA670014DC4F /* LabelFontCell.swift */,
@@ -183,28 +338,25 @@
 		CB421FAF29E5A8E30014DC4F /* Case */ = {
 			isa = PBXGroup;
 			children = (
-				CB5714DD2A0A0D0D00365646 /* LabelViewController */,
 				CB5714E12A0A0DAD00365646 /* ButtonViewController */,
 			);
 			path = Case;
 			sourceTree = "<group>";
 		};
-		CB421FB129E5A9040014DC4F /* Object */ = {
+		CB421FB129E5A9040014DC4F /* ObjectListCell */ = {
 			isa = PBXGroup;
 			children = (
 				CBC6074429C1D09D008B6BA9 /* Object.swift */,
+				CBC323822A0604DD00C5B6D1 /* ObjectListCellConstants.swift */,
 				CBC323962A06BF5100C5B6D1 /* ObjectSectionModel.swift */,
 			);
-			path = Object;
+			path = ObjectListCell;
 			sourceTree = "<group>";
 		};
 		CB421FBF29E5B2360014DC4F /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				CBD2FC802A0B6EB4008033CF /* CodeViewCell */,
 				CBAAA25D2A09108700773E0C /* BaseViewControllerConstants.swift */,
-				CBAAA24D2A08D5D300773E0C /* MainViewController */,
-				CBAAA24E2A08D5DB00773E0C /* LabelViewController */,
 				CB5714D42A0A097800365646 /* ButtonViewController */,
 				CB5715002A0A22F700365646 /* SFSymbolsViewController */,
 			);
@@ -219,17 +371,6 @@
 			path = ButtonViewController;
 			sourceTree = "<group>";
 		};
-		CB5714DD2A0A0D0D00365646 /* LabelViewController */ = {
-			isa = PBXGroup;
-			children = (
-				CB421FBB29E5B2060014DC4F /* LabelListSectionCase.swift */,
-				CB421FB929E5ADDC0014DC4F /* LabelColorCase.swift */,
-				CB421FAB29E5A7F60014DC4F /* UISystemFontWeightCase.swift */,
-				CB421FAD29E5A8B50014DC4F /* AlignmentCase.swift */,
-			);
-			path = LabelViewController;
-			sourceTree = "<group>";
-		};
 		CB5714E12A0A0DAD00365646 /* ButtonViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,16 +382,16 @@
 			path = ButtonViewController;
 			sourceTree = "<group>";
 		};
-		CB5714FD2A0A22BC00365646 /* SFSymbolsController */ = {
+		CB5714FD2A0A22BC00365646 /* SFSymbolsScene */ = {
 			isa = PBXGroup;
 			children = (
-				CB57150B2A0A2E1300365646 /* SFSymbolsCoordinator.swift */,
-				CB5714FE2A0A22D300365646 /* SFSymbolsViewController.swift */,
-				CB5715102A0A359900365646 /* SFSymbolsViewModel.swift */,
-				CB5715122A0A35F400365646 /* SFSymbolsModel.swift */,
-				CB5715082A0A2A8500365646 /* SFSymbolsCollectionViewCell */,
+				CB1BE68A2A0CE82100485B4F /* Coordinator */,
+				CB1BE6892A0CE81C00485B4F /* ViewController */,
+				CB1BE6862A0CE81100485B4F /* View */,
+				CB1BE6882A0CE81700485B4F /* ViewModel */,
+				CB1BE6872A0CE81500485B4F /* Model */,
 			);
-			path = SFSymbolsController;
+			path = SFSymbolsScene;
 			sourceTree = "<group>";
 		};
 		CB5715002A0A22F700365646 /* SFSymbolsViewController */ = {
@@ -270,76 +411,132 @@
 			path = SFSymbolsCollectionViewCell;
 			sourceTree = "<group>";
 		};
-		CB80B1D029E53A8D00298F3C /* Presentations */ = {
+		CB80B1D029E53A8D00298F3C /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				CB33D35A29E8446D00FDAAAF /* ChildCoordinatorFactory.swift */,
-				CBD2FC7F2A0B6E2D008033CF /* CodeViewCell */,
-				CB80B1D329E53AA700298F3C /* MainViewController */,
-				CBDE6E1C29E54B0A0068BA0A /* LabelViewcontroller */,
-				CBAAA2422A08CC6C00773E0C /* ButtonViewController */,
-				CB5714FD2A0A22BC00365646 /* SFSymbolsController */,
+				CB1BE67E2A0CE7AC00485B4F /* Coordinator */,
+				CB80B1D329E53AA700298F3C /* MainViewScene */,
+				CBDE6E1C29E54B0A0068BA0A /* LabelViewScene */,
+				CBAAA2422A08CC6C00773E0C /* ButtonViewScene */,
+				CB5714FD2A0A22BC00365646 /* SFSymbolsScene */,
 			);
-			path = Presentations;
+			path = Scene;
 			sourceTree = "<group>";
 		};
-		CB80B1D329E53AA700298F3C /* MainViewController */ = {
+		CB80B1D329E53AA700298F3C /* MainViewScene */ = {
 			isa = PBXGroup;
 			children = (
-				CB80B1D629E53B7B00298F3C /* MainCoordinator.swift */,
-				CB80B1D129E53AA200298F3C /* MainViewController.swift */,
-				CB7CA7832A03B16C00574395 /* MainViewModel.swift */,
-				CB7CA7852A03B28000574395 /* MainModel.swift */,
-				CBC323802A0604BE00C5B6D1 /* ObjectListCell */,
+				CB1BE67A2A0CE75600485B4F /* Coordinator */,
+				CB1BE6792A0CE74D00485B4F /* ViewController */,
+				CB1BE67D2A0CE76B00485B4F /* View */,
+				CB1BE67B2A0CE75E00485B4F /* ViewModel */,
+				CB1BE67C2A0CE76100485B4F /* Model */,
 			);
-			path = MainViewController;
+			path = MainViewScene;
 			sourceTree = "<group>";
 		};
-		CBAAA2422A08CC6C00773E0C /* ButtonViewController */ = {
+		CBAAA2422A08CC6C00773E0C /* ButtonViewScene */ = {
 			isa = PBXGroup;
 			children = (
-				CBAAA2432A08CC8200773E0C /* ButtonViewController.swift */,
+				CB1BE6852A0CE80500485B4F /* ViewController */,
 			);
-			path = ButtonViewController;
+			path = ButtonViewScene;
 			sourceTree = "<group>";
 		};
-		CBAAA24D2A08D5D300773E0C /* MainViewController */ = {
+		CBBEBC262A0F9ABC00A0DFE0 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
 				CB80B1DC29E53F3300298F3C /* MainViewControllerConstants.swift */,
-				CBAAA24F2A08D5EB00773E0C /* ObjectListCell */,
+				CB7CA7852A03B28000574395 /* MainModel.swift */,
+				CB421FB129E5A9040014DC4F /* ObjectListCell */,
 			);
 			path = MainViewController;
 			sourceTree = "<group>";
 		};
-		CBAAA24E2A08D5DB00773E0C /* LabelViewController */ = {
+		CBBEBC282A0F9B1000A0DFE0 /* LabelColorCell */ = {
+			isa = PBXGroup;
+			children = (
+				CBAAA2532A08D65400773E0C /* LabelColorCellConstants.swift */,
+				CB421FB929E5ADDC0014DC4F /* LabelColorType.swift */,
+				CB4D1EDD2A0D180A000EC05C /* LabelColor.swift */,
+			);
+			path = LabelColorCell;
+			sourceTree = "<group>";
+		};
+		CBBEBC292A0F9B1600A0DFE0 /* LabelViewController */ = {
 			isa = PBXGroup;
 			children = (
 				CB421FB729E5ABAA0014DC4F /* LabelViewConstants.swift */,
-				CBAAA2502A08D60900773E0C /* LabelSettingListCell */,
+				CB4D1EC72A0D1691000EC05C /* LabelModel.swift */,
+				CBBEBC2A2A0F9B2900A0DFE0 /* LabelSettingListCell */,
 			);
 			path = LabelViewController;
 			sourceTree = "<group>";
 		};
-		CBAAA24F2A08D5EB00773E0C /* ObjectListCell */ = {
+		CBBEBC2A2A0F9B2900A0DFE0 /* LabelSettingListCell */ = {
 			isa = PBXGroup;
 			children = (
-				CBC323822A0604DD00C5B6D1 /* ObjectListCellConstants.swift */,
+				CBBEBC312A0FC90200A0DFE0 /* LabelListSectionModel.swift */,
+				CB421FBB29E5B2060014DC4F /* LabelListSectionType.swift */,
+				CBBEBC2D2A0F9BA800A0DFE0 /* CodeLabelCell */,
+				CBBEBC2C2A0F9B9D00A0DFE0 /* LabelTextCell */,
+				CBBEBC282A0F9B1000A0DFE0 /* LabelColorCell */,
+				CBBEBC2E2A0F9BAE00A0DFE0 /* LabelFontCell */,
+				CBBEBC302A0F9BDF00A0DFE0 /* LabelFontSizeCell */,
+				CBBEBC2B2A0F9B4C00A0DFE0 /* LabelAlignmentCell */,
+				CBBEBC2F2A0F9BD500A0DFE0 /* LabelNumberOfLinesCell */,
 			);
-			path = ObjectListCell;
+			path = LabelSettingListCell;
 			sourceTree = "<group>";
 		};
-		CBAAA2502A08D60900773E0C /* LabelSettingListCell */ = {
+		CBBEBC2B2A0F9B4C00A0DFE0 /* LabelAlignmentCell */ = {
+			isa = PBXGroup;
+			children = (
+				CB421FAD29E5A8B50014DC4F /* AlignmentType.swift */,
+				CBAAA2572A08D6A000773E0C /* LabelAlignmentCellConstants.swift */,
+			);
+			path = LabelAlignmentCell;
+			sourceTree = "<group>";
+		};
+		CBBEBC2C2A0F9B9D00A0DFE0 /* LabelTextCell */ = {
 			isa = PBXGroup;
 			children = (
 				CBAAA2512A08D61900773E0C /* LabelTextCellConstants.swift */,
-				CBAAA2532A08D65400773E0C /* LabelColorCellConstants.swift */,
+			);
+			path = LabelTextCell;
+			sourceTree = "<group>";
+		};
+		CBBEBC2D2A0F9BA800A0DFE0 /* CodeLabelCell */ = {
+			isa = PBXGroup;
+			children = (
+				CBD2FC7D2A0B6DBF008033CF /* CodeLabelCellConstants.swift */,
+			);
+			path = CodeLabelCell;
+			sourceTree = "<group>";
+		};
+		CBBEBC2E2A0F9BAE00A0DFE0 /* LabelFontCell */ = {
+			isa = PBXGroup;
+			children = (
 				CBAAA2552A08D67E00773E0C /* LabelFontCellConstants.swift */,
-				CBAAA2592A08D6BF00773E0C /* LabelFontSizeCellConstants.swift */,
-				CBAAA2572A08D6A000773E0C /* LabelAlignmentCellConstants.swift */,
+				CB421FAB29E5A7F60014DC4F /* UISystemFontWeightType.swift */,
+			);
+			path = LabelFontCell;
+			sourceTree = "<group>";
+		};
+		CBBEBC2F2A0F9BD500A0DFE0 /* LabelNumberOfLinesCell */ = {
+			isa = PBXGroup;
+			children = (
 				CB6613C22A093A9700515AED /* LabelNumberOfLinesCellConstants.swift */,
 			);
-			path = LabelSettingListCell;
+			path = LabelNumberOfLinesCell;
+			sourceTree = "<group>";
+		};
+		CBBEBC302A0F9BDF00A0DFE0 /* LabelFontSizeCell */ = {
+			isa = PBXGroup;
+			children = (
+				CBAAA2592A08D6BF00773E0C /* LabelFontSizeCellConstants.swift */,
+			);
+			path = LabelFontSizeCell;
 			sourceTree = "<group>";
 		};
 		CBC323802A0604BE00C5B6D1 /* ObjectListCell */ = {
@@ -363,33 +560,17 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		CBD2FC7F2A0B6E2D008033CF /* CodeViewCell */ = {
+		CBDE6E1C29E54B0A0068BA0A /* LabelViewScene */ = {
 			isa = PBXGroup;
 			children = (
-				CBD2FC7B2A0B6D73008033CF /* CodeViewCell.swift */,
+				CB1BE6842A0CE7F700485B4F /* Presenter */,
+				CB1BE6832A0CE7D200485B4F /* Coordinator */,
+				CB1BE6822A0CE7C500485B4F /* ViewController */,
+				CB1BE67F2A0CE7B800485B4F /* View */,
+				CB1BE6812A0CE7C200485B4F /* ViewModel */,
+				CB1BE6802A0CE7C000485B4F /* Model */,
 			);
-			path = CodeViewCell;
-			sourceTree = "<group>";
-		};
-		CBD2FC802A0B6EB4008033CF /* CodeViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				CBD2FC7D2A0B6DBF008033CF /* CodeTextViewCellConstants.swift */,
-			);
-			path = CodeViewCell;
-			sourceTree = "<group>";
-		};
-		CBDE6E1C29E54B0A0068BA0A /* LabelViewcontroller */ = {
-			isa = PBXGroup;
-			children = (
-				CB421FC129E5B3180014DC4F /* LabelCoordinator.swift */,
-				CBDE6E2029E54B220068BA0A /* LabelPresenter.swift */,
-				CBDE6E1D29E54B170068BA0A /* LabelViewController.swift */,
-				CB33D35329E82EB500FDAAAF /* LabelViewModel.swift */,
-				CB6613BE2A092B4800515AED /* LabelSettingListCellFactory.swift */,
-				CB33D35729E839C800FDAAAF /* LabelSettingListCell */,
-			);
-			path = LabelViewcontroller;
+			path = LabelViewScene;
 			sourceTree = "<group>";
 		};
 		CBF4395E29C1C014003E85B3 = {
@@ -410,7 +591,7 @@
 				CBF4396C29C1C014003E85B3 /* SceneDelegate.swift */,
 				CBC6073D29C1C71F008B6BA9 /* Protocols */,
 				CBF4397F29C1C0FF003E85B3 /* Entitys */,
-				CB80B1D029E53A8D00298F3C /* Presentations */,
+				CB80B1D029E53A8D00298F3C /* Scene */,
 				CBF4397529C1C015003E85B3 /* LaunchScreen.storyboard */,
 				CBAAA2472A08CD4800773E0C /* Test.storyboard */,
 				CBF4397329C1C015003E85B3 /* Assets.xcassets */,
@@ -422,7 +603,6 @@
 		CBF4397F29C1C0FF003E85B3 /* Entitys */ = {
 			isa = PBXGroup;
 			children = (
-				CB421FB129E5A9040014DC4F /* Object */,
 				CB421FBF29E5B2360014DC4F /* Constants */,
 				CB421FAF29E5A8E30014DC4F /* Case */,
 			);
@@ -564,9 +744,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB421FBA29E5ADDC0014DC4F /* LabelColorCase.swift in Sources */,
+				CB421FBA29E5ADDC0014DC4F /* LabelColorType.swift in Sources */,
 				CB421FB429E5AA670014DC4F /* LabelFontCell.swift in Sources */,
-				CBD2FC7E2A0B6DBF008033CF /* CodeTextViewCellConstants.swift in Sources */,
+				CBD2FC7E2A0B6DBF008033CF /* CodeLabelCellConstants.swift in Sources */,
 				CBC6073F29C1C733008B6BA9 /* UITableViewCellReigster.swift in Sources */,
 				CBC323972A06BF5100C5B6D1 /* ObjectSectionModel.swift in Sources */,
 				CB11069A29E6E229005FFC2D /* BaseViewController.swift in Sources */,
@@ -580,9 +760,11 @@
 				CB5714E52A0A103900365646 /* ButtonTypeCase.swift in Sources */,
 				CB7CA7842A03B16C00574395 /* MainViewModel.swift in Sources */,
 				CB6613BF2A092B4800515AED /* LabelSettingListCellFactory.swift in Sources */,
-				CB421FAC29E5A7F60014DC4F /* UISystemFontWeightCase.swift in Sources */,
+				CB421FAC29E5A7F60014DC4F /* UISystemFontWeightType.swift in Sources */,
+				CB4D1EDE2A0D180A000EC05C /* LabelColor.swift in Sources */,
 				CB5715152A0A44B700365646 /* ButtonCornerStyleCase.swift in Sources */,
 				CBC6074529C1D09D008B6BA9 /* Object.swift in Sources */,
+				CBBEBC322A0FC90200A0DFE0 /* LabelListSectionModel.swift in Sources */,
 				CB80B1D729E53B7B00298F3C /* MainCoordinator.swift in Sources */,
 				CB5715032A0A232400365646 /* SFSymbolsViewControllerConstants.swift in Sources */,
 				CB6613C32A093A9700515AED /* LabelNumberOfLinesCellConstants.swift in Sources */,
@@ -592,9 +774,10 @@
 				CBC6074B29C1D28F008B6BA9 /* UITableViewHeaderFooterViewRegister.swift in Sources */,
 				CB57150C2A0A2E1300365646 /* SFSymbolsCoordinator.swift in Sources */,
 				CB5715052A0A2A5F00365646 /* UICollectionViewCellRegister.swift in Sources */,
-				CBD2FC7C2A0B6D73008033CF /* CodeViewCell.swift in Sources */,
+				CBD2FC7C2A0B6D73008033CF /* CodeLabelCell.swift in Sources */,
 				CB80B1F729E5468200298F3C /* ObjectListCell.swift in Sources */,
-				CB421FAE29E5A8B50014DC4F /* AlignmentCase.swift in Sources */,
+				CB421FAE29E5A8B50014DC4F /* AlignmentType.swift in Sources */,
+				CB4D1EE02A0E0171000EC05C /* LabelColorCellViewModel.swift in Sources */,
 				CB80B1DD29E53F3300298F3C /* MainViewControllerConstants.swift in Sources */,
 				CBAAA2582A08D6A000773E0C /* LabelAlignmentCellConstants.swift in Sources */,
 				CB80B1D229E53AA200298F3C /* MainViewController.swift in Sources */,
@@ -606,7 +789,7 @@
 				CBAAA2562A08D67E00773E0C /* LabelFontCellConstants.swift in Sources */,
 				CB6613C12A093A6900515AED /* LabelNumberOfLinesCell.swift in Sources */,
 				CB33D35929E83A5400FDAAAF /* LabelAlignmentCell.swift in Sources */,
-				CB421FBC29E5B2060014DC4F /* LabelListSectionCase.swift in Sources */,
+				CB421FBC29E5B2060014DC4F /* LabelListSectionType.swift in Sources */,
 				CBAAA25E2A09108700773E0C /* BaseViewControllerConstants.swift in Sources */,
 				CB421FB829E5ABAA0014DC4F /* LabelViewConstants.swift in Sources */,
 				CBAAA25A2A08D6BF00773E0C /* LabelFontSizeCellConstants.swift in Sources */,
@@ -620,6 +803,7 @@
 				CBDE6E2129E54B220068BA0A /* LabelPresenter.swift in Sources */,
 				CBAAA2522A08D61900773E0C /* LabelTextCellConstants.swift in Sources */,
 				CB5714FF2A0A22D300365646 /* SFSymbolsViewController.swift in Sources */,
+				CB4D1EC82A0D1691000EC05C /* LabelModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
