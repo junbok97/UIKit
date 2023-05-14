@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum LabelColorType: String {
+enum ObjectColorType: String {
     case textColor = "TextColor"
     case backgroundColor = "BackgroundColor"
 }

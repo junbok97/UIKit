@@ -8,8 +8,7 @@
 import UIKit
 import RxSwift
 
-final class LabelNumberOfLinesCell: DefaultLabelSettingListCell {
-    
+final class LabelNumberOfLinesCell: DefaultCell, LabelSettingListCellProtocol {
     static override var cellId: String { LabelNumberOfLinesCellConstants.cellId }
     
     private lazy var linesLabel: UILabel = {
@@ -56,7 +55,9 @@ final class LabelNumberOfLinesCell: DefaultLabelSettingListCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func bind(_ viewModel: LabelViewModel) {
+    func setup(_ item: LabelSettingListSectionItemType) { } 
+    
+    func bind(_ viewModel: LabelViewModel) {
         lineStepper.rx.value
             .map { Int($0) }
             .bind(to: viewModel.numberOfLinesCellDidChangedLineStepper)

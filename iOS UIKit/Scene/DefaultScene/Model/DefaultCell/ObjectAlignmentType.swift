@@ -9,7 +9,7 @@ import Foundation
 
 import UIKit
 
-enum LabelAlignmentType: String {
+enum ObjectAlignmentType: String {
     case natural = "Natural"
     case left = "Left"
     case center = "Center"

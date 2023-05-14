@@ -135,7 +135,7 @@ extension Reactive where Base: LabelViewController {
         }
     }
     
-    var targetColor: Binder<LabelColor> {
+    var targetColor: Binder<ObjectColor> {
         return Binder(base) { base, labelColor in
             switch labelColor.colorType {
             case .textColor:
@@ -146,7 +146,7 @@ extension Reactive where Base: LabelViewController {
         }
     }
     
-    var targetAlignment: Binder<LabelAlignmentType> {
+    var targetAlignment: Binder<ObjectAlignmentType> {
         return Binder(base) { base, alignment in
             base.targetLabel.textAlignment = alignment.aligment
         }

@@ -9,11 +9,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class LabelAlignmentCell: DefaultLabelSettingListCell {
+final class LabelAlignmentCell: DefaultCell, LabelSettingListCellProtocol {
     
     static override var cellId: String { LabelAlignmentCellConstants.cellId }
     
-    fileprivate var alignmentType: LabelAlignmentType = .center {
+    fileprivate var alignmentType: ObjectAlignmentType = .center {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
@@ -42,18 +42,14 @@ final class LabelAlignmentCell: DefaultLabelSettingListCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func setup(_ item: LabelSettingListSectionItemType) {
+    func setup(_ item: LabelSettingListSectionItemType) {
         guard case let .alignmentSectionItem(alignmentType) = item else {
             return
         }
         self.alignmentType = alignmentType
     }
     
-//    override func bind(_ viewModel: LabelViewModel) {
-//        self.rx.isSelected
-//            .bind(to: viewModel.alignmentCellDidSelected)
-//            .disposed(by: disposeBag)
-//    }
+    func bind(_ viewModel: LabelViewModel) { }
 
 }
 
@@ -74,12 +70,4 @@ private extension LabelAlignmentCell {
         ])
     }
     
-}
-
-extension Reactive where Base: LabelAlignmentCell {
-    var isSelected: ControlEvent<LabelAlignmentType> {
-        let source = self.methodInvoked(#selector(setter: Base.isSelected))
-            .map { _ in base.alignmentType }
-        return ControlEvent(events: source)
-    }
 }

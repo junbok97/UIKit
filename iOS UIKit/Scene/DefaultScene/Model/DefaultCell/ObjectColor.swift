@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct LabelColor {
-    let colorType: LabelColorType
+struct ObjectColor {
+    let colorType: ObjectColorType
     let color: UIColor
 }

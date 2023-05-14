@@ -12,12 +12,7 @@ class DefaultCell: UITableViewCell, UITableViewCellReigster {
     class var cellId: String {
         get { "DefaultLabelSettingListCell" }
     }
-    
     static var isFromNib: Bool = false
     
     let disposeBag = DisposeBag()
-    
-    func setup(_ item: LabelSettingListSectionItemType) {}
-    func bind(_ viewModel: LabelViewModel) {}
 }
-

@@ -9,101 +9,14 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class LabelFontSizeCell: DefaultLabelSettingListCell {
+final class LabelFontSizeCell: DefaultFontSizeCell, LabelSettingListCellProtocol {
     
-    static override var cellId: String { LabelFontSizeCellConstants.cellId }
-    
-    private lazy var minNumLabel: UILabel = {
-        let label = UILabel()
-        label.text = LabelFontSizeCellConstants.minNumLabelText
-        label.font = LabelViewControllerConstants.defaultFont
-        label.textAlignment = .center
-        label.textColor = .secondaryLabel
-        label.setContentHuggingPriority(
-            LabelFontSizeCellConstants.numLabelContentCompressionResistancePriority,
-            for: .horizontal
-        )
-        return label
-    }()
-    
-    private lazy var maxNumLabel: UILabel = {
-        let label = UILabel()
-        label.text = LabelFontSizeCellConstants.maxNumLabelText
-        label.font = LabelViewControllerConstants.defaultFont
-        label.textAlignment = .center
-        label.textColor = .secondaryLabel
-        label.setContentHuggingPriority(
-            LabelFontSizeCellConstants.numLabelContentCompressionResistancePriority,
-            for: .horizontal
-        )
-        return label
-    }()
-    
-    private lazy var fontSizeSlider: UISlider = {
-        let slider = UISlider()
-        slider.minimumValue = LabelFontSizeCellConstants.sliderMinimumValue
-        slider.maximumValue = LabelFontSizeCellConstants.sliderMaximimValue
-        return slider
-    }()
-    
-    private lazy var sliderStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [minNumLabel, fontSizeSlider, maxNumLabel])
-        stackView.axis = .horizontal
-        stackView.alignment = .fill
-        stackView.distribution = .fill
-        stackView.spacing = LabelFontSizeCellConstants.sliderStackViewSpacing
-        return stackView
-    }()
-    
-    private lazy var sizeLabel: UILabel = {
-        let label = UILabel()
-        label.text = LabelFontSizeCellConstants.sizeLabelText
-        label.font = LabelViewControllerConstants.defaultFont
-        label.textColor = .label
-        label.textAlignment = .left
-        return label
-    }()
-    
-    lazy var sliderValueLabel: UILabel = {
-        let label = UILabel()
-        label.text = LabelFontSizeCellConstants.sliderValueLabelText
-        label.font = LabelViewControllerConstants.defaultFont
-        label.textColor = .label
-        label.textAlignment = .right
-        return label
-    }()
-    
-    private lazy var sizeStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [sizeLabel, sliderValueLabel])
-        stackView.axis = .horizontal
-        stackView.alignment = .fill
-        stackView.distribution = .fillEqually
-        stackView.spacing = LabelFontSizeCellConstants.sliderStackViewSpacing
-        return stackView
-    }()
-    
-    private lazy var containerStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [sizeStackView, sliderStackView])
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-        stackView.distribution = .fill
-        stackView.spacing = LabelFontSizeCellConstants.sliderStackViewSpacing
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        attribute()
-        layout()
-        
+    static override var cellId: String { LabelFontSizeCellConstants.cellId
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    func setup(_ item: LabelSettingListSectionItemType) { }
     
-    override func bind(_ viewModel: LabelViewModel) {
+    func bind(_ viewModel: LabelViewModel) {
         fontSizeSlider.rx.value
             .startWith(LabelViewControllerConstants.targetLabelFontSize)
             .map { Int($0) }
@@ -116,46 +29,4 @@ final class LabelFontSizeCell: DefaultLabelSettingListCell {
             .disposed(by: disposeBag)
     }
     
-}
-
-private extension LabelFontSizeCell {
-    func attribute() {
-        backgroundColor = .systemBackground
-        selectionStyle = .none
-        fontSizeSlider.setValue(LabelFontSizeCellConstants.sliderValue, animated: true)
-    }
-    
-    func layout() {
-        contentView.addSubview(containerStackView)
-        
-        NSLayoutConstraint.activate([
-            minNumLabel.widthAnchor.constraint(equalToConstant: LabelFontSizeCellConstants.numLabelWidth),
-            maxNumLabel.widthAnchor.constraint(equalToConstant: LabelFontSizeCellConstants.numLabelWidth),
-            
-            containerStackView.topAnchor.constraint(
-                equalTo: contentView.safeAreaLayoutGuide.topAnchor,
-                constant: LabelViewControllerConstants.defaultOffset
-            ),
-            containerStackView.leadingAnchor.constraint(
-                equalTo: contentView.safeAreaLayoutGuide.leadingAnchor,
-                constant: LabelViewControllerConstants.defaultOffset
-            ),
-            containerStackView.trailingAnchor.constraint(
-                equalTo: contentView.safeAreaLayoutGuide.trailingAnchor,
-                constant: -LabelViewControllerConstants.defaultOffset
-            ),
-            containerStackView.bottomAnchor.constraint(
-                equalTo: contentView.safeAreaLayoutGuide.bottomAnchor,
-                constant: -LabelViewControllerConstants.defaultOffset
-            )
-        ])
-    }
-}
-
-extension Reactive where Base: LabelFontSizeCell {
-    var sliderText: Binder<Int> {
-        return Binder(base) { base, value in
-            base.sliderValueLabel.text = "\(value)"
-        }
-    }
 }

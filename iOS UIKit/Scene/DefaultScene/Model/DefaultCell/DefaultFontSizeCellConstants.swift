@@ -1,15 +1,14 @@
 //
-//  LabelFontSizeCellConstants.swift
-//  UIKit Test
+//  DefaultFontSizeCellConstants.swift
+//  iOS UIKit
 //
-//  Created by 이준복 on 2023/05/08.
+//  Created by 이준복 on 2023/05/14.
 //
 
 import UIKit
 
-struct LabelFontSizeCellConstants {
-    
-    static let cellId: String = "LabelFontSizeCell"
+struct DefaultFontSizeCellConstants {
+    static let cellId: String = "DefaultFontSizeCell"
     static let sizeLabelText: String = "Size"
     static let minNumLabelText: String = "1"
     static let sliderMinimumValue: Float = 1.0
@@ -22,5 +21,4 @@ struct LabelFontSizeCellConstants {
     
     static let numLabelContentCompressionResistancePriority: UILayoutPriority = UILayoutPriority(751)
     static let sliderContentCompressionResistancePriority: UILayoutPriority = UILayoutPriority(750)
-
 }

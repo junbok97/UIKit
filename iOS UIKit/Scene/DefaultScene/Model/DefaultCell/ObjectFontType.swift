@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum LabelFontType: String {
+enum ObjectFontType: String {
     case ultraLight = "UltraLight"
     case thin = "Thin"
     case light = "Light"

@@ -21,13 +21,12 @@ enum LabelSettingListSectionType: String {
 enum LabelSettingListSectionItemType {
     case codeSectionItem
     case textSectionItem
-    case colorSectionItem(colorType: LabelColorType)
-    case fontSectionItem(fontType: LabelFontType)
+    case colorSectionItem(colorType: ObjectColorType)
+    case fontSectionItem(fontType: ObjectFontType)
     case fontSizeSectionItem
-    case alignmentSectionItem(alignmentType: LabelAlignmentType)
+    case alignmentSectionItem(alignmentType: ObjectAlignmentType)
     case numberOfLinesSectionItem
 }
-
 
 struct LabelSettingListSectionModel {
     var sectionHeader: LabelSettingListSectionType

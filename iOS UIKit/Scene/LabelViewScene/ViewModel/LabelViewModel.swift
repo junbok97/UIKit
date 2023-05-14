@@ -17,11 +17,11 @@ final class LabelViewModel {
     // View -> ViewModel
     let codeCellCodeLabelText: Driver<String>
     let textCellDidChangedTextField = PublishRelay<String>()
-    let colorCellDidSelected = PublishRelay<LabelColor>()
-    let fontCellDidSelected = PublishRelay<LabelFontType>()
+    let colorCellDidSelected = PublishRelay<ObjectColor>()
+    let fontCellDidSelected = PublishRelay<ObjectFontType>()
     let fontSizeCellDidChangedFontSizeSlider = PublishRelay<Int>()
     let fontSizeCellSliderText: Driver<Int>
-    let alignmentCellDidSelected = PublishRelay<LabelAlignmentType>()
+    let alignmentCellDidSelected = PublishRelay<ObjectAlignmentType>()
     let numberOfLinesCellDidChangedLineStepper = PublishRelay<Int>()
     let numberOfLinesCellStepperValueLabelText: Driver<Int>
     let didItemSelectedLabelSettingList = PublishRelay<LabelSettingListSectionItemType>()
@@ -29,8 +29,8 @@ final class LabelViewModel {
     // ViewModel -> View
     let targetText: Driver<String>
     let targetFont: Driver<UIFont>
-    let targetColor: Driver<LabelColor>
-    let targetAlignment: Driver<LabelAlignmentType>
+    let targetColor: Driver<ObjectColor>
+    let targetAlignment: Driver<ObjectAlignmentType>
     let targetNumberOfLines: Driver<Int>
     let labelSettingListCellDatas: Driver<[LabelSettingListSectionModel]>
     
@@ -40,7 +40,7 @@ final class LabelViewModel {
             .asDriver(onErrorDriveWith: .empty())
               
         didItemSelectedLabelSettingList
-            .compactMap { labelSettingListSectionItemType -> LabelFontType? in
+            .compactMap { labelSettingListSectionItemType -> ObjectFontType? in
                 guard case let .fontSectionItem(fontType) = labelSettingListSectionItemType else { return nil }
                 return fontType
             }
@@ -48,7 +48,7 @@ final class LabelViewModel {
             .disposed(by: disposeBag)
         
         didItemSelectedLabelSettingList
-            .compactMap { labelSettingListSectionItemType -> LabelAlignmentType? in
+            .compactMap { labelSettingListSectionItemType -> ObjectAlignmentType? in
                 guard case let .alignmentSectionItem(alignmentType) = labelSettingListSectionItemType else { return nil }
                 return alignmentType
             }
@@ -159,6 +159,5 @@ final class LabelViewModel {
         
         return dataSource
         
-    } // func labelSettingListDataSource
-    
+    } // func labelSettingListDataSource    
 }

@@ -8,15 +8,17 @@
 import UIKit
 import RxSwift
 
-final class DefaultCodeCell: DefaultLabelSettingListCell {
+class DefaultCodeCell: DefaultCell {
     
-    static override var cellId: String { LabelCodeCellConstants.cellId }
+    class override var cellId: String {
+        get { DefaultCodeCellConstants.cellId }
+    }
     
     lazy var codeLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .systemBackground
         label.textColor = .label
-        label.font = LabelCodeCellConstants.defaultFont
+        label.font = DefaultViewControllerConstants.defaultFont
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -31,16 +33,9 @@ final class DefaultCodeCell: DefaultLabelSettingListCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func bind(_ viewModel: LabelViewModel) {
-        viewModel.codeCellCodeLabelText
-            .drive(self.rx.codeText)
-            .disposed(by: disposeBag)
-    }
-    
 }
 
-private extension LabelCodeCell {
+private extension DefaultCodeCell {
     func attribute() {
         backgroundColor = .systemBackground
         selectionStyle = .none
@@ -50,15 +45,15 @@ private extension LabelCodeCell {
         contentView.addSubview(codeLabel)
         
         NSLayoutConstraint.activate([
-            codeLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: LabelCodeCellConstants.defaultOffset),
-            codeLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: LabelCodeCellConstants.defaultOffset),
-            codeLabel.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -LabelCodeCellConstants.defaultOffset),
-            codeLabel.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -LabelCodeCellConstants.defaultOffset)
+            codeLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: DefaultViewControllerConstants.defaultOffset),
+            codeLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: DefaultViewControllerConstants.defaultOffset),
+            codeLabel.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -DefaultViewControllerConstants.defaultOffset),
+            codeLabel.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -DefaultViewControllerConstants.defaultOffset)
         ])
     }
 }
 
-extension Reactive where Base: LabelCodeCell {
+extension Reactive where Base: DefaultCodeCell {
     var codeText: Binder<String> {
         return Binder(base) { base, code in
             base.codeLabel.text = code
