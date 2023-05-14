@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum ButtonStyleCase: String {
+enum ButtonStyleType: String {
     case plain = "Plain"
     case gray = "Gray"
     case tinted = "Tinted"

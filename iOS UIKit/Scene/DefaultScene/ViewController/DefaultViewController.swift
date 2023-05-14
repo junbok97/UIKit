@@ -33,7 +33,7 @@ class DefaultViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.backgroundColor = .secondarySystemBackground
         tableView.separatorStyle = .singleLine
-        CodeLabelCell.register(tableView: tableView)
+        LabelCodeCell.register(tableView: tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()

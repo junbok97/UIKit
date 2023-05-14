@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum ButtonImagePlacementCase: String {
+enum ButtonImagePlacementType: String {
     case all = "All"
     case top = "Top"
     case leading = "Leading"

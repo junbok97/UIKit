@@ -116,7 +116,7 @@ final class LabelViewModel {
             
             switch dataSource[indexPath.section].sectionHeader {
             case .code:
-                let cell = CodeLabelCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+                let cell = LabelCodeCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
                 cell.setup(sectionModelItem)
                 cell.bind(self)
                 return cell

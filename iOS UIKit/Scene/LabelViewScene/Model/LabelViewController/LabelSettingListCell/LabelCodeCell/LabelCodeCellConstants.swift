@@ -7,8 +7,8 @@
 
 import UIKit
 
-struct CodeLabelCellConstants {
-    static let cellId: String = "CodeLabelCell"
+struct LabelCodeCellConstants {
+    static let cellId: String = "LbelCodeCell"
     
     static let defaultFont: UIFont = .systemFont(ofSize: 16)
     static let defaultOffset: CGFloat = 12.0

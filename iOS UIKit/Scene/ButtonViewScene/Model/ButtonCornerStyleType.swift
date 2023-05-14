@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum ButtonCornerStyleCase: String {
+enum ButtonCornerStyleType: String {
     case fixed = "Fixed"
     case dynamic = "Dynamic"
     case small = "Small"

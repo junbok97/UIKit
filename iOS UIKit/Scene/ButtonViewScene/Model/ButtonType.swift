@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum ButtonTypeCase: String {
+enum ButtonType: String {
     case custom = "Custom"
     case system = "System"
     case detailDisclosure = "DetailDisclosure"
