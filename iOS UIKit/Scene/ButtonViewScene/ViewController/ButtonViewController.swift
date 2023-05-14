@@ -7,7 +7,21 @@
 
 import UIKit
 
-final class ButtonViewController: UIViewController {
+final class ButtonViewController: DefaultViewController {
+    
+    weak var coordinator: ButtonCoordinatorProtocol?
+    private var viewModel: ButtonViewModel!
+    
+    static func create(
+        _ viewModel: ButtonViewModel,
+        _ coordinator: ButtonCoordinatorProtocol
+    ) -> ButtonViewController {
+        let viewController = ButtonViewController()
+        viewController.viewModel = viewModel
+        viewController.coordinator = coordinator
+        viewController.bind()
+        return viewController
+    }
     
     let targetButton: UIButton = {
         let button = UIButton()
@@ -15,5 +29,9 @@ final class ButtonViewController: UIViewController {
         config.imagePlacement
         return button
     }()
+    
+    override func didTappedLeftBarButton() {
+        coordinator?.finish()
+    }
     
 }

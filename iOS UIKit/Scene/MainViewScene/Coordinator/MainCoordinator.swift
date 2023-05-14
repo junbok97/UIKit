@@ -17,7 +17,10 @@ final class MainCoordinator: MainCoordinatorProtocol {
     var navigationController: UINavigationController
     var childCoordinators: [CoordinatorProtocol] = []
     
-    lazy var factory = ChildCoordinatorFactory(parentCoordinator: self, navigationController: self.navigationController)
+    private lazy var childCoordinatorFactory = ChildCoordinatorFactory(
+        parentCoordinator: self,
+        navigationController: self.navigationController
+    )
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -37,7 +40,7 @@ final class MainCoordinator: MainCoordinatorProtocol {
     }
     
     func showDetailViewController(type: ObjectType) {
-        let child = factory.makeCoordinator(type: type)
+        let child = childCoordinatorFactory.makeCoordinator(type: type)
         childCoordinators.append(child)
         child.start()
     }

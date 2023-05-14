@@ -20,6 +20,12 @@ final class MainModel {
             ]
         ),
         ObjectSectionModel(
+            sectionHeader: .button,
+            items: [
+                Object(type: .button)
+            ]
+        ),
+        ObjectSectionModel(
             sectionHeader: .system,
             items: [
                 Object(type: .sfSymbols)

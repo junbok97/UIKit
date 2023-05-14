@@ -12,7 +12,10 @@ final class ChildCoordinatorFactory {
     let parentCoordinator: MainCoordinator
     let navigationController: UINavigationController
     
-    init(parentCoordinator: MainCoordinator, navigationController: UINavigationController) {
+    init(
+        parentCoordinator: MainCoordinator,
+        navigationController: UINavigationController
+    ) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
     }
@@ -20,17 +23,21 @@ final class ChildCoordinatorFactory {
     func makeCoordinator(type: ObjectType) -> CoordinatorProtocol {
         switch type {
         case .label:
-            let labelCoordinator =  LabelCoordinator(navigationController: navigationController)
-            labelCoordinator.parentCoordinator = self.parentCoordinator
-            return labelCoordinator
+            let coordinator =  LabelCoordinator(navigationController: navigationController)
+            coordinator.parentCoordinator = self.parentCoordinator
+            return coordinator
+        case .button:
+            let coordinator = ButtonCoordinator(navigationController: navigationController)
+            coordinator.parentCoordinator = self.parentCoordinator
+            return coordinator
         case .sfSymbols:
-            let sfSymbolsCoordinator = SFSymbolsCoordinator(navigationController: navigationController)
-            sfSymbolsCoordinator.parentCoordinator = self.parentCoordinator
-            return sfSymbolsCoordinator
+            let coordinator = SFSymbolsCoordinator(navigationController: navigationController)
+            coordinator.parentCoordinator = self.parentCoordinator
+            return coordinator
         default:
-            let labelCoordinator =  LabelCoordinator(navigationController: navigationController)
-            labelCoordinator.parentCoordinator = self.parentCoordinator
-            return labelCoordinator
+            let coordinator =  LabelCoordinator(navigationController: navigationController)
+            coordinator.parentCoordinator = self.parentCoordinator
+            return coordinator
         }
     }
 }

@@ -11,9 +11,6 @@ import RxDataSources
 enum ObjectSectionType: String {
     case label = "Label"
     case button = "Button"
-    case view = "View"
-    case bar = "Bar"
-    case picker = "Picker"
     case system = "System"
 }
 

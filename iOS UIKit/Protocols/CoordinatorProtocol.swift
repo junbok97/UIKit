@@ -15,5 +15,4 @@ protocol CoordinatorProtocol: AnyObject {
     func finish()
     
     init(navigationController: UINavigationController)
-    
 }

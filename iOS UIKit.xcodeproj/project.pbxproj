@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		43413F146E412DBD232595C2 /* Pods_iOS_UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F93BFF65E4CEB06C0BB4E1E /* Pods_iOS_UIKit.framework */; };
-		CB11069A29E6E229005FFC2D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11069929E6E229005FFC2D /* BaseViewController.swift */; };
 		CB33D35429E82EB600FDAAAF /* LabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB33D35329E82EB500FDAAAF /* LabelViewModel.swift */; };
 		CB33D35929E83A5400FDAAAF /* LabelAlignmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB33D35829E83A5400FDAAAF /* LabelAlignmentCell.swift */; };
 		CB33D35B29E8446D00FDAAAF /* ChildCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB33D35A29E8446D00FDAAAF /* ChildCoordinatorFactory.swift */; };
@@ -44,6 +43,10 @@
 		CB80B1D729E53B7B00298F3C /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80B1D629E53B7B00298F3C /* MainCoordinator.swift */; };
 		CB80B1DD29E53F3300298F3C /* MainViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80B1DC29E53F3300298F3C /* MainViewControllerConstants.swift */; };
 		CB80B1F729E5468200298F3C /* ObjectListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80B1F629E5468200298F3C /* ObjectListCell.swift */; };
+		CB9A9C872A10C6A40065F5A5 /* DefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A9C862A10C6A40065F5A5 /* DefaultViewController.swift */; };
+		CB9A9C892A10C8C90065F5A5 /* DefaultViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A9C882A10C8C90065F5A5 /* DefaultViewControllerConstants.swift */; };
+		CB9A9C8B2A10CC940065F5A5 /* ButtonCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A9C8A2A10CC940065F5A5 /* ButtonCoordinator.swift */; };
+		CB9A9C8D2A10CCB70065F5A5 /* ButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A9C8C2A10CCB70065F5A5 /* ButtonViewModel.swift */; };
 		CBAAA2442A08CC8200773E0C /* ButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAA2432A08CC8200773E0C /* ButtonViewController.swift */; };
 		CBAAA2462A08CCB600773E0C /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAA2452A08CCB600773E0C /* ViewModelProtocol.swift */; };
 		CBAAA2482A08CD4800773E0C /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBAAA2472A08CD4800773E0C /* Test.storyboard */; };
@@ -77,7 +80,6 @@
 		1F93BFF65E4CEB06C0BB4E1E /* Pods_iOS_UIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_UIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DCA29C72000ECC48502CFC /* Pods-iOS UIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS UIKit.release.xcconfig"; path = "Target Support Files/Pods-iOS UIKit/Pods-iOS UIKit.release.xcconfig"; sourceTree = "<group>"; };
 		AAB5714282B436375042CEEF /* Pods-iOS UIKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS UIKit.debug.xcconfig"; path = "Target Support Files/Pods-iOS UIKit/Pods-iOS UIKit.debug.xcconfig"; sourceTree = "<group>"; };
-		CB11069929E6E229005FFC2D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CB33D35329E82EB500FDAAAF /* LabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewModel.swift; sourceTree = "<group>"; };
 		CB33D35829E83A5400FDAAAF /* LabelAlignmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAlignmentCell.swift; sourceTree = "<group>"; };
 		CB33D35A29E8446D00FDAAAF /* ChildCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCoordinatorFactory.swift; sourceTree = "<group>"; };
@@ -113,6 +115,10 @@
 		CB80B1D629E53B7B00298F3C /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		CB80B1DC29E53F3300298F3C /* MainViewControllerConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerConstants.swift; sourceTree = "<group>"; };
 		CB80B1F629E5468200298F3C /* ObjectListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectListCell.swift; sourceTree = "<group>"; };
+		CB9A9C862A10C6A40065F5A5 /* DefaultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultViewController.swift; sourceTree = "<group>"; };
+		CB9A9C882A10C8C90065F5A5 /* DefaultViewControllerConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultViewControllerConstants.swift; sourceTree = "<group>"; };
+		CB9A9C8A2A10CC940065F5A5 /* ButtonCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCoordinator.swift; sourceTree = "<group>"; };
+		CB9A9C8C2A10CCB70065F5A5 /* ButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewModel.swift; sourceTree = "<group>"; };
 		CBAAA2432A08CC8200773E0C /* ButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewController.swift; sourceTree = "<group>"; };
 		CBAAA2452A08CCB600773E0C /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		CBAAA2472A08CD4800773E0C /* Test.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
@@ -403,6 +409,8 @@
 		CB80B1D029E53A8D00298F3C /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				CB9A9C862A10C6A40065F5A5 /* DefaultViewController.swift */,
+				CB9A9C882A10C8C90065F5A5 /* DefaultViewControllerConstants.swift */,
 				CB1BE67E2A0CE7AC00485B4F /* Coordinator */,
 				CB80B1D329E53AA700298F3C /* MainViewScene */,
 				CBDE6E1C29E54B0A0068BA0A /* LabelViewScene */,
@@ -424,10 +432,44 @@
 			path = MainViewScene;
 			sourceTree = "<group>";
 		};
+		CB9A9C812A10C5460065F5A5 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CB9A9C8A2A10CC940065F5A5 /* ButtonCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		CB9A9C822A10C5510065F5A5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CB9A9C832A10C5540065F5A5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CB9A9C8C2A10CCB70065F5A5 /* ButtonViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CB9A9C842A10C5560065F5A5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		CBAAA2422A08CC6C00773E0C /* ButtonViewScene */ = {
 			isa = PBXGroup;
 			children = (
+				CB9A9C812A10C5460065F5A5 /* Coordinator */,
 				CB1BE6852A0CE80500485B4F /* ViewController */,
+				CB9A9C822A10C5510065F5A5 /* View */,
+				CB9A9C832A10C5540065F5A5 /* ViewModel */,
+				CB9A9C842A10C5560065F5A5 /* Model */,
 			);
 			path = ButtonViewScene;
 			sourceTree = "<group>";
@@ -543,7 +585,6 @@
 				CBC6073E29C1C733008B6BA9 /* UITableViewCellReigster.swift */,
 				CBC6074A29C1D28F008B6BA9 /* UITableViewHeaderFooterViewRegister.swift */,
 				CB80B1D429E53B0000298F3C /* CoordinatorProtocol.swift */,
-				CB11069929E6E229005FFC2D /* BaseViewController.swift */,
 				CBAAA2452A08CCB600773E0C /* ViewModelProtocol.swift */,
 				CB5715042A0A2A5F00365646 /* UICollectionViewCellRegister.swift */,
 			);
@@ -737,9 +778,9 @@
 				CB421FB429E5AA670014DC4F /* LabelFontCell.swift in Sources */,
 				CBD2FC7E2A0B6DBF008033CF /* CodeLabelCellConstants.swift in Sources */,
 				CBC6073F29C1C733008B6BA9 /* UITableViewCellReigster.swift in Sources */,
+				CB9A9C8D2A10CCB70065F5A5 /* ButtonViewModel.swift in Sources */,
 				CBBEBC3A2A0FD0E600A0DFE0 /* DefaultLabelSettingListCell.swift in Sources */,
 				CBC323972A06BF5100C5B6D1 /* ObjectSectionModel.swift in Sources */,
-				CB11069A29E6E229005FFC2D /* BaseViewController.swift in Sources */,
 				CBBEBC382A0FCC1B00A0DFE0 /* LabelAlignmentType.swift in Sources */,
 				CB421FC729E5B8AD0014DC4F /* LabelTextCell.swift in Sources */,
 				CBF4396B29C1C014003E85B3 /* AppDelegate.swift in Sources */,
@@ -763,11 +804,13 @@
 				CB5715172A0A468600365646 /* ButtonImagePlacementCase.swift in Sources */,
 				CBC6074B29C1D28F008B6BA9 /* UITableViewHeaderFooterViewRegister.swift in Sources */,
 				CB57150C2A0A2E1300365646 /* SFSymbolsCoordinator.swift in Sources */,
+				CB9A9C872A10C6A40065F5A5 /* DefaultViewController.swift in Sources */,
 				CB5715052A0A2A5F00365646 /* UICollectionViewCellRegister.swift in Sources */,
 				CBD2FC7C2A0B6D73008033CF /* CodeLabelCell.swift in Sources */,
 				CBBEBC362A0FCB8E00A0DFE0 /* LabelFontType.swift in Sources */,
 				CB80B1F729E5468200298F3C /* ObjectListCell.swift in Sources */,
 				CB421FAE29E5A8B50014DC4F /* AlignmentType.swift in Sources */,
+				CB9A9C8B2A10CC940065F5A5 /* ButtonCoordinator.swift in Sources */,
 				CB80B1DD29E53F3300298F3C /* MainViewControllerConstants.swift in Sources */,
 				CBAAA2582A08D6A000773E0C /* LabelAlignmentCellConstants.swift in Sources */,
 				CB80B1D229E53AA200298F3C /* MainViewController.swift in Sources */,
@@ -789,6 +832,7 @@
 				CB421FC229E5B3180014DC4F /* LabelCoordinator.swift in Sources */,
 				CB5714D62A0A098F00365646 /* ButtonViewControllerConstants.swift in Sources */,
 				CBAAA2442A08CC8200773E0C /* ButtonViewController.swift in Sources */,
+				CB9A9C892A10C8C90065F5A5 /* DefaultViewControllerConstants.swift in Sources */,
 				CBAAA2522A08D61900773E0C /* LabelTextCellConstants.swift in Sources */,
 				CB5714FF2A0A22D300365646 /* SFSymbolsViewController.swift in Sources */,
 				CB4D1EC82A0D1691000EC05C /* LabelModel.swift in Sources */,

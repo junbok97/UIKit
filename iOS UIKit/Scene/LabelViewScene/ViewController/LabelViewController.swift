@@ -9,30 +9,21 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class LabelViewController: UIViewController {
+final class LabelViewController: DefaultViewController {
     
     weak var coordinator: LabelCoordinatorProtocol?
-    
-    private let disposeBag = DisposeBag()
     private var viewModel: LabelViewModel!
     
     static func create(
         _ viewModel: LabelViewModel,
         _ coordinator: LabelCoordinatorProtocol
     ) -> LabelViewController {
-        let labelViewController = LabelViewController()
-        labelViewController.viewModel = viewModel
-        labelViewController.coordinator = coordinator
-        labelViewController.bind()
-        return labelViewController
+        let viewController = LabelViewController()
+        viewController.viewModel = viewModel
+        viewController.coordinator = coordinator
+        viewController.bind()
+        return viewController
     }
-    
-    lazy var containerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .secondarySystemBackground
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
     
     lazy var targetLabel: UILabel = {
         let label = UILabel()
@@ -46,21 +37,6 @@ final class LabelViewController: UIViewController {
         label.backgroundColor = .systemBackground
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }()
-    
-    private lazy var labelSettingList: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .insetGrouped)
-        tableView.backgroundColor = .secondarySystemBackground
-        tableView.separatorStyle = .singleLine
-        LabelTextCell.register(tableView: tableView)
-        LabelFontCell.register(tableView: tableView)
-        LabelFontSizeCell.register(tableView: tableView)
-        LabelColorCell.register(tableView: tableView)
-        LabelAlignmentCell.register(tableView: tableView)
-        LabelNumberOfLinesCell.register(tableView: tableView)
-        CodeLabelCell.register(tableView: tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableView
     }()
     
     override func viewDidLoad() {
@@ -79,19 +55,20 @@ final class LabelViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    func bind() {
+    override func bind() {
+        super.bind()
         let dataSource = viewModel.labelSettingListDataSource()
         viewModel.labelSettingListCellDatas
-            .drive(labelSettingList.rx.items(dataSource: dataSource))
+            .drive(settingList.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
-        labelSettingList.rx.itemSelected
+        settingList.rx.itemSelected
             .map { indexPath in
                 dataSource[indexPath.section].items[indexPath.row]
             }
             .bind(to: viewModel.didItemSelectedLabelSettingList)
             .disposed(by: disposeBag)
-            
+        
         viewModel.targetText
             .drive(self.rx.targetText)
             .disposed(by: disposeBag)
@@ -113,39 +90,38 @@ final class LabelViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-}
-
-private extension LabelViewController {
-    func attribute() {
-        view.backgroundColor = .secondarySystemBackground
-        let appearance = UINavigationBarAppearance()
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.prefersLargeTitles = false
+    override func attribute() {
+        super.attribute()
         navigationItem.title = LabelViewConstants.title
+        tableViewCellConfigure()
     }
     
-    func layout() {
-        [containerView, labelSettingList].forEach { view.addSubview($0) }
+    override func layout() {
+        super.layout()
         containerView.addSubview(targetLabel)
         
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            containerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            containerView.heightAnchor.constraint(equalToConstant: LabelViewConstants.containerViewHeight),
-            
             targetLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: LabelViewConstants.targetLabelOffset),
             targetLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: LabelViewConstants.targetLabelOffset),
             targetLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -LabelViewConstants.targetLabelOffset),
-            targetLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -LabelViewConstants.targetLabelOffset),
-            
-            labelSettingList.topAnchor.constraint(equalTo: containerView.bottomAnchor),
-            labelSettingList.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            labelSettingList.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            labelSettingList.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            targetLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -LabelViewConstants.targetLabelOffset)
         ])
     }
     
+    override func didTappedLeftBarButton() {
+        coordinator?.finish()
+    }
+}
+
+private extension LabelViewController {
+    func tableViewCellConfigure() {
+        LabelTextCell.register(tableView: settingList)
+        LabelFontCell.register(tableView: settingList)
+        LabelFontSizeCell.register(tableView: settingList)
+        LabelColorCell.register(tableView: settingList)
+        LabelAlignmentCell.register(tableView: settingList)
+        LabelNumberOfLinesCell.register(tableView: settingList)
+    }
 }
 
 extension Reactive where Base: LabelViewController {

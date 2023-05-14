@@ -34,17 +34,10 @@ final class MainViewModel {
     }
     
     func dataSource() -> RxTableViewSectionedReloadDataSource<ObjectSectionModel> {
-        let dataSource = RxTableViewSectionedReloadDataSource<ObjectSectionModel> { dataSource, tableView, indexPath, item in
-            switch dataSource[indexPath.section].sectionHeader {
-            case .label:
-                let cell = ObjectListCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
-                cell.setup(object: item)
-                return cell
-            default:
-                let cell = ObjectListCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
-                cell.setup(object: item)
-                return cell
-            }
+        let dataSource = RxTableViewSectionedReloadDataSource<ObjectSectionModel> { _, tableView, indexPath, item in
+            let cell = ObjectListCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            cell.setup(object: item)
+            return cell
         }
         
         dataSource.titleForHeaderInSection = { dataSource, index in
