@@ -13,7 +13,6 @@ final class LabelCodeCell: DefaultCodeCell, LabelSettingListCellProtocol {
     
     func setup(_ item: LabelSettingListSectionItemType) { }
 
-    
     func bind(_ viewModel: LabelViewModel) {
         viewModel.codeCellCodeLabelText
             .drive(self.rx.codeText)

@@ -10,7 +10,7 @@ import RxSwift
 
 class DefaultCell: UITableViewCell, UITableViewCellReigster {
     class var cellId: String {
-        get { "DefaultLabelSettingListCell" }
+        get { "" }
     }
     static var isFromNib: Bool = false
     

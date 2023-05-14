@@ -60,4 +60,3 @@ extension Reactive where Base: DefaultCodeCell {
         }
     }
 }
-

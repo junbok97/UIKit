@@ -20,7 +20,6 @@ protocol UICollectionViewCellRegister {
     static func dequeueReusableCell(target: UICollectionView, indexPath: IndexPath) -> Self
 }
 
-
 extension UICollectionViewCellRegister where Self: UICollectionViewCell {
     
     // CollectionView에 CustomCell 등록

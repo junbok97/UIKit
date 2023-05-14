@@ -56,6 +56,7 @@ final class LabelViewController: DefaultViewController {
     override func bind() {
         super.bind()
         let dataSource = viewModel.labelSettingListDataSource()
+        
         viewModel.labelSettingListCellDatas
             .drive(settingList.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
@@ -113,6 +114,7 @@ final class LabelViewController: DefaultViewController {
 
 private extension LabelViewController {
     func tableViewCellConfigure() {
+        LabelCodeCell.register(tableView: settingList)
         LabelTextCell.register(tableView: settingList)
         LabelFontCell.register(tableView: settingList)
         LabelFontSizeCell.register(tableView: settingList)
@@ -142,6 +144,8 @@ extension Reactive where Base: LabelViewController {
                 base.targetLabel.textColor = labelColor.color
             case .backgroundColor:
                 base.targetLabel.backgroundColor = labelColor.color
+            default:
+                return
             }
         }
     }

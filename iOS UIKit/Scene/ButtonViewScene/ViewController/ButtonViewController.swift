@@ -27,6 +27,8 @@ final class ButtonViewController: DefaultViewController {
         let button = UIButton()
         var config = UIButton.Configuration.filled()
         config.title = ButtonViewControllerConstants.title
+        button.tintColor = .black
+        button.titleLabel?.textColor = .black
         config.baseBackgroundColor = .tintColor
         button.configuration = config
         button.translatesAutoresizingMaskIntoConstraints = false
