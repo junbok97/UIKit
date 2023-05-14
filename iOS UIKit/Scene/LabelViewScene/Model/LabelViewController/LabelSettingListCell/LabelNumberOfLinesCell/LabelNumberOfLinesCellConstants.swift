@@ -11,9 +11,9 @@ struct LabelNumberOfLinesCellConstants {
     static let cellId: String = "LabelNumberOfLinesCell"
     
     static let linesLabelText: String = "Lines"
-    static let valueLabelText: String = "\(LabelViewConstants.targetLabelNumberOfLines)"
+    static let valueLabelText: String = "\(LabelViewControllerConstants.targetLabelNumberOfLines)"
     
-    static let stepperValue: Double = Double(LabelViewConstants.targetLabelNumberOfLines)
+    static let stepperValue: Double = Double(LabelViewControllerConstants.targetLabelNumberOfLines)
     static let stepperMinimumValue: Double = 0
     static let stepperMaximumValue: Double = 10
     

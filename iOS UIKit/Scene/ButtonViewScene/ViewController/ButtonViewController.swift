@@ -25,13 +25,36 @@ final class ButtonViewController: DefaultViewController {
     
     let targetButton: UIButton = {
         let button = UIButton()
-        let config = UIButton.Configuration.filled()
-        config.imagePlacement
+        var config = UIButton.Configuration.filled()
+        config.title = ButtonViewControllerConstants.title
+        config.baseBackgroundColor = .tintColor
+        button.configuration = config
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     override func didTappedLeftBarButton() {
         coordinator?.finish()
     }
+    
+    override func bind() {
+        super.bind()
+    }
+    
+    override func attribute() {
+        super.attribute()
+        navigationItem.title = ButtonViewControllerConstants.title
+    }
+    
+    override func layout() {
+        super.layout()
+        containerView.addSubview(targetButton)
+    
+        NSLayoutConstraint.activate([
+            targetButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: ButtonViewControllerConstants.targetButtonVerticalOffset),
+            targetButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: ButtonViewControllerConstants.targetButtonHorizonOffset),
+            targetButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -ButtonViewControllerConstants.targetButtonHorizonOffset),
+            targetButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -ButtonViewControllerConstants.targetButtonVerticalOffset)
+        ])    }
     
 }

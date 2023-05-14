@@ -16,7 +16,7 @@ final class LabelFontSizeCell: DefaultLabelSettingListCell {
     private lazy var minNumLabel: UILabel = {
         let label = UILabel()
         label.text = LabelFontSizeCellConstants.minNumLabelText
-        label.font = LabelViewConstants.defaultFont
+        label.font = LabelViewControllerConstants.defaultFont
         label.textAlignment = .center
         label.textColor = .secondaryLabel
         label.setContentHuggingPriority(
@@ -29,7 +29,7 @@ final class LabelFontSizeCell: DefaultLabelSettingListCell {
     private lazy var maxNumLabel: UILabel = {
         let label = UILabel()
         label.text = LabelFontSizeCellConstants.maxNumLabelText
-        label.font = LabelViewConstants.defaultFont
+        label.font = LabelViewControllerConstants.defaultFont
         label.textAlignment = .center
         label.textColor = .secondaryLabel
         label.setContentHuggingPriority(
@@ -58,7 +58,7 @@ final class LabelFontSizeCell: DefaultLabelSettingListCell {
     private lazy var sizeLabel: UILabel = {
         let label = UILabel()
         label.text = LabelFontSizeCellConstants.sizeLabelText
-        label.font = LabelViewConstants.defaultFont
+        label.font = LabelViewControllerConstants.defaultFont
         label.textColor = .label
         label.textAlignment = .left
         return label
@@ -67,7 +67,7 @@ final class LabelFontSizeCell: DefaultLabelSettingListCell {
     lazy var sliderValueLabel: UILabel = {
         let label = UILabel()
         label.text = LabelFontSizeCellConstants.sliderValueLabelText
-        label.font = LabelViewConstants.defaultFont
+        label.font = LabelViewControllerConstants.defaultFont
         label.textColor = .label
         label.textAlignment = .right
         return label
@@ -105,7 +105,7 @@ final class LabelFontSizeCell: DefaultLabelSettingListCell {
     
     override func bind(_ viewModel: LabelViewModel) {
         fontSizeSlider.rx.value
-            .startWith(LabelViewConstants.targetLabelFontSize)
+            .startWith(LabelViewControllerConstants.targetLabelFontSize)
             .map { Int($0) }
             .distinctUntilChanged()
             .bind(to: viewModel.fontSizeCellDidChangedFontSizeSlider)
@@ -134,19 +134,19 @@ private extension LabelFontSizeCell {
             
             containerStackView.topAnchor.constraint(
                 equalTo: contentView.safeAreaLayoutGuide.topAnchor,
-                constant: LabelViewConstants.defaultOffset
+                constant: LabelViewControllerConstants.defaultOffset
             ),
             containerStackView.leadingAnchor.constraint(
                 equalTo: contentView.safeAreaLayoutGuide.leadingAnchor,
-                constant: LabelViewConstants.defaultOffset
+                constant: LabelViewControllerConstants.defaultOffset
             ),
             containerStackView.trailingAnchor.constraint(
                 equalTo: contentView.safeAreaLayoutGuide.trailingAnchor,
-                constant: -LabelViewConstants.defaultOffset
+                constant: -LabelViewControllerConstants.defaultOffset
             ),
             containerStackView.bottomAnchor.constraint(
                 equalTo: contentView.safeAreaLayoutGuide.bottomAnchor,
-                constant: -LabelViewConstants.defaultOffset
+                constant: -LabelViewControllerConstants.defaultOffset
             )
         ])
     }

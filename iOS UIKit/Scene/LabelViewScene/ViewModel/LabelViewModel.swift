@@ -80,31 +80,31 @@ final class LabelViewModel {
             .asDriver(onErrorDriveWith: .empty())
         
         let textCode = textCellDidChangedTextField
-            .startWith(LabelViewConstants.textCode)
+            .startWith(LabelViewControllerConstants.textCode)
         
         let textColorCode = colorCellDidSelected
             .filter { $0.colorType == .textColor }
             .map { "\($0.color)" }
-            .startWith(LabelViewConstants.textColorCode)
+            .startWith(LabelViewControllerConstants.textColorCode)
         
         let backgroundColorCode = colorCellDidSelected
             .filter { $0.colorType == .backgroundColor }
             .map { "\($0.color)" }
-            .startWith(LabelViewConstants.backgroundColorCode)
+            .startWith(LabelViewControllerConstants.backgroundColorCode)
         
         let fontCode = Observable
             .combineLatest(fontCellDidSelected, fontSizeCellDidChangedFontSizeSlider) { font, ofSize in
                 font.code(ofSize: CGFloat(ofSize))
             }
-            .startWith(LabelViewConstants.fontCode)
+            .startWith(LabelViewControllerConstants.fontCode)
         
         let alignmentCode = alignmentCellDidSelected
             .map { $0.code }
-            .startWith(LabelViewConstants.alignmentCode)
+            .startWith(LabelViewControllerConstants.alignmentCode)
         
         let numberOfLinesCode = numberOfLinesCellDidChangedLineStepper
             .map { "\($0)" }
-            .startWith(LabelViewConstants.numberOfLinesCode)
+            .startWith(LabelViewControllerConstants.numberOfLinesCode)
         
         codeCellCodeLabelText = Observable
             .combineLatest(textCode, textColorCode, backgroundColorCode, fontCode, alignmentCode, numberOfLinesCode, resultSelector: labelModel.codeLabelText)

@@ -15,8 +15,8 @@ final class LabelTextCell: DefaultLabelSettingListCell {
     
     private lazy var textField: UITextField = {
        let textField = UITextField()
-        textField.placeholder = LabelViewConstants.title
-        textField.font = LabelViewConstants.defaultFont
+        textField.placeholder = LabelViewControllerConstants.title
+        textField.font = LabelViewControllerConstants.defaultFont
         textField.returnKeyType = .done
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -34,7 +34,7 @@ final class LabelTextCell: DefaultLabelSettingListCell {
     
     override func bind(_ viewModel: LabelViewModel) {
         textField.rx.text
-            .compactMap { $0 == "" ? LabelViewConstants.title : $0 }
+            .compactMap { $0 == "" ? LabelViewControllerConstants.title : $0 }
             .bind(to: viewModel.textCellDidChangedTextField)
             .disposed(by: disposeBag)
     }
@@ -51,10 +51,10 @@ private extension LabelTextCell {
         contentView.addSubview(textField)
         
         NSLayoutConstraint.activate([
-            textField.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: LabelViewConstants.defaultOffset),
-            textField.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: LabelViewConstants.defaultOffset),
-            textField.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -LabelViewConstants.defaultOffset),
-            textField.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -LabelViewConstants.defaultOffset)
+            textField.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: LabelViewControllerConstants.defaultOffset),
+            textField.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: LabelViewControllerConstants.defaultOffset),
+            textField.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -LabelViewControllerConstants.defaultOffset),
+            textField.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -LabelViewControllerConstants.defaultOffset)
         ])
     }
 }

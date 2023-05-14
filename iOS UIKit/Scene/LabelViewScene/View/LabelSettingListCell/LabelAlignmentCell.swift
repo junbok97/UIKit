@@ -27,7 +27,7 @@ final class LabelAlignmentCell: DefaultLabelSettingListCell {
         let label = UILabel()
         label.textColor = .label
         label.text = LabelAlignmentCellConstants.title
-        label.font = LabelViewConstants.defaultFont
+        label.font = LabelViewControllerConstants.defaultFont
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -67,10 +67,10 @@ private extension LabelAlignmentCell {
         contentView.addSubview(alignmentLabel)
         
         NSLayoutConstraint.activate([
-            alignmentLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: LabelViewConstants.defaultOffset),
-            alignmentLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: LabelViewConstants.defaultOffset),
-            alignmentLabel.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -LabelViewConstants.defaultOffset),
-            alignmentLabel.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -LabelViewConstants.defaultOffset)
+            alignmentLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: LabelViewControllerConstants.defaultOffset),
+            alignmentLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: LabelViewControllerConstants.defaultOffset),
+            alignmentLabel.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -LabelViewControllerConstants.defaultOffset),
+            alignmentLabel.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -LabelViewControllerConstants.defaultOffset)
         ])
     }
     

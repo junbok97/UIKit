@@ -13,6 +13,7 @@ struct ButtonViewControllerConstants {
     static let defaultFont: UIFont = .systemFont(ofSize: 16)
     
     static let title: String = "Button"
-    
+    static let targetButtonHorizonOffset: CGFloat = 100
+    static let targetButtonVerticalOffset: CGFloat = 50
     
 }

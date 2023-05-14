@@ -26,7 +26,7 @@ final class LabelColorCell: DefaultLabelSettingListCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .label
-        label.font = LabelViewConstants.defaultFont
+        label.font = LabelViewControllerConstants.defaultFont
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

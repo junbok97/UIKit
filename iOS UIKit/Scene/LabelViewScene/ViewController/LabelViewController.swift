@@ -28,11 +28,11 @@ final class LabelViewController: DefaultViewController {
     lazy var targetLabel: UILabel = {
         let label = UILabel()
         label.textColor = .label
-        label.text = LabelViewConstants.title
-        label.font = LabelViewConstants.targetLabelFont
-        label.numberOfLines = LabelViewConstants.targetLabelNumberOfLines
+        label.text = LabelViewControllerConstants.title
+        label.font = LabelViewControllerConstants.targetLabelFont
+        label.numberOfLines = LabelViewControllerConstants.targetLabelNumberOfLines
         label.clipsToBounds = true
-        label.layer.cornerRadius = LabelViewConstants.targetLabelCornerRadius
+        label.layer.cornerRadius = LabelViewControllerConstants.targetLabelCornerRadius
         label.textAlignment = .center
         label.backgroundColor = .systemBackground
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -41,8 +41,6 @@ final class LabelViewController: DefaultViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        attribute()
-        layout()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -92,7 +90,7 @@ final class LabelViewController: DefaultViewController {
     
     override func attribute() {
         super.attribute()
-        navigationItem.title = LabelViewConstants.title
+        navigationItem.title = LabelViewControllerConstants.title
         tableViewCellConfigure()
     }
     
@@ -101,10 +99,10 @@ final class LabelViewController: DefaultViewController {
         containerView.addSubview(targetLabel)
         
         NSLayoutConstraint.activate([
-            targetLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: LabelViewConstants.targetLabelOffset),
-            targetLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: LabelViewConstants.targetLabelOffset),
-            targetLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -LabelViewConstants.targetLabelOffset),
-            targetLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -LabelViewConstants.targetLabelOffset)
+            targetLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: LabelViewControllerConstants.targetLabelOffset),
+            targetLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: LabelViewControllerConstants.targetLabelOffset),
+            targetLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -LabelViewControllerConstants.targetLabelOffset),
+            targetLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -LabelViewControllerConstants.targetLabelOffset)
         ])
     }
     

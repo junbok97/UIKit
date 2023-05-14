@@ -13,7 +13,7 @@ class DefaultViewController: UIViewController {
     
     private lazy var leftBarButtonItem: UIBarButtonItem = {
         let barbutton =  UIBarButtonItem(
-            image: BaseViewControllerConstants.leftBarButtontImage,
+            image: DefaultViewControllerConstants.leftBarButtontImage,
             style: .plain,
             target: self,
             action: #selector(didTappedLeftBarButton)
@@ -43,6 +43,8 @@ class DefaultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = leftBarButtonItem
+        attribute()
+        layout()
     }
     
     func bind() {}

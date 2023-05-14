@@ -18,7 +18,7 @@ final class LabelFontCell: DefaultLabelSettingListCell {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 self.fontLabel.text = fontType.rawValue
-                self.fontLabel.font = fontType.font(ofSize: LabelViewConstants.defaultFontSize)
+                self.fontLabel.font = fontType.font(ofSize: LabelViewControllerConstants.defaultFontSize)
             }
         }
     }
@@ -27,7 +27,7 @@ final class LabelFontCell: DefaultLabelSettingListCell {
         let label = UILabel()
         label.textColor = .label
         label.text = LabelFontCellConstants.title
-        label.font = LabelViewConstants.defaultFont
+        label.font = LabelViewControllerConstants.defaultFont
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -66,10 +66,10 @@ private extension LabelFontCell {
         contentView.addSubview(fontLabel)
         
         NSLayoutConstraint.activate([
-            fontLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: LabelViewConstants.defaultOffset),
-            fontLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: LabelViewConstants.defaultOffset),
-            fontLabel.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -LabelViewConstants.defaultOffset),
-            fontLabel.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -LabelViewConstants.defaultOffset)
+            fontLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: LabelViewControllerConstants.defaultOffset),
+            fontLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: LabelViewControllerConstants.defaultOffset),
+            fontLabel.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -LabelViewControllerConstants.defaultOffset),
+            fontLabel.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -LabelViewControllerConstants.defaultOffset)
         ])
     }
     

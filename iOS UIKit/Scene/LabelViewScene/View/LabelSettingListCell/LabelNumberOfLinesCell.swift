@@ -14,7 +14,7 @@ final class LabelNumberOfLinesCell: DefaultLabelSettingListCell {
     
     private lazy var linesLabel: UILabel = {
         let label = UILabel()
-        label.font = LabelViewConstants.defaultFont
+        label.font = LabelViewControllerConstants.defaultFont
         label.text = LabelNumberOfLinesCellConstants.linesLabelText
         label.textAlignment = .left
         return label
@@ -22,7 +22,7 @@ final class LabelNumberOfLinesCell: DefaultLabelSettingListCell {
     
     lazy var stepperValueLabel: UILabel = {
         let label = UILabel()
-        label.font = LabelViewConstants.defaultFont
+        label.font = LabelViewControllerConstants.defaultFont
         label.text = LabelNumberOfLinesCellConstants.valueLabelText
         label.textAlignment = .center
         return label
@@ -81,19 +81,19 @@ private extension LabelNumberOfLinesCell {
         NSLayoutConstraint.activate([
             containerStackView.topAnchor.constraint(
                 equalTo: contentView.safeAreaLayoutGuide.topAnchor,
-                constant: LabelViewConstants.defaultOffset
+                constant: LabelViewControllerConstants.defaultOffset
             ),
             containerStackView.leadingAnchor.constraint(
                 equalTo: contentView.safeAreaLayoutGuide.leadingAnchor,
-                constant: LabelViewConstants.defaultOffset
+                constant: LabelViewControllerConstants.defaultOffset
             ),
             containerStackView.trailingAnchor.constraint(
                 equalTo: contentView.safeAreaLayoutGuide.trailingAnchor,
-                constant: -LabelViewConstants.defaultOffset
+                constant: -LabelViewControllerConstants.defaultOffset
             ),
             containerStackView.bottomAnchor.constraint(
                 equalTo: contentView.safeAreaLayoutGuide.bottomAnchor,
-                constant: -LabelViewConstants.defaultOffset
+                constant: -LabelViewControllerConstants.defaultOffset
             )
         ])
     }
