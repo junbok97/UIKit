@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import RxDataSources
 
-final class ButtonViewController: DefaultViewController {
+final class ButtonViewController: DefaultListViewController {
     
     weak var coordinator: ButtonCoordinatorProtocol?
     private var viewModel: ButtonViewModel!
+    private var dataSource: RxTableViewSectionedReloadDataSource<ButtonSettingListSectionModel>!
     
     static func create(
         _ viewModel: ButtonViewModel,
@@ -51,8 +53,14 @@ final class ButtonViewController: DefaultViewController {
     override func bind() {
         super.bind()
         let dataSource = viewModel.buttonSettingListDataSource()
+        self.dataSource = dataSource
+        
         viewModel.buttonSettingListCellDatas
             .drive(settingList.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
+        settingList
+            .rx.setDelegate(self)
             .disposed(by: disposeBag)
         
     }
@@ -85,5 +93,14 @@ private extension ButtonViewController {
         ButtonFontSizeCell.register(tableView: settingList)
         ButtonColorCell.register(tableView: settingList)
         ButtonLabelCell.register(tableView: settingList)
+        DefaultSettingListHeaderView.register(tableView: settingList)
+    }
+}
+
+extension ButtonViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = DefaultSettingListHeaderView()
+        headerView.setupHeaderTitle(dataSource[section].sectionHeader.rawValue)
+        return headerView
     }
 }

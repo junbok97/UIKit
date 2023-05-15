@@ -8,8 +8,12 @@
 import UIKit
 import RxSwift
 
-final class ButtonCodeCell: DefaultCodeCell {
+final class ButtonCodeCell: DefaultCodeCell, ButtonSettingListCellProtocol {
+    
     static override var cellId: String {
         ButtonCodeCellConstants.cellId
     }
+    
+    func setup(_ item: ButtonSettingListItemType) {}
+    func bind(_ viewModel: ButtonViewModel) { }
 }

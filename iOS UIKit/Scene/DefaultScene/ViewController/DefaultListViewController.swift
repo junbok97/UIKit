@@ -7,8 +7,9 @@
 
 import Foundation
 import RxSwift
+import RxDataSources
 
-class DefaultViewController: UIViewController {
+class DefaultListViewController: UIViewController {
     let disposeBag = DisposeBag()
     
     private lazy var leftBarButtonItem: UIBarButtonItem = {

@@ -57,35 +57,17 @@ class DefaultFontSizeCell: DefaultCell {
         return stackView
     }()
     
-    private lazy var sizeLabel: UILabel = {
-        let label = UILabel()
-        label.text = DefaultFontSizeCellConstants.sizeLabelText
-        label.font = DefaultViewControllerConstants.defaultFont
-        label.textColor = .label
-        label.textAlignment = .left
-        return label
-    }()
-    
     lazy var sliderValueLabel: UILabel = {
         let label = UILabel()
         label.text = DefaultFontSizeCellConstants.sliderValueLabelText
         label.font = DefaultViewControllerConstants.defaultFont
         label.textColor = .label
-        label.textAlignment = .right
+        label.textAlignment = .center
         return label
     }()
-    
-    private lazy var sizeStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [sizeLabel, sliderValueLabel])
-        stackView.axis = .horizontal
-        stackView.alignment = .fill
-        stackView.distribution = .fillEqually
-        stackView.spacing = DefaultFontSizeCellConstants.sliderStackViewSpacing
-        return stackView
-    }()
-    
+        
     private lazy var containerStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [sizeStackView, sliderStackView])
+        let stackView = UIStackView(arrangedSubviews: [sliderValueLabel, sliderStackView])
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fill

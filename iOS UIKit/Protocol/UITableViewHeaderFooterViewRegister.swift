@@ -15,7 +15,7 @@ protocol UITableViewHeaderFooterViewRegister {
     static func dequeueReusableHeaderFooterView(tableView: UITableView) -> Self
 }
 
-extension UITableViewHeaderFooterViewRegister where Self: UITableViewHeaderFooterView {
+extension UITableViewHeaderFooterViewRegister where Self: UIView {
     static func register(tableView: UITableView) {
         if self.isFromNib {
             tableView.register(UINib(nibName: self.viewId, bundle: nil), forHeaderFooterViewReuseIdentifier: self.viewId)

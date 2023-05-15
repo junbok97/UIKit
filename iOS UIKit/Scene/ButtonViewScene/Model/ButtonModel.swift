@@ -128,42 +128,62 @@ final class ButtonModel {
         switch sectionType {
         case .code:
             let cell = ButtonCodeCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            cell.setup(sectionModelItem)
+            cell.bind(viewModel)
             return cell
             
         case .buttonType, .buttonStyle, .cornerStyle:
             let cell = ButtonLabelCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            cell.setup(sectionModelItem)
+            cell.bind(viewModel)
             return cell
             
         case .titleText:
             let cell = ButtonTextCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            cell.setup(sectionModelItem)
+            cell.bind(viewModel)
             return cell
             
         case .titleFont:
             let cell = ButtonFontCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            cell.setup(sectionModelItem)
+            cell.bind(viewModel)
             return cell
             
         case .titleFontSize:
             let cell = ButtonFontSizeCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            cell.setup(sectionModelItem)
+            cell.bind(viewModel)
             return cell
             
         case .subTitleText:
             let cell = ButtonTextCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            cell.setup(sectionModelItem)
+            cell.bind(viewModel)
             return cell
             
         case .subtitleFont:
             let cell = ButtonFontCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            cell.setup(sectionModelItem)
+            cell.bind(viewModel)
             return cell
             
         case .subtitleFontSize:
             let cell = ButtonFontSizeCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            cell.setup(sectionModelItem)
+            cell.bind(viewModel)
             return cell
             
         case .image:
             let cell = ButtonLabelCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            cell.setup(sectionModelItem)
+            cell.bind(viewModel)
             return cell
             
         case .color:
             let cell = ButtonColorCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            cell.setup(sectionModelItem)
+            cell.bind(viewModel)
             return cell
         }
     }

@@ -8,11 +8,13 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
-final class LabelViewController: DefaultViewController {
+final class LabelViewController: DefaultListViewController {
     
     weak var coordinator: LabelCoordinatorProtocol?
     private var viewModel: LabelViewModel!
+    private var dataSource: RxTableViewSectionedReloadDataSource<LabelSettingListSectionModel>!
     
     static func create(
         _ viewModel: LabelViewModel,
@@ -56,6 +58,7 @@ final class LabelViewController: DefaultViewController {
     override func bind() {
         super.bind()
         let dataSource = viewModel.labelSettingListDataSource()
+        self.dataSource = dataSource
         
         viewModel.labelSettingListCellDatas
             .drive(settingList.rx.items(dataSource: dataSource))
@@ -66,6 +69,10 @@ final class LabelViewController: DefaultViewController {
                 dataSource[indexPath.section].items[indexPath.row]
             }
             .bind(to: viewModel.didItemSelectedLabelSettingList)
+            .disposed(by: disposeBag)
+        
+        settingList
+            .rx.setDelegate(self)
             .disposed(by: disposeBag)
         
         viewModel.targetText
@@ -121,6 +128,7 @@ private extension LabelViewController {
         LabelColorCell.register(tableView: settingList)
         LabelAlignmentCell.register(tableView: settingList)
         LabelNumberOfLinesCell.register(tableView: settingList)
+        DefaultSettingListHeaderView.register(tableView: settingList)
     }
 }
 
@@ -162,4 +170,12 @@ extension Reactive where Base: LabelViewController {
         }
     }
     
+}
+
+extension LabelViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = DefaultSettingListHeaderView()
+        headerView.setupHeaderTitle(dataSource[section].sectionHeader.rawValue)
+        return headerView
+    }
 }

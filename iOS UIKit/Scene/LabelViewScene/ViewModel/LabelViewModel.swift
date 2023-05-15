@@ -122,10 +122,6 @@ final class LabelViewModel {
             )
         } // RxTableViewSectionedReloadDataSource
         
-        dataSource.titleForHeaderInSection = { dataSource, index in
-            dataSource.sectionModels[index].sectionHeader.rawValue
-        }
-        
         return dataSource
     } // func labelSettingListDataSource
 

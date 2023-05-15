@@ -7,8 +7,11 @@
 
 import Foundation
 
-final class ButtonFontSizeCell: DefaultFontSizeCell {
+final class ButtonFontSizeCell: DefaultFontSizeCell, ButtonSettingListCellProtocol {
     static override var cellId: String {
         ButtonFontSizeCellConstants.cellId
     }
+    
+    func setup(_ item: ButtonSettingListItemType) {}
+    func bind(_ viewModel: ButtonViewModel) { }
 }
