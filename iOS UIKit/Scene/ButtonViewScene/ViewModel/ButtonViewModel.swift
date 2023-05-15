@@ -26,18 +26,19 @@ final class ButtonViewModel {
     func buttonSettingListDataSource() -> RxTableViewSectionedReloadDataSource<ButtonSettingListSectionModel> {
         
         let dataSource = RxTableViewSectionedReloadDataSource<ButtonSettingListSectionModel> { dataSource, tableView, indexPath, sectionModelItem in
-            
             ButtonModel.makeCell(
                 dataSource[indexPath.section].sectionHeader,
                 self,
                 tableView,
                 indexPath,
                 sectionModelItem
-            )   
+            )
+        } // RxTableViewSectionedReloadDataSource
+        
+        dataSource.titleForHeaderInSection = { dataSource, index in
+            dataSource.sectionModels[index].sectionHeader.rawValue
         }
         
         return dataSource
     }
-    
-    
 }

@@ -34,8 +34,6 @@ final class LabelViewModel {
     let targetNumberOfLines: Driver<Int>
     let labelSettingListCellDatas: Driver<[LabelSettingListSectionModel]>
     
-    
-    
     init() {
         let labelModel = LabelModel()
         labelSettingListCellDatas = labelModel.labelSettingListCellDatas
@@ -48,7 +46,7 @@ final class LabelViewModel {
             }
             .bind(to: fontCellDidSelected)
             .disposed(by: disposeBag)
-        
+
         didItemSelectedLabelSettingList
             .compactMap { labelSettingListSectionItemType -> ObjectAlignmentType? in
                 guard case let .alignment(alignmentType) = labelSettingListSectionItemType else { return nil }
@@ -129,6 +127,6 @@ final class LabelViewModel {
         }
         
         return dataSource
-        
-    } // func labelSettingListDataSource    
+    } // func labelSettingListDataSource
+
 }

@@ -12,7 +12,7 @@ import RxCocoa
 class DefaultLabelCell: DefaultCell {
     
     class override var cellId: String {
-        get { DefaultTextCellConstants.cellId }
+        get { DefaultLabelCellConstants.cellId }
     }
     
     private lazy var label: UILabel = {
@@ -52,4 +52,3 @@ private extension DefaultLabelCell {
     }
     
 }
-

@@ -50,11 +50,17 @@ final class ButtonViewController: DefaultViewController {
     
     override func bind() {
         super.bind()
+        let dataSource = viewModel.buttonSettingListDataSource()
+        viewModel.buttonSettingListCellDatas
+            .drive(settingList.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
     }
     
     override func attribute() {
         super.attribute()
         navigationItem.title = ButtonViewControllerConstants.title
+        settingListConfigure()
     }
     
     override func layout() {
@@ -78,5 +84,6 @@ private extension ButtonViewController {
         ButtonFontCell.register(tableView: settingList)
         ButtonFontSizeCell.register(tableView: settingList)
         ButtonColorCell.register(tableView: settingList)
+        ButtonLabelCell.register(tableView: settingList)
     }
 }

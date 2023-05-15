@@ -87,6 +87,10 @@ final class LabelModel {
         """
     }
     
+    func itemSelected(_ itemType: LabelSettingListItemType) {
+        
+    }
+    
     static func makeCell(
         _ sectionType: LabelSettingListSectionType,
         _ viewModel: LabelViewModel,

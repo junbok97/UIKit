@@ -130,11 +130,9 @@ final class ButtonModel {
             let cell = ButtonCodeCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
             return cell
             
-        case .buttonType:
-            <#code#>
-            
-        case .buttonStyle:
-            <#code#>
+        case .buttonType, .buttonStyle, .cornerStyle:
+            let cell = ButtonLabelCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            return cell
             
         case .titleText:
             let cell = ButtonTextCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
@@ -161,12 +159,12 @@ final class ButtonModel {
             return cell
             
         case .image:
-            <#code#>
+            let cell = ButtonLabelCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            return cell
+            
         case .color:
-            <#code#>
-        case .cornerStyle:
-            <#code#>
+            let cell = ButtonColorCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            return cell
         }
-        
     }
 }
