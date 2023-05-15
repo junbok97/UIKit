@@ -10,10 +10,10 @@ import UIKit
 enum ButtonType: String {
     case custom = "Custom"
     case system = "System"
-    case detailDisclosure = "DetailDisclosure"
+    case detailDisclosure = "Detail Disclosure"
     case infoLight = "InfoLight"
     case infoDark = "InfoDark"
-    case contactAdd = "ContactAdd"
+    case contactAdd = "Add Contact"
     case close = "Close"
     
     var type: UIButton.ButtonType {

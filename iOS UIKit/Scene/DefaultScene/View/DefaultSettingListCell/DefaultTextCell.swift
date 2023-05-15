@@ -53,11 +53,9 @@ private extension DefaultTextCell {
     }
 }
 
-
 extension DefaultTextCell: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
 }
-

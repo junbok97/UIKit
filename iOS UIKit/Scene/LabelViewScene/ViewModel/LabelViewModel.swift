@@ -24,7 +24,7 @@ final class LabelViewModel {
     let alignmentCellDidSelected = PublishRelay<ObjectAlignmentType>()
     let numberOfLinesCellDidChangedLineStepper = PublishRelay<Int>()
     let numberOfLinesCellStepperValueLabelText: Driver<Int>
-    let didItemSelectedLabelSettingList = PublishRelay<LabelSettingListSectionItemType>()
+    let didItemSelectedLabelSettingList = PublishRelay<LabelSettingListItemType>()
     
     // ViewModel -> View
     let targetText: Driver<String>
@@ -34,6 +34,8 @@ final class LabelViewModel {
     let targetNumberOfLines: Driver<Int>
     let labelSettingListCellDatas: Driver<[LabelSettingListSectionModel]>
     
+    
+    
     init() {
         let labelModel = LabelModel()
         labelSettingListCellDatas = labelModel.labelSettingListCellDatas
@@ -41,7 +43,7 @@ final class LabelViewModel {
               
         didItemSelectedLabelSettingList
             .compactMap { labelSettingListSectionItemType -> ObjectFontType? in
-                guard case let .fontSectionItem(fontType) = labelSettingListSectionItemType else { return nil }
+                guard case let .font(fontType) = labelSettingListSectionItemType else { return nil }
                 return fontType
             }
             .bind(to: fontCellDidSelected)
@@ -49,7 +51,7 @@ final class LabelViewModel {
         
         didItemSelectedLabelSettingList
             .compactMap { labelSettingListSectionItemType -> ObjectAlignmentType? in
-                guard case let .alignmentSectionItem(alignmentType) = labelSettingListSectionItemType else { return nil }
+                guard case let .alignment(alignmentType) = labelSettingListSectionItemType else { return nil }
                 return alignmentType
             }
             .bind(to: alignmentCellDidSelected)
@@ -113,44 +115,13 @@ final class LabelViewModel {
     
     func labelSettingListDataSource() -> RxTableViewSectionedReloadDataSource<LabelSettingListSectionModel> {
         let dataSource = RxTableViewSectionedReloadDataSource<LabelSettingListSectionModel> { dataSource, tableView, indexPath, sectionModelItem in
-            
-            switch dataSource[indexPath.section].sectionHeader {
-            case .code:
-                let cell = LabelCodeCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
-                cell.setup(sectionModelItem)
-                cell.bind(self)
-                return cell
-            case .text:
-                let cell = LabelTextCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
-                cell.setup(sectionModelItem)
-                cell.bind(self)
-                return cell
-            case .color:
-                let cell = LabelColorCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
-                cell.setup(sectionModelItem)
-                cell.bind(self)
-                return cell
-            case .font:
-                let cell = LabelFontCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
-                cell.setup(sectionModelItem)
-                cell.bind(self)
-                return cell
-            case .fontSize:
-                let cell = LabelFontSizeCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
-                cell.setup(sectionModelItem)
-                cell.bind(self)
-                return cell
-            case .alignment:
-                let cell = LabelAlignmentCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
-                cell.setup(sectionModelItem)
-                cell.bind(self)
-                return cell
-            case .numberOfLines:
-                let cell = LabelNumberOfLinesCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
-                cell.setup(sectionModelItem)
-                cell.bind(self)
-                return cell
-            } // Switch
+            LabelModel.makeCell(
+                dataSource[indexPath.section].sectionHeader,
+                self,
+                tableView,
+                indexPath,
+                sectionModelItem
+            )
         } // RxTableViewSectionedReloadDataSource
         
         dataSource.titleForHeaderInSection = { dataSource, index in

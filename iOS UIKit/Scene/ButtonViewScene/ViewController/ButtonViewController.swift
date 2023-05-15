@@ -24,13 +24,22 @@ final class ButtonViewController: DefaultViewController {
     }
     
     let targetButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(configuration: .filled())
         var config = UIButton.Configuration.filled()
-        config.title = ButtonViewControllerConstants.title
-        button.tintColor = .black
-        button.titleLabel?.textColor = .black
         config.baseBackgroundColor = .tintColor
-        button.configuration = config
+        config.title = "Config Title"
+        config.titleAlignment = .leading
+        config.subtitle = "Config SubTitle"
+        let transformer = UIConfigurationTextAttributesTransformer { incoming in
+            var outgoing = incoming
+            outgoing.foregroundColor = UIColor.black
+            outgoing.font = UIFont.boldSystemFont(ofSize: 20)
+            return outgoing
+        }
+        config.subtitleTextAttributesTransformer = transformer
+//        button.configuration = config
+        
+        button.titleLabel?.text = "text"
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -57,6 +66,17 @@ final class ButtonViewController: DefaultViewController {
             targetButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: ButtonViewControllerConstants.targetButtonHorizonOffset),
             targetButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -ButtonViewControllerConstants.targetButtonHorizonOffset),
             targetButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -ButtonViewControllerConstants.targetButtonVerticalOffset)
-        ])    }
+        ])
+    }
     
+}
+
+private extension ButtonViewController {
+    func settingListConfigure() {
+        ButtonCodeCell.register(tableView: settingList)
+        ButtonTextCell.register(tableView: settingList)
+        ButtonFontCell.register(tableView: settingList)
+        ButtonFontSizeCell.register(tableView: settingList)
+        ButtonColorCell.register(tableView: settingList)
+    }
 }

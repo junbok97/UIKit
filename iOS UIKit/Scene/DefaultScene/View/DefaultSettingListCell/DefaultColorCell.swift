@@ -85,6 +85,3 @@ extension Reactive where Base: DefaultColorCell {
         }
     }
 }
-
-
-

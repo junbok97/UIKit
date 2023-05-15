@@ -9,7 +9,7 @@ import UIKit
 
 struct DefaultFontSizeCellConstants {
     static let cellId: String = "DefaultFontSizeCell"
-    static let sizeLabelText: String = "Size"
+    static let sizeLabelText: String = "Font Size"
     static let minNumLabelText: String = "1"
     static let sliderMinimumValue: Float = 1.0
     static let maxNumLabelText: String = "100"

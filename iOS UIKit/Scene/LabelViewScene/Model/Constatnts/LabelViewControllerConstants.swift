@@ -16,7 +16,7 @@ struct LabelViewControllerConstants {
     
     static let targetLabelFontSize: Float = 50.0
     static let targetLabelFont: UIFont = .systemFont(ofSize: 50)
-    static let targetLabelOffset: CGFloat = 16.0
+    static let targetLabelOffset: CGFloat = 20
     static let targetLabelCornerRadius: CGFloat = 8.0
     static let targetLabelNumberOfLines: Int = 0
     

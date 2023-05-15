@@ -148,4 +148,3 @@ extension Reactive where Base: DefaultFontSizeCell {
         }
     }
 }
-

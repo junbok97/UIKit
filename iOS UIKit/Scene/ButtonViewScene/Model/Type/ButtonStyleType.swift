@@ -25,7 +25,4 @@ enum ButtonStyleType: String {
             return .filled()
         }
     }
-    
 }
-
-

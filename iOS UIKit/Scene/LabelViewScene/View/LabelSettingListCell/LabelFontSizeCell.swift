@@ -14,7 +14,7 @@ final class LabelFontSizeCell: DefaultFontSizeCell, LabelSettingListCellProtocol
     static override var cellId: String { LabelFontSizeCellConstants.cellId
     }
     
-    func setup(_ item: LabelSettingListSectionItemType) { }
+    func setup(_ item: LabelSettingListItemType) { }
     
     func bind(_ viewModel: LabelViewModel) {
         fontSizeSlider.rx.value

@@ -13,8 +13,8 @@ final class LabelColorCell: DefaultColorCell, LabelSettingListCellProtocol {
     
     static override var cellId: String { LabelColorCellConstants.cellId }
     
-    func setup(_ item: LabelSettingListSectionItemType) {
-        guard case let .colorSectionItem(colorType: colorType) = item else { return }
+    func setup(_ item: LabelSettingListItemType) {
+        guard case let .color(colorType: colorType) = item else { return }
         self.colorType = colorType
     }
     

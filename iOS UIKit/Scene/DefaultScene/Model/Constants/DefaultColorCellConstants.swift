@@ -11,4 +11,3 @@ struct DefaultColorCellConstants {
     static let cellId: String = "DefatulColorCell"
     static let defaultOffset: CGFloat = 8.0
 }
-

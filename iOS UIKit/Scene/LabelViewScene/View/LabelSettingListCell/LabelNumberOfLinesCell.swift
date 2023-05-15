@@ -55,7 +55,7 @@ final class LabelNumberOfLinesCell: DefaultCell, LabelSettingListCellProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(_ item: LabelSettingListSectionItemType) { } 
+    func setup(_ item: LabelSettingListItemType) { } 
     
     func bind(_ viewModel: LabelViewModel) {
         lineStepper.rx.value

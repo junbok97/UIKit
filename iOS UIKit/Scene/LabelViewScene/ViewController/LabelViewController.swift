@@ -92,7 +92,7 @@ final class LabelViewController: DefaultViewController {
     override func attribute() {
         super.attribute()
         navigationItem.title = LabelViewControllerConstants.title
-        tableViewCellConfigure()
+        settingListConfigure()
     }
     
     override func layout() {
@@ -113,7 +113,7 @@ final class LabelViewController: DefaultViewController {
 }
 
 private extension LabelViewController {
-    func tableViewCellConfigure() {
+    func settingListConfigure() {
         LabelCodeCell.register(tableView: settingList)
         LabelTextCell.register(tableView: settingList)
         LabelFontCell.register(tableView: settingList)

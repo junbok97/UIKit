@@ -18,14 +18,14 @@ enum LabelSettingListSectionType: String {
     case numberOfLines = "Number Of Lines"
 }
 
-enum LabelSettingListSectionItemType {
-    case codeSectionItem
-    case textSectionItem
-    case colorSectionItem(colorType: ObjectColorType)
-    case fontSectionItem(fontType: ObjectFontType)
-    case fontSizeSectionItem
-    case alignmentSectionItem(alignmentType: ObjectAlignmentType)
-    case numberOfLinesSectionItem
+enum LabelSettingListItemType {
+    case code
+    case text
+    case color(colorType: ObjectColorType)
+    case font(fontType: ObjectFontType)
+    case fontSize
+    case alignment(alignmentType: ObjectAlignmentType)
+    case numberOfLines
 }
 
 struct LabelSettingListSectionModel {
@@ -34,9 +34,9 @@ struct LabelSettingListSectionModel {
 }
 
 extension LabelSettingListSectionModel: SectionModelType {
-    typealias Item = LabelSettingListSectionItemType
+    typealias Item = LabelSettingListItemType
     
-    init(original: LabelSettingListSectionModel, items: [LabelSettingListSectionItemType]) {
+    init(original: LabelSettingListSectionModel, items: [LabelSettingListItemType]) {
         self = original
         self.items = items
     }

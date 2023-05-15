@@ -13,7 +13,7 @@ final class LabelTextCell: DefaultTextCell, LabelSettingListCellProtocol {
 
     static override var cellId: String { LabelTextCellConstants.cellId }
     
-    func setup(_ item: LabelSettingListSectionItemType) {
+    func setup(_ item: LabelSettingListItemType) {
         textField.placeholder = LabelViewControllerConstants.title
     }
     

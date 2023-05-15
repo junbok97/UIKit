@@ -13,56 +13,56 @@ final class LabelModel {
         LabelSettingListSectionModel(
             sectionHeader: .code,
             items: [
-                .codeSectionItem
+                .code
             ]
         ),
         LabelSettingListSectionModel(
             sectionHeader: .text,
             items: [
-                .textSectionItem
+                .text
             ]
         ),
         LabelSettingListSectionModel(
             sectionHeader: .color,
             items: [
-                .colorSectionItem(colorType: .textColor),
-                .colorSectionItem(colorType: .backgroundColor)
+                .color(colorType: .textColor),
+                .color(colorType: .backgroundColor)
             ]
         ),
         LabelSettingListSectionModel(
             sectionHeader: .font,
             items: [
-                .fontSectionItem(fontType: .ultraLight),
-                .fontSectionItem(fontType: .thin),
-                .fontSectionItem(fontType: .light),
-                .fontSectionItem(fontType: .regular),
-                .fontSectionItem(fontType: .medium),
-                .fontSectionItem(fontType: .semibold),
-                .fontSectionItem(fontType: .bold),
-                .fontSectionItem(fontType: .heavy),
-                .fontSectionItem(fontType: .black)
+                .font(fontType: .ultraLight),
+                .font(fontType: .thin),
+                .font(fontType: .light),
+                .font(fontType: .regular),
+                .font(fontType: .medium),
+                .font(fontType: .semibold),
+                .font(fontType: .bold),
+                .font(fontType: .heavy),
+                .font(fontType: .black)
             ]
         ),
         LabelSettingListSectionModel(
             sectionHeader: .fontSize,
             items: [
-                .fontSizeSectionItem
+                .fontSize
             ]
         ),
         LabelSettingListSectionModel(
             sectionHeader: .alignment,
             items: [
-                .alignmentSectionItem(alignmentType: .natural),
-                .alignmentSectionItem(alignmentType: .left),
-                .alignmentSectionItem(alignmentType: .center),
-                .alignmentSectionItem(alignmentType: .right),
-                .alignmentSectionItem(alignmentType: .justified)
+                .alignment(alignmentType: .natural),
+                .alignment(alignmentType: .left),
+                .alignment(alignmentType: .center),
+                .alignment(alignmentType: .right),
+                .alignment(alignmentType: .justified)
             ]
         ),
         LabelSettingListSectionModel(
             sectionHeader: .numberOfLines,
             items: [
-                .numberOfLinesSectionItem
+                .numberOfLines
             ]
         )
     ]
@@ -86,4 +86,52 @@ final class LabelModel {
         label.numberOfLines = \(lines)
         """
     }
+    
+    static func makeCell(
+        _ sectionType: LabelSettingListSectionType,
+        _ viewModel: LabelViewModel,
+        _ tableView: UITableView,
+        _ indexPath: IndexPath,
+        _ sectionModelItem: LabelSettingListSectionModel.Item
+    ) -> DefaultCell {
+        switch sectionType {
+        case .code:
+            let cell = LabelCodeCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            cell.setup(sectionModelItem)
+            cell.bind(viewModel)
+            return cell
+        case .text:
+            let cell = LabelTextCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            cell.setup(sectionModelItem)
+            cell.bind(viewModel)
+            return cell
+        case .color:
+            let cell = LabelColorCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            cell.setup(sectionModelItem)
+            cell.bind(viewModel)
+            return cell
+        case .font:
+            let cell = LabelFontCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            cell.setup(sectionModelItem)
+            cell.bind(viewModel)
+            return cell
+        case .fontSize:
+            let cell = LabelFontSizeCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            cell.setup(sectionModelItem)
+            cell.bind(viewModel)
+            return cell
+        case .alignment:
+            let cell = LabelAlignmentCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            cell.setup(sectionModelItem)
+            cell.bind(viewModel)
+            return cell
+        case .numberOfLines:
+            let cell = LabelNumberOfLinesCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            cell.setup(sectionModelItem)
+            cell.bind(viewModel)
+            return cell
+        } // Switch
+    }
+
+    
 }
