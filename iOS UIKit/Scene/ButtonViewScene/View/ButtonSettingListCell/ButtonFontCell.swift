@@ -8,13 +8,17 @@
 import Foundation
 
 final class ButtonFontCell: DefaultFontCell, ButtonSettingListCellProtocol {
+    
     static override var cellId: String {
         ButtonFontCellConstants.cellId
     }
+    
+    private var titleType: ButtonTitleType = .title
     
     func setup(_ item: ButtonSettingListItemType) {
         guard case let .font(fontType: fontType) = item else { return }
         self.fontType = fontType
     }
+    
     func bind(_ viewModel: ButtonViewModel) { }
 }

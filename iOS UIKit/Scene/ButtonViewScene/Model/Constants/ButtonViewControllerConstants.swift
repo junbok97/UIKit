@@ -16,4 +16,6 @@ struct ButtonViewControllerConstants {
     static let targetButtonHorizonOffset: CGFloat = 100
     static let targetButtonVerticalOffset: CGFloat = 50
     
+    static let imageCellText: String = "Image Select"
+    
 }

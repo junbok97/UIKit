@@ -41,13 +41,29 @@ final class ButtonModel {
             ]
         ),
         ButtonSettingListSectionModel(
-            sectionHeader: .titleText,
+            sectionHeader: .textConfigure,
+            items: [
+                .textConfigure
+            ]
+        ),
+        ButtonSettingListSectionModel(
+            sectionHeader: .text,
             items: [
                 .text
             ]
         ),
         ButtonSettingListSectionModel(
-            sectionHeader: .titleFont,
+            sectionHeader: .textAlignment,
+            items: [
+                .buttonTitleAlignment(aligmentType: .automatic),
+                .buttonTitleAlignment(aligmentType: .leading),
+                .buttonTitleAlignment(aligmentType: .center),
+                .buttonTitleAlignment(aligmentType: .trailing)
+            ]
+        ),
+        
+        ButtonSettingListSectionModel(
+            sectionHeader: .textFont,
             items: [
                 .font(fontType: .ultraLight),
                 .font(fontType: .thin),
@@ -61,33 +77,7 @@ final class ButtonModel {
             ]
         ),
         ButtonSettingListSectionModel(
-            sectionHeader: .titleFontSize,
-            items: [
-                .fontSize
-            ]
-        ),
-        ButtonSettingListSectionModel(
-            sectionHeader: .subTitleText,
-            items: [
-                .text
-            ]
-        ),
-        ButtonSettingListSectionModel(
-            sectionHeader: .subtitleFont,
-            items: [
-                .font(fontType: .ultraLight),
-                .font(fontType: .thin),
-                .font(fontType: .light),
-                .font(fontType: .regular),
-                .font(fontType: .medium),
-                .font(fontType: .semibold),
-                .font(fontType: .bold),
-                .font(fontType: .heavy),
-                .font(fontType: .black)
-            ]
-        ),
-        ButtonSettingListSectionModel(
-            sectionHeader: .subtitleFontSize,
+            sectionHeader: .textFontSize,
             items: [
                 .fontSize
             ]
@@ -95,7 +85,7 @@ final class ButtonModel {
         ButtonSettingListSectionModel(
             sectionHeader: .image,
             items: [
-                .image
+                .image(text: ButtonViewControllerConstants.imageCellText)
             ]),
         ButtonSettingListSectionModel(
             sectionHeader: .color,
@@ -132,50 +122,32 @@ final class ButtonModel {
             cell.bind(viewModel)
             return cell
             
-        case .buttonType, .buttonStyle, .cornerStyle:
-            let cell = ButtonLabelCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+        case .textConfigure:
+            let cell = ButtonTextConfigureCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
             cell.setup(sectionModelItem)
             cell.bind(viewModel)
             return cell
             
-        case .titleText:
+        case .text:
             let cell = ButtonTextCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
             cell.setup(sectionModelItem)
             cell.bind(viewModel)
             return cell
             
-        case .titleFont:
+        case .textFont:
             let cell = ButtonFontCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
             cell.setup(sectionModelItem)
             cell.bind(viewModel)
             return cell
             
-        case .titleFontSize:
-            let cell = ButtonFontSizeCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
-            cell.setup(sectionModelItem)
-            cell.bind(viewModel)
-            return cell
-            
-        case .subTitleText:
-            let cell = ButtonTextCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
-            cell.setup(sectionModelItem)
-            cell.bind(viewModel)
-            return cell
-            
-        case .subtitleFont:
-            let cell = ButtonFontCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
-            cell.setup(sectionModelItem)
-            cell.bind(viewModel)
-            return cell
-            
-        case .subtitleFontSize:
+        case .textFontSize:
             let cell = ButtonFontSizeCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
             cell.setup(sectionModelItem)
             cell.bind(viewModel)
             return cell
             
         case .image:
-            let cell = ButtonLabelCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            let cell = ButtonImageCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
             cell.setup(sectionModelItem)
             cell.bind(viewModel)
             return cell
@@ -185,6 +157,12 @@ final class ButtonModel {
             cell.setup(sectionModelItem)
             cell.bind(viewModel)
             return cell
-        }
-    }
+            
+        default:
+            let cell = ButtonLabelCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            cell.setup(sectionModelItem)
+            cell.bind(viewModel)
+            return cell
+        } // Switch
+    } // makeCell
 }

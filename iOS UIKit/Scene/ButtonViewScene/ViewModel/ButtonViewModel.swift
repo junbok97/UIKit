@@ -13,9 +13,19 @@ import RxDataSources
 final class ButtonViewModel {
     
     // View -> ViewModel
+    let titleTextDidChangedTextField = PublishRelay<String>()
+    let titleFontDidSelected = PublishRelay<ObjectFontType>()
+    let titleFontSizeDidChangedFontSizeSlider = PublishRelay<Int>()
+    let titleAlignmentDidSelected = PublishRelay<ButtonTitleAlignmentType>()
+    let buttonColorDidSelected = PublishRelay<ObjectColor>()
     
+    
+    let buttonSettingListItemSelected = PublishRelay<ButtonSettingListItemType>()
+    
+
     // ViewModel -> View
     let buttonSettingListCellDatas: Driver<[ButtonSettingListSectionModel]>
+    
     
     init() {
         let buttonModel = ButtonModel()

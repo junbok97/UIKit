@@ -9,10 +9,14 @@ import UIKit
 import RxSwift
 
 final class ButtonTextCell: DefaultTextCell, ButtonSettingListCellProtocol {
+    
     static override var cellId: String {
         ButtonTextCellConstants.cellId
     }
     
-    func setup(_ item: ButtonSettingListItemType) {}
+    private var titleType: ButtonTitleType = .title
+    
+    func setup(_ item: ButtonSettingListItemType) { }
+    
     func bind(_ viewModel: ButtonViewModel) { }
 }

@@ -12,6 +12,8 @@ final class ButtonFontSizeCell: DefaultFontSizeCell, ButtonSettingListCellProtoc
         ButtonFontSizeCellConstants.cellId
     }
     
-    func setup(_ item: ButtonSettingListItemType) {}
+    private var titleType: ButtonTitleType = .title
+    
+    func setup(_ item: ButtonSettingListItemType) { }
     func bind(_ viewModel: ButtonViewModel) { }
 }

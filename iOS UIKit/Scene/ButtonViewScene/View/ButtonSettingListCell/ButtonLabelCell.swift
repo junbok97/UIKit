@@ -20,6 +20,8 @@ final class ButtonLabelCell: DefaultLabelCell, ButtonSettingListCellProtocol {
             setupLabelText(buttonStyle.rawValue)
         case let .corner(cornerStyleType: cornerStyleType):
             setupLabelText(cornerStyleType.rawValue)
+        case let .buttonTitleAlignment(aligmentType: alignmentType):
+            setupLabelText(alignmentType.rawValue)
         default:
             return
         }

@@ -21,6 +21,7 @@
 		CB3A90A82A12163F001CC138 /* ButtonSettingListCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A90A72A12163F001CC138 /* ButtonSettingListCellProtocol.swift */; };
 		CB3A90AB2A121CD8001CC138 /* DefaultSettingListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A90AA2A121CD8001CC138 /* DefaultSettingListHeaderView.swift */; };
 		CB3A90AD2A12200D001CC138 /* DefaultSettingListHeaderViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A90AC2A12200D001CC138 /* DefaultSettingListHeaderViewConstants.swift */; };
+		CB3A90AF2A123078001CC138 /* ButtonTitleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A90AE2A123078001CC138 /* ButtonTitleType.swift */; };
 		CB421FB429E5AA670014DC4F /* LabelFontCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB421FB329E5AA670014DC4F /* LabelFontCell.swift */; };
 		CB421FB829E5ABAA0014DC4F /* LabelViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB421FB729E5ABAA0014DC4F /* LabelViewControllerConstants.swift */; };
 		CB421FBA29E5ADDC0014DC4F /* ObjectColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB421FB929E5ADDC0014DC4F /* ObjectColorType.swift */; };
@@ -98,6 +99,10 @@
 		CBD2FC7E2A0B6DBF008033CF /* LabelCodeCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2FC7D2A0B6DBF008033CF /* LabelCodeCellConstants.swift */; };
 		CBDE6E1E29E54B170068BA0A /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE6E1D29E54B170068BA0A /* LabelViewController.swift */; };
 		CBDE6E6529E5599B0068BA0A /* LabelColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE6E6429E5599B0068BA0A /* LabelColorCell.swift */; };
+		CBDF6F3D2A126E8700949F7B /* ButtonTextConfigureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDF6F3C2A126E8700949F7B /* ButtonTextConfigureCell.swift */; };
+		CBDF6F3F2A126EC700949F7B /* ButtonTextConfigureCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDF6F3E2A126EC700949F7B /* ButtonTextConfigureCellConstants.swift */; };
+		CBEA97322A127692006D95E3 /* ButtonImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEA97312A127692006D95E3 /* ButtonImageCell.swift */; };
+		CBEA97342A12770F006D95E3 /* ButtonImageCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEA97332A12770F006D95E3 /* ButtonImageCellConstants.swift */; };
 		CBF4396B29C1C014003E85B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4396A29C1C014003E85B3 /* AppDelegate.swift */; };
 		CBF4396D29C1C014003E85B3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4396C29C1C014003E85B3 /* SceneDelegate.swift */; };
 		CBF4397429C1C015003E85B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBF4397329C1C015003E85B3 /* Assets.xcassets */; };
@@ -121,6 +126,7 @@
 		CB3A90A72A12163F001CC138 /* ButtonSettingListCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSettingListCellProtocol.swift; sourceTree = "<group>"; };
 		CB3A90AA2A121CD8001CC138 /* DefaultSettingListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSettingListHeaderView.swift; sourceTree = "<group>"; };
 		CB3A90AC2A12200D001CC138 /* DefaultSettingListHeaderViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSettingListHeaderViewConstants.swift; sourceTree = "<group>"; };
+		CB3A90AE2A123078001CC138 /* ButtonTitleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTitleType.swift; sourceTree = "<group>"; };
 		CB421FB329E5AA670014DC4F /* LabelFontCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFontCell.swift; sourceTree = "<group>"; };
 		CB421FB729E5ABAA0014DC4F /* LabelViewControllerConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewControllerConstants.swift; sourceTree = "<group>"; };
 		CB421FB929E5ADDC0014DC4F /* ObjectColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectColorType.swift; sourceTree = "<group>"; };
@@ -198,6 +204,10 @@
 		CBD2FC7D2A0B6DBF008033CF /* LabelCodeCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCodeCellConstants.swift; sourceTree = "<group>"; };
 		CBDE6E1D29E54B170068BA0A /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
 		CBDE6E6429E5599B0068BA0A /* LabelColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelColorCell.swift; sourceTree = "<group>"; };
+		CBDF6F3C2A126E8700949F7B /* ButtonTextConfigureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTextConfigureCell.swift; sourceTree = "<group>"; };
+		CBDF6F3E2A126EC700949F7B /* ButtonTextConfigureCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTextConfigureCellConstants.swift; sourceTree = "<group>"; };
+		CBEA97312A127692006D95E3 /* ButtonImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonImageCell.swift; sourceTree = "<group>"; };
+		CBEA97332A12770F006D95E3 /* ButtonImageCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonImageCellConstants.swift; sourceTree = "<group>"; };
 		CBF4396A29C1C014003E85B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBF4396C29C1C014003E85B3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CBF4397329C1C015003E85B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -263,7 +273,9 @@
 		CB1BE67C2A0CE76100485B4F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CBBEBC262A0F9ABC00A0DFE0 /* MainViewController */,
+				CB7CA7852A03B28000574395 /* MainModel.swift */,
+				CB421FB129E5A9040014DC4F /* ObjectListCell */,
+				CBBEBC262A0F9ABC00A0DFE0 /* Constants */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -287,7 +299,6 @@
 		CB1BE6802A0CE7C000485B4F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CB7024B32A10E42F006194FB /* LabelSettingListCellProtocol.swift */,
 				CBBEBC312A0FC90200A0DFE0 /* LabelSettingListSectionModel.swift */,
 				CB4D1EC72A0D1691000EC05C /* LabelModel.swift */,
 				CB7024C62A10EF23006194FB /* Constatnts */,
@@ -395,7 +406,6 @@
 			isa = PBXGroup;
 			children = (
 				CBC6074429C1D09D008B6BA9 /* Object.swift */,
-				CBC323822A0604DD00C5B6D1 /* ObjectListCellConstants.swift */,
 				CBC323962A06BF5100C5B6D1 /* ObjectSectionModel.swift */,
 			);
 			path = ObjectListCell;
@@ -528,6 +538,7 @@
 				CB5715142A0A44B700365646 /* ButtonCornerStyleType.swift */,
 				CB5715162A0A468600365646 /* ButtonImagePlacementType.swift */,
 				CB02771B2A11FDEE00FA8C15 /* ButtonTitleAlignmentType.swift */,
+				CB3A90AE2A123078001CC138 /* ButtonTitleType.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -542,6 +553,8 @@
 				CB7024DA2A10F690006194FB /* ButtonFontSizeCellConstants.swift */,
 				CB7024DE2A10F712006194FB /* ButtonColorCellConstants.swift */,
 				CB3A90A52A121361001CC138 /* ButtonLabelCellConstants.swift */,
+				CBDF6F3E2A126EC700949F7B /* ButtonTextConfigureCellConstants.swift */,
+				CBEA97332A12770F006D95E3 /* ButtonImageCellConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -555,6 +568,8 @@
 				CB7024D62A10F651006194FB /* ButtonFontSizeCell.swift */,
 				CB7024DC2A10F6FA006194FB /* ButtonColorCell.swift */,
 				CB3A90A32A121348001CC138 /* ButtonLabelCell.swift */,
+				CBDF6F3C2A126E8700949F7B /* ButtonTextConfigureCell.swift */,
+				CBEA97312A127692006D95E3 /* ButtonImageCell.swift */,
 			);
 			path = ButtonSettingListCell;
 			sourceTree = "<group>";
@@ -614,7 +629,6 @@
 				CB0277192A11FACE00FA8C15 /* ButtonSettingListSectionType.swift */,
 				CB7024CA2A10EFE3006194FB /* Constants */,
 				CB7024C92A10EFDC006194FB /* Type */,
-				CB3A90A72A12163F001CC138 /* ButtonSettingListCellProtocol.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -650,14 +664,13 @@
 			path = ButtonViewScene;
 			sourceTree = "<group>";
 		};
-		CBBEBC262A0F9ABC00A0DFE0 /* MainViewController */ = {
+		CBBEBC262A0F9ABC00A0DFE0 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				CBC323822A0604DD00C5B6D1 /* ObjectListCellConstants.swift */,
 				CB80B1DC29E53F3300298F3C /* MainViewControllerConstants.swift */,
-				CB7CA7852A03B28000574395 /* MainModel.swift */,
-				CB421FB129E5A9040014DC4F /* ObjectListCell */,
 			);
-			path = MainViewController;
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		CBC323802A0604BE00C5B6D1 /* ObjectListCell */ = {
@@ -676,6 +689,8 @@
 				CB5715042A0A2A5F00365646 /* UICollectionViewCellRegister.swift */,
 				CB80B1D429E53B0000298F3C /* CoordinatorProtocol.swift */,
 				CBAAA2452A08CCB600773E0C /* ViewModelProtocol.swift */,
+				CB7024B32A10E42F006194FB /* LabelSettingListCellProtocol.swift */,
+				CB3A90A72A12163F001CC138 /* ButtonSettingListCellProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -853,6 +868,7 @@
 				CB421FBA29E5ADDC0014DC4F /* ObjectColorType.swift in Sources */,
 				CB421FB429E5AA670014DC4F /* LabelFontCell.swift in Sources */,
 				CBD2FC7E2A0B6DBF008033CF /* LabelCodeCellConstants.swift in Sources */,
+				CBEA97342A12770F006D95E3 /* ButtonImageCellConstants.swift in Sources */,
 				CBC6073F29C1C733008B6BA9 /* UITableViewCellReigster.swift in Sources */,
 				CB7024B82A10E614006194FB /* DefaultTextCellConstants.swift in Sources */,
 				CB7024DF2A10F712006194FB /* ButtonColorCellConstants.swift in Sources */,
@@ -883,6 +899,7 @@
 				CB80B1D729E53B7B00298F3C /* MainCoordinator.swift in Sources */,
 				CB5715032A0A232400365646 /* SFSymbolsViewControllerConstants.swift in Sources */,
 				CB6613C32A093A9700515AED /* LabelNumberOfLinesCellConstants.swift in Sources */,
+				CBEA97322A127692006D95E3 /* ButtonImageCell.swift in Sources */,
 				CB33D35429E82EB600FDAAAF /* LabelViewModel.swift in Sources */,
 				CB7024C42A10EC5D006194FB /* DefaultFontSizeCellConstants.swift in Sources */,
 				CB57150A2A0A2AC300365646 /* SFSymbolsCollectionViewCellConstants.swift in Sources */,
@@ -918,6 +935,7 @@
 				CB33D35929E83A5400FDAAAF /* LabelAlignmentCell.swift in Sources */,
 				CB421FB829E5ABAA0014DC4F /* LabelViewControllerConstants.swift in Sources */,
 				CB7024D52A10F647006194FB /* ButtonFontCell.swift in Sources */,
+				CB3A90AF2A123078001CC138 /* ButtonTitleType.swift in Sources */,
 				CB7024BE2A10EA84006194FB /* DefaultFontCell.swift in Sources */,
 				CB7024CD2A10F1DC006194FB /* ButtonCodeCell.swift in Sources */,
 				CBAAA25A2A08D6BF00773E0C /* LabelFontSizeCellConstants.swift in Sources */,
@@ -925,6 +943,7 @@
 				CBDE6E1E29E54B170068BA0A /* LabelViewController.swift in Sources */,
 				CB3A90A02A120E08001CC138 /* DefaultLabelCellConstants.swift in Sources */,
 				CB02771A2A11FACE00FA8C15 /* ButtonSettingListSectionType.swift in Sources */,
+				CBDF6F3D2A126E8700949F7B /* ButtonTextConfigureCell.swift in Sources */,
 				CB7024B12A10E374006194FB /* DefaultCodeCellConstants.swift in Sources */,
 				CB80B1D529E53B0000298F3C /* CoordinatorProtocol.swift in Sources */,
 				CB7024D12A10F3E4006194FB /* ButtonTextCell.swift in Sources */,
@@ -937,6 +956,7 @@
 				CB3A90A42A121348001CC138 /* ButtonLabelCell.swift in Sources */,
 				CB9A9C892A10C8C90065F5A5 /* DefaultViewControllerConstants.swift in Sources */,
 				CB7024C22A10EC35006194FB /* DefaultFontSizeCell.swift in Sources */,
+				CBDF6F3F2A126EC700949F7B /* ButtonTextConfigureCellConstants.swift in Sources */,
 				CBAAA2522A08D61900773E0C /* LabelTextCellConstants.swift in Sources */,
 				CB5714FF2A0A22D300365646 /* SFSymbolsViewController.swift in Sources */,
 				CB4D1EC82A0D1691000EC05C /* LabelModel.swift in Sources */,

@@ -68,7 +68,7 @@ final class LabelViewController: DefaultListViewController {
             .map { indexPath in
                 dataSource[indexPath.section].items[indexPath.row]
             }
-            .bind(to: viewModel.didItemSelectedLabelSettingList)
+            .bind(onNext: viewModel.labelSettingListItemSelected)
             .disposed(by: disposeBag)
         
         settingList

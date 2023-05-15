@@ -31,6 +31,7 @@ final class ButtonViewController: DefaultListViewController {
         config.baseBackgroundColor = .tintColor
         config.title = "Config Title"
         config.titleAlignment = .leading
+        
         config.subtitle = "Config SubTitle"
         let transformer = UIConfigurationTextAttributesTransformer { incoming in
             var outgoing = incoming
@@ -38,10 +39,9 @@ final class ButtonViewController: DefaultListViewController {
             outgoing.font = UIFont.boldSystemFont(ofSize: 20)
             return outgoing
         }
+        config.titleTextAttributesTransformer = transformer
         config.subtitleTextAttributesTransformer = transformer
-//        button.configuration = config
-        
-        button.titleLabel?.text = "text"
+        button.configuration = config
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -88,10 +88,12 @@ final class ButtonViewController: DefaultListViewController {
 private extension ButtonViewController {
     func settingListConfigure() {
         ButtonCodeCell.register(tableView: settingList)
+        ButtonTextConfigureCell.register(tableView: settingList)
         ButtonTextCell.register(tableView: settingList)
         ButtonFontCell.register(tableView: settingList)
         ButtonFontSizeCell.register(tableView: settingList)
         ButtonColorCell.register(tableView: settingList)
+        ButtonImageCell.register(tableView: settingList)
         ButtonLabelCell.register(tableView: settingList)
         DefaultSettingListHeaderView.register(tableView: settingList)
     }

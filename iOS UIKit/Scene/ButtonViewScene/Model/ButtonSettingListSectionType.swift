@@ -12,12 +12,11 @@ enum ButtonSettingListSectionType: String {
     case code = "Code"
     case buttonType = "Button Type"
     case buttonStyle = "Button Style"
-    case titleText = "Title Text"
-    case titleFont = "Title Font"
-    case titleFontSize = "Title FontSize"
-    case subTitleText = "SubTitle Text"
-    case subtitleFont = "SubTitle Font"
-    case subtitleFontSize = "SubTitle FontSize"
+    case textConfigure = "Text Configure"
+    case text = "Text"
+    case textAlignment = "Text Alignment"
+    case textFont = "Text Font"
+    case textFontSize = "Text FontSize"
     case image = "Image"
     case color = "Color"
     case cornerStyle = "Corner Style"
@@ -27,12 +26,13 @@ enum ButtonSettingListItemType {
     case code
     case buttonType(buttonType: ButtonType)
     case buttonStyle(buttonStyle: ButtonStyleType)
+    case textConfigure
     case text
     case font(fontType: ObjectFontType)
     case fontSize
     case buttonTitleAlignment(aligmentType: ButtonTitleAlignmentType)
     case color(colorType: ObjectColorType)
-    case image
+    case image(text: String)
     case corner(cornerStyleType: ButtonCornerStyleType)
 }
 

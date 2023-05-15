@@ -15,18 +15,18 @@ final class LabelViewModel {
     private let disposeBag = DisposeBag()
     
     // View -> ViewModel
-    let codeCellCodeLabelText: Driver<String>
     let textCellDidChangedTextField = PublishRelay<String>()
     let colorCellDidSelected = PublishRelay<ObjectColor>()
     let fontCellDidSelected = PublishRelay<ObjectFontType>()
     let fontSizeCellDidChangedFontSizeSlider = PublishRelay<Int>()
-    let fontSizeCellSliderText: Driver<Int>
     let alignmentCellDidSelected = PublishRelay<ObjectAlignmentType>()
     let numberOfLinesCellDidChangedLineStepper = PublishRelay<Int>()
-    let numberOfLinesCellStepperValueLabelText: Driver<Int>
     let didItemSelectedLabelSettingList = PublishRelay<LabelSettingListItemType>()
     
     // ViewModel -> View
+    let codeCellCodeLabelText: Driver<String>
+    let fontSizeCellSliderText: Driver<Int>
+    let numberOfLinesCellStepperValueLabelText: Driver<Int>
     let targetText: Driver<String>
     let targetFont: Driver<UIFont>
     let targetColor: Driver<ObjectColor>
@@ -38,23 +38,7 @@ final class LabelViewModel {
         let labelModel = LabelModel()
         labelSettingListCellDatas = labelModel.labelSettingListCellDatas
             .asDriver(onErrorDriveWith: .empty())
-              
-        didItemSelectedLabelSettingList
-            .compactMap { labelSettingListSectionItemType -> ObjectFontType? in
-                guard case let .font(fontType) = labelSettingListSectionItemType else { return nil }
-                return fontType
-            }
-            .bind(to: fontCellDidSelected)
-            .disposed(by: disposeBag)
 
-        didItemSelectedLabelSettingList
-            .compactMap { labelSettingListSectionItemType -> ObjectAlignmentType? in
-                guard case let .alignment(alignmentType) = labelSettingListSectionItemType else { return nil }
-                return alignmentType
-            }
-            .bind(to: alignmentCellDidSelected)
-            .disposed(by: disposeBag)
-              
         targetText = textCellDidChangedTextField
             .asDriver(onErrorDriveWith: .empty())
         
@@ -109,6 +93,17 @@ final class LabelViewModel {
         codeCellCodeLabelText = Observable
             .combineLatest(textCode, textColorCode, backgroundColorCode, fontCode, alignmentCode, numberOfLinesCode, resultSelector: labelModel.codeLabelText)
             .asDriver(onErrorDriveWith: .empty())
+    }
+    
+    func labelSettingListItemSelected(_ itemType: LabelSettingListItemType) {
+        switch itemType {
+        case let .alignment(alignmentType: alignmentType):
+            alignmentCellDidSelected.accept(alignmentType)
+        case let .font(fontType: fontType):
+            fontCellDidSelected.accept(fontType)
+        default:
+            return
+        }
     }
     
     func labelSettingListDataSource() -> RxTableViewSectionedReloadDataSource<LabelSettingListSectionModel> {
