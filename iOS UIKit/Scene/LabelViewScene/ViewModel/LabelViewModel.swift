@@ -25,7 +25,6 @@ final class LabelViewModel {
     
     // ViewModel -> View
     let codeCellCodeLabelText: Driver<String>
-    let fontSizeCellSliderText: Driver<Int>
     let numberOfLinesCellStepperValueLabelText: Driver<Int>
     let targetText: Driver<String>
     let targetFont: Driver<UIFont>
@@ -51,9 +50,6 @@ final class LabelViewModel {
             }
             .asDriver(onErrorDriveWith: .empty())
         
-        fontSizeCellSliderText = fontSizeCellDidChangedFontSizeSlider
-            .asDriver(onErrorDriveWith: .empty())
-        
         targetAlignment = alignmentCellDidSelected
             .asDriver(onErrorDriveWith: .empty())
         
@@ -67,7 +63,7 @@ final class LabelViewModel {
             .startWith(LabelViewControllerConstants.textCode)
         
         let textColorCode = colorCellDidSelected
-            .filter { $0.colorType == .textColor }
+            .filter { $0.colorType == .titleColor }
             .map { "\($0.color)" }
             .startWith(LabelViewControllerConstants.textColorCode)
         

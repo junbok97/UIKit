@@ -17,5 +17,12 @@ final class ButtonColorCell: DefaultColorCell, ButtonSettingListCellProtocol {
         self.colorType = colorType
     }
     
-    func bind(_ viewModel: ButtonViewModel) { }
+    func bind(_ viewModel: ButtonViewModel) {
+        selectedColorSubject
+            .map { color in
+                ObjectColor(colorType: self.colorType, color: color)
+            }
+            .subscribe(onNext: viewModel.colorCellDidSelected)
+            .disposed(by: disposeBag)
+    }
 }

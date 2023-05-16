@@ -16,9 +16,10 @@ final class ButtonFontCell: DefaultFontCell, ButtonSettingListCellProtocol {
     private var titleType: ButtonTitleType = .title
     
     func setup(_ item: ButtonSettingListItemType) {
-        guard case let .font(fontType: fontType) = item else { return }
+        guard case let .font(titleType: titleType, fontType: fontType) = item else { return }
         self.fontType = fontType
+        self.titleType = titleType
     }
     
-    func bind(_ viewModel: ButtonViewModel) { }
+    func bind(_ viewModel: ButtonViewModel) {}
 }

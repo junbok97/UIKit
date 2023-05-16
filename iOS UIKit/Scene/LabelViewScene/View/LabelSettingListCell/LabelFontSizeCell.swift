@@ -23,10 +23,6 @@ final class LabelFontSizeCell: DefaultFontSizeCell, LabelSettingListCellProtocol
             .distinctUntilChanged()
             .bind(to: viewModel.fontSizeCellDidChangedFontSizeSlider)
             .disposed(by: disposeBag)
-        
-        viewModel.fontSizeCellSliderText
-            .drive(self.rx.sliderText)
-            .disposed(by: disposeBag)
     }
     
 }

@@ -94,6 +94,10 @@ private extension DefaultFontSizeCell {
         backgroundColor = .systemBackground
         selectionStyle = .none
         fontSizeSlider.setValue(DefaultFontSizeCellConstants.sliderValue, animated: true)
+        fontSizeSlider.rx.value
+            .compactMap { Int($0) }
+            .bind(to: self.rx.sliderText)
+            .disposed(by: disposeBag)
     }
     
     func layout() {

@@ -117,6 +117,10 @@ final class LabelViewController: DefaultListViewController {
     override func didTappedLeftBarButton() {
         coordinator?.finish()
     }
+    
+    deinit {
+        print("LabelViewController Deinit")
+    }
 }
 
 private extension LabelViewController {
@@ -148,7 +152,7 @@ extension Reactive where Base: LabelViewController {
     var targetColor: Binder<ObjectColor> {
         return Binder(base) { base, labelColor in
             switch labelColor.colorType {
-            case .textColor:
+            case .titleColor:
                 base.targetLabel.textColor = labelColor.color
             case .backgroundColor:
                 base.targetLabel.backgroundColor = labelColor.color

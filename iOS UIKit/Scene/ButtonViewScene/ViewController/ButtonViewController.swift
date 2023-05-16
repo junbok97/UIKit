@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 import RxDataSources
 
 final class ButtonViewController: DefaultListViewController {
@@ -25,23 +26,8 @@ final class ButtonViewController: DefaultListViewController {
         return viewController
     }
     
-    let targetButton: UIButton = {
+    lazy var targetButton: UIButton = {
         let button = UIButton(configuration: .filled())
-        var config = UIButton.Configuration.filled()
-        config.baseBackgroundColor = .tintColor
-        config.title = "Config Title"
-        config.titleAlignment = .leading
-        
-        config.subtitle = "Config SubTitle"
-        let transformer = UIConfigurationTextAttributesTransformer { incoming in
-            var outgoing = incoming
-            outgoing.foregroundColor = UIColor.black
-            outgoing.font = UIFont.boldSystemFont(ofSize: 20)
-            return outgoing
-        }
-        config.titleTextAttributesTransformer = transformer
-        config.subtitleTextAttributesTransformer = transformer
-        button.configuration = config
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -59,8 +45,19 @@ final class ButtonViewController: DefaultListViewController {
             .drive(settingList.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
+        settingList.rx.itemSelected
+            .map { indexPath in
+                dataSource[indexPath.section].items[indexPath.row]
+            }
+            .bind(onNext: viewModel.buttonSettingListItemSelected)
+            .disposed(by: disposeBag)
+        
         settingList
             .rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        
+        viewModel.targetButtonConfiguration
+            .drive(self.rx.targetConfig)
             .disposed(by: disposeBag)
         
     }
@@ -82,20 +79,23 @@ final class ButtonViewController: DefaultListViewController {
             targetButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -ButtonViewControllerConstants.targetButtonVerticalOffset)
         ])
     }
+        
+    deinit {
+        print("ButtonViewController Deinit")
+    }
     
 }
 
 private extension ButtonViewController {
     func settingListConfigure() {
         ButtonCodeCell.register(tableView: settingList)
-        ButtonTextConfigureCell.register(tableView: settingList)
-        ButtonTextCell.register(tableView: settingList)
         ButtonFontCell.register(tableView: settingList)
-        ButtonFontSizeCell.register(tableView: settingList)
         ButtonColorCell.register(tableView: settingList)
         ButtonImageCell.register(tableView: settingList)
         ButtonLabelCell.register(tableView: settingList)
         DefaultSettingListHeaderView.register(tableView: settingList)
+        ButtonTextCell.register(tableView: settingList)
+        ButtonFontSizeCell.register(tableView: settingList)
     }
 }
 
@@ -105,4 +105,24 @@ extension ButtonViewController: UITableViewDelegate {
         headerView.setupHeaderTitle(dataSource[section].sectionHeader.rawValue)
         return headerView
     }
+}
+
+extension Reactive where Base: ButtonViewController {
+    var targetColor: Binder<ObjectColor> {
+        return Binder(base) { base, buttonColor in
+            switch buttonColor.colorType {
+            case .tintColor:
+                base.targetButton.tintColor = buttonColor.color
+            default:
+                return
+            }
+        }
+    }
+    
+    var targetConfig: Binder<UIButton.Configuration> {
+        return Binder(base) { base, config in
+            base.targetButton.configuration = config
+        }
+    }
+
 }

@@ -9,64 +9,8 @@ import Foundation
 import RxSwift
 
 final class LabelModel {
-    private let labelSettingListModels: [LabelSettingListSectionModel] = [
-        LabelSettingListSectionModel(
-            sectionHeader: .code,
-            items: [
-                .code
-            ]
-        ),
-        LabelSettingListSectionModel(
-            sectionHeader: .text,
-            items: [
-                .text
-            ]
-        ),
-        LabelSettingListSectionModel(
-            sectionHeader: .color,
-            items: [
-                .color(colorType: .textColor),
-                .color(colorType: .backgroundColor)
-            ]
-        ),
-        LabelSettingListSectionModel(
-            sectionHeader: .font,
-            items: [
-                .font(fontType: .ultraLight),
-                .font(fontType: .thin),
-                .font(fontType: .light),
-                .font(fontType: .regular),
-                .font(fontType: .medium),
-                .font(fontType: .semibold),
-                .font(fontType: .bold),
-                .font(fontType: .heavy),
-                .font(fontType: .black)
-            ]
-        ),
-        LabelSettingListSectionModel(
-            sectionHeader: .fontSize,
-            items: [
-                .fontSize
-            ]
-        ),
-        LabelSettingListSectionModel(
-            sectionHeader: .alignment,
-            items: [
-                .alignment(alignmentType: .natural),
-                .alignment(alignmentType: .left),
-                .alignment(alignmentType: .center),
-                .alignment(alignmentType: .right),
-                .alignment(alignmentType: .justified)
-            ]
-        ),
-        LabelSettingListSectionModel(
-            sectionHeader: .numberOfLines,
-            items: [
-                .numberOfLines
-            ]
-        )
-    ]
-    lazy var labelSettingListCellDatas = Observable.just(labelSettingListModels)
+    
+    lazy var labelSettingListCellDatas = Observable.just(LabelSettingListData.settingListDatas)
     
     func codeLabelText(
         _ text: String,
@@ -86,11 +30,7 @@ final class LabelModel {
         label.numberOfLines = \(lines)
         """
     }
-    
-    func itemSelected(_ itemType: LabelSettingListItemType) {
         
-    }
-    
     static func makeCell(
         _ sectionType: LabelSettingListSectionType,
         _ viewModel: LabelViewModel,
@@ -136,6 +76,4 @@ final class LabelModel {
             return cell
         } // Switch
     }
-
-    
 }

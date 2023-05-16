@@ -17,7 +17,7 @@ class DefaultColorCell: DefaultCell {
     
     let selectedColorSubject = ReplaySubject<UIColor>.create(bufferSize: 1)
     
-    var colorType: ObjectColorType = .textColor {
+    var colorType: ObjectColorType = .titleColor {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
