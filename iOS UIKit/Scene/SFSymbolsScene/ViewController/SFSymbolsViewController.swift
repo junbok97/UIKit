@@ -63,6 +63,10 @@ final class SFSymbolsViewController: UIViewController {
         
     }
     
+    deinit {
+        print("SFSymbolsViewController Deinit")
+    }
+    
 }
 
 private extension SFSymbolsViewController {

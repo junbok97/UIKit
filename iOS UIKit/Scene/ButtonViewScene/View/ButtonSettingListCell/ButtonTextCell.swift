@@ -27,8 +27,7 @@ final class ButtonTextCell: DefaultTextCell, ButtonSettingListCellProtocol {
             .map {
                 ButtonText(titleType: self.titleType, text: $0)
             }
-            .bind(to: viewModel.textDidChangedTextField)
+            .bind(to: viewModel.buttonConfigurationModel.textDidChangedTextField)
             .disposed(by: disposeBag)
     }
 }
-

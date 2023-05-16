@@ -28,6 +28,7 @@ final class ButtonViewController: DefaultListViewController {
     
     lazy var targetButton: UIButton = {
         let button = UIButton(configuration: .filled())
+        
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -59,7 +60,6 @@ final class ButtonViewController: DefaultListViewController {
         viewModel.targetButtonConfiguration
             .drive(self.rx.targetConfig)
             .disposed(by: disposeBag)
-        
     }
     
     override func attribute() {

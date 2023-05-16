@@ -30,4 +30,8 @@ final class SFSymbolsCoordinator: SFSymbolsCoordinatorProtocol {
     func finish() {
         parentCoordinator?.finishChild(self)
     }
+    
+    deinit {
+        print("SFSymbolsCoordinator Deinit")
+    }
 }

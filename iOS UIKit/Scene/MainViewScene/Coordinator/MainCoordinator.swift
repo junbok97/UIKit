@@ -45,4 +45,7 @@ final class MainCoordinator: MainCoordinatorProtocol {
         child.start()
     }
     
+    deinit {
+        print("MainCoordinator Deinit")
+    }
 }

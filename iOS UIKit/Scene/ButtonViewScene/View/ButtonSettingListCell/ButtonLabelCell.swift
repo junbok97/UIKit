@@ -14,14 +14,14 @@ final class ButtonLabelCell: DefaultLabelCell, ButtonSettingListCellProtocol {
     
     func setup(_ item: ButtonSettingListItemType) {
         switch item {
-        case let .buttonType(buttonType: buttonType):
-            setupLabelText(buttonType.rawValue)
         case let .buttonStyle(buttonStyle: buttonStyle):
             setupLabelText(buttonStyle.rawValue)
         case let .corner(cornerStyleType: cornerStyleType):
             setupLabelText(cornerStyleType.rawValue)
         case let .buttonTitleAlignment(aligmentType: alignmentType):
             setupLabelText(alignmentType.rawValue)
+        case let .imagePlacement(placement: placement):
+            setupLabelText(placement.rawValue)
         default:
             return
         }

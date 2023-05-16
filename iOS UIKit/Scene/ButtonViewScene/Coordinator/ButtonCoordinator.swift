@@ -30,4 +30,7 @@ final class ButtonCoordinator: ButtonCoordinatorProtocol {
         parentCoordinator?.finishChild(self)
     }
     
+    deinit {
+        print("ButtonCoordinator Deinit")
+    }
 }

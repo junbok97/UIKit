@@ -31,7 +31,6 @@
 		CB4D1EDE2A0D180A000EC05C /* ObjectColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4D1EDD2A0D180A000EC05C /* ObjectColor.swift */; };
 		CB5714D62A0A098F00365646 /* ButtonViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5714D52A0A098F00365646 /* ButtonViewControllerConstants.swift */; };
 		CB5714E32A0A0E6D00365646 /* ButtonStyleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5714E22A0A0E6D00365646 /* ButtonStyleType.swift */; };
-		CB5714E52A0A103900365646 /* ButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5714E42A0A103900365646 /* ButtonType.swift */; };
 		CB5714FF2A0A22D300365646 /* SFSymbolsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5714FE2A0A22D300365646 /* SFSymbolsViewController.swift */; };
 		CB5715032A0A232400365646 /* SFSymbolsViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5715022A0A232400365646 /* SFSymbolsViewControllerConstants.swift */; };
 		CB5715052A0A2A5F00365646 /* UICollectionViewCellRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5715042A0A2A5F00365646 /* UICollectionViewCellRegister.swift */; };
@@ -139,7 +138,6 @@
 		CB4D1EDD2A0D180A000EC05C /* ObjectColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectColor.swift; sourceTree = "<group>"; };
 		CB5714D52A0A098F00365646 /* ButtonViewControllerConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewControllerConstants.swift; sourceTree = "<group>"; };
 		CB5714E22A0A0E6D00365646 /* ButtonStyleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyleType.swift; sourceTree = "<group>"; };
-		CB5714E42A0A103900365646 /* ButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonType.swift; sourceTree = "<group>"; };
 		CB5714FE2A0A22D300365646 /* SFSymbolsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolsViewController.swift; sourceTree = "<group>"; };
 		CB5715022A0A232400365646 /* SFSymbolsViewControllerConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolsViewControllerConstants.swift; sourceTree = "<group>"; };
 		CB5715042A0A2A5F00365646 /* UICollectionViewCellRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCellRegister.swift; sourceTree = "<group>"; };
@@ -541,7 +539,6 @@
 			isa = PBXGroup;
 			children = (
 				CB5714E22A0A0E6D00365646 /* ButtonStyleType.swift */,
-				CB5714E42A0A103900365646 /* ButtonType.swift */,
 				CB5715142A0A44B700365646 /* ButtonCornerStyleType.swift */,
 				CB5715162A0A468600365646 /* ButtonImagePlacementType.swift */,
 				CB02771B2A11FDEE00FA8C15 /* ButtonTitleAlignmentType.swift */,
@@ -623,7 +620,6 @@
 			isa = PBXGroup;
 			children = (
 				CB9A9C8C2A10CCB70065F5A5 /* ButtonViewModel.swift */,
-				CBBBC8A22A137F1E00213A2A /* ButtonConfigurationModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -631,11 +627,9 @@
 		CB9A9CA32A10DD8E0065F5A5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CBBBC88A2A134D8400213A2A /* ButtonSettingListData.swift */,
+				CBBBC8A22A137F1E00213A2A /* ButtonConfigurationModel.swift */,
 				CB0277172A11FAAE00FA8C15 /* ButtonModel.swift */,
-				CB0277192A11FACE00FA8C15 /* ButtonSettingListSectionType.swift */,
-				CBBBC88E2A13706E00213A2A /* ButtonText.swift */,
-				CBBBC8902A13707800213A2A /* ButtonFontSize.swift */,
+				CBBBC8A42A1381B600213A2A /* Entity */,
 				CB7024CA2A10EFE3006194FB /* Constants */,
 				CB7024C92A10EFDC006194FB /* Type */,
 			);
@@ -671,6 +665,17 @@
 				CB9A9CA32A10DD8E0065F5A5 /* Model */,
 			);
 			path = ButtonViewScene;
+			sourceTree = "<group>";
+		};
+		CBBBC8A42A1381B600213A2A /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				CBBBC88A2A134D8400213A2A /* ButtonSettingListData.swift */,
+				CB0277192A11FACE00FA8C15 /* ButtonSettingListSectionType.swift */,
+				CBBBC88E2A13706E00213A2A /* ButtonText.swift */,
+				CBBBC8902A13707800213A2A /* ButtonFontSize.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		CBBEBC262A0F9ABC00A0DFE0 /* Constants */ = {
@@ -897,7 +902,6 @@
 				CB5715112A0A359900365646 /* SFSymbolsViewModel.swift in Sources */,
 				CBBBC89B2A137CCB00213A2A /* ButtonTextCell.swift in Sources */,
 				CBAAA2462A08CCB600773E0C /* ViewModelProtocol.swift in Sources */,
-				CB5714E52A0A103900365646 /* ButtonType.swift in Sources */,
 				CB7CA7842A03B16C00574395 /* MainViewModel.swift in Sources */,
 				CB4D1EDE2A0D180A000EC05C /* ObjectColor.swift in Sources */,
 				CB7024BA2A10E75B006194FB /* DefaultColorCell.swift in Sources */,

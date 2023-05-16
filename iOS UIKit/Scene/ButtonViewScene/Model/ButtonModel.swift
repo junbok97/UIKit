@@ -10,9 +10,7 @@ import RxSwift
 
 final class ButtonModel {
     
-    lazy var buttonSettingListCellDatas = Observable.just(ButtonSettingListData.settingListDatas)
-    
-    static func makeCell(
+    func makeCell(
         _ sectionType: ButtonSettingListSectionType,
         _ viewModel: ButtonViewModel,
         _ tableView: UITableView,
@@ -63,4 +61,8 @@ final class ButtonModel {
             return cell
         } // Switch
     } // makeCell
+    
+    deinit {
+        print("ButtonModel Deinit")
+    }
 }

@@ -116,4 +116,8 @@ final class LabelViewModel {
         return dataSource
     } // func labelSettingListDataSource
 
+    deinit {
+        print("LabeViewModel Deinit")
+    }
+    
 }

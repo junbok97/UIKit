@@ -38,4 +38,8 @@ final class SFSymbolsViewModel {
             .disposed(by: disposeBag)
     }
     
+    deinit {
+        print("SFSymbolsViewModel Deinit")
+    }
+    
 }

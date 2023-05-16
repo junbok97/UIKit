@@ -76,4 +76,8 @@ final class LabelModel {
             return cell
         } // Switch
     }
+    
+    deinit {
+        print("LabeModel Deinit")
+    }
 }

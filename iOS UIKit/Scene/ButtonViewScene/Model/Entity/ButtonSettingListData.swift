@@ -16,24 +16,23 @@ struct ButtonSettingListData {
             ]
         ),
         ButtonSettingListSectionModel(
-            sectionHeader: .buttonType,
-            items: [
-                .buttonType(buttonType: .custom),
-                .buttonType(buttonType: .system),
-                .buttonType(buttonType: .detailDisclosure),
-                .buttonType(buttonType: .infoLight),
-                .buttonType(buttonType: .infoDark),
-                .buttonType(buttonType: .contactAdd),
-                .buttonType(buttonType: .close)
-            ]
-        ),
-        ButtonSettingListSectionModel(
             sectionHeader: .buttonStyle,
             items: [
                 .buttonStyle(buttonStyle: .plain),
                 .buttonStyle(buttonStyle: .gray),
                 .buttonStyle(buttonStyle: .tinted),
                 .buttonStyle(buttonStyle: .filled)
+            ]
+        ),
+        ButtonSettingListSectionModel(
+            sectionHeader: .cornerStyle,
+            items: [
+                .corner(cornerStyleType: .fixed),
+                .corner(cornerStyleType: .dynamic),
+                .corner(cornerStyleType: .small),
+                .corner(cornerStyleType: .medium),
+                .corner(cornerStyleType: .large),
+                .corner(cornerStyleType: .capsule)
             ]
         ),
         ButtonSettingListSectionModel(
@@ -45,8 +44,6 @@ struct ButtonSettingListData {
                 .buttonTitleAlignment(aligmentType: .trailing)
             ]
         ),
-        
-        
         ButtonSettingListSectionModel(
             sectionHeader: .titleText,
             items: [
@@ -129,17 +126,16 @@ struct ButtonSettingListData {
             sectionHeader: .image,
             items: [
                 .image(text: ButtonImageCellConstants.labelText)
-            ]),
-        
+            ]
+        ),
         ButtonSettingListSectionModel(
-            sectionHeader: .cornerStyle,
+            sectionHeader: .imagePlacement,
             items: [
-                .corner(cornerStyleType: .fixed),
-                .corner(cornerStyleType: .dynamic),
-                .corner(cornerStyleType: .small),
-                .corner(cornerStyleType: .medium),
-                .corner(cornerStyleType: .large),
-                .corner(cornerStyleType: .capsule)
+                .imagePlacement(placement: .all),
+                .imagePlacement(placement: .top),
+                .imagePlacement(placement: .leading),
+                .imagePlacement(placement: .trailing),
+                .imagePlacement(placement: .bottom)
             ]
         )
     ]
