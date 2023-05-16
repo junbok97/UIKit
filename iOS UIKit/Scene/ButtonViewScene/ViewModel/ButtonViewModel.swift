@@ -15,7 +15,7 @@ final class ButtonViewModel {
     private let disposeBag = DisposeBag()
     
     let buttonModel = ButtonModel()
-    let buttonConfigurationModel = ButtonConfigurationModel()
+    let buttonConfigurationModel = ButtonConfigurationViewModel()
     
     // View -> ViewModel
     let colorCellSelected = PublishRelay<ObjectColor>()

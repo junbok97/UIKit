@@ -27,8 +27,7 @@ final class ButtonFontSizeCell: DefaultFontSizeCell, ButtonSettingListCellProtoc
             .map {
                 ButtonFontSize(titleType: self.titleType, fontSize: $0)
             }
-            .bind(to: viewModel.buttonConfigurationModel.fontSizeDidChangedFontSizeSlider)
+            .bind(onNext: viewModel.buttonConfigurationModel.fontSizeDidChanged)
             .disposed(by: disposeBag)
-      
     }
 }
