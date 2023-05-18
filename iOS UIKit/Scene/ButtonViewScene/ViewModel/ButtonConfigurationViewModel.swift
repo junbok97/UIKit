@@ -40,10 +40,9 @@ final class ButtonConfigurationViewModel {
     let buttonConfigurationCode = BehaviorRelay<String>(value: ButtonViewControllerConstants.defaultButtonCode)
     let buttonConfigurationDidChanged = BehaviorRelay<UIButton.Configuration>(value: .filled())
     
+    private let buttonConfigurationModel = ButtonConfigurationModel()
+    
     init() {
-        
-        let buttonConfigurationModel = ButtonConfigurationModel()
-        
         let titleTextAttribute = Observable
             .combineLatest(
                 titleFontDidSelected,
@@ -82,10 +81,10 @@ final class ButtonConfigurationViewModel {
         .bind(to: buttonConfigurationDidChanged)
         .disposed(by: disposeBag)
         
-        configToCode()
+        configurationToCode()
     }
     
-    func configToCode() {
+    func configurationToCode() {
         let styleCode = buttonStyleDidSelected.map { $0.code }
         let cornerStyleCode = buttonCornerStyleDidSelected.map { $0.code }
         
@@ -106,49 +105,11 @@ final class ButtonConfigurationViewModel {
         let imagePlacementCode = imagePlacementDidSelected.map { $0.code }
         
         let configurationCode = Observable
-            .combineLatest(styleCode, cornerStyleCode, baseForegroundColorSelected, basebackgroundColorSelected, imageCode, imagePlacementCode) { style, corner, foregroundColor, backgroundColor, image, imagePlacement in
-                """
-                let button = UIButton()
-                var configuration = \(style)
-                configuration.cornerStyle = \(corner)
-                configuration.baseForegroundColor = \(foregroundColor == nil ? "nil" : "titleColor!")
-                configuration.baseBackgroundColor = \(backgroundColor == nil ? "nil" : "titleColor!")
-                configuration.image = \(image)
-                configuration.imagePlacement = \(imagePlacement)
-                \n
-                """
-        }
+            .combineLatest(styleCode, cornerStyleCode, baseForegroundColorSelected, basebackgroundColorSelected, imageCode, imagePlacementCode).map(buttonConfigurationModel.configurationToCode)
         
-        let titleTextAttributeCode = Observable.combineLatest(titleAlignmentCode, titleCode, titleFontCode, titleColorDidSelected) { titleAlignment, title, titleFont, titleColor in
-            """
-            configuration.titleAlignment = \(titleAlignment)
-            
-            configuration.title = "\(title)"
-            let titleTextAttribute = UIConfigurationTextAttributesTransformer { transformer in
-                var transformer = transformer
-                transformer.font = \(titleFont)
-                transformer.foregroundColor = \(titleColor == nil ? "nil" : "\(titleColor!)")
-                return transformer
-            }
-            configuration.titleTextAttributesTransformer = titleTextAttribute
-            \n
-            """
-        }
+        let titleTextAttributeCode = Observable.combineLatest(titleAlignmentCode, titleCode, titleFontCode, titleColorDidSelected).map(buttonConfigurationModel.titleTextAttributeToCode)
         
-        let subTitleTextAttributeCode = Observable.combineLatest(subTitleCode, subTitleFontCode, subTitleColorDidSelected) { subTitle, subTitleFont, subTitleColor in
-            """
-            configuration.subTitle = "\(subTitle)"
-            let subTitleTextAttribute = UIConfigurationTextAttributesTransformer { transformer in
-                var transformer = transformer
-                transformer.font = \(subTitleFont)
-                transformer.foregroundColor = \(subTitleColor == nil ? "nil" : "\(subTitleColor!)")
-                return transformer
-            }
-            configuration.subTitleTextAttributesTransformer = subTitleTextAttribute
-            
-            button.configuration = configuration
-            """
-        }
+        let subTitleTextAttributeCode = Observable.combineLatest(subTitleCode, subTitleFontCode, subTitleColorDidSelected).map(buttonConfigurationModel.subTitleTextAttributeToCode)
         
         Observable
             .combineLatest(configurationCode, titleTextAttributeCode, subTitleTextAttributeCode).map { $0 + $1 + $2 }
