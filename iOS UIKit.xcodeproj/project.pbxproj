@@ -583,9 +583,17 @@
 			path = ButtonSettingListCell;
 			sourceTree = "<group>";
 		};
+		CB7705082A16843E00DA7B77 /* NavigationBarScene */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NavigationBarScene;
+			sourceTree = "<group>";
+		};
 		CB80B1D029E53A8D00298F3C /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				CB7705082A16843E00DA7B77 /* NavigationBarScene */,
 				CB7024A72A10E001006194FB /* DefaultScene */,
 				CB80B1D329E53AA700298F3C /* MainViewScene */,
 				CBDE6E1C29E54B0A0068BA0A /* LabelViewScene */,
