@@ -35,7 +35,7 @@ enum ButtonSettingListItemType {
     case fontSize(titleType: ButtonTitleType)
     case buttonTitleAlignment(aligmentType: ButtonTitleAlignmentType)
     case color(colorType: ObjectColorType)
-    case image(text: String)
+    case image
     case imagePlacement(placement: ButtonImagePlacementType)
     case corner(cornerStyleType: ButtonCornerStyleType)
 }

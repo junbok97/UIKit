@@ -25,4 +25,18 @@ enum ButtonTitleAlignmentType: String {
             return .trailing
         }
     }
+    
+    var code: String {
+        switch self {
+        case .automatic:
+            return ".automatic"
+        case .leading:
+            return ".leading"
+        case .center:
+            return ".center"
+        case .trailing:
+            return ".trailing"
+        }
+    }
+
 }

@@ -8,26 +8,31 @@
 import UIKit
 
 protocol ButtonCoordinatorProtocol: CoordinatorProtocol {
-    var parentCoordinator: MainCoordinator? { get }
-    func finish()
+    func showSFSymbolsScene()
 }
 
 final class ButtonCoordinator: ButtonCoordinatorProtocol {
-    var parentCoordinator: MainCoordinator?
+    
+    var parentCoordinator: CoordinatorProtocol?
     var navigationController: UINavigationController
     var childCoordinators: [CoordinatorProtocol] = []
+
+    private let viewModel = ButtonViewModel()
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
 
     func start() {
-        let viewController = ButtonViewController.create(ButtonViewModel(), self)
+        let viewController = ButtonViewController.create(viewModel, self)
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func finish() {
-        parentCoordinator?.finishChild(self)
+    func showSFSymbolsScene() {
+        let child = SFSymbolsCoordinator(navigationController: navigationController)
+        child.parentCoordinator = self
+        childCoordinators.append(child)
+        child.start(viewModel)
     }
     
     deinit {

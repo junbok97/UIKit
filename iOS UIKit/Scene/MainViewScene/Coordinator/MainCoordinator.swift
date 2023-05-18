@@ -8,11 +8,12 @@
 import UIKit
 
 protocol MainCoordinatorProtocol: CoordinatorProtocol {
-    func finishChild(_ child: CoordinatorProtocol)
-    func showDetailViewController(type: ObjectType)
+    func pushDetailViewController(type: ObjectType)
 }
 
 final class MainCoordinator: MainCoordinatorProtocol {
+    
+    var parentCoordinator: CoordinatorProtocol? = nil
     
     var navigationController: UINavigationController
     var childCoordinators: [CoordinatorProtocol] = []
@@ -32,14 +33,7 @@ final class MainCoordinator: MainCoordinatorProtocol {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func finish() {}
-    
-    func finishChild(_ child: CoordinatorProtocol) {
-        childCoordinators = childCoordinators.filter { $0 !== child }
-        navigationController.popViewController(animated: false)
-    }
-    
-    func showDetailViewController(type: ObjectType) {
+    func pushDetailViewController(type: ObjectType) {
         let child = childCoordinatorFactory.makeCoordinator(type: type)
         childCoordinators.append(child)
         child.start()

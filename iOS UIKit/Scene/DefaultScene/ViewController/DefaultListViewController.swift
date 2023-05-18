@@ -9,19 +9,8 @@ import Foundation
 import RxSwift
 import RxDataSources
 
-class DefaultListViewController: UIViewController {
-    let disposeBag = DisposeBag()
+class DefaultListViewController: DefaultViewController {
     
-    private lazy var leftBarButtonItem: UIBarButtonItem = {
-        let barbutton =  UIBarButtonItem(
-            image: DefaultViewControllerConstants.leftBarButtontImage,
-            style: .plain,
-            target: self,
-            action: #selector(didTappedLeftBarButton)
-        )
-        barbutton.tintColor = .label
-        return barbutton
-    }()
     
     lazy var containerView: UIView = {
         let view = UIView()
@@ -37,22 +26,10 @@ class DefaultListViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-
-    @objc func didTappedLeftBarButton() { }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItem = leftBarButtonItem
-        attribute()
         layout()
-    }
-    
-    func bind() {}
-    
-    func attribute() {
-        view.backgroundColor = .secondarySystemBackground
-        navigationController?.navigationBar.standardAppearance = UINavigationBarAppearance()
-        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     func layout() {

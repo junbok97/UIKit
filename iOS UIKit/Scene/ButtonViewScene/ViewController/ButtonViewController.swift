@@ -12,7 +12,7 @@ import RxDataSources
 final class ButtonViewController: DefaultListViewController {
     
     weak var coordinator: ButtonCoordinatorProtocol?
-    private var viewModel: ButtonViewModel!
+    var viewModel: ButtonViewModel!
     private var dataSource: RxTableViewSectionedReloadDataSource<ButtonSettingListSectionModel>!
     
     static func create(
@@ -28,29 +28,20 @@ final class ButtonViewController: DefaultListViewController {
     
     lazy var targetButton: UIButton = {
         let button = UIButton(configuration: .filled())
-        
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    override func didTappedLeftBarButton() {
+    @objc override func didTappedLeftBarButton() {
         coordinator?.finish()
     }
     
-    override func bind() {
-        super.bind()
+    private func bind() {
         let dataSource = viewModel.buttonSettingListDataSource()
         self.dataSource = dataSource
         
         viewModel.buttonSettingListCellDatas
             .drive(settingList.rx.items(dataSource: dataSource))
-            .disposed(by: disposeBag)
-        
-        settingList.rx.itemSelected
-            .map { indexPath in
-                dataSource[indexPath.section].items[indexPath.row]
-            }
-            .bind(onNext: viewModel.buttonSettingListItemSelected)
             .disposed(by: disposeBag)
         
         settingList
@@ -60,6 +51,11 @@ final class ButtonViewController: DefaultListViewController {
         viewModel.targetButtonConfiguration
             .drive(self.rx.targetConfig)
             .disposed(by: disposeBag)
+        
+        viewModel.targetTintColor
+            .drive(self.rx.targetTintColor)
+            .disposed(by: disposeBag)
+        
     }
     
     override func attribute() {
@@ -105,17 +101,21 @@ extension ButtonViewController: UITableViewDelegate {
         headerView.setupHeaderTitle(dataSource[section].sectionHeader.rawValue)
         return headerView
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if case .image = dataSource[indexPath.section].items[indexPath.row] {
+            coordinator?.showSFSymbolsScene()
+        } else {
+            viewModel.buttonSettingListItemSelected(dataSource[indexPath.section].items[indexPath.row])
+        }
+        
+    }
 }
 
 extension Reactive where Base: ButtonViewController {
-    var targetColor: Binder<ObjectColor> {
-        return Binder(base) { base, buttonColor in
-            switch buttonColor.colorType {
-            case .tintColor:
-                base.targetButton.tintColor = buttonColor.color
-            default:
-                return
-            }
+    var targetTintColor: Binder<UIColor> {
+        return Binder(base) { base, tintColor in
+            base.targetButton.tintColor = tintColor
         }
     }
     

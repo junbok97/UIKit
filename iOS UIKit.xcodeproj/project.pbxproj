@@ -69,6 +69,7 @@
 		CB80B1D729E53B7B00298F3C /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80B1D629E53B7B00298F3C /* MainCoordinator.swift */; };
 		CB80B1DD29E53F3300298F3C /* MainViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80B1DC29E53F3300298F3C /* MainViewControllerConstants.swift */; };
 		CB80B1F729E5468200298F3C /* ObjectListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80B1F629E5468200298F3C /* ObjectListCell.swift */; };
+		CB8F40402A161DF900AD9D89 /* SFSymbolsSystemName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F403F2A161DF900AD9D89 /* SFSymbolsSystemName.swift */; };
 		CB9A9C872A10C6A40065F5A5 /* DefaultListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A9C862A10C6A40065F5A5 /* DefaultListViewController.swift */; };
 		CB9A9C892A10C8C90065F5A5 /* DefaultViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A9C882A10C8C90065F5A5 /* DefaultViewControllerConstants.swift */; };
 		CB9A9C8B2A10CC940065F5A5 /* ButtonCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A9C8A2A10CC940065F5A5 /* ButtonCoordinator.swift */; };
@@ -110,6 +111,7 @@
 		CBF4396D29C1C014003E85B3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4396C29C1C014003E85B3 /* SceneDelegate.swift */; };
 		CBF4397429C1C015003E85B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBF4397329C1C015003E85B3 /* Assets.xcassets */; };
 		CBF4397729C1C015003E85B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBF4397529C1C015003E85B3 /* LaunchScreen.storyboard */; };
+		CBFCD0AE2A1496CC0085A398 /* DefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFCD0AD2A1496CC0085A398 /* DefaultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -177,6 +179,7 @@
 		CB80B1D629E53B7B00298F3C /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		CB80B1DC29E53F3300298F3C /* MainViewControllerConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerConstants.swift; sourceTree = "<group>"; };
 		CB80B1F629E5468200298F3C /* ObjectListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectListCell.swift; sourceTree = "<group>"; };
+		CB8F403F2A161DF900AD9D89 /* SFSymbolsSystemName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolsSystemName.swift; sourceTree = "<group>"; };
 		CB9A9C862A10C6A40065F5A5 /* DefaultListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultListViewController.swift; sourceTree = "<group>"; };
 		CB9A9C882A10C8C90065F5A5 /* DefaultViewControllerConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultViewControllerConstants.swift; sourceTree = "<group>"; };
 		CB9A9C8A2A10CC940065F5A5 /* ButtonCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCoordinator.swift; sourceTree = "<group>"; };
@@ -220,6 +223,7 @@
 		CBF4397629C1C015003E85B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBF4397829C1C015003E85B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBF4D51B29E818830099A698 /* iOS UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBFCD0AD2A1496CC0085A398 /* DefaultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -356,9 +360,9 @@
 		CB1BE6872A0CE81500485B4F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CB5715022A0A232400365646 /* SFSymbolsViewControllerConstants.swift */,
-				CB5715092A0A2AC300365646 /* SFSymbolsCollectionViewCellConstants.swift */,
 				CB5715122A0A35F400365646 /* SFSymbolsModel.swift */,
+				CB8F403F2A161DF900AD9D89 /* SFSymbolsSystemName.swift */,
+				CB8F403E2A1618B900AD9D89 /* Constants */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -453,6 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				CB9A9C862A10C6A40065F5A5 /* DefaultListViewController.swift */,
+				CBFCD0AD2A1496CC0085A398 /* DefaultViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -600,6 +605,15 @@
 				CB1BE67C2A0CE76100485B4F /* Model */,
 			);
 			path = MainViewScene;
+			sourceTree = "<group>";
+		};
+		CB8F403E2A1618B900AD9D89 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				CB5715022A0A232400365646 /* SFSymbolsViewControllerConstants.swift */,
+				CB5715092A0A2AC300365646 /* SFSymbolsCollectionViewCellConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		CB9A9C812A10C5460065F5A5 /* Coordinator */ = {
@@ -898,6 +912,7 @@
 				CBF4396B29C1C014003E85B3 /* AppDelegate.swift in Sources */,
 				CB7024AD2A10E264006194FB /* DefaultCodeCell.swift in Sources */,
 				CB7024CF2A10F373006194FB /* ButtonCodeCellConstants.swift in Sources */,
+				CB8F40402A161DF900AD9D89 /* SFSymbolsSystemName.swift in Sources */,
 				CB5715072A0A2A7E00365646 /* SFSymbolsCollectionViewCell.swift in Sources */,
 				CBBBC89D2A137CEB00213A2A /* ButtonFontSizeCell.swift in Sources */,
 				CB7CA7862A03B28000574395 /* MainModel.swift in Sources */,
@@ -915,6 +930,7 @@
 				CB5715152A0A44B700365646 /* ButtonCornerStyleType.swift in Sources */,
 				CBC6074529C1D09D008B6BA9 /* Object.swift in Sources */,
 				CBBEBC322A0FC90200A0DFE0 /* LabelSettingListSectionModel.swift in Sources */,
+				CBFCD0AE2A1496CC0085A398 /* DefaultViewController.swift in Sources */,
 				CB80B1D729E53B7B00298F3C /* MainCoordinator.swift in Sources */,
 				CBBBC88F2A13706E00213A2A /* ButtonText.swift in Sources */,
 				CB5715032A0A232400365646 /* SFSymbolsViewControllerConstants.swift in Sources */,
@@ -1047,6 +1063,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = UIKit;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1101,6 +1118,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = UIKit;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1118,7 +1136,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 34STBCNCDG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS UIKit/Info.plist";
@@ -1151,7 +1169,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 34STBCNCDG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS UIKit/Info.plist";

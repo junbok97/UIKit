@@ -24,10 +24,11 @@ final class ButtonFontSizeCell: DefaultFontSizeCell, ButtonSettingListCellProtoc
         fontSizeSlider.rx.value
             .map { Int($0) }
             .distinctUntilChanged()
-            .map {
-                ButtonFontSize(titleType: self.titleType, fontSize: $0)
+            .compactMap { [weak self] value -> ButtonFontSize? in
+                guard let self = self else { return nil }
+                return ButtonFontSize(titleType: self.titleType, fontSize: value)
             }
-            .bind(onNext: viewModel.buttonConfigurationModel.fontSizeDidChanged)
+            .bind(onNext: viewModel.fontSizeDidChanged)
             .disposed(by: disposeBag)
     }
 }

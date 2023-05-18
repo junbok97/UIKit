@@ -20,9 +20,6 @@ final class LabelColorCell: DefaultColorCell, LabelSettingListCellProtocol {
     
     func bind(_ viewModel: LabelViewModel) {
         selectedColorSubject
-            .map { color in
-                ObjectColor(colorType: self.colorType, color: color)
-            }
             .bind(to: viewModel.colorCellDidSelected)
             .disposed(by: disposeBag)
     }

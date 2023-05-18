@@ -20,14 +20,12 @@ final class ButtonConfigurationViewModel {
     let titleFontDidSelected = BehaviorRelay<ObjectFontType>(value: .regular)
     let titleFontSizeDidChanged = BehaviorRelay<Int>(value: ButtonViewControllerConstants.targetTitleFontSize)
     let titleColorDidSelected = BehaviorRelay<UIColor>(value: .white)
-    //    let titleTextAttribute = ReplayRelay<UIConfigurationTextAttributesTransformer>.create(bufferSize: 1)
     
     // SubTitle
     let subTitleTextDidChangedTextField = BehaviorRelay<String>(value: ButtonViewControllerConstants.targetSubTitleText)
     let subTitleFontDidSelected = BehaviorRelay<ObjectFontType>(value: .regular)
     let subTitleFontSizeDidChanged = BehaviorRelay<Int>(value: ButtonViewControllerConstants.targetTitleFontSize)
     let subTitleColorDidSelected = BehaviorRelay<UIColor>(value: .white)
-    //    let subTitleTextAttribute = ReplayRelay<UIConfigurationTextAttributesTransformer>.create(bufferSize: 1)
     
     // color
     let baseForegroundColorSelected = BehaviorRelay<UIColor>(value: .white)
@@ -35,13 +33,13 @@ final class ButtonConfigurationViewModel {
     
     let buttonStyleDidSelected = BehaviorRelay<ButtonStyleType>(value: .filled)
     let buttonCornerStyleDidSelected = BehaviorRelay<ButtonCornerStyleType>(value: .dynamic)
+    
+    let imageDidSelected = BehaviorRelay<UIImage?>(value: nil)
     let imagePlacementDidSelected = BehaviorRelay<ButtonImagePlacementType>(value: .leading)
     
     let buttonConfigurationDidChanged = ReplayRelay<UIButton.Configuration>.create(bufferSize: 1)
     
     init() {
-        print("ButtonConfigurationViewModel init")
-        
         let buttonConfigurationModel = ButtonConfigurationModel()
         
         let titleTextAttribute = Observable
@@ -75,7 +73,8 @@ final class ButtonConfigurationViewModel {
             buttonCornerStyleDidSelected,
             baseForegroundColorSelected,
             basebackgroundColorSelected,
-            imagePlacementDidSelected
+            imagePlacementDidSelected,
+            imageDidSelected
         )
         .map(buttonConfigurationModel.settingButtonConfiguration)
         .bind(to: buttonConfigurationDidChanged)
@@ -83,19 +82,28 @@ final class ButtonConfigurationViewModel {
         
     }
     
-    func colorCellDidSelected(_ objectColor: ObjectColor) {
-        switch objectColor.colorType {
-        case .titleColor:
-            titleColorDidSelected.accept(objectColor.color)
-        case .subTitleColor:
-            subTitleColorDidSelected.accept(objectColor.color)
-        case .foregroundColor:
-            baseForegroundColorSelected.accept(objectColor.color)
-        case .backgroundColor:
-            basebackgroundColorSelected.accept(objectColor.color)
-        default:
-            return
-        }
+    func configToCode(_ config: UIButton.Configuration) {
+        
+    }
+    
+    func sfSymbolsSystemName(_ sfSymbolsName: String) {
+        imageDidSelected.accept(UIImage(systemName: sfSymbolsName))
+    }
+    
+    func titleColorDidSelected(_ color: UIColor) {
+        titleColorDidSelected.accept(color)
+    }
+    
+    func subTitleColorDidSelected(_ color: UIColor) {
+        subTitleColorDidSelected.accept(color)
+    }
+    
+    func baseForegroundColorSelected(_ color: UIColor) {
+        baseForegroundColorSelected.accept(color)
+    }
+    
+    func basebackgroundColorSelected(_ color: UIColor) {
+        basebackgroundColorSelected.accept(color)
     }
     
     func buttonSettingListItemSelected(_ itemType: ButtonSettingListItemType) {

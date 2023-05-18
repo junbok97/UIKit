@@ -31,4 +31,21 @@ enum ButtonCornerStyleType: String {
             return .capsule
         }
     }
+    
+    var code: String {
+        switch self {
+        case .fixed:
+            return ".fiexd"
+        case .dynamic:
+            return ".dynamic"
+        case .small:
+            return ".small"
+        case .medium:
+            return ".medium"
+        case .large:
+            return ".large"
+        case .capsule:
+            return ".capsule"
+        }
+    }
 }

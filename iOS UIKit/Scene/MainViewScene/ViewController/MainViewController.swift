@@ -89,7 +89,7 @@ private extension MainViewController {
     }
     
     func showDetailViewController(_ object: Object) {
-        self.coordinator?.showDetailViewController(type: object.type)
+        self.coordinator?.pushDetailViewController(type: object.type)
     }
 
 }
@@ -97,7 +97,7 @@ private extension MainViewController {
 extension Reactive where Base: MainViewController {
     var showDetailViewController: Binder<ObjectType> {
         return Binder(base) { base, type in
-            base.coordinator?.showDetailViewController(type: type)
+            base.coordinator?.pushDetailViewController(type: type)
         }
     }
 }

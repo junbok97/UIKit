@@ -23,11 +23,11 @@ final class ButtonTextCell: DefaultTextCell, ButtonSettingListCellProtocol {
     
     func bind(_ viewModel: ButtonViewModel) {
         textField.rx.text
-            .compactMap { $0 == "" ? nil : $0 }
-            .map {
-                ButtonText(titleType: self.titleType, text: $0)
+            .compactMap { [weak self] text -> ButtonText? in
+                guard let self = self, let text = text else { return nil }
+                return text == "" ? nil : ButtonText(titleType: self.titleType, text: text)
             }
-            .bind(onNext: viewModel.buttonConfigurationModel.textDidChanged)
+            .bind(onNext: viewModel.textDidChanged)
             .disposed(by: disposeBag)
     }
 }

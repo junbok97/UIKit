@@ -11,31 +11,30 @@ import RxCocoa
 
 final class SFSymbolsViewModel {
     
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     
     // ViewModel -> View
-    let symbolListDriver: Driver<[String]>
+    let symbolSystemNameListDriver: Driver<[String]>
     
     // View -> ViewModel
-    let serachSFSymbol = PublishRelay<String>()
-    let itemSelected = PublishRelay<IndexPath>()
+    let serachSFSymbolSystemName = PublishRelay<String>()
     
-    let symbolListStream = ReplayRelay<[String]>.create(bufferSize: 1)
+//    let sfSymbolsSystemNameStream = PublishRelay<String>()
+    let popSFSymbolsViewController = PublishSubject<Void>()
+    
+    let model = SFSymbolsModel()
     
     init() {
-        let model = SFSymbolsModel()
-        
-        symbolListDriver = symbolListStream
+        symbolSystemNameListDriver = model.symbolSystemNameListStream
             .asDriver(onErrorDriveWith: .empty())
         
-        Observable.just(model.symbolsNameList)
-            .bind(to: symbolListStream)
+        serachSFSymbolSystemName
+            .bind(onNext: model.searchSFSymbolsSystemName)
             .disposed(by: disposeBag)
-        
-        serachSFSymbol
-            .map { model.getName($0) }
-            .bind(to: symbolListStream)
-            .disposed(by: disposeBag)
+    }
+    
+    func getSFSymbolsSystemName(_ indexPath: IndexPath) -> String {
+        model.getSFSymbolsSystemName(indexPath.row)
     }
     
     deinit {

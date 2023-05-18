@@ -8,11 +8,10 @@
 import UIKit
 import RxSwift
 
-final class SFSymbolsViewController: UIViewController {
+final class SFSymbolsViewController: DefaultViewController {
 
     weak var coordinator: SFSymbolsCoordinatorProtocol?
-    
-    private let disposeBag = DisposeBag()
+
     private var viewModel: SFSymbolsViewModel!
     
     static func create(
@@ -26,7 +25,7 @@ final class SFSymbolsViewController: UIViewController {
         return sfSymbolsViewController
     }
     
-    private lazy var collectionView: UICollectionView = {
+    private lazy var sfSymbolsCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
         SFSymbolsCollectionViewCell.register(target: collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -38,29 +37,54 @@ final class SFSymbolsViewController: UIViewController {
         return searchController
     }()
     
+    @objc override func didTappedLeftBarButton() {
+        coordinator?.finish()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         attribute()
         layout()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        coordinator?.finish()
-    }
-    
-    func bind() {
+    private func bind() {
         searchController.searchBar.rx.text
             .compactMap { $0 }
-            .bind(to: viewModel.serachSFSymbol)
+            .bind(to: viewModel.serachSFSymbolSystemName)
             .disposed(by: disposeBag)
         
-        viewModel.symbolListDriver
-            .drive(collectionView.rx.items(cellIdentifier: SFSymbolsCollectionViewCell.cellId, cellType: SFSymbolsCollectionViewCell.self)) { _, item, cell in
+        viewModel.symbolSystemNameListDriver
+            .drive(sfSymbolsCollectionView.rx.items(cellIdentifier: SFSymbolsCollectionViewCell.cellId, cellType: SFSymbolsCollectionViewCell.self)) { _, item, cell in
                 cell.setup(item)
             }
             .disposed(by: disposeBag)
         
+    }
+    
+    func bind(_ buttonViewModel: ButtonViewModel) {
+        sfSymbolsCollectionView.rx.itemSelected
+            .compactMap { [weak self] indexPath -> String? in
+                guard let self = self else { return nil }
+                return self.viewModel.getSFSymbolsSystemName(indexPath)
+            }
+            .bind(onNext: buttonViewModel.sfSymbolsSystemName)
+            .disposed(by: disposeBag)
+        
+        sfSymbolsCollectionView.rx.itemSelected
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.coordinator?.finish()
+            })
+            .disposed(by: disposeBag)
+            
+    }
+    
+    override func attribute() {
+        super.attribute()
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.title = SFSymbolsViewControllerConstants.title
+        navigationItem.searchController = searchController
     }
     
     deinit {
@@ -70,23 +94,15 @@ final class SFSymbolsViewController: UIViewController {
 }
 
 private extension SFSymbolsViewController {
-    func attribute() {
-        let appearance = UINavigationBarAppearance()
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.hidesSearchBarWhenScrolling = false
-        navigationItem.title = SFSymbolsViewControllerConstants.title
-        navigationItem.searchController = searchController
-    }
     
     func layout() {
-        view.addSubview(collectionView)
+        view.addSubview(sfSymbolsCollectionView)
         
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            sfSymbolsCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            sfSymbolsCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            sfSymbolsCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            sfSymbolsCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     

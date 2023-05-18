@@ -125,7 +125,7 @@ struct ButtonSettingListData {
         ButtonSettingListSectionModel(
             sectionHeader: .image,
             items: [
-                .image(text: ButtonImageCellConstants.labelText)
+                .image
             ]
         ),
         ButtonSettingListSectionModel(

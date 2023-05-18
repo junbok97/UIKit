@@ -55,8 +55,7 @@ final class LabelViewController: DefaultListViewController {
         self.view.endEditing(true)
     }
     
-    override func bind() {
-        super.bind()
+    func bind() {
         let dataSource = viewModel.labelSettingListDataSource()
         self.dataSource = dataSource
         
@@ -114,7 +113,7 @@ final class LabelViewController: DefaultListViewController {
         ])
     }
     
-    override func didTappedLeftBarButton() {
+    @objc override func didTappedLeftBarButton() {
         coordinator?.finish()
     }
     

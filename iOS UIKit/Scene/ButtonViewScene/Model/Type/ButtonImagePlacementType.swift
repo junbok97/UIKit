@@ -28,4 +28,19 @@ enum ButtonImagePlacementType: String {
             return .bottom
         }
     }
+    
+    var code: String {
+        switch self {
+        case .all:
+            return ".all"
+        case .top:
+            return ".top"
+        case .leading:
+            return ".leading"
+        case .trailing:
+            return ".trailing"
+        case .bottom:
+            return ".bottom"
+        }
+    }
 }

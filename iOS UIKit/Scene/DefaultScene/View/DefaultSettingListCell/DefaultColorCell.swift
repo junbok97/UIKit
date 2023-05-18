@@ -15,7 +15,7 @@ class DefaultColorCell: DefaultCell {
         get { DefaultColorCellConstants.cellId }
     }
     
-    let selectedColorSubject = ReplaySubject<UIColor>.create(bufferSize: 1)
+    let selectedColorSubject = ReplaySubject<ObjectColor>.create(bufferSize: 1)
     
     var colorType: ObjectColorType = .titleColor {
         didSet {
@@ -48,7 +48,7 @@ class DefaultColorCell: DefaultCell {
     }
     
     @objc private func changedColor() {
-        selectedColorSubject.onNext(colorWell.selectedColor ?? UIColor())
+        selectedColorSubject.onNext(ObjectColor(colorType: self.colorType, color: colorWell.selectedColor ?? UIColor()))
     }
     
     required init?(coder: NSCoder) {

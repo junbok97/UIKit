@@ -8,14 +8,12 @@
 import UIKit
 
 protocol LabelCoordinatorProtocol: CoordinatorProtocol {
-    var parentCoordinator: MainCoordinator? { get }
-    func finish()
+    
 }
 
 final class LabelCoordinator: LabelCoordinatorProtocol {
-    var parentCoordinator: MainCoordinator?
+    var parentCoordinator: CoordinatorProtocol?
     var navigationController: UINavigationController
-    
     var childCoordinators: [CoordinatorProtocol] = []
     
     init(navigationController: UINavigationController) {
@@ -27,7 +25,7 @@ final class LabelCoordinator: LabelCoordinatorProtocol {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func finish() {
-        parentCoordinator?.finishChild(self)
+    deinit {
+        print("LabelCoordinator Deinit")
     }
 }

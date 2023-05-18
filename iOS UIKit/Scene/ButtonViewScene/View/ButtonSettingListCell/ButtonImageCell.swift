@@ -21,12 +21,15 @@ final class ButtonImageCell: DefaultLabelCell, ButtonSettingListCellProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(_ item: ButtonSettingListItemType) {
-        guard case let .image(text: text) = item else { return }
-        setupLabelText(text)
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        attribute()
     }
     
+    func setup(_ item: ButtonSettingListItemType) { }
+    
     func bind(_ viewModel: ButtonViewModel) { }
+    
 }
 
 extension ButtonImageCell {

@@ -8,29 +8,31 @@
 import UIKit
 
 protocol SFSymbolsCoordinatorProtocol: CoordinatorProtocol {
-    var parentCoordinator: MainCoordinator? { get }
-    func finish()
+    
 }
 
 final class SFSymbolsCoordinator: SFSymbolsCoordinatorProtocol {
-    var parentCoordinator: MainCoordinator?
-    var navigationController: UINavigationController
+    var parentCoordinator: CoordinatorProtocol?
     var childCoordinators: [CoordinatorProtocol] = []
+    var navigationController: UINavigationController
     
+    private let viewModel: SFSymbolsViewModel = SFSymbolsViewModel()
+
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
     func start() {
-        let viewModel = SFSymbolsViewModel()
         let viewController = SFSymbolsViewController.create(viewModel, self)
         navigationController.pushViewController(viewController, animated: true)
     }
-
-    func finish() {
-        parentCoordinator?.finishChild(self)
-    }
     
+    func start(_ buttonViewModel: ButtonViewModel) {
+        let viewController = SFSymbolsViewController.create(viewModel, self)
+        viewController.bind(buttonViewModel)
+        navigationController.pushViewController(viewController, animated: true)
+    }
+
     deinit {
         print("SFSymbolsCoordinator Deinit")
     }

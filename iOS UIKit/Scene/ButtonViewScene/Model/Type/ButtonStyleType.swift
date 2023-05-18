@@ -25,4 +25,17 @@ enum ButtonStyleType: String {
             return .filled()
         }
     }
+    
+    var code: String {
+        switch self {
+        case .plain:
+            return "UIButton.Configuration.plain()"
+        case .gray:
+            return "UIButton.Configuration.gray()"
+        case .tinted:
+            return "UIButton.Configuration.tinted()"
+        case .filled:
+            return "UIButton.Configuration.filled()"
+        }
+    }
 }
