@@ -23,6 +23,7 @@ final class ButtonViewModel {
     let buttonSettingListCellDatas: Driver<[ButtonSettingListSectionModel]>
     let targetButtonConfiguration: Driver<UIButton.Configuration>
     let targetTintColor: Driver<UIColor>
+    let codeCellCodeLabelText: Driver<String>
     
     init() {
         buttonSettingListCellDatas = Observable.just(ButtonSettingListData.settingListDatas)
@@ -33,41 +34,12 @@ final class ButtonViewModel {
         
         targetTintColor = tintColorSelected
             .asDriver(onErrorDriveWith: .empty())
-    }
-    
-    func sfSymbolsSystemName(_ sfSymbolsName: String) {
-        buttonConfigurationViewModel.sfSymbolsSystemName(sfSymbolsName)
-    }
-    
-    func textDidChanged(_ buttonText: ButtonText) {
-        buttonConfigurationViewModel.textDidChanged(buttonText)
-    }
-    
-    func fontSizeDidChanged(_ buttonFontSize: ButtonFontSize) {
-        buttonConfigurationViewModel.fontSizeDidChanged(buttonFontSize)
-    }
-    
-    func colorCellDidSelected(_ objectColor: ObjectColor) {
-        switch objectColor.colorType {
-        case .tintColor:
-            tintColorSelected.accept(objectColor.color)
-        case .titleColor:
-            buttonConfigurationViewModel.titleColorDidSelected.accept(objectColor.color)
-        case .subTitleColor:
-            buttonConfigurationViewModel.subTitleColorDidSelected.accept(objectColor.color)
-        case .foregroundColor:
-            buttonConfigurationViewModel.baseForegroundColorSelected.accept(objectColor.color)
-        case .backgroundColor:
-            buttonConfigurationViewModel.basebackgroundColorSelected.accept(objectColor.color)
-        }
-    }
-    
-    func buttonSettingListItemSelected(_ itemType: ButtonSettingListItemType) {
-        buttonConfigurationViewModel.buttonSettingListItemSelected(itemType)
+        
+        codeCellCodeLabelText = buttonConfigurationViewModel.buttonConfigurationCode
+            .asDriver(onErrorDriveWith: .empty())
     }
     
     func buttonSettingListDataSource() -> RxTableViewSectionedReloadDataSource<ButtonSettingListSectionModel> {
-        
         let dataSource = RxTableViewSectionedReloadDataSource<ButtonSettingListSectionModel> { [weak self] dataSource, tableView, indexPath, sectionModelItem in
             guard let self = self else { fatalError("ButtonViewModel Nil") }
             return self.buttonModel.makeCell(
@@ -85,4 +57,52 @@ final class ButtonViewModel {
     deinit {
         print("ButtonViewModel Deinit")
     }
+}
+
+// ButtonConfigurationViewModel
+extension ButtonViewModel {
+    func sfSymbolSeleted(_ sfSymbolName: String) {
+        buttonConfigurationViewModel.sfSymbolDidSeleted(sfSymbolName)
+    }
+    
+    func textDidChanged(_ buttonText: ButtonText) {
+        buttonConfigurationViewModel.textDidChanged(buttonText)
+    }
+    
+    func fontSizeDidChanged(_ buttonFontSize: ButtonFontSize) {
+        buttonConfigurationViewModel.fontSizeDidChanged(buttonFontSize)
+    }
+    
+    func colorCellDidSelected(_ objectColor: ObjectColor) {
+        switch objectColor.colorType {
+        case .tintColor:
+            tintColorSelected.accept(objectColor.color)
+        case .titleColor:
+            buttonConfigurationViewModel.titleColorDidSelected(objectColor.color)
+        case .subTitleColor:
+            buttonConfigurationViewModel.subTitleColorDidSelected(objectColor.color)
+        case .foregroundColor:
+            buttonConfigurationViewModel.baseForegroundColorSelected(objectColor.color)
+        case .backgroundColor:
+            buttonConfigurationViewModel.basebackgroundColorSelected(objectColor.color)
+        }
+    }
+    
+    func buttonSettingListItemSelected(_ itemType: ButtonSettingListItemType) {
+        switch itemType {
+        case let .buttonStyle(buttonStyle: buttonStyle):
+            buttonConfigurationViewModel.buttonStyleDidSelected(buttonStyle)
+        case let .corner(cornerStyleType: cornerStyle):
+            buttonConfigurationViewModel.buttonCornerStyleDidSelected(cornerStyle)
+        case let .buttonTitleAlignment(aligmentType: alignmentType):
+            buttonConfigurationViewModel.titleAlignmentDidSelected(alignmentType)
+        case let .font(titleType: titleType, fontType: fontType):
+            buttonConfigurationViewModel.fontDidSeleted(titleType, fontType)
+        case let .imagePlacement(placement: placement):
+            buttonConfigurationViewModel.imagePlacementDidSelected(placement)
+        default:
+            return
+        }
+    }
+
 }

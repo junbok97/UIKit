@@ -67,7 +67,7 @@ final class SFSymbolsViewController: DefaultViewController {
                 guard let self = self else { return nil }
                 return self.viewModel.getSFSymbolsSystemName(indexPath)
             }
-            .bind(onNext: buttonViewModel.sfSymbolsSystemName)
+            .bind(onNext: buttonViewModel.sfSymbolSeleted)
             .disposed(by: disposeBag)
         
         sfSymbolsCollectionView.rx.itemSelected

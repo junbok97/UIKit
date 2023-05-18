@@ -49,7 +49,7 @@ final class ButtonViewController: DefaultListViewController {
             .disposed(by: disposeBag)
         
         viewModel.targetButtonConfiguration
-            .drive(self.rx.targetConfig)
+            .drive(self.rx.targetButtonConfigureation)
             .disposed(by: disposeBag)
         
         viewModel.targetTintColor
@@ -119,9 +119,9 @@ extension Reactive where Base: ButtonViewController {
         }
     }
     
-    var targetConfig: Binder<UIButton.Configuration> {
-        return Binder(base) { base, config in
-            base.targetButton.configuration = config
+    var targetButtonConfigureation: Binder<UIButton.Configuration> {
+        return Binder(base) { base, configuration in
+            base.targetButton.configuration = configuration
         }
     }
 

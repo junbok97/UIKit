@@ -24,4 +24,36 @@ struct ButtonViewControllerConstants {
     static let targetTitleFont: UIFont = .systemFont(ofSize: 50)
     static let targetTitleFontSize: Int = 50
     
+    
+    static let defaultButtonCode: String =
+    """
+    let button = UIButton()
+    var configuration = UIButton.Configuration.filled()
+    configuration.cornerStyle = .dynamic
+    configuration.baseForegroundColor = nil
+    configuration.baseBackgroundColor = nil
+    configuration.image = nil
+    configuration.imagePlacement = .leading
+    configuration.titleAlignment = .center
+    
+    configuration.title = "Title"
+    let titleTextAttribute = UIConfigurationTextAttributesTransformer { transformer in
+        var transformer = transformer
+        transformer.foregroundColor = nil
+        transformer.font = .systemFont(ofSize: 50, weight: .regular)
+        return transformer
+    }
+    configuration.titleTextAttributesTransformer = titleTextAttribute
+    
+    configuration.subtitle = "SubTitle"
+    let subTitleTextAttribute = UIConfigurationTextAttributesTransformer { transformer in
+        var transformer = transformer
+        transformer.foregroundColor = nil
+        transformer.font = .systemFont(ofSize: 50, weight: .regular)
+        return transformer
+    }
+    configuration.subtitleTextAttributesTransformer = subTitleTextAttribute
+    
+    button.configuration = configuration
+    """
 }

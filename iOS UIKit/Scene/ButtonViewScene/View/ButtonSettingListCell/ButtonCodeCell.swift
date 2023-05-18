@@ -14,6 +14,10 @@ final class ButtonCodeCell: DefaultCodeCell, ButtonSettingListCellProtocol {
         ButtonCodeCellConstants.cellId
     }
     
-    func setup(_ item: ButtonSettingListItemType) {}
-    func bind(_ viewModel: ButtonViewModel) { }
+    func setup(_ item: ButtonSettingListItemType) { }
+    func bind(_ viewModel: ButtonViewModel) {
+        viewModel.codeCellCodeLabelText
+            .drive(self.rx.codeText)
+            .disposed(by: disposeBag)
+    }
 }
