@@ -34,6 +34,7 @@ final class SFSymbolsViewController: DefaultViewController {
     
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController()
+        searchController.searchBar.tintColor = .systemBackground
         return searchController
     }()
     
@@ -81,7 +82,7 @@ final class SFSymbolsViewController: DefaultViewController {
     
     override func attribute() {
         super.attribute()
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.title = SFSymbolsViewControllerConstants.title
         navigationItem.searchController = searchController

@@ -22,6 +22,7 @@ final class LabelModel {
     ) -> String {
         """
         let label = UILabel()
+        
         label.text = \"\(text)\"
         label.textColor = \(textColor)
         label.backgroundColor = \(backgroudColor)

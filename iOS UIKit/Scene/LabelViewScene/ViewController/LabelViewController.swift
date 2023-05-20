@@ -97,6 +97,7 @@ final class LabelViewController: DefaultListViewController {
     
     override func attribute() {
         super.attribute()
+        navigationItem.largeTitleDisplayMode = .never
         navigationItem.title = LabelViewControllerConstants.title
         settingListConfigure()
     }

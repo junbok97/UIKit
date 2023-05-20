@@ -11,7 +11,6 @@ import RxDataSources
 
 class DefaultListViewController: DefaultViewController {
     
-    
     lazy var containerView: UIView = {
         let view = UIView()
         view.backgroundColor = .secondarySystemBackground

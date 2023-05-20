@@ -9,42 +9,6 @@ import UIKit
 
 final class ButtonConfigurationModel {
     
-    var code: String = """
-    let button = UIButton()
-    """
-    
-    lazy var button: UIButton = {
-        let button = UIButton()
-        var configuration = UIButton.Configuration.filled()
-        configuration.cornerStyle = .dynamic
-        configuration.baseForegroundColor = nil
-        configuration.baseBackgroundColor = nil
-        configuration.image = nil
-        configuration.imagePlacement = .leading
-        configuration.titleAlignment = .center
-        
-        configuration.title = "Title"
-        let titleTextAttribute = UIConfigurationTextAttributesTransformer { transformer in
-            var transformer = transformer
-            transformer.foregroundColor = nil
-            transformer.font = .systemFont(ofSize: 50, weight: .regular)
-            return transformer
-        }
-        configuration.titleTextAttributesTransformer = titleTextAttribute
-        
-        configuration.subtitle = "SubTitle"
-        let subTitleTextAttribute = UIConfigurationTextAttributesTransformer { transformer in
-            var transformer = transformer
-            transformer.foregroundColor = nil
-            transformer.font = .systemFont(ofSize: 50, weight: .regular)
-            return transformer
-        }
-        configuration.subtitleTextAttributesTransformer = subTitleTextAttribute
-        
-        button.configuration = configuration
-        return button
-    }()
-    
     func makeTextAttribute(
         _ fontType: ObjectFontType,
         _ ofSize: Int,
@@ -102,6 +66,7 @@ final class ButtonConfigurationModel {
     ) -> String {
         """
         let button = UIButton()
+        
         var configuration = \(style)
         configuration.cornerStyle = \(corner)
         configuration.baseForegroundColor = \(foregroundColor == nil ? "nil" : "titleColor!")

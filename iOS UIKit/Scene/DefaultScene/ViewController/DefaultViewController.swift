@@ -25,6 +25,16 @@ class DefaultViewController: UIViewController {
     }()
     
     @objc func didTappedLeftBarButton() { }
+    @objc func respondToSwipeGesture(_ gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case .right:
+                didTappedLeftBarButton()
+            default:
+                break
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +44,25 @@ class DefaultViewController: UIViewController {
     
     func attribute() {
         view.backgroundColor = .secondarySystemBackground
-        navigationController?.navigationBar.standardAppearance = UINavigationBarAppearance()
-        navigationController?.navigationBar.prefersLargeTitles = false
+        setupNavigationBar()
+        setupSwipeGesture()
     }
     
+}
+
+private extension DefaultViewController {
+    func setupNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.compactScrollEdgeAppearance = appearance
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    func setupSwipeGesture() {
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+        view.addGestureRecognizer(swipeGesture)
+    }
 }

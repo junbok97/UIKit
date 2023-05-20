@@ -12,6 +12,7 @@ enum ObjectSectionType: String {
     case label = "Label"
     case button = "Button"
     case system = "System"
+    case bars = "Bars"
 }
 
 struct ObjectSectionModel {
@@ -20,8 +21,8 @@ struct ObjectSectionModel {
 }
 
 extension ObjectSectionModel: SectionModelType {
-    typealias Item = Object
-    init(original: ObjectSectionModel, items: [Object]) {
+    typealias Item = ObjectType
+    init(original: ObjectSectionModel, items: [ObjectType]) {
         self = original
         self.items = items
     }

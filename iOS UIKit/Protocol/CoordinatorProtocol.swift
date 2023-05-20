@@ -24,6 +24,6 @@ extension CoordinatorProtocol {
     
     func finishChild(_ child: CoordinatorProtocol) {
         childCoordinators = childCoordinators.filter { $0 !== child }
-        navigationController.popViewController(animated: false)
+        navigationController.popViewController(animated: true)
     }
 }

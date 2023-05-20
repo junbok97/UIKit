@@ -11,6 +11,7 @@
 		CB0277182A11FAAE00FA8C15 /* ButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0277172A11FAAE00FA8C15 /* ButtonModel.swift */; };
 		CB02771A2A11FACE00FA8C15 /* ButtonSettingListSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0277192A11FACE00FA8C15 /* ButtonSettingListSectionType.swift */; };
 		CB02771C2A11FDEE00FA8C15 /* ButtonTitleAlignmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB02771B2A11FDEE00FA8C15 /* ButtonTitleAlignmentType.swift */; };
+		CB10C86D2A173C3100BC1968 /* ObjectListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB10C86C2A173C3100BC1968 /* ObjectListData.swift */; };
 		CB33D35429E82EB600FDAAAF /* LabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB33D35329E82EB500FDAAAF /* LabelViewModel.swift */; };
 		CB33D35929E83A5400FDAAAF /* LabelAlignmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB33D35829E83A5400FDAAAF /* LabelAlignmentCell.swift */; };
 		CB33D35B29E8446D00FDAAAF /* ChildCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB33D35A29E8446D00FDAAAF /* ChildCoordinatorFactory.swift */; };
@@ -98,7 +99,7 @@
 		CBC323832A0604DD00C5B6D1 /* ObjectListCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC323822A0604DD00C5B6D1 /* ObjectListCellConstants.swift */; };
 		CBC323972A06BF5100C5B6D1 /* ObjectSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC323962A06BF5100C5B6D1 /* ObjectSectionModel.swift */; };
 		CBC6073F29C1C733008B6BA9 /* UITableViewCellReigster.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC6073E29C1C733008B6BA9 /* UITableViewCellReigster.swift */; };
-		CBC6074529C1D09D008B6BA9 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC6074429C1D09D008B6BA9 /* Object.swift */; };
+		CBC6074529C1D09D008B6BA9 /* ObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC6074429C1D09D008B6BA9 /* ObjectType.swift */; };
 		CBC6074B29C1D28F008B6BA9 /* UITableViewHeaderFooterViewRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC6074A29C1D28F008B6BA9 /* UITableViewHeaderFooterViewRegister.swift */; };
 		CBD2FC7C2A0B6D73008033CF /* LabelCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2FC7B2A0B6D73008033CF /* LabelCodeCell.swift */; };
 		CBD2FC7E2A0B6DBF008033CF /* LabelCodeCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2FC7D2A0B6DBF008033CF /* LabelCodeCellConstants.swift */; };
@@ -121,6 +122,7 @@
 		CB0277172A11FAAE00FA8C15 /* ButtonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModel.swift; sourceTree = "<group>"; };
 		CB0277192A11FACE00FA8C15 /* ButtonSettingListSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSettingListSectionType.swift; sourceTree = "<group>"; };
 		CB02771B2A11FDEE00FA8C15 /* ButtonTitleAlignmentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTitleAlignmentType.swift; sourceTree = "<group>"; };
+		CB10C86C2A173C3100BC1968 /* ObjectListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectListData.swift; sourceTree = "<group>"; };
 		CB33D35329E82EB500FDAAAF /* LabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewModel.swift; sourceTree = "<group>"; };
 		CB33D35829E83A5400FDAAAF /* LabelAlignmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAlignmentCell.swift; sourceTree = "<group>"; };
 		CB33D35A29E8446D00FDAAAF /* ChildCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCoordinatorFactory.swift; sourceTree = "<group>"; };
@@ -208,7 +210,7 @@
 		CBC323822A0604DD00C5B6D1 /* ObjectListCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectListCellConstants.swift; sourceTree = "<group>"; };
 		CBC323962A06BF5100C5B6D1 /* ObjectSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSectionModel.swift; sourceTree = "<group>"; };
 		CBC6073E29C1C733008B6BA9 /* UITableViewCellReigster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellReigster.swift; sourceTree = "<group>"; };
-		CBC6074429C1D09D008B6BA9 /* Object.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
+		CBC6074429C1D09D008B6BA9 /* ObjectType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectType.swift; sourceTree = "<group>"; };
 		CBC6074A29C1D28F008B6BA9 /* UITableViewHeaderFooterViewRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewHeaderFooterViewRegister.swift; sourceTree = "<group>"; };
 		CBD2FC7B2A0B6D73008033CF /* LabelCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCodeCell.swift; sourceTree = "<group>"; };
 		CBD2FC7D2A0B6DBF008033CF /* LabelCodeCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCodeCellConstants.swift; sourceTree = "<group>"; };
@@ -284,7 +286,8 @@
 			isa = PBXGroup;
 			children = (
 				CB7CA7852A03B28000574395 /* MainModel.swift */,
-				CB421FB129E5A9040014DC4F /* ObjectListCell */,
+				CBC6074429C1D09D008B6BA9 /* ObjectType.swift */,
+				CBC323962A06BF5100C5B6D1 /* ObjectSectionModel.swift */,
 				CBBEBC262A0F9ABC00A0DFE0 /* Constants */,
 			);
 			path = Model;
@@ -411,15 +414,6 @@
 				CB3A90AA2A121CD8001CC138 /* DefaultSettingListHeaderView.swift */,
 			);
 			path = DefaultSettingListHeaderView;
-			sourceTree = "<group>";
-		};
-		CB421FB129E5A9040014DC4F /* ObjectListCell */ = {
-			isa = PBXGroup;
-			children = (
-				CBC6074429C1D09D008B6BA9 /* Object.swift */,
-				CBC323962A06BF5100C5B6D1 /* ObjectSectionModel.swift */,
-			);
-			path = ObjectListCell;
 			sourceTree = "<group>";
 		};
 		CB5714FD2A0A22BC00365646 /* SFSymbolsScene */ = {
@@ -708,6 +702,7 @@
 			children = (
 				CBC323822A0604DD00C5B6D1 /* ObjectListCellConstants.swift */,
 				CB80B1DC29E53F3300298F3C /* MainViewControllerConstants.swift */,
+				CB10C86C2A173C3100BC1968 /* ObjectListData.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -920,6 +915,7 @@
 				CBF4396B29C1C014003E85B3 /* AppDelegate.swift in Sources */,
 				CB7024AD2A10E264006194FB /* DefaultCodeCell.swift in Sources */,
 				CB7024CF2A10F373006194FB /* ButtonCodeCellConstants.swift in Sources */,
+				CB10C86D2A173C3100BC1968 /* ObjectListData.swift in Sources */,
 				CB8F40402A161DF900AD9D89 /* SFSymbolsSystemName.swift in Sources */,
 				CB5715072A0A2A7E00365646 /* SFSymbolsCollectionViewCell.swift in Sources */,
 				CBBBC89D2A137CEB00213A2A /* ButtonFontSizeCell.swift in Sources */,
@@ -936,7 +932,7 @@
 				CBE4FA3A2A13D5A900479A8F /* ButtonConfigurationModel.swift in Sources */,
 				CB7024B42A10E42F006194FB /* LabelSettingListCellProtocol.swift in Sources */,
 				CB5715152A0A44B700365646 /* ButtonCornerStyleType.swift in Sources */,
-				CBC6074529C1D09D008B6BA9 /* Object.swift in Sources */,
+				CBC6074529C1D09D008B6BA9 /* ObjectType.swift in Sources */,
 				CBBEBC322A0FC90200A0DFE0 /* LabelSettingListSectionModel.swift in Sources */,
 				CBFCD0AE2A1496CC0085A398 /* DefaultViewController.swift in Sources */,
 				CB80B1D729E53B7B00298F3C /* MainCoordinator.swift in Sources */,
@@ -1144,7 +1140,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 34STBCNCDG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS UIKit/Info.plist";
@@ -1177,7 +1173,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 34STBCNCDG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS UIKit/Info.plist";

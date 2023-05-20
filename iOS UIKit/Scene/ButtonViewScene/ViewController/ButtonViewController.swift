@@ -61,6 +61,7 @@ final class ButtonViewController: DefaultListViewController {
     override func attribute() {
         super.attribute()
         navigationItem.title = ButtonViewControllerConstants.title
+        navigationItem.largeTitleDisplayMode = .never
         settingListConfigure()
     }
     

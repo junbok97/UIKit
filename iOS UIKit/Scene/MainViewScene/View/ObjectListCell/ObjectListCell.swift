@@ -40,9 +40,9 @@ final class ObjectListCell: UITableViewCell, UITableViewCellReigster {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(object: Object) {
-        titleLabel.text = object.title
-        mainImageView.image = object.image
+    func setup(objectType: ObjectType) {
+        titleLabel.text = objectType.rawValue
+        mainImageView.image = UIImage(named: objectType.rawValue)
     }
     
 }

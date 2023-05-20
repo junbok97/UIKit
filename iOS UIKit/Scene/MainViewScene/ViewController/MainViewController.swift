@@ -10,11 +10,10 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-final class MainViewController: UIViewController {
+final class MainViewController: DefaultViewController {
     
     weak var coordinator: MainCoordinatorProtocol?
     
-    private let disposeBag = DisposeBag()
     private var viewModel: MainViewModel!
     
     static func create(
@@ -60,19 +59,22 @@ final class MainViewController: UIViewController {
         
         objectListView.rx.itemSelected
             .map { indexPath in
-                dataSource.sectionModels[indexPath.section].items[indexPath.row].type
+                dataSource.sectionModels[indexPath.section].items[indexPath.row]
             }
             .bind(to: self.rx.showDetailViewController)
             .disposed(by: disposeBag)
     }
     
+    override func attribute() {
+        super.attribute()
+        setupNavigationItem()
+    }
+    
 }
 
 private extension MainViewController {
-    func attribute() {
-        let appearance = UINavigationBarAppearance()
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.prefersLargeTitles = true
+    func setupNavigationItem() {
+        navigationItem.largeTitleDisplayMode = .always
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.title = MainViewControllerConstants.title
         navigationItem.searchController = searchController
@@ -88,8 +90,8 @@ private extension MainViewController {
         ])
     }
     
-    func showDetailViewController(_ object: Object) {
-        self.coordinator?.pushDetailViewController(type: object.type)
+    func showDetailViewController(_ objectType: ObjectType) {
+        self.coordinator?.pushDetailViewController(type: objectType)
     }
 
 }

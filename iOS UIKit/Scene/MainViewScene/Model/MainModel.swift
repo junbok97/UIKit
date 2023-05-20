@@ -11,44 +11,21 @@ import RxSwift
 
 final class MainModel {
     
-    // 기본 데이터
-    private let objects: [ObjectSectionModel] = [
-        ObjectSectionModel(
-            sectionHeader: .label,
-            items: [
-                Object(type: .label)
-            ]
-        ),
-        ObjectSectionModel(
-            sectionHeader: .button,
-            items: [
-                Object(type: .button)
-            ]
-        ),
-        ObjectSectionModel(
-            sectionHeader: .system,
-            items: [
-                Object(type: .sfSymbols)
-            ]
-        )
-    ]
-    
-    lazy var datas = BehaviorSubject<[ObjectSectionModel]>(value: self.objects)
+    let objectListDataStream = BehaviorSubject<[ObjectSectionModel]>(value: ObjectListData.objectListDatas)
     
     func searchObject(_ title: String?) {
         guard let title = title, title != "" else {
-            datas.onNext(objects)
+            objectListDataStream.onNext(ObjectListData.objectListDatas)
             return
         }
         
-        let newSectionModel = objects.compactMap { sectionModel in
-            let newobjects = sectionModel.items.filter { object in
-                object.title.range(of: title, options: .caseInsensitive) != nil
+        let newSectionModel = ObjectListData.objectListDatas.compactMap { sectionModel in
+            let newobjects = sectionModel.items.filter { objectType in
+                objectType.rawValue.range(of: title, options: .caseInsensitive) != nil
             }
             return newobjects.count == 0 ? nil : ObjectSectionModel(sectionHeader: sectionModel.sectionHeader, items: newobjects)
         }
-        
-        datas.onNext(newSectionModel)
+        objectListDataStream.onNext(newSectionModel)
     }
     
 }

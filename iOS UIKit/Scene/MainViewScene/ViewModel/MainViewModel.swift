@@ -23,7 +23,7 @@ final class MainViewModel {
     init() {
         let mainModel = MainModel()
         
-        cellData = mainModel.datas
+        cellData = mainModel.objectListDataStream
             .asDriver(onErrorDriveWith: .empty())
         
         searchObject
@@ -36,7 +36,7 @@ final class MainViewModel {
     func dataSource() -> RxTableViewSectionedReloadDataSource<ObjectSectionModel> {
         let dataSource = RxTableViewSectionedReloadDataSource<ObjectSectionModel> { _, tableView, indexPath, item in
             let cell = ObjectListCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
-            cell.setup(object: item)
+            cell.setup(objectType: item)
             return cell
         }
         
