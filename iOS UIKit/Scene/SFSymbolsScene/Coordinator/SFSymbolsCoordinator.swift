@@ -18,8 +18,12 @@ final class SFSymbolsCoordinator: SFSymbolsCoordinatorProtocol {
     
     private let viewModel: SFSymbolsViewModel = SFSymbolsViewModel()
 
-    init(navigationController: UINavigationController) {
+    init(
+        _ navigationController: UINavigationController,
+        _ parentCoordinator: CoordinatorProtocol?
+    ) {
         self.navigationController = navigationController
+        self.parentCoordinator = parentCoordinator
     }
     
     func start() {

@@ -20,7 +20,8 @@ final class LabelColorCell: DefaultColorCell, LabelSettingListCellProtocol {
     
     func bind(_ viewModel: LabelViewModel) {
         selectedColorSubject
-            .bind(to: viewModel.colorCellDidSelected)
+            .distinctUntilChanged()
+            .bind(onNext: viewModel.colorCellDidSelected)
             .disposed(by: disposeBag)
     }
     

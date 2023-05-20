@@ -19,6 +19,7 @@ final class ButtonColorCell: DefaultColorCell, ButtonSettingListCellProtocol {
     
     func bind(_ viewModel: ButtonViewModel) {
         selectedColorSubject
+            .distinctUntilChanged()
             .bind(onNext: viewModel.colorCellDidSelected)
             .disposed(by: disposeBag)
     }

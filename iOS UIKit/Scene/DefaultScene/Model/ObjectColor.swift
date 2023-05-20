@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct ObjectColor {
+struct ObjectColor: Equatable {
     let colorType: ObjectColorType
     let color: UIColor
 }

@@ -35,7 +35,7 @@ final class ButtonViewModel {
         targetTintColor = tintColorSelected
             .asDriver(onErrorDriveWith: .empty())
         
-        codeCellCodeLabelText = buttonConfigurationViewModel.buttonConfigurationCode
+        codeCellCodeLabelText = buttonConfigurationViewModel.buttonSettingCodeText
             .asDriver(onErrorDriveWith: .empty())
     }
     
@@ -74,35 +74,17 @@ extension ButtonViewModel {
     }
     
     func colorCellDidSelected(_ objectColor: ObjectColor) {
+        buttonConfigurationViewModel.colorCellDidSelected(objectColor)
         switch objectColor.colorType {
         case .tintColor:
             tintColorSelected.accept(objectColor.color)
-        case .titleColor:
-            buttonConfigurationViewModel.titleColorDidSelected(objectColor.color)
-        case .subTitleColor:
-            buttonConfigurationViewModel.subTitleColorDidSelected(objectColor.color)
-        case .foregroundColor:
-            buttonConfigurationViewModel.baseForegroundColorSelected(objectColor.color)
-        case .backgroundColor:
-            buttonConfigurationViewModel.basebackgroundColorSelected(objectColor.color)
+        default:
+            break
         }
     }
     
     func buttonSettingListItemSelected(_ itemType: ButtonSettingListItemType) {
-        switch itemType {
-        case let .buttonStyle(buttonStyle: buttonStyle):
-            buttonConfigurationViewModel.buttonStyleDidSelected(buttonStyle)
-        case let .corner(cornerStyleType: cornerStyle):
-            buttonConfigurationViewModel.buttonCornerStyleDidSelected(cornerStyle)
-        case let .buttonTitleAlignment(aligmentType: alignmentType):
-            buttonConfigurationViewModel.titleAlignmentDidSelected(alignmentType)
-        case let .font(titleType: titleType, fontType: fontType):
-            buttonConfigurationViewModel.fontDidSeleted(titleType, fontType)
-        case let .imagePlacement(placement: placement):
-            buttonConfigurationViewModel.imagePlacementDidSelected(placement)
-        default:
-            return
-        }
+        buttonConfigurationViewModel.buttonSettingListItemSelected(itemType)
     }
 
 }

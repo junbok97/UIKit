@@ -31,13 +31,14 @@ final class ButtonConfigurationViewModel {
     private let subTitleColorDidSelected = BehaviorRelay<UIColor?>(value: nil)
     
     // color
+    private let tintColorSelected = BehaviorRelay<UIColor?>(value: .tintColor)
     private let baseForegroundColorSelected = BehaviorRelay<UIColor?>(value: nil)
     private let basebackgroundColorSelected = BehaviorRelay<UIColor?>(value: nil)
     
     private let sfSymbolDidSeleted = BehaviorRelay<String>(value: "")
     private let imagePlacementDidSelected = BehaviorRelay<ButtonImagePlacementType>(value: .leading)
     
-    let buttonConfigurationCode = BehaviorRelay<String>(value: ButtonViewControllerConstants.defaultButtonCode)
+    let buttonSettingCodeText = BehaviorRelay<String>(value: ButtonViewControllerConstants.defaultButtonCode)
     let buttonConfigurationDidChanged = BehaviorRelay<UIButton.Configuration>(value: .filled())
     
     private let buttonConfigurationModel = ButtonConfigurationModel()
@@ -81,40 +82,7 @@ final class ButtonConfigurationViewModel {
         .bind(to: buttonConfigurationDidChanged)
         .disposed(by: disposeBag)
         
-        configurationToCode()
-    }
-    
-    func configurationToCode() {
-        let styleCode = buttonStyleDidSelected.map { $0.code }
-        let cornerStyleCode = buttonCornerStyleDidSelected.map { $0.code }
-        
-        let titleAlignmentCode = titleAlignmentDidSelected.map { $0.code }
-        let titleCode = titleTextDidChangedTextField
-        let titleFontCode = Observable.combineLatest(titleFontDidSelected, titleFontSizeDidChanged) { fontType, ofSize in
-            fontType.code(ofSize: CGFloat(ofSize))
-        }
-        
-        let subTitleCode = subTitleTextDidChangedTextField
-        let subTitleFontCode = Observable.combineLatest(subTitleFontDidSelected, subTitleFontSizeDidChanged) { fontType, ofSize in
-            fontType.code(ofSize: CGFloat(ofSize))
-        }
-        
-        let imageCode = sfSymbolDidSeleted.map {
-            $0 == "" ? "nil" : "UIImage(systemName: \($0))"
-        }
-        let imagePlacementCode = imagePlacementDidSelected.map { $0.code }
-        
-        let configurationCode = Observable
-            .combineLatest(styleCode, cornerStyleCode, baseForegroundColorSelected, basebackgroundColorSelected, imageCode, imagePlacementCode).map(buttonConfigurationModel.configurationToCode)
-        
-        let titleTextAttributeCode = Observable.combineLatest(titleAlignmentCode, titleCode, titleFontCode, titleColorDidSelected).map(buttonConfigurationModel.titleTextAttributeToCode)
-        
-        let subTitleTextAttributeCode = Observable.combineLatest(subTitleCode, subTitleFontCode, subTitleColorDidSelected).map(buttonConfigurationModel.subTitleTextAttributeToCode)
-        
-        Observable
-            .combineLatest(configurationCode, titleTextAttributeCode, subTitleTextAttributeCode).map { $0 + $1 + $2 }
-            .bind(to: buttonConfigurationCode)
-            .disposed(by: disposeBag)
+        buttonSettingToCode()
     }
     
     deinit {
@@ -124,8 +92,125 @@ final class ButtonConfigurationViewModel {
 }
 
 extension ButtonConfigurationViewModel {
+    func colorCellDidSelected(_ objectColor: ObjectColor) {
+        switch objectColor.colorType {
+        case .tintColor:
+            tintColorDidSelected(objectColor.color)
+        case .titleColor:
+            titleColorDidSelected(objectColor.color)
+        case .subTitleColor:
+            subTitleColorDidSelected(objectColor.color)
+        case .foregroundColor:
+            baseForegroundColorSelected(objectColor.color)
+        case .backgroundColor:
+            basebackgroundColorSelected(objectColor.color)
+        }
+    }
+    
+    func buttonSettingListItemSelected(_ itemType: ButtonSettingListItemType) {
+        switch itemType {
+        case let .buttonStyle(buttonStyle: buttonStyle):
+            buttonStyleDidSelected(buttonStyle)
+        case let .corner(cornerStyleType: cornerStyle):
+            buttonCornerStyleDidSelected(cornerStyle)
+        case let .buttonTitleAlignment(aligmentType: alignmentType):
+            titleAlignmentDidSelected(alignmentType)
+        case let .font(titleType: titleType, fontType: fontType):
+            fontDidSeleted(titleType, fontType)
+        case let .imagePlacement(placement: placement):
+            imagePlacementDidSelected(placement)
+        default:
+            return
+        }
+    }
+
+    
     func sfSymbolDidSeleted(_ sfSymbolName: String) {
         sfSymbolDidSeleted.accept(sfSymbolName)
+    }
+    
+    func textDidChanged(_ buttonText: ButtonText) {
+        switch buttonText.titleType {
+        case .title:
+            titleTextDidChangedTextField.accept(buttonText.text)
+        case .subTitle:
+            subTitleTextDidChangedTextField.accept(buttonText.text)
+        }
+    }
+    
+    func fontSizeDidChanged(_ buttonFontSize: ButtonFontSize) {
+        switch buttonFontSize.titleType {
+        case .title:
+            titleFontSizeDidChanged.accept(buttonFontSize.fontSize)
+        case .subTitle:
+            subTitleFontSizeDidChanged.accept(buttonFontSize.fontSize)
+        }
+    }
+
+}
+
+private extension ButtonConfigurationViewModel {
+    
+    func buttonSettingToCode() {
+        let styleCode = buttonStyleDidSelected.map { $0.code }
+        let cornerStyleCode = buttonCornerStyleDidSelected.map { $0.code }
+        
+        let titleAlignmentCode = titleAlignmentDidSelected.map { $0.code }
+        let titleCode = titleTextDidChangedTextField
+        let titleFontCode = Observable.combineLatest(
+            titleFontDidSelected,
+            titleFontSizeDidChanged
+        ) { fontType, ofSize in
+            fontType.code(ofSize: CGFloat(ofSize))
+        }
+        
+        let subTitleCode = subTitleTextDidChangedTextField
+        let subTitleFontCode = Observable.combineLatest(
+            subTitleFontDidSelected,
+            subTitleFontSizeDidChanged
+        ) { fontType, ofSize in
+            fontType.code(ofSize: CGFloat(ofSize))
+        }
+        
+        let imageCode = sfSymbolDidSeleted.map {
+            $0 == "" ? "nil" : "UIImage(systemName: \($0))"
+        }
+        let imagePlacementCode = imagePlacementDidSelected.map { $0.code }
+        
+        let configurationCode = Observable.combineLatest(
+            styleCode,
+            cornerStyleCode,
+            tintColorSelected,
+            baseForegroundColorSelected,
+            basebackgroundColorSelected,
+            imageCode,
+            imagePlacementCode
+        ).map(buttonConfigurationModel.configurationToCode)
+        
+        let titleTextAttributeCode = Observable.combineLatest(
+            titleAlignmentCode,
+            titleCode,
+            titleFontCode,
+            titleColorDidSelected
+        ).map(buttonConfigurationModel.titleTextAttributeToCode)
+        
+        let subTitleTextAttributeCode = Observable.combineLatest(
+            subTitleCode,
+            subTitleFontCode,
+            subTitleColorDidSelected
+        ).map(buttonConfigurationModel.subTitleTextAttributeToCode)
+        
+        Observable.combineLatest(
+            configurationCode,
+            titleTextAttributeCode,
+            subTitleTextAttributeCode
+        ).map { $0 + $1 + $2 }
+            .bind(to: buttonSettingCodeText)
+            .disposed(by: disposeBag)
+    }
+    
+    func tintColorDidSelected(_ color: UIColor) {
+        tintColorSelected.accept(color)
     }
     
     func titleColorDidSelected(_ color: UIColor) {
@@ -173,21 +258,4 @@ extension ButtonConfigurationViewModel {
         imagePlacementDidSelected.accept(imagePlacementType)
     }
     
-    func textDidChanged(_ buttonText: ButtonText) {
-        switch buttonText.titleType {
-        case .title:
-            titleTextDidChangedTextField.accept(buttonText.text)
-        case .subTitle:
-            subTitleTextDidChangedTextField.accept(buttonText.text)
-        }
-    }
-    
-    func fontSizeDidChanged(_ buttonFontSize: ButtonFontSize) {
-        switch buttonFontSize.titleType {
-        case .title:
-            titleFontSizeDidChanged.accept(buttonFontSize.fontSize)
-        case .subTitle:
-            subTitleFontSizeDidChanged.accept(buttonFontSize.fontSize)
-        }
-    }
 }

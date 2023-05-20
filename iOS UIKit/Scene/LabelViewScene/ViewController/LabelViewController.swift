@@ -82,8 +82,12 @@ final class LabelViewController: DefaultListViewController {
             .drive(self.rx.targetFont)
             .disposed(by: disposeBag)
         
-        viewModel.targetColor
-            .drive(self.rx.targetColor)
+        viewModel.targetTitleColor
+            .drive(self.rx.targetTitleColor)
+            .disposed(by: disposeBag)
+        
+        viewModel.targetBackgroundColor
+            .drive(self.rx.targetBackgroundColor)
             .disposed(by: disposeBag)
         
         viewModel.targetAlignment
@@ -149,16 +153,15 @@ extension Reactive where Base: LabelViewController {
         }
     }
     
-    var targetColor: Binder<ObjectColor> {
-        return Binder(base) { base, labelColor in
-            switch labelColor.colorType {
-            case .titleColor:
-                base.targetLabel.textColor = labelColor.color
-            case .backgroundColor:
-                base.targetLabel.backgroundColor = labelColor.color
-            default:
-                return
-            }
+    var targetTitleColor: Binder<UIColor> {
+        return Binder(base) { base, color in
+            base.targetLabel.textColor = color
+        }
+    }
+    
+    var targetBackgroundColor: Binder<UIColor> {
+        return Binder(base) { base, color in
+            base.targetLabel.backgroundColor = color
         }
     }
     

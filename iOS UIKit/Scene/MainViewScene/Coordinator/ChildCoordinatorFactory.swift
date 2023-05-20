@@ -9,12 +9,12 @@ import UIKit
 
 final class ChildCoordinatorFactory {
     
-    let parentCoordinator: MainCoordinator
+    let parentCoordinator: CoordinatorProtocol
     let navigationController: UINavigationController
     
     init(
-        parentCoordinator: MainCoordinator,
-        navigationController: UINavigationController
+        _ parentCoordinator: CoordinatorProtocol,
+        _ navigationController: UINavigationController
     ) {
         self.parentCoordinator = parentCoordinator
         self.navigationController = navigationController
@@ -23,20 +23,16 @@ final class ChildCoordinatorFactory {
     func makeCoordinator(type: ObjectType) -> CoordinatorProtocol {
         switch type {
         case .label:
-            let coordinator =  LabelCoordinator(navigationController: navigationController)
-            coordinator.parentCoordinator = self.parentCoordinator
+            let coordinator =  LabelCoordinator(navigationController, self.parentCoordinator)
             return coordinator
         case .button:
-            let coordinator = ButtonCoordinator(navigationController: navigationController)
-            coordinator.parentCoordinator = self.parentCoordinator
+            let coordinator = ButtonCoordinator(navigationController, self.parentCoordinator)
             return coordinator
         case .sfSymbols:
-            let coordinator = SFSymbolsCoordinator(navigationController: navigationController)
-            coordinator.parentCoordinator = self.parentCoordinator
+            let coordinator = SFSymbolsCoordinator(navigationController, self.parentCoordinator)
             return coordinator
         default:
-            let coordinator =  LabelCoordinator(navigationController: navigationController)
-            coordinator.parentCoordinator = self.parentCoordinator
+            let coordinator =  LabelCoordinator(navigationController, self.parentCoordinator)
             return coordinator
         }
     }

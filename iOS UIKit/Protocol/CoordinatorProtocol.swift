@@ -8,16 +8,20 @@
 import UIKit
 
 protocol CoordinatorProtocol: AnyObject {
-    var navigationController: UINavigationController { get set }
+    var navigationController: UINavigationController { get }
     var childCoordinators: [CoordinatorProtocol] { get set }
-    var parentCoordinator: CoordinatorProtocol? { get set }
+    var parentCoordinator: CoordinatorProtocol? { get }
 
     func start()
 
-    init(navigationController: UINavigationController)
+    init(
+        _ navigationController: UINavigationController,
+        _ parentCoordinator: CoordinatorProtocol?
+    )
 }
 
 extension CoordinatorProtocol {
+    
     func finish() {
         parentCoordinator?.finishChild(self)
     }

@@ -19,8 +19,12 @@ final class ButtonCoordinator: ButtonCoordinatorProtocol {
 
     private let viewModel = ButtonViewModel()
     
-    init(navigationController: UINavigationController) {
+    init(
+        _ navigationController: UINavigationController,
+        _ parentCoordinator: CoordinatorProtocol?
+    ) {
         self.navigationController = navigationController
+        self.parentCoordinator = parentCoordinator
     }
 
     func start() {
@@ -29,8 +33,7 @@ final class ButtonCoordinator: ButtonCoordinatorProtocol {
     }
     
     func showSFSymbolsScene() {
-        let child = SFSymbolsCoordinator(navigationController: navigationController)
-        child.parentCoordinator = self
+        let child = SFSymbolsCoordinator(navigationController, self)
         childCoordinators.append(child)
         child.start(viewModel)
     }

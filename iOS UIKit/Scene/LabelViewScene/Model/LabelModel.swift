@@ -14,20 +14,21 @@ final class LabelModel {
     
     func codeLabelText(
         _ text: String,
-        _ textColor: String,
-        _ backgroudColor: String,
-        _ font: String,
-        _ alignment: String,
-        _ lines: String
+        _ textColor: UIColor,
+        _ backgroudColor: UIColor,
+        _ fontType: ObjectFontType,
+        _ ofSize: Int,
+        _ alignment: ObjectAlignmentType,
+        _ lines: Int
     ) -> String {
         """
         let label = UILabel()
         
         label.text = \"\(text)\"
-        label.textColor = \(textColor)
-        label.backgroundColor = \(backgroudColor)
-        label.font = \(font)
-        label.textAlignment = \(alignment)
+        label.textColor = \(textColor.cgColor.getRGBCode)
+        label.backgroundColor = \(backgroudColor.cgColor.getRGBCode)
+        label.font = \(fontType.code(ofSize: CGFloat(ofSize)))
+        label.textAlignment = \(alignment.code)
         label.numberOfLines = \(lines)
         """
     }

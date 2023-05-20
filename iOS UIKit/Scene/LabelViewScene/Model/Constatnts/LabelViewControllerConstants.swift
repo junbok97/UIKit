@@ -13,17 +13,21 @@ struct LabelViewControllerConstants {
     static let defaultFont: UIFont = .systemFont(ofSize: 16)
     
     static let title: String = "Label"
-    
     static let targetLabelFontSize: Float = 50.0
     static let targetLabelFont: UIFont = .systemFont(ofSize: 50)
     static let targetLabelOffset: CGFloat = 20
     static let targetLabelCornerRadius: CGFloat = 8.0
     static let targetLabelNumberOfLines: Int = 0
-    
-    static let textCode: String = "\"Label\""
-    static let textColorCode: String = ".label"
-    static let backgroundColorCode: String = ".systemBackground"
-    static let fontCode: String = ".systemFont(ofSize: 50)"
-    static let alignmentCode: String = ".center"
-    static let numberOfLinesCode: String = "0"
+
+    static let defaultLabelCode: String =
+    """
+    let label = UILabel()
+
+    label.text = \"Label\"
+    label.textColor = .label
+    label.backgroundColor = .systemBackground
+    label.font = .systemFont(ofSize: 50)
+    label.textAlignment = .center
+    label.numberOfLines = 0
+    """
 }

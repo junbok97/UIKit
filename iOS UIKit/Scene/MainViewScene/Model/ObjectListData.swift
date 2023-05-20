@@ -26,12 +26,6 @@ struct ObjectListData {
             items: [
                 .sfSymbols
             ]
-        ),
-        ObjectSectionModel(
-            sectionHeader: .bars,
-            items: [
-                .navigationBar
-            ]
         )
     ]
 }

@@ -103,6 +103,9 @@
 		CBC6074B29C1D28F008B6BA9 /* UITableViewHeaderFooterViewRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC6074A29C1D28F008B6BA9 /* UITableViewHeaderFooterViewRegister.swift */; };
 		CBD2FC7C2A0B6D73008033CF /* LabelCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2FC7B2A0B6D73008033CF /* LabelCodeCell.swift */; };
 		CBD2FC7E2A0B6DBF008033CF /* LabelCodeCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD2FC7D2A0B6DBF008033CF /* LabelCodeCellConstants.swift */; };
+		CBDD7F872A18BBBA0081953C /* NavgationBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDD7F862A18BBBA0081953C /* NavgationBarCoordinator.swift */; };
+		CBDD7F892A18BBCC0081953C /* NavigationBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDD7F882A18BBCC0081953C /* NavigationBarController.swift */; };
+		CBDD7F8B2A18C76E0081953C /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDD7F8A2A18C76E0081953C /* UIColor+.swift */; };
 		CBDE6E1E29E54B170068BA0A /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE6E1D29E54B170068BA0A /* LabelViewController.swift */; };
 		CBDE6E6529E5599B0068BA0A /* LabelColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBDE6E6429E5599B0068BA0A /* LabelColorCell.swift */; };
 		CBE4FA3A2A13D5A900479A8F /* ButtonConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4FA392A13D5A900479A8F /* ButtonConfigurationModel.swift */; };
@@ -214,6 +217,9 @@
 		CBC6074A29C1D28F008B6BA9 /* UITableViewHeaderFooterViewRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewHeaderFooterViewRegister.swift; sourceTree = "<group>"; };
 		CBD2FC7B2A0B6D73008033CF /* LabelCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCodeCell.swift; sourceTree = "<group>"; };
 		CBD2FC7D2A0B6DBF008033CF /* LabelCodeCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCodeCellConstants.swift; sourceTree = "<group>"; };
+		CBDD7F862A18BBBA0081953C /* NavgationBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavgationBarCoordinator.swift; sourceTree = "<group>"; };
+		CBDD7F882A18BBCC0081953C /* NavigationBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarController.swift; sourceTree = "<group>"; };
+		CBDD7F8A2A18C76E0081953C /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		CBDE6E1D29E54B170068BA0A /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
 		CBDE6E6429E5599B0068BA0A /* LabelColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelColorCell.swift; sourceTree = "<group>"; };
 		CBE4FA392A13D5A900479A8F /* ButtonConfigurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonConfigurationModel.swift; sourceTree = "<group>"; };
@@ -288,6 +294,7 @@
 				CB7CA7852A03B28000574395 /* MainModel.swift */,
 				CBC6074429C1D09D008B6BA9 /* ObjectType.swift */,
 				CBC323962A06BF5100C5B6D1 /* ObjectSectionModel.swift */,
+				CB10C86C2A173C3100BC1968 /* ObjectListData.swift */,
 				CBBEBC262A0F9ABC00A0DFE0 /* Constants */,
 			);
 			path = Model;
@@ -580,6 +587,8 @@
 		CB7705082A16843E00DA7B77 /* NavigationBarScene */ = {
 			isa = PBXGroup;
 			children = (
+				CBDD7F862A18BBBA0081953C /* NavgationBarCoordinator.swift */,
+				CBDD7F882A18BBCC0081953C /* NavigationBarController.swift */,
 			);
 			path = NavigationBarScene;
 			sourceTree = "<group>";
@@ -587,8 +596,8 @@
 		CB80B1D029E53A8D00298F3C /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				CB7705082A16843E00DA7B77 /* NavigationBarScene */,
 				CB7024A72A10E001006194FB /* DefaultScene */,
+				CB7705082A16843E00DA7B77 /* NavigationBarScene */,
 				CB80B1D329E53AA700298F3C /* MainViewScene */,
 				CBDE6E1C29E54B0A0068BA0A /* LabelViewScene */,
 				CBAAA2422A08CC6C00773E0C /* ButtonViewScene */,
@@ -702,7 +711,6 @@
 			children = (
 				CBC323822A0604DD00C5B6D1 /* ObjectListCellConstants.swift */,
 				CB80B1DC29E53F3300298F3C /* MainViewControllerConstants.swift */,
-				CB10C86C2A173C3100BC1968 /* ObjectListData.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -727,6 +735,14 @@
 				CB3A90A72A12163F001CC138 /* ButtonSettingListCellProtocol.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		CBDD7F8C2A18D9F40081953C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CBDD7F8A2A18C76E0081953C /* UIColor+.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		CBDE6E1C29E54B0A0068BA0A /* LabelViewScene */ = {
@@ -757,6 +773,7 @@
 			children = (
 				CB9A9CA62A10DE360065F5A5 /* App */,
 				CBC6073D29C1C71F008B6BA9 /* Protocol */,
+				CBDD7F8C2A18D9F40081953C /* Extension */,
 				CB80B1D029E53A8D00298F3C /* Scene */,
 				CB9A9CA72A10DE3D0065F5A5 /* Resource */,
 				CBF4397829C1C015003E85B3 /* Info.plist */,
@@ -948,6 +965,7 @@
 				CB7024AF2A10E285006194FB /* DefaultCell.swift in Sources */,
 				CB7024DD2A10F6FA006194FB /* ButtonColorCell.swift in Sources */,
 				CB5715172A0A468600365646 /* ButtonImagePlacementType.swift in Sources */,
+				CBDD7F8B2A18C76E0081953C /* UIColor+.swift in Sources */,
 				CB7024B62A10E5A8006194FB /* DefaultTextCell.swift in Sources */,
 				CBC6074B29C1D28F008B6BA9 /* UITableViewHeaderFooterViewRegister.swift in Sources */,
 				CB7024C02A10EB33006194FB /* DefaultFontCellConstants.swift in Sources */,
@@ -973,6 +991,7 @@
 				CB3A90A62A121361001CC138 /* ButtonLabelCellConstants.swift in Sources */,
 				CBC323832A0604DD00C5B6D1 /* ObjectListCellConstants.swift in Sources */,
 				CBAAA2562A08D67E00773E0C /* LabelFontCellConstants.swift in Sources */,
+				CBDD7F872A18BBBA0081953C /* NavgationBarCoordinator.swift in Sources */,
 				CB6613C12A093A6900515AED /* LabelNumberOfLinesCell.swift in Sources */,
 				CB3A90A82A12163F001CC138 /* ButtonSettingListCellProtocol.swift in Sources */,
 				CB33D35929E83A5400FDAAAF /* LabelAlignmentCell.swift in Sources */,
@@ -986,6 +1005,7 @@
 				CB33D35B29E8446D00FDAAAF /* ChildCoordinatorFactory.swift in Sources */,
 				CBDE6E1E29E54B170068BA0A /* LabelViewController.swift in Sources */,
 				CB3A90A02A120E08001CC138 /* DefaultLabelCellConstants.swift in Sources */,
+				CBDD7F892A18BBCC0081953C /* NavigationBarController.swift in Sources */,
 				CB02771A2A11FACE00FA8C15 /* ButtonSettingListSectionType.swift in Sources */,
 				CB7024B12A10E374006194FB /* DefaultCodeCellConstants.swift in Sources */,
 				CB80B1D529E53B0000298F3C /* CoordinatorProtocol.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ObjectColorType: String {
+enum ObjectColorType: String, Equatable {
     case titleColor = "Title Color"
     case subTitleColor = "SubTitle Color"
     case tintColor = "Tint Color"

@@ -59,6 +59,7 @@ final class ButtonConfigurationModel {
     func configurationToCode(
         _ style: String,
         _ corner: String,
+        _ tintColor: UIColor?,
         _ foregroundColor: UIColor?,
         _ backgroundColor: UIColor?,
         _ image: String,
@@ -66,17 +67,20 @@ final class ButtonConfigurationModel {
     ) -> String {
         """
         let button = UIButton()
-        
         var configuration = \(style)
+        
+        button.tintColor = \(tintColor == nil ? "nil" : tintColor!.cgColor.getRGBCode)
+        configuration.baseForegroundColor = \(foregroundColor == nil ? "nil" : foregroundColor!.cgColor.getRGBCode)
+        configuration.baseBackgroundColor = \(backgroundColor == nil ? "nil" : backgroundColor!.cgColor.getRGBCode)
+        
         configuration.cornerStyle = \(corner)
-        configuration.baseForegroundColor = \(foregroundColor == nil ? "nil" : "titleColor!")
-        configuration.baseBackgroundColor = \(backgroundColor == nil ? "nil" : "titleColor!")
+        
         configuration.image = \(image)
         configuration.imagePlacement = \(imagePlacement)
         \n
         """
     }
-    
+        
     func titleTextAttributeToCode(
         titleAlignment: String,
         title: String,
@@ -90,7 +94,7 @@ final class ButtonConfigurationModel {
         let titleTextAttribute = UIConfigurationTextAttributesTransformer { transformer in
             var transformer = transformer
             transformer.font = \(titleFont)
-            transformer.foregroundColor = \(titleColor == nil ? "nil" : "\(titleColor!)")
+            transformer.foregroundColor = \(titleColor == nil ? "nil" : titleColor!.cgColor.getRGBCode)
             return transformer
         }
         configuration.titleTextAttributesTransformer = titleTextAttribute
@@ -108,7 +112,7 @@ final class ButtonConfigurationModel {
         let subTitleTextAttribute = UIConfigurationTextAttributesTransformer { transformer in
             var transformer = transformer
             transformer.font = \(subTitleFont)
-            transformer.foregroundColor = \(subTitleColor == nil ? "nil" : "\(subTitleColor!)")
+            transformer.foregroundColor = \(subTitleColor == nil ? "nil" : subTitleColor!.cgColor.getRGBCode)
             return transformer
         }
         configuration.subTitleTextAttributesTransformer = subTitleTextAttribute

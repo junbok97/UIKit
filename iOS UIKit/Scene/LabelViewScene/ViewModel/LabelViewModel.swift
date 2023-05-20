@@ -15,12 +15,18 @@ final class LabelViewModel {
     private let disposeBag = DisposeBag()
     
     // View -> ViewModel
-    let textCellDidChangedTextField = PublishRelay<String>()
-    let colorCellDidSelected = PublishRelay<ObjectColor>()
-    let fontCellDidSelected = PublishRelay<ObjectFontType>()
-    let fontSizeCellDidChangedFontSizeSlider = PublishRelay<Int>()
-    let alignmentCellDidSelected = PublishRelay<ObjectAlignmentType>()
-    let numberOfLinesCellDidChangedLineStepper = PublishRelay<Int>()
+    let textCellDidChangedTextField = BehaviorRelay<String>(value: LabelViewControllerConstants.title)
+    
+    let titleColorDidSelected = BehaviorRelay<UIColor>(value: .label)
+    let backgroundColorDidSelected = BehaviorRelay<UIColor>(value: .systemBackground)
+    
+    let fontCellDidSelected = BehaviorRelay<ObjectFontType>(value: .regular)
+    let fontSizeCellDidChangedFontSizeSlider = BehaviorRelay<Int>(value: Int(LabelViewControllerConstants.targetLabelFontSize))
+    let fontDidSelected = BehaviorRelay<UIFont>(value: LabelViewControllerConstants.targetLabelFont)
+
+    let alignmentCellDidSelected = BehaviorRelay<ObjectAlignmentType>(value: .center)
+    let numberOfLinesCellDidChangedLineStepper = BehaviorRelay<Int>(value: LabelViewControllerConstants.targetLabelNumberOfLines)
+    
     let didItemSelectedLabelSettingList = PublishRelay<LabelSettingListItemType>()
     
     // ViewModel -> View
@@ -28,26 +34,31 @@ final class LabelViewModel {
     let numberOfLinesCellStepperValueLabelText: Driver<Int>
     let targetText: Driver<String>
     let targetFont: Driver<UIFont>
-    let targetColor: Driver<ObjectColor>
+    let targetTitleColor: Driver<UIColor>
+    let targetBackgroundColor: Driver<UIColor>
     let targetAlignment: Driver<ObjectAlignmentType>
     let targetNumberOfLines: Driver<Int>
     let labelSettingListCellDatas: Driver<[LabelSettingListSectionModel]>
     
+    let labelSettingCodeText = BehaviorRelay<String>(value: LabelViewControllerConstants.defaultLabelCode)
+    
+    private let labelModel = LabelModel()
+    
     init() {
-        let labelModel = LabelModel()
+        
         labelSettingListCellDatas = labelModel.labelSettingListCellDatas
             .asDriver(onErrorDriveWith: .empty())
 
         targetText = textCellDidChangedTextField
             .asDriver(onErrorDriveWith: .empty())
         
-        targetColor = colorCellDidSelected
+        targetTitleColor = titleColorDidSelected
             .asDriver(onErrorDriveWith: .empty())
         
-        targetFont = Observable
-            .combineLatest(fontCellDidSelected, fontSizeCellDidChangedFontSizeSlider) { (fontType, ofSize) -> UIFont in
-                fontType.font(ofSize: CGFloat(ofSize))
-            }
+        targetBackgroundColor = backgroundColorDidSelected
+            .asDriver(onErrorDriveWith: .empty())
+        
+        targetFont = fontDidSelected
             .asDriver(onErrorDriveWith: .empty())
         
         targetAlignment = alignmentCellDidSelected
@@ -59,36 +70,50 @@ final class LabelViewModel {
         numberOfLinesCellStepperValueLabelText = numberOfLinesCellDidChangedLineStepper
             .asDriver(onErrorDriveWith: .empty())
         
-        let textCode = textCellDidChangedTextField
-            .startWith(LabelViewControllerConstants.textCode)
-        
-        let textColorCode = colorCellDidSelected
-            .filter { $0.colorType == .titleColor }
-            .map { "\($0.color)" }
-            .startWith(LabelViewControllerConstants.textColorCode)
-        
-        let backgroundColorCode = colorCellDidSelected
-            .filter { $0.colorType == .backgroundColor }
-            .map { "\($0.color)" }
-            .startWith(LabelViewControllerConstants.backgroundColorCode)
-        
-        let fontCode = Observable
-            .combineLatest(fontCellDidSelected, fontSizeCellDidChangedFontSizeSlider) { font, ofSize in
-                font.code(ofSize: CGFloat(ofSize))
-            }
-            .startWith(LabelViewControllerConstants.fontCode)
-        
-        let alignmentCode = alignmentCellDidSelected
-            .map { $0.code }
-            .startWith(LabelViewControllerConstants.alignmentCode)
-        
-        let numberOfLinesCode = numberOfLinesCellDidChangedLineStepper
-            .map { "\($0)" }
-            .startWith(LabelViewControllerConstants.numberOfLinesCode)
-        
-        codeCellCodeLabelText = Observable
-            .combineLatest(textCode, textColorCode, backgroundColorCode, fontCode, alignmentCode, numberOfLinesCode, resultSelector: labelModel.codeLabelText)
+        codeCellCodeLabelText = labelSettingCodeText
             .asDriver(onErrorDriveWith: .empty())
+        
+        didSeledtedFont()
+        labelSettingToCode()
+    }
+    
+    func didSeledtedFont() {
+        Observable
+            .combineLatest(
+                fontCellDidSelected,
+                fontSizeCellDidChangedFontSizeSlider
+            ) { (fontType, ofSize) -> UIFont in
+                fontType.font(ofSize: CGFloat(ofSize))
+            }
+            .bind(to: fontDidSelected)
+            .disposed(by: disposeBag)
+    }
+    
+    func colorCellDidSelected(_ objectColor: ObjectColor) {
+        print(#function)
+        switch objectColor.colorType {
+        case .titleColor:
+            titleColorDidSelected.accept(objectColor.color)
+        case .backgroundColor:
+            backgroundColorDidSelected.accept(objectColor.color)
+        default:
+            return
+        }
+    }
+
+    func labelSettingToCode() {
+        Observable
+            .combineLatest(
+                textCellDidChangedTextField,
+                titleColorDidSelected,
+                backgroundColorDidSelected,
+                fontCellDidSelected,
+                fontSizeCellDidChangedFontSizeSlider,
+                alignmentCellDidSelected,
+                numberOfLinesCellDidChangedLineStepper
+            ).map(labelModel.codeLabelText)
+            .bind(to: labelSettingCodeText)
+            .disposed(by: disposeBag)
     }
     
     func labelSettingListItemSelected(_ itemType: LabelSettingListItemType) {

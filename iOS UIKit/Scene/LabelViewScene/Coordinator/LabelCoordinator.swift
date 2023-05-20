@@ -16,8 +16,12 @@ final class LabelCoordinator: LabelCoordinatorProtocol {
     var navigationController: UINavigationController
     var childCoordinators: [CoordinatorProtocol] = []
     
-    init(navigationController: UINavigationController) {
+    init(
+        _ navigationController: UINavigationController,
+        _ parentCoordinator: CoordinatorProtocol?
+    ) {
         self.navigationController = navigationController
+        self.parentCoordinator = parentCoordinator
     }
     
     func start() {

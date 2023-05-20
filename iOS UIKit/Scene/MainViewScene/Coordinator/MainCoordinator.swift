@@ -12,19 +12,18 @@ protocol MainCoordinatorProtocol: CoordinatorProtocol {
 }
 
 final class MainCoordinator: MainCoordinatorProtocol {
-    
-    var parentCoordinator: CoordinatorProtocol? = nil
-    
+    var parentCoordinator: CoordinatorProtocol?
     var navigationController: UINavigationController
     var childCoordinators: [CoordinatorProtocol] = []
     
-    private lazy var childCoordinatorFactory = ChildCoordinatorFactory(
-        parentCoordinator: self,
-        navigationController: self.navigationController
-    )
+    private lazy var childCoordinatorFactory = ChildCoordinatorFactory(self, self.navigationController)
     
-    init(navigationController: UINavigationController) {
+    init(
+        _ navigationController: UINavigationController,
+        _ parentCoordinator: CoordinatorProtocol?
+    ) {
         self.navigationController = navigationController
+        self.parentCoordinator = parentCoordinator
     }
     
     func start() {
