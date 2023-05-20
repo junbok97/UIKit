@@ -10,10 +10,11 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-final class MainViewController: DefaultViewController {
+final class MainViewController: UIViewController {
     
     weak var coordinator: MainCoordinatorProtocol?
     
+    private let disposeBag = DisposeBag()
     private var viewModel: MainViewModel!
     
     static func create(
@@ -65,8 +66,7 @@ final class MainViewController: DefaultViewController {
             .disposed(by: disposeBag)
     }
     
-    override func attribute() {
-        super.attribute()
+    func attribute() {
         setupNavigationItem()
     }
     
@@ -74,6 +74,7 @@ final class MainViewController: DefaultViewController {
 
 private extension MainViewController {
     func setupNavigationItem() {
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.title = MainViewControllerConstants.title

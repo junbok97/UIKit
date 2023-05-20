@@ -57,8 +57,6 @@ private extension DefaultViewController {
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.compactScrollEdgeAppearance = appearance
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func setupSwipeGesture() {
