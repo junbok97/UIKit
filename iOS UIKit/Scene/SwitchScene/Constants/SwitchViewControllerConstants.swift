@@ -11,7 +11,7 @@ protocol SwitchViewControllerConstantsProtocol: DefaultListViewControllerConstan
 
 extension SwitchViewControllerConstantsProtocol {
     static var title: String { "Switch" }
-    static var containerViewHeight: CGFloat { 50.0 }
+    static var containerViewHeight: CGFloat { 100.0 }
 }
 
 struct SwitchViewControllerConstants: SwitchViewControllerConstantsProtocol {

@@ -62,3 +62,9 @@ final class SwitchViewController: DefaultListViewController {
     }
     
 }
+
+private extension SwitchViewController {
+    func settingListConfigure() {
+        
+    }
+}

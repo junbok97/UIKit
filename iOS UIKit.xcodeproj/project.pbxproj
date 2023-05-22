@@ -779,11 +779,11 @@
 		CBDD7F9A2A1B596E0081953C /* SwitchScene */ = {
 			isa = PBXGroup;
 			children = (
-				CBDD7FA52A1B5B890081953C /* Constants */,
-				CBDD7FA42A1B5B490081953C /* Model */,
-				CBDD7FA12A1B5AE10081953C /* ViewModel */,
-				CBDD7F9E2A1B5AA80081953C /* ViewController */,
 				CBDD7F9D2A1B5A9F0081953C /* Coordinator */,
+				CBDD7F9E2A1B5AA80081953C /* ViewController */,
+				CBDD7FA12A1B5AE10081953C /* ViewModel */,
+				CBDD7FA42A1B5B490081953C /* Model */,
+				CBDD7FA52A1B5B890081953C /* Constants */,
 			);
 			path = SwitchScene;
 			sourceTree = "<group>";
