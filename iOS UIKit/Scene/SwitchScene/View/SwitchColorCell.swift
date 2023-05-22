@@ -1,21 +1,21 @@
 //
-//  ButtonColorCell.swift
+//  SwitchColorCell.swift
 //  iOS UIKit
 //
-//  Created by 이준복 on 2023/05/14.
+//  Created by 이준복 on 2023/05/22.
 //
 
 import Foundation
 import RxSwift
 
-final class ButtonColorCell: DefaultColorCell, ButtonSettingListCellProtocol {
+final class SwitchColorCell: DefaultColorCell, SwitchSettingListCellProtocol {
     static override var cellId: String {
-        ButtonColorCellConstants.cellId
+        SwitchColorCellConstants.cellId
     }
     
-    private var colorTypeStream: Observable<ButtonColorType> = Observable.just(.titleColor)
+    private var colorTypeStream: Observable<SwitchColorType> = Observable.just(.onTintColor)
     
-    func setup(_ item: ButtonSettingListItemType) {
+    func setup(_ item: SwitchSettingListItemType) {
         guard case let .color(colorType: colorType) = item else { return }
         self.colorTypeStream = Observable.just(colorType)
         Observable.just(colorType.rawValue)
@@ -23,10 +23,10 @@ final class ButtonColorCell: DefaultColorCell, ButtonSettingListCellProtocol {
             .disposed(by: disposeBag)
     }
     
-    func bind(_ viewModel: ButtonViewModel) {
+    func bind(_ viewModel: SwitchViewModel) {
         selectedColorSubject
             .withLatestFrom(colorTypeStream) { color, colorType in
-                ButtonColor(colorType: colorType, color: color)
+                SwitchColor(colorType: colorType, color: color)
             }
             .distinctUntilChanged()
             .bind(onNext: viewModel.colorCellDidSelected)

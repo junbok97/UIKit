@@ -10,8 +10,6 @@ import RxSwift
 
 final class LabelModel {
     
-    lazy var labelSettingListCellDatas = Observable.just(LabelSettingListData.settingListDatas)
-    
     func codeLabelText(
         _ text: String,
         _ textColor: UIColor,

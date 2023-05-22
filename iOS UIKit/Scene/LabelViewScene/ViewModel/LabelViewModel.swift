@@ -45,8 +45,7 @@ final class LabelViewModel {
     private let labelModel = LabelModel()
     
     init() {
-        
-        labelSettingListCellDatas = labelModel.labelSettingListCellDatas
+        labelSettingListCellDatas = Observable.just(LabelSettingListData.settingListDatas)
             .asDriver(onErrorDriveWith: .empty())
 
         targetText = textCellDidChangedTextField
@@ -89,15 +88,12 @@ final class LabelViewModel {
             .disposed(by: disposeBag)
     }
     
-    func colorCellDidSelected(_ objectColor: ObjectColor) {
-        print(#function)
-        switch objectColor.colorType {
+    func colorCellDidSelected(_ labelColor: LabelColor) {
+        switch labelColor.colorType {
         case .titleColor:
-            titleColorDidSelected.accept(objectColor.color)
+            titleColorDidSelected.accept(labelColor.color)
         case .backgroundColor:
-            backgroundColorDidSelected.accept(objectColor.color)
-        default:
-            return
+            backgroundColorDidSelected.accept(labelColor.color)
         }
     }
 
@@ -128,7 +124,7 @@ final class LabelViewModel {
     }
     
     func labelSettingListDataSource() -> RxTableViewSectionedReloadDataSource<LabelSettingListSectionModel> {
-        let dataSource = RxTableViewSectionedReloadDataSource<LabelSettingListSectionModel> { dataSource, tableView, indexPath, sectionModelItem in
+         RxTableViewSectionedReloadDataSource<LabelSettingListSectionModel> { dataSource, tableView, indexPath, sectionModelItem in
             LabelModel.makeCell(
                 dataSource[indexPath.section].sectionHeader,
                 self,
@@ -136,10 +132,8 @@ final class LabelViewModel {
                 indexPath,
                 sectionModelItem
             )
-        } // RxTableViewSectionedReloadDataSource
-        
-        return dataSource
-    } // func labelSettingListDataSource
+        }
+    }
 
     deinit {
         print("LabeViewModel Deinit")

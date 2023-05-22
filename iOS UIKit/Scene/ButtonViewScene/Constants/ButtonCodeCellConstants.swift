@@ -7,12 +7,10 @@
 
 import Foundation
 
-protocol ButtonCodeCellConstantsProtocol: DefaultCodeCellConstantsProtocol {
-}
+protocol ButtonCodeCellConstantsProtocol: DefaultCodeCellConstantsProtocol {}
 
 extension ButtonCodeCellConstantsProtocol {
     static var cellId: String { "ButtonCodeCell" }
 }
 
-struct ButtonCodeCellConstants: ButtonCodeCellConstantsProtocol {
-}
+struct ButtonCodeCellConstants: ButtonCodeCellConstantsProtocol {}

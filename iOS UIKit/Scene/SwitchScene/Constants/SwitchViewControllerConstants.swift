@@ -12,7 +12,17 @@ protocol SwitchViewControllerConstantsProtocol: DefaultListViewControllerConstan
 extension SwitchViewControllerConstantsProtocol {
     static var title: String { "Switch" }
     static var containerViewHeight: CGFloat { 100.0 }
+    
+    static var defaultSwitchCode: String {
+    """
+    let toggle = UISwitch()
+    
+    toggle.isOn = true
+    toggle.onTintColor = .systemGreen
+    toggle.thumbTintColor = .white
+    toggle.backgroundColor = .systemBackground
+    """
+    }
 }
 
-struct SwitchViewControllerConstants: SwitchViewControllerConstantsProtocol {
-}
+struct SwitchViewControllerConstants: SwitchViewControllerConstantsProtocol {}

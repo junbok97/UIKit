@@ -1,13 +1,13 @@
 //
-//  LabelColorCase.swift
-//  UIKit-Test
+//  ButtonColorType.swift
+//  iOS UIKit
 //
-//  Created by 이준복 on 2023/04/12.
+//  Created by 이준복 on 2023/05/22.
 //
 
 import Foundation
 
-enum ObjectColorType: String, Equatable {
+enum ButtonColorType: String, Equatable {
     case titleColor = "Title Color"
     case subTitleColor = "SubTitle Color"
     case tintColor = "Tint Color"

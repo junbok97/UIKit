@@ -15,18 +15,9 @@ class DefaultColorCell: DefaultCell {
         get { DefaultColorCellConstants.cellId }
     }
     
-    let selectedColorSubject = ReplaySubject<ObjectColor>.create(bufferSize: 1)
+    let selectedColorSubject = ReplayRelay<UIColor>.create(bufferSize: 1)
     
-    var colorType: ObjectColorType = .titleColor {
-        didSet {
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.titleLabel.text = colorType.rawValue
-            }
-        }
-    }
-    
-    private lazy var titleLabel: UILabel = {
+    lazy var colorNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = .label
         label.font = DefaultViewControllerConstants.defaultFont
@@ -48,12 +39,13 @@ class DefaultColorCell: DefaultCell {
     }
     
     @objc private func changedColor() {
-        selectedColorSubject.onNext(ObjectColor(colorType: self.colorType, color: colorWell.selectedColor ?? UIColor()))
+        selectedColorSubject.accept(colorWell.selectedColor ?? UIColor())
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
 
 private extension DefaultColorCell {
@@ -63,12 +55,12 @@ private extension DefaultColorCell {
     }
     
     func layout() {
-        [titleLabel, colorWell].forEach { contentView.addSubview($0) }
+        [colorNameLabel, colorWell].forEach { contentView.addSubview($0) }
         
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: DefaultColorCellConstants.defaultOffset),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: DefaultColorCellConstants.defaultOffset),
-            titleLabel.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -DefaultColorCellConstants.defaultOffset),
+            colorNameLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: DefaultColorCellConstants.defaultOffset),
+            colorNameLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: DefaultColorCellConstants.defaultOffset),
+            colorNameLabel.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -DefaultColorCellConstants.defaultOffset),
             
             colorWell.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: DefaultColorCellConstants.defaultOffset),
             colorWell.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -DefaultColorCellConstants.defaultOffset),
@@ -79,9 +71,9 @@ private extension DefaultColorCell {
 }
 
 extension Reactive where Base: DefaultColorCell {
-    var colorType: Binder<ObjectColorType> {
-        return Binder(base) { base, colorType in
-            base.colorType = colorType
+    var colorNameLabelText: Binder<String> {
+        return Binder(base) { base, text in
+            base.colorNameLabel.text = text
         }
     }
 }

@@ -7,14 +7,10 @@
 
 import UIKit
 
-protocol LabelCodeCellConstantsProtocol: DefaultCodeCellConstantsProtocol {
-    
-}
+protocol LabelCodeCellConstantsProtocol: DefaultCodeCellConstantsProtocol {}
 
 extension LabelCodeCellConstantsProtocol {
     static var cellId: String { "LabelCodeCell" }
 }
 
-struct LabelCodeCellConstants: LabelCodeCellConstantsProtocol {
-    
-}
+struct LabelCodeCellConstants: LabelCodeCellConstantsProtocol {}

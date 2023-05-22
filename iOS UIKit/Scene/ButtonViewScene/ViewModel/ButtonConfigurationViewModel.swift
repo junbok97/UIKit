@@ -31,7 +31,7 @@ final class ButtonConfigurationViewModel {
     private let subTitleColorDidSelected = BehaviorRelay<UIColor?>(value: nil)
     
     // color
-    private let tintColorSelected = BehaviorRelay<UIColor?>(value: .tintColor)
+    let tintColorSelected = BehaviorRelay<UIColor>(value: .tintColor)
     private let baseForegroundColorSelected = BehaviorRelay<UIColor?>(value: nil)
     private let basebackgroundColorSelected = BehaviorRelay<UIColor?>(value: nil)
     
@@ -92,18 +92,18 @@ final class ButtonConfigurationViewModel {
 }
 
 extension ButtonConfigurationViewModel {
-    func colorCellDidSelected(_ objectColor: ObjectColor) {
-        switch objectColor.colorType {
+    func colorCellDidSelected(_ buttonColor: ButtonColor) {
+        switch buttonColor.colorType {
         case .tintColor:
-            tintColorDidSelected(objectColor.color)
+            tintColorDidSelected(buttonColor.color)
         case .titleColor:
-            titleColorDidSelected(objectColor.color)
+            titleColorDidSelected(buttonColor.color)
         case .subTitleColor:
-            subTitleColorDidSelected(objectColor.color)
+            subTitleColorDidSelected(buttonColor.color)
         case .foregroundColor:
-            baseForegroundColorSelected(objectColor.color)
+            baseForegroundColorSelected(buttonColor.color)
         case .backgroundColor:
-            basebackgroundColorSelected(objectColor.color)
+            basebackgroundColorSelected(buttonColor.color)
         }
     }
     

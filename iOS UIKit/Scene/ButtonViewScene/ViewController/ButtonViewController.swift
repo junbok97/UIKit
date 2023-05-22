@@ -107,7 +107,6 @@ extension ButtonViewController: UITableViewDelegate {
         } else {
             viewModel.buttonSettingListItemSelected(dataSource[indexPath.section].items[indexPath.row])
         }
-        
     }
 }
 

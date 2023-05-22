@@ -12,14 +12,22 @@ import RxCocoa
 final class LabelColorCell: DefaultColorCell, LabelSettingListCellProtocol {
     
     static override var cellId: String { LabelColorCellConstants.cellId }
+
+    private var colorTypeStream: Observable<LabelColorType> = Observable.just(.titleColor)
     
     func setup(_ item: LabelSettingListItemType) {
         guard case let .color(colorType: colorType) = item else { return }
-        self.colorType = colorType
+        self.colorTypeStream = Observable.just(colorType)
+        Observable.just(colorType.rawValue)
+            .bind(to: self.rx.colorNameLabelText)
+            .disposed(by: disposeBag)
     }
     
     func bind(_ viewModel: LabelViewModel) {
         selectedColorSubject
+            .withLatestFrom(colorTypeStream) { color, colorType in
+                LabelColor(colorType: colorType, color: color)
+            }
             .distinctUntilChanged()
             .bind(onNext: viewModel.colorCellDidSelected)
             .disposed(by: disposeBag)

@@ -39,5 +39,4 @@ extension LabelViewControllerConstantsProtocol {
     }
 }
 
-struct LabelViewControllerConstants: LabelViewControllerConstantsProtocol {
-}
+struct LabelViewControllerConstants: LabelViewControllerConstantsProtocol {}

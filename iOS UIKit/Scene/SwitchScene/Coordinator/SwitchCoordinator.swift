@@ -25,7 +25,7 @@ final class SwitchCoordinator: SwitchCoordinatorProtocol {
     }
     
     func start() {
-        let viewContrller = SwitchViewController()
+        let viewContrller = SwitchViewController.create(SwitchViewModel(), self)
         navigationController.pushViewController(viewContrller, animated: true)
     }
     

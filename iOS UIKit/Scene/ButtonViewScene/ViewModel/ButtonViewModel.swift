@@ -18,8 +18,6 @@ final class ButtonViewModel {
     private let buttonConfigurationViewModel = ButtonConfigurationViewModel()
     
     // View -> ViewModel
-    
-    let tintColorSelected = PublishRelay<UIColor>()
     let buttonSettingListCellDatas: Driver<[ButtonSettingListSectionModel]>
     let targetButtonConfiguration: Driver<UIButton.Configuration>
     let targetTintColor: Driver<UIColor>
@@ -32,7 +30,7 @@ final class ButtonViewModel {
         targetButtonConfiguration = buttonConfigurationViewModel.buttonConfigurationDidChanged
             .asDriver(onErrorDriveWith: .empty())
         
-        targetTintColor = tintColorSelected
+        targetTintColor = buttonConfigurationViewModel.tintColorSelected
             .asDriver(onErrorDriveWith: .empty())
         
         codeCellCodeLabelText = buttonConfigurationViewModel.buttonSettingCodeText
@@ -73,14 +71,8 @@ extension ButtonViewModel {
         buttonConfigurationViewModel.fontSizeDidChanged(buttonFontSize)
     }
     
-    func colorCellDidSelected(_ objectColor: ObjectColor) {
-        buttonConfigurationViewModel.colorCellDidSelected(objectColor)
-        switch objectColor.colorType {
-        case .tintColor:
-            tintColorSelected.accept(objectColor.color)
-        default:
-            break
-        }
+    func colorCellDidSelected(_ buttonColor: ButtonColor) {
+        buttonConfigurationViewModel.colorCellDidSelected(buttonColor)
     }
     
     func buttonSettingListItemSelected(_ itemType: ButtonSettingListItemType) {
