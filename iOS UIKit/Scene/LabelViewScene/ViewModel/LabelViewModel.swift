@@ -21,7 +21,7 @@ final class LabelViewModel {
     let backgroundColorDidSelected = BehaviorRelay<UIColor>(value: .systemBackground)
     
     let fontCellDidSelected = BehaviorRelay<ObjectFontType>(value: .regular)
-    let fontSizeCellDidChangedFontSizeSlider = BehaviorRelay<Int>(value: Int(LabelViewControllerConstants.targetLabelFontSize))
+    let fontSizeCellDidChangedFontSizeSlider = BehaviorRelay<Int>(value: LabelViewControllerConstants.targetLabelFontSize)
     let fontDidSelected = BehaviorRelay<UIFont>(value: LabelViewControllerConstants.targetLabelFont)
 
     let alignmentCellDidSelected = BehaviorRelay<ObjectAlignmentType>(value: .center)

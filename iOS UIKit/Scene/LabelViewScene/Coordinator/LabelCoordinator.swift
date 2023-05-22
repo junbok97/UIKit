@@ -7,9 +7,7 @@
 
 import UIKit
 
-protocol LabelCoordinatorProtocol: CoordinatorProtocol {
-    
-}
+protocol LabelCoordinatorProtocol: CoordinatorProtocol {}
 
 final class LabelCoordinator: LabelCoordinatorProtocol {
     var parentCoordinator: CoordinatorProtocol?

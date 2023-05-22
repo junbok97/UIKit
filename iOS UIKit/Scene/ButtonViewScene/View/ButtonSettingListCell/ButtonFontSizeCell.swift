@@ -15,6 +15,14 @@ final class ButtonFontSizeCell: DefaultFontSizeCell, ButtonSettingListCellProtoc
     
     private var titleType: ButtonTitleType = .title
     
+    override func attribute() {
+        super.attribute()
+        fontSizeSlider.setValue(ButtonFontSizeCellConstants.sliderValue, animated: true)
+        fontSizeSlider.maximumValue = ButtonFontSizeCellConstants.sliderMaximimValue
+        sliderValueLabel.text = ButtonFontSizeCellConstants.sliderValueLabelText
+        maxNumLabel.text = ButtonFontSizeCellConstants.maxNumLabelText
+    }
+    
     func setup(_ item: ButtonSettingListItemType) {
         guard case let .fontSize(titleType: titleType) = item else { return }
         self.titleType = titleType

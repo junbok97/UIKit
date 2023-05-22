@@ -21,7 +21,6 @@ protocol CoordinatorProtocol: AnyObject {
 }
 
 extension CoordinatorProtocol {
-    
     func finish() {
         parentCoordinator?.finishChild(self)
     }

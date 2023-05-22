@@ -28,7 +28,7 @@ class DefaultFontSizeCell: DefaultCell {
         return label
     }()
     
-    private lazy var maxNumLabel: UILabel = {
+    lazy var maxNumLabel: UILabel = {
         let label = UILabel()
         label.text = DefaultFontSizeCellConstants.maxNumLabelText
         label.font = DefaultViewControllerConstants.defaultFont
@@ -80,16 +80,12 @@ class DefaultFontSizeCell: DefaultCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         attribute()
         layout()
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-}
-
-private extension DefaultFontSizeCell {
     func attribute() {
         backgroundColor = .systemBackground
         selectionStyle = .none
@@ -100,6 +96,9 @@ private extension DefaultFontSizeCell {
             .disposed(by: disposeBag)
     }
     
+}
+
+private extension DefaultFontSizeCell {
     func layout() {
         contentView.addSubview(containerStackView)
         

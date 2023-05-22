@@ -26,7 +26,7 @@ final class LabelAlignmentCell: DefaultCell, LabelSettingListCellProtocol {
     private lazy var alignmentLabel: UILabel = {
         let label = UILabel()
         label.textColor = .label
-        label.text = LabelAlignmentCellConstants.title
+        label.text = alignmentType.rawValue
         label.font = LabelViewControllerConstants.defaultFont
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

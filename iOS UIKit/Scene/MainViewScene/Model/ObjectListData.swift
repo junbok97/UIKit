@@ -10,15 +10,16 @@ import Foundation
 struct ObjectListData {
     static let objectListDatas: [ObjectSectionModel] = [
         ObjectSectionModel(
-            sectionHeader: .label,
+            sectionHeader: .Views,
             items: [
-                .label
+                .uiLabel
             ]
         ),
         ObjectSectionModel(
-            sectionHeader: .button,
+            sectionHeader: .controls,
             items: [
-                .button
+                .uiButton,
+                .uiSwitch
             ]
         ),
         ObjectSectionModel(

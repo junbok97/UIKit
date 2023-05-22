@@ -18,7 +18,6 @@ final class LabelFontSizeCell: DefaultFontSizeCell, LabelSettingListCellProtocol
     
     func bind(_ viewModel: LabelViewModel) {
         fontSizeSlider.rx.value
-            .startWith(LabelViewControllerConstants.targetLabelFontSize)
             .map { Int($0) }
             .distinctUntilChanged()
             .bind(to: viewModel.fontSizeCellDidChangedFontSizeSlider)

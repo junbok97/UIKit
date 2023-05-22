@@ -40,11 +40,7 @@ final class LabelViewController: DefaultListViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+        
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         coordinator?.finish()

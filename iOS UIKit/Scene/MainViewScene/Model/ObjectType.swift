@@ -8,8 +8,9 @@
 import UIKit
 
 enum ObjectType: String {
-    case label = "Label"
-    case button = "Button"
+    case uiLabel = "UILabel"
+    case uiButton = "UIButton"
     case sfSymbols = "SF Symbols"
-    case navigationBar = "Navigation Bar"
+    case uiSwitch = "UISwitch"
+    case uiNavigationBar = "UINavigationBar"
 }

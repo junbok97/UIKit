@@ -9,8 +9,8 @@ import Foundation
 import RxDataSources
 
 enum ObjectSectionType: String {
-    case label = "Label"
-    case button = "Button"
+    case Views = "Views"
+    case controls = "Controls"
     case system = "System"
     case bars = "Bars"
 }

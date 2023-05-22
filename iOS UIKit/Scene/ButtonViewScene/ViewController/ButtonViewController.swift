@@ -70,10 +70,8 @@ final class ButtonViewController: DefaultListViewController {
         containerView.addSubview(targetButton)
     
         NSLayoutConstraint.activate([
-            targetButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: ButtonViewControllerConstants.targetButtonVerticalOffset),
-            targetButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: ButtonViewControllerConstants.targetButtonHorizonOffset),
-            targetButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -ButtonViewControllerConstants.targetButtonHorizonOffset),
-            targetButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -ButtonViewControllerConstants.targetButtonVerticalOffset)
+            targetButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            targetButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
         ])
     }
         

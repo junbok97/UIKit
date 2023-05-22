@@ -22,18 +22,16 @@ final class ChildCoordinatorFactory {
     
     func makeCoordinator(type: ObjectType) -> CoordinatorProtocol {
         switch type {
-        case .label:
-            let coordinator =  LabelCoordinator(navigationController, self.parentCoordinator)
-            return coordinator
-        case .button:
-            let coordinator = ButtonCoordinator(navigationController, self.parentCoordinator)
-            return coordinator
+        case .uiLabel:
+            return LabelCoordinator(navigationController, self.parentCoordinator)
+        case .uiButton:
+            return ButtonCoordinator(navigationController, self.parentCoordinator)
+        case .uiSwitch:
+            return SwitchCoordinator(navigationController, self.parentCoordinator)
         case .sfSymbols:
-            let coordinator = SFSymbolsCoordinator(navigationController, self.parentCoordinator)
-            return coordinator
+            return SFSymbolsCoordinator(navigationController, self.parentCoordinator)
         default:
-            let coordinator =  LabelCoordinator(navigationController, self.parentCoordinator)
-            return coordinator
+            return LabelCoordinator(navigationController, self.parentCoordinator)
         }
     }
 }

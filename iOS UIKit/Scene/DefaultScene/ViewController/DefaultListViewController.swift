@@ -38,7 +38,7 @@ class DefaultListViewController: DefaultViewController {
             containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             containerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             containerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            containerView.heightAnchor.constraint(equalToConstant: DefaultViewControllerConstants.containerViewHeight),
+            containerView.heightAnchor.constraint(equalToConstant: DefaultListViewControllerConstants.containerViewHeight),
             
             settingList.topAnchor.constraint(equalTo: containerView.bottomAnchor),
             settingList.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
