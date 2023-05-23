@@ -14,12 +14,14 @@ class DefaultCodeCell: DefaultCell {
         get { DefaultCodeCellConstants.cellId }
     }
     
+    lazy var stackView
+    
     lazy var codeLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .systemBackground
         label.textColor = .label
         label.font = DefaultViewControllerConstants.defaultFont
-        label.numberOfLines = 0
+        label.numberOfLines = DefaultCodeCellConstants.codeLabelNumberOfLines
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

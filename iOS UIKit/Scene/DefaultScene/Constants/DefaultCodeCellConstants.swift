@@ -8,11 +8,12 @@
 import UIKit
 
 protocol DefaultCodeCellConstantsProtocol: DefaultCellConstantsProtocol {
+    static var codeLabelNumberOfLines: Int { get }
 }
 
 extension DefaultCodeCellConstantsProtocol {
     static var cellId: String { "DefaultCodeCell" }
+    static var codeLabelNumberOfLines: Int { 0 }
 }
 
-struct DefaultCodeCellConstants: DefaultCodeCellConstantsProtocol {
-}
+struct DefaultCodeCellConstants: DefaultCodeCellConstantsProtocol {}

@@ -20,6 +20,8 @@ class DefaultListViewController: DefaultViewController {
     
     lazy var settingList: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.backgroundColor = .secondarySystemBackground
         tableView.separatorStyle = .singleLine
         tableView.translatesAutoresizingMaskIntoConstraints = false

@@ -137,6 +137,7 @@ private extension LabelViewController {
 }
 
 extension Reactive where Base: LabelViewController {
+    
     var targetText: Binder<String> {
         return Binder(base) { base, text in
             base.targetLabel.text = text
@@ -181,4 +182,5 @@ extension LabelViewController: UITableViewDelegate {
         headerView.setupHeaderTitle(dataSource[section].sectionHeader.rawValue)
         return headerView
     }
+
 }

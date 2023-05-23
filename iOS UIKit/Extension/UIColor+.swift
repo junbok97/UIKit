@@ -9,7 +9,20 @@ import UIKit
 
 extension CGColor {
     var getRGBCode: String {
-        guard let components = self.components, 4 <= components.count else { return "nil" }
+        guard let components = self.components, 2 <= components.count else { return "nil" }
+        
+        if components.count == 2 {
+            let white = components[0]
+            let alpha = components[1]
+            
+            return
+            """
+            UIColor(
+                white: \(white),
+                alpha: \(alpha)
+            )
+            """
+        }
         
         let red = components[0]
         let green = components[1]
