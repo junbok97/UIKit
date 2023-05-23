@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum LabelColorType: String, Equatable {
+enum LabelColorSectionItemType: String, Equatable {
     case titleColor = "Title Color"
     case backgroundColor = "Background Color"
 }

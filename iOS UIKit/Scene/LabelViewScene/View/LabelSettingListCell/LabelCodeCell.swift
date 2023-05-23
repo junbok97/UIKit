@@ -11,7 +11,7 @@ import RxSwift
 final class LabelCodeCell: DefaultCodeCell, LabelSettingListCellProtocol {
     static override var cellId: String { LabelCodeCellConstants.cellId }
     
-    func setup(_ item: LabelSettingListItemType) { }
+    func setup(_ item: LabelSettingListSectionItemType) { }
 
     func bind(_ viewModel: LabelViewModel) {
         viewModel.codeCellCodeLabelText

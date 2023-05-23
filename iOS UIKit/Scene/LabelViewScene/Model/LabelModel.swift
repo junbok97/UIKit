@@ -40,10 +40,18 @@ final class LabelModel {
     ) -> DefaultCell {
         switch sectionType {
         case .code:
-            let cell = LabelCodeCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
-            cell.setup(sectionModelItem)
-            cell.bind(viewModel)
-            return cell
+            guard case let .code(codeType: codeType) =  sectionModelItem else { return DefaultCell() }
+            switch codeType {
+            case .codeLabel:
+                let cell = LabelCodeCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+                cell.setup(sectionModelItem)
+                cell.bind(viewModel)
+                return cell
+            case .reloadButton:
+                let cell = DefaultReloadCodeButtonCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+                cell.setTableViewAndSection(tableView, indexPath.section)
+                return cell
+            }
         case .text:
             let cell = LabelTextCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
             cell.setup(sectionModelItem)

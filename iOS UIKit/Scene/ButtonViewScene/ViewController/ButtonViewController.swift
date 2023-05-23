@@ -91,6 +91,7 @@ private extension ButtonViewController {
         DefaultSettingListHeaderView.register(tableView: settingList)
         ButtonTextCell.register(tableView: settingList)
         ButtonFontSizeCell.register(tableView: settingList)
+        DefaultReloadCodeButtonCell.register(tableView: settingList)
     }
 }
 

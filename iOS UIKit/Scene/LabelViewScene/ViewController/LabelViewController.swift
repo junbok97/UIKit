@@ -133,6 +133,7 @@ private extension LabelViewController {
         LabelAlignmentCell.register(tableView: settingList)
         LabelNumberOfLinesCell.register(tableView: settingList)
         DefaultSettingListHeaderView.register(tableView: settingList)
+        DefaultReloadCodeButtonCell.register(tableView: settingList)
     }
 }
 

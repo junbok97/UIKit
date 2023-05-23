@@ -12,12 +12,12 @@
 		CB02771A2A11FACE00FA8C15 /* ButtonSettingListSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0277192A11FACE00FA8C15 /* ButtonSettingListSectionModel.swift */; };
 		CB02771C2A11FDEE00FA8C15 /* ButtonTitleAlignmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB02771B2A11FDEE00FA8C15 /* ButtonTitleAlignmentType.swift */; };
 		CB10C86D2A173C3100BC1968 /* ObjectListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB10C86C2A173C3100BC1968 /* ObjectListData.swift */; };
-		CB1E8CC32A1BAE94003F22AE /* LabelColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1E8CC22A1BAE94003F22AE /* LabelColorType.swift */; };
+		CB1E8CC32A1BAE94003F22AE /* LabelColorSectionItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1E8CC22A1BAE94003F22AE /* LabelColorSectionItemType.swift */; };
 		CB1E8CC52A1BAFF1003F22AE /* LabelColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1E8CC42A1BAFF1003F22AE /* LabelColor.swift */; };
 		CB1E8CC72A1BB20C003F22AE /* ButtonColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1E8CC62A1BB20C003F22AE /* ButtonColorType.swift */; };
 		CB1E8CC92A1BB249003F22AE /* ButtonColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1E8CC82A1BB249003F22AE /* ButtonColor.swift */; };
 		CB1E8CCD2A1BB640003F22AE /* LabelSettingListSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1E8CCC2A1BB640003F22AE /* LabelSettingListSectionType.swift */; };
-		CB1E8CCF2A1BB64F003F22AE /* LabelSettingListItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1E8CCE2A1BB64F003F22AE /* LabelSettingListItemType.swift */; };
+		CB1E8CCF2A1BB64F003F22AE /* LabelSettingListSectionItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1E8CCE2A1BB64F003F22AE /* LabelSettingListSectionItemType.swift */; };
 		CB1E8CD12A1BB68C003F22AE /* ButtonSettingListSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1E8CD02A1BB68C003F22AE /* ButtonSettingListSectionType.swift */; };
 		CB1E8CD32A1BB69B003F22AE /* ButtonSettingListItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1E8CD22A1BB69B003F22AE /* ButtonSettingListItemType.swift */; };
 		CB1E8CD62A1BB6DE003F22AE /* SwitchColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1E8CD52A1BB6DE003F22AE /* SwitchColorType.swift */; };
@@ -80,6 +80,9 @@
 		CB7024D92A10F686006194FB /* ButtonFontCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7024D82A10F686006194FB /* ButtonFontCellConstants.swift */; };
 		CB7024DD2A10F6FA006194FB /* ButtonColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7024DC2A10F6FA006194FB /* ButtonColorCell.swift */; };
 		CB7024DF2A10F712006194FB /* ButtonColorCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7024DE2A10F712006194FB /* ButtonColorCellConstants.swift */; };
+		CB742D982A1C9BDA00BA51CC /* DefaultReloadCodeButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB742D972A1C9BDA00BA51CC /* DefaultReloadCodeButtonCell.swift */; };
+		CB742D9A2A1C9BE900BA51CC /* DefaultReloadCodeButtonCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB742D992A1C9BE900BA51CC /* DefaultReloadCodeButtonCellConstants.swift */; };
+		CB742D9C2A1C9CED00BA51CC /* CodeSectionItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB742D9B2A1C9CED00BA51CC /* CodeSectionItemType.swift */; };
 		CB7CA7842A03B16C00574395 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CA7832A03B16C00574395 /* MainViewModel.swift */; };
 		CB7CA7862A03B28000574395 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7CA7852A03B28000574395 /* MainModel.swift */; };
 		CB80B1CF29E5393600298F3C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = CB80B1CE29E5393600298F3C /* .swiftlint.yml */; };
@@ -153,12 +156,12 @@
 		CB0277192A11FACE00FA8C15 /* ButtonSettingListSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSettingListSectionModel.swift; sourceTree = "<group>"; };
 		CB02771B2A11FDEE00FA8C15 /* ButtonTitleAlignmentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTitleAlignmentType.swift; sourceTree = "<group>"; };
 		CB10C86C2A173C3100BC1968 /* ObjectListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectListData.swift; sourceTree = "<group>"; };
-		CB1E8CC22A1BAE94003F22AE /* LabelColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelColorType.swift; sourceTree = "<group>"; };
+		CB1E8CC22A1BAE94003F22AE /* LabelColorSectionItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelColorSectionItemType.swift; sourceTree = "<group>"; };
 		CB1E8CC42A1BAFF1003F22AE /* LabelColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelColor.swift; sourceTree = "<group>"; };
 		CB1E8CC62A1BB20C003F22AE /* ButtonColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonColorType.swift; sourceTree = "<group>"; };
 		CB1E8CC82A1BB249003F22AE /* ButtonColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonColor.swift; sourceTree = "<group>"; };
 		CB1E8CCC2A1BB640003F22AE /* LabelSettingListSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelSettingListSectionType.swift; sourceTree = "<group>"; };
-		CB1E8CCE2A1BB64F003F22AE /* LabelSettingListItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelSettingListItemType.swift; sourceTree = "<group>"; };
+		CB1E8CCE2A1BB64F003F22AE /* LabelSettingListSectionItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelSettingListSectionItemType.swift; sourceTree = "<group>"; };
 		CB1E8CD02A1BB68C003F22AE /* ButtonSettingListSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSettingListSectionType.swift; sourceTree = "<group>"; };
 		CB1E8CD22A1BB69B003F22AE /* ButtonSettingListItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSettingListItemType.swift; sourceTree = "<group>"; };
 		CB1E8CD52A1BB6DE003F22AE /* SwitchColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchColorType.swift; sourceTree = "<group>"; };
@@ -221,6 +224,9 @@
 		CB7024D82A10F686006194FB /* ButtonFontCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFontCellConstants.swift; sourceTree = "<group>"; };
 		CB7024DC2A10F6FA006194FB /* ButtonColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonColorCell.swift; sourceTree = "<group>"; };
 		CB7024DE2A10F712006194FB /* ButtonColorCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonColorCellConstants.swift; sourceTree = "<group>"; };
+		CB742D972A1C9BDA00BA51CC /* DefaultReloadCodeButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultReloadCodeButtonCell.swift; sourceTree = "<group>"; };
+		CB742D992A1C9BE900BA51CC /* DefaultReloadCodeButtonCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultReloadCodeButtonCellConstants.swift; sourceTree = "<group>"; };
+		CB742D9B2A1C9CED00BA51CC /* CodeSectionItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSectionItemType.swift; sourceTree = "<group>"; };
 		CB7CA7832A03B16C00574395 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		CB7CA7852A03B28000574395 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		CB80B1CE29E5393600298F3C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -466,9 +472,9 @@
 		CB1E8CCB2A1BB631003F22AE /* Type */ = {
 			isa = PBXGroup;
 			children = (
-				CB1E8CC22A1BAE94003F22AE /* LabelColorType.swift */,
+				CB1E8CC22A1BAE94003F22AE /* LabelColorSectionItemType.swift */,
 				CB1E8CCC2A1BB640003F22AE /* LabelSettingListSectionType.swift */,
-				CB1E8CCE2A1BB64F003F22AE /* LabelSettingListItemType.swift */,
+				CB1E8CCE2A1BB64F003F22AE /* LabelSettingListSectionItemType.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -599,6 +605,7 @@
 				CB7024C12A10EC35006194FB /* DefaultFontSizeCell.swift */,
 				CB3A909D2A120DD4001CC138 /* DefaultLabelCell.swift */,
 				CBDD7F8D2A18E1460081953C /* DefaultSwitchCell.swift */,
+				CB742D972A1C9BDA00BA51CC /* DefaultReloadCodeButtonCell.swift */,
 			);
 			path = DefaultSettingListCell;
 			sourceTree = "<group>";
@@ -623,6 +630,7 @@
 			children = (
 				CBBEBC352A0FCB8E00A0DFE0 /* ObjectFontType.swift */,
 				CBBEBC372A0FCC1B00A0DFE0 /* ObjectAlignmentType.swift */,
+				CB742D9B2A1C9CED00BA51CC /* CodeSectionItemType.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -641,6 +649,7 @@
 				CB3A90AC2A12200D001CC138 /* DefaultSettingListHeaderViewConstants.swift */,
 				CBDD7F902A18E19B0081953C /* DefaultSwitchCellConstants.swift */,
 				CBDD7F982A1B503E0081953C /* DefaultCellConstants.swift */,
+				CB742D992A1C9BE900BA51CC /* DefaultReloadCodeButtonCellConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -1092,7 +1101,7 @@
 				CB7024B82A10E614006194FB /* DefaultTextCellConstants.swift in Sources */,
 				CB7024DF2A10F712006194FB /* ButtonColorCellConstants.swift in Sources */,
 				CB7024BC2A10E8A6006194FB /* DefaultColorCellConstants.swift in Sources */,
-				CB1E8CC32A1BAE94003F22AE /* LabelColorType.swift in Sources */,
+				CB1E8CC32A1BAE94003F22AE /* LabelColorSectionItemType.swift in Sources */,
 				CB9A9C8D2A10CCB70065F5A5 /* ButtonViewModel.swift in Sources */,
 				CB7024D92A10F686006194FB /* ButtonFontCellConstants.swift in Sources */,
 				CBC323972A06BF5100C5B6D1 /* ObjectSectionModel.swift in Sources */,
@@ -1104,8 +1113,10 @@
 				CB7024CF2A10F373006194FB /* ButtonCodeCellConstants.swift in Sources */,
 				CB10C86D2A173C3100BC1968 /* ObjectListData.swift in Sources */,
 				CB8F40402A161DF900AD9D89 /* SFSymbolsSystemName.swift in Sources */,
+				CB742D9A2A1C9BE900BA51CC /* DefaultReloadCodeButtonCellConstants.swift in Sources */,
 				CB1E8CE12A1BB82E003F22AE /* SwitchSettingListData.swift in Sources */,
 				CB5715072A0A2A7E00365646 /* SFSymbolsCollectionViewCell.swift in Sources */,
+				CB742D982A1C9BDA00BA51CC /* DefaultReloadCodeButtonCell.swift in Sources */,
 				CBBBC89D2A137CEB00213A2A /* ButtonFontSizeCell.swift in Sources */,
 				CB7CA7862A03B28000574395 /* MainModel.swift in Sources */,
 				CB5715132A0A35F400365646 /* SFSymbolsModel.swift in Sources */,
@@ -1144,6 +1155,7 @@
 				CB3A90AD2A12200D001CC138 /* DefaultSettingListHeaderViewConstants.swift in Sources */,
 				CB7024AF2A10E285006194FB /* DefaultCell.swift in Sources */,
 				CB7024DD2A10F6FA006194FB /* ButtonColorCell.swift in Sources */,
+				CB742D9C2A1C9CED00BA51CC /* CodeSectionItemType.swift in Sources */,
 				CB5715172A0A468600365646 /* ButtonImagePlacementType.swift in Sources */,
 				CBDD7F9C2A1B59B00081953C /* SwitchCoordinator.swift in Sources */,
 				CBDD7F8B2A18C76E0081953C /* UIColor+.swift in Sources */,
@@ -1205,7 +1217,7 @@
 				CBAAA24C2A08D26C00773E0C /* LabelFontSizeCell.swift in Sources */,
 				CB421FC229E5B3180014DC4F /* LabelCoordinator.swift in Sources */,
 				CB5714D62A0A098F00365646 /* ButtonViewControllerConstants.swift in Sources */,
-				CB1E8CCF2A1BB64F003F22AE /* LabelSettingListItemType.swift in Sources */,
+				CB1E8CCF2A1BB64F003F22AE /* LabelSettingListSectionItemType.swift in Sources */,
 				CBAAA2442A08CC8200773E0C /* ButtonViewController.swift in Sources */,
 				CB3A909E2A120DD4001CC138 /* DefaultLabelCell.swift in Sources */,
 				CB3A90A42A121348001CC138 /* ButtonLabelCell.swift in Sources */,

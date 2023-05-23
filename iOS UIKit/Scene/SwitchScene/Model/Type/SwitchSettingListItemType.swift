@@ -8,6 +8,6 @@
 import Foundation
 
 enum SwitchSettingListItemType {
-    case code
+    case code(codeType: CodeSectionItemType)
     case color(colorType: SwitchColorType)
 }

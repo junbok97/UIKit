@@ -8,7 +8,7 @@
 import Foundation
 
 enum ButtonSettingListItemType {
-    case code
+    case code(codeType: CodeSectionItemType)
     case buttonStyle(buttonStyle: ButtonStyleType)
     case textConfigure
     case text(titleType: ButtonTitleType)

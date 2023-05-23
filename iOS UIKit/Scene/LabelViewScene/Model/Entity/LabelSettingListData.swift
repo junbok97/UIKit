@@ -12,7 +12,8 @@ struct LabelSettingListData {
         LabelSettingListSectionModel(
             sectionHeader: .code,
             items: [
-                .code
+                .code(codeType: .codeLabel),
+                .code(codeType: .reloadButton)
             ]
         ),
         LabelSettingListSectionModel(

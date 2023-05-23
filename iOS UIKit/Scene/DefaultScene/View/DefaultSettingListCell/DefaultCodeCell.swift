@@ -14,8 +14,6 @@ class DefaultCodeCell: DefaultCell {
         get { DefaultCodeCellConstants.cellId }
     }
     
-    lazy var stackView
-    
     lazy var codeLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .systemBackground
@@ -25,7 +23,7 @@ class DefaultCodeCell: DefaultCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         attribute()
@@ -35,6 +33,7 @@ class DefaultCodeCell: DefaultCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
 
 private extension DefaultCodeCell {

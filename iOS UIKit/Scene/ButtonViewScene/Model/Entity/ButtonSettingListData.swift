@@ -12,7 +12,8 @@ struct ButtonSettingListData {
         ButtonSettingListSectionModel(
             sectionHeader: .code,
             items: [
-                .code
+                .code(codeType: .codeLabel),
+                .code(codeType: .reloadButton)
             ]
         ),
         ButtonSettingListSectionModel(

@@ -19,11 +19,19 @@ final class ButtonModel {
     ) -> DefaultCell {
         switch sectionType {
         case .code:
-            let cell = ButtonCodeCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
-            cell.setup(sectionModelItem)
-            cell.bind(viewModel)
-            return cell
-            
+            guard case let .code(codeType: codeType) =  sectionModelItem else { return DefaultCell() }
+            switch codeType {
+            case .codeLabel:
+                let cell = ButtonCodeCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+                cell.setup(sectionModelItem)
+                cell.bind(viewModel)
+                return cell
+
+            case .reloadButton:
+                let cell = DefaultReloadCodeButtonCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+                cell.setTableViewAndSection(tableView, indexPath.section)
+                return cell
+            }
         case .titleText, .subTitleText:
             let cell = ButtonTextCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
             cell.setup(sectionModelItem)

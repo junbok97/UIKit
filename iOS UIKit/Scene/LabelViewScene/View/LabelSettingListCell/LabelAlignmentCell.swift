@@ -42,7 +42,7 @@ final class LabelAlignmentCell: DefaultCell, LabelSettingListCellProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(_ item: LabelSettingListItemType) {
+    func setup(_ item: LabelSettingListSectionItemType) {
         guard case let .alignment(alignmentType) = item else {
             return
         }

@@ -27,7 +27,7 @@ final class LabelViewModel {
     let alignmentCellDidSelected = BehaviorRelay<ObjectAlignmentType>(value: .center)
     let numberOfLinesCellDidChangedLineStepper = BehaviorRelay<Int>(value: LabelViewControllerConstants.targetLabelNumberOfLines)
     
-    let didItemSelectedLabelSettingList = PublishRelay<LabelSettingListItemType>()
+    let didItemSelectedLabelSettingList = PublishRelay<LabelSettingListSectionItemType>()
     
     // ViewModel -> View
     let codeCellCodeLabelText: Driver<String>
@@ -112,7 +112,7 @@ final class LabelViewModel {
             .disposed(by: disposeBag)
     }
     
-    func labelSettingListItemSelected(_ itemType: LabelSettingListItemType) {
+    func labelSettingListItemSelected(_ itemType: LabelSettingListSectionItemType) {
         switch itemType {
         case let .alignment(alignmentType: alignmentType):
             alignmentCellDidSelected.accept(alignmentType)

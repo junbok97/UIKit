@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum LabelSettingListItemType {
-    case code
+enum LabelSettingListSectionItemType {
+    case code(codeType: CodeSectionItemType)
     case text
-    case color(colorType: LabelColorType)
+    case color(colorType: LabelColorSectionItemType)
     case font(fontType: ObjectFontType)
     case fontSize
     case alignment(alignmentType: ObjectAlignmentType)

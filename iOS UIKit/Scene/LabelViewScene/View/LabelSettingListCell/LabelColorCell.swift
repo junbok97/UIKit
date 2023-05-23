@@ -13,9 +13,9 @@ final class LabelColorCell: DefaultColorCell, LabelSettingListCellProtocol {
     
     static override var cellId: String { LabelColorCellConstants.cellId }
 
-    private var colorTypeStream: Observable<LabelColorType> = Observable.just(.titleColor)
+    private var colorTypeStream: Observable<LabelColorSectionItemType> = Observable.just(.titleColor)
     
-    func setup(_ item: LabelSettingListItemType) {
+    func setup(_ item: LabelSettingListSectionItemType) {
         guard case let .color(colorType: colorType) = item else { return }
         self.colorTypeStream = Observable.just(colorType)
         Observable.just(colorType.rawValue)

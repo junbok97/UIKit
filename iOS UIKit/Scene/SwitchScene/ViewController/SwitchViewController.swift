@@ -95,6 +95,7 @@ private extension SwitchViewController {
     func settingListConfigure() {
         SwitchCodeCell.register(tableView: settingList)
         SwitchColorCell.register(tableView: settingList)
+        DefaultReloadCodeButtonCell.register(tableView: settingList)
     }
 }
 extension SwitchViewController: UITableViewDelegate {

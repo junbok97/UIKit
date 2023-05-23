@@ -8,6 +8,6 @@
 import UIKit
 
 struct LabelColor: Equatable {
-    let colorType: LabelColorType
+    let colorType: LabelColorSectionItemType
     let color: UIColor
 }

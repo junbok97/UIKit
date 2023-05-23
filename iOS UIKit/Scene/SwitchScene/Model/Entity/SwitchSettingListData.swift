@@ -12,7 +12,8 @@ struct SwitchSettingListData {
         SwitchSettingListSectionModel(
             sectionHeader: .code,
             items: [
-                .code
+                .code(codeType: .codeLabel),
+                .code(codeType: .reloadButton)
             ]
         ),
         SwitchSettingListSectionModel(

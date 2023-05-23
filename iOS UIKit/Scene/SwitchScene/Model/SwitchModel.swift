@@ -19,10 +19,20 @@ final class SwitchModel {
     ) -> DefaultCell {
         switch sectionType {
         case .code:
-            let cell = SwitchCodeCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
-            cell.setup(sectionModelItem)
-            cell.bind(viewModel)
-            return cell
+            guard case let .code(codeType: codeType) =  sectionModelItem else { return DefaultCell() }
+            switch codeType {
+            case .codeLabel:
+                let cell = SwitchCodeCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+                cell.setup(sectionModelItem)
+                cell.bind(viewModel)
+                return cell
+
+            case .reloadButton:
+                let cell = DefaultReloadCodeButtonCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+                cell.setTableViewAndSection(tableView, indexPath.section)
+                return cell
+            }
+
         case .color:
             let cell = SwitchColorCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
             cell.setup(sectionModelItem)
