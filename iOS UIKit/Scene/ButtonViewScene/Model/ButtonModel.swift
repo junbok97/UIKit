@@ -10,7 +10,7 @@ import RxSwift
 
 final class ButtonModel {
     
-    func makeCell(
+    static func makeCell(
         _ sectionType: ButtonSettingListSectionType,
         _ viewModel: ButtonViewModel,
         _ tableView: UITableView,

@@ -13,7 +13,7 @@ class DefaultReloadCodeButtonCell: DefaultCell {
         get { DefaultReloadCodeButtonCellConstants.cellId }
     }
     
-    var tableView: UITableView?
+    weak var tableView: UITableView?
     var section: Int = DefaultReloadCodeButtonCellConstants.section
     
     lazy var reloadButton: UIButton = {
@@ -66,4 +66,3 @@ private extension DefaultReloadCodeButtonCell {
         ])
     }
 }
-

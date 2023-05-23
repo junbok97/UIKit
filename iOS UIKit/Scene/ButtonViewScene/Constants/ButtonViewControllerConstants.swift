@@ -22,6 +22,7 @@ protocol ButtonViewControllerConstantsProtocol: DefaultViewControllerConstantsPr
 
 extension ButtonViewControllerConstantsProtocol {
     static var title: String { "Button" }
+    static var documentURLString: String { "https://developer.apple.com/documentation/uikit/uibutton" }
     
     static var targetButtonHorizonOffset: CGFloat { 20 }
     static var targetButtonVerticalOffset: CGFloat { 20 }

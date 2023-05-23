@@ -41,8 +41,6 @@ final class ButtonConfigurationViewModel {
     let buttonSettingCodeText = BehaviorRelay<String>(value: ButtonViewControllerConstants.defaultButtonCode)
     let buttonConfigurationDidChanged = BehaviorRelay<UIButton.Configuration>(value: .filled())
     
-    private let buttonConfigurationModel = ButtonConfigurationModel()
-    
     init() {
         let titleTextAttribute = Observable
             .combineLatest(
@@ -50,7 +48,7 @@ final class ButtonConfigurationViewModel {
                 titleFontSizeDidChanged,
                 titleColorDidSelected
             )
-            .map(buttonConfigurationModel.makeTextAttribute)
+            .map(ButtonConfigurationModel.makeTextAttribute)
         
         let subTitleTextAttribute = Observable
             .combineLatest(
@@ -58,7 +56,7 @@ final class ButtonConfigurationViewModel {
                 subTitleFontSizeDidChanged,
                 subTitleColorDidSelected
             )
-            .map(buttonConfigurationModel.makeTextAttribute)
+            .map(ButtonConfigurationModel.makeTextAttribute)
         
         let buttonConfiguration = Observable
             .combineLatest(
@@ -68,7 +66,7 @@ final class ButtonConfigurationViewModel {
                 titleTextAttribute,
                 subTitleTextDidChangedTextField,
                 subTitleTextAttribute
-            ).map(buttonConfigurationModel.makeButtonConfiguration)
+            ).map(ButtonConfigurationModel.makeButtonConfiguration)
         
         Observable.combineLatest(
             buttonConfiguration,
@@ -78,7 +76,7 @@ final class ButtonConfigurationViewModel {
             imagePlacementDidSelected,
             sfSymbolDidSeleted
         )
-        .map(buttonConfigurationModel.settingButtonConfiguration)
+        .map(ButtonConfigurationModel.settingButtonConfiguration)
         .bind(to: buttonConfigurationDidChanged)
         .disposed(by: disposeBag)
         
@@ -124,7 +122,6 @@ extension ButtonConfigurationViewModel {
         }
     }
 
-    
     func sfSymbolDidSeleted(_ sfSymbolName: String) {
         sfSymbolDidSeleted.accept(sfSymbolName)
     }
@@ -185,20 +182,20 @@ private extension ButtonConfigurationViewModel {
             basebackgroundColorSelected,
             imageCode,
             imagePlacementCode
-        ).map(buttonConfigurationModel.configurationToCode)
+        ).map(ButtonConfigurationModel.configurationToCode)
         
         let titleTextAttributeCode = Observable.combineLatest(
             titleAlignmentCode,
             titleCode,
             titleFontCode,
             titleColorDidSelected
-        ).map(buttonConfigurationModel.titleTextAttributeToCode)
+        ).map(ButtonConfigurationModel.titleTextAttributeToCode)
         
         let subTitleTextAttributeCode = Observable.combineLatest(
             subTitleCode,
             subTitleFontCode,
             subTitleColorDidSelected
-        ).map(buttonConfigurationModel.subTitleTextAttributeToCode)
+        ).map(ButtonConfigurationModel.subTitleTextAttributeToCode)
         
         Observable.combineLatest(
             configurationCode,

@@ -29,7 +29,9 @@ final class SwitchColorCell: DefaultColorCell, SwitchSettingListCellProtocol {
                 SwitchColor(colorType: colorType, color: color)
             }
             .distinctUntilChanged()
-            .bind(onNext: viewModel.colorCellDidSelected)
+            .bind(onNext: { [weak viewModel] switchColor in
+                viewModel?.colorCellDidSelected(switchColor)
+            })
             .disposed(by: disposeBag)
     }
 }

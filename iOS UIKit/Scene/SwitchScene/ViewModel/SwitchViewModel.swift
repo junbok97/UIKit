@@ -30,8 +30,6 @@ final class SwitchViewModel {
     
     let switchSettingCodeText = BehaviorRelay<String>(value: SwitchViewControllerConstants.defaultSwitchCode)
     
-    private let switchModel = SwitchModel()
-    
     init() {
         switchSettingListcellDatas = Observable.just(SwitchSettingListData.settingListDatas)
             .asDriver(onErrorDriveWith: .empty())
@@ -81,7 +79,7 @@ final class SwitchViewModel {
                 onTintColorDidSeleted,
                 thumbTintColorDidSeleted,
                 backgroundColorDidSeleted
-            ).map(switchModel.codeLabelText)
+            ).map(SwitchModel.codeLabelText)
             .bind(to: switchSettingCodeText)
             .disposed(by: disposeBag)
     }

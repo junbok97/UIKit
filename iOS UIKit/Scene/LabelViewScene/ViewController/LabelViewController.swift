@@ -114,6 +114,10 @@ final class LabelViewController: DefaultListViewController {
         ])
     }
     
+    override func getDocumentURLString() -> String {
+        LabelViewControllerConstants.documentURLString
+    }
+    
     @objc override func didTappedLeftBarButton() {
         coordinator?.finish()
     }
@@ -183,5 +187,10 @@ extension LabelViewController: UITableViewDelegate {
         headerView.setupHeaderTitle(dataSource[section].sectionHeader.rawValue)
         return headerView
     }
+    
+//    func tableView(_: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt _: IndexPath) {
+//        guard let cell = cell as? DefaultCell else { return }
+//        cell.disposeBag = DisposeBag()
+//    }
 
 }

@@ -9,7 +9,7 @@ import UIKit
 
 final class ButtonConfigurationModel {
     
-    func makeTextAttribute(
+    static func makeTextAttribute(
         _ fontType: ObjectFontType,
         _ ofSize: Int,
         _ color: UIColor?
@@ -22,7 +22,7 @@ final class ButtonConfigurationModel {
         }
     }
     
-    func makeButtonConfiguration(
+    static func makeButtonConfiguration(
         _ buttonStyle: ButtonStyleType,
         _ titleAlignment: ButtonTitleAlignmentType,
         _ titleText: String,
@@ -39,7 +39,7 @@ final class ButtonConfigurationModel {
         return configuration
     }
     
-    func settingButtonConfiguration(
+    static func settingButtonConfiguration(
         _ configuration: UIButton.Configuration,
         _ cornerStyle: ButtonCornerStyleType,
         _ foregroundColor: UIColor?,
@@ -56,7 +56,7 @@ final class ButtonConfigurationModel {
         return configuration
     }
     
-    func configurationToCode(
+    static func configurationToCode(
         _ style: String,
         _ corner: String,
         _ tintColor: UIColor?,
@@ -81,7 +81,7 @@ final class ButtonConfigurationModel {
         """
     }
         
-    func titleTextAttributeToCode(
+    static func titleTextAttributeToCode(
         titleAlignment: String,
         title: String,
         titleFont: String,
@@ -102,7 +102,7 @@ final class ButtonConfigurationModel {
         """
     }
     
-    func subTitleTextAttributeToCode(
+    static func subTitleTextAttributeToCode(
         subTitle: String,
         subTitleFont: String,
         subTitleColor: UIColor?

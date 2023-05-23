@@ -14,17 +14,53 @@ class DefaultViewController: UIViewController {
     let disposeBag = DisposeBag()
     
     private lazy var leftBarButtonItem: UIBarButtonItem = {
-        let barbutton =  UIBarButtonItem(
+        let barButton = UIBarButtonItem(
             image: DefaultViewControllerConstants.leftBarButtontImage,
             style: .plain,
             target: self,
             action: #selector(didTappedLeftBarButton)
         )
-        barbutton.tintColor = .label
-        return barbutton
+        barButton.tintColor = .label
+        return barButton
     }()
     
+    private lazy var rightBatButtonItem: UIBarButtonItem = {
+        let barButton = UIBarButtonItem(
+            image: DefaultViewControllerConstants.rightBarButtontImage,
+            style: .plain,
+            target: self,
+            action: #selector(didTappedRightBarButton)
+        )
+        barButton.tintColor = .label
+        return barButton
+    }()
+    
+    func getDocumentURLString() -> String {
+        DefaultViewControllerConstants.documentURLString
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        attribute()
+    }
+    
+    func attribute() {
+        view.backgroundColor = .secondarySystemBackground
+        setupNavigationBar()
+        setupSwipeGesture()
+    }
+    
     @objc func didTappedLeftBarButton() { }
+    
+}
+
+private extension DefaultViewController {
+    @objc func didTappedRightBarButton() {
+        if let url = URL(string: self.getDocumentURLString()) {
+            UIApplication.shared.open(url, options: [:])
+        }
+    }
+    
     @objc func respondToSwipeGesture(_ gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
@@ -36,27 +72,15 @@ class DefaultViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationItem.leftBarButtonItem = leftBarButtonItem
-        attribute()
-    }
-    
-    func attribute() {
-        view.backgroundColor = .secondarySystemBackground
-        setupNavigationBar()
-        setupSwipeGesture()
-    }
-    
-}
-
-private extension DefaultViewController {
     func setupNavigationBar() {
         let appearance = UINavigationBarAppearance()
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.compactScrollEdgeAppearance = appearance
+        
+        navigationItem.leftBarButtonItem = leftBarButtonItem
+        navigationItem.rightBarButtonItem = rightBatButtonItem
     }
     
     func setupSwipeGesture() {

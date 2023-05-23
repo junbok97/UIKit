@@ -36,7 +36,9 @@ final class ButtonFontSizeCell: DefaultFontSizeCell, ButtonSettingListCellProtoc
                 guard let self = self else { return nil }
                 return ButtonFontSize(titleType: self.titleType, fontSize: value)
             }
-            .bind(onNext: viewModel.fontSizeDidChanged)
+            .bind(onNext: { [weak viewModel] fontSize in
+                viewModel?.fontSizeDidChanged(fontSize)
+            })
             .disposed(by: disposeBag)
     }
 }

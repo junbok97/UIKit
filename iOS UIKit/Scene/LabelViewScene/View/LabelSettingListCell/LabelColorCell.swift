@@ -29,7 +29,9 @@ final class LabelColorCell: DefaultColorCell, LabelSettingListCellProtocol {
                 LabelColor(colorType: colorType, color: color)
             }
             .distinctUntilChanged()
-            .bind(onNext: viewModel.colorCellDidSelected)
+            .bind(onNext: { [weak viewModel] labelColor in
+                viewModel?.colorCellDidSelected(labelColor)
+            })
             .disposed(by: disposeBag)
     }
     

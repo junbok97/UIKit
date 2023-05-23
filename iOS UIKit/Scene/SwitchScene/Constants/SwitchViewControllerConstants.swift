@@ -11,6 +11,8 @@ protocol SwitchViewControllerConstantsProtocol: DefaultListViewControllerConstan
 
 extension SwitchViewControllerConstantsProtocol {
     static var title: String { "Switch" }
+    static var documentURLString: String { "https://developer.apple.com/documentation/uikit/uiswitch" }
+    
     static var containerViewHeight: CGFloat { 100.0 }
     
     static var defaultSwitchCode: String {

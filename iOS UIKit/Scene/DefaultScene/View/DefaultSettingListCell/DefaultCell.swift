@@ -14,5 +14,10 @@ class DefaultCell: UITableViewCell, UITableViewCellReigster {
     }
     static var isFromNib: Bool = false
     
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.disposeBag = DisposeBag()
+    }
 }

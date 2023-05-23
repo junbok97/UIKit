@@ -14,7 +14,6 @@ final class ButtonViewModel {
     
     private let disposeBag = DisposeBag()
     
-    private let buttonModel = ButtonModel()
     private let buttonConfigurationViewModel = ButtonConfigurationViewModel()
     
     // View -> ViewModel
@@ -38,9 +37,8 @@ final class ButtonViewModel {
     }
     
     func buttonSettingListDataSource() -> RxTableViewSectionedReloadDataSource<ButtonSettingListSectionModel> {
-        let dataSource = RxTableViewSectionedReloadDataSource<ButtonSettingListSectionModel> { [weak self] dataSource, tableView, indexPath, sectionModelItem in
-            guard let self = self else { fatalError("ButtonViewModel Nil") }
-            return self.buttonModel.makeCell(
+        RxTableViewSectionedReloadDataSource<ButtonSettingListSectionModel> {  dataSource, tableView, indexPath, sectionModelItem in
+            ButtonModel.makeCell(
                 dataSource[indexPath.section].sectionHeader,
                 self,
                 tableView,
@@ -48,8 +46,6 @@ final class ButtonViewModel {
                 sectionModelItem
             )
         } // RxTableViewSectionedReloadDataSource
-        
-        return dataSource
     }
     
     deinit {

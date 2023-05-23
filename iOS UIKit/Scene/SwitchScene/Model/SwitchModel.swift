@@ -41,7 +41,7 @@ final class SwitchModel {
         }
     }
     
-    func codeLabelText(
+    static func codeLabelText(
         _ isOn: Bool,
         _ onTintColor: UIColor,
         _ thumbColor: UIColor,

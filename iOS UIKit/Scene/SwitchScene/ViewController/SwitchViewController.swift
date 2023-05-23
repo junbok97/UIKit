@@ -86,8 +86,12 @@ final class SwitchViewController: DefaultListViewController {
         ])
     }
     
+    override func getDocumentURLString() -> String {
+        SwitchViewControllerConstants.documentURLString
+    }
+    
     deinit {
-        print("SwitchViewController")
+        print("SwitchViewController Deinit")
     }
 }
 
@@ -98,11 +102,17 @@ private extension SwitchViewController {
         DefaultReloadCodeButtonCell.register(tableView: settingList)
     }
 }
+
 extension SwitchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = DefaultSettingListHeaderView()
         headerView.setupHeaderTitle(dataSource[section].sectionHeader.rawValue)
         return headerView
+    }
+    
+    func tableView(_: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt _: IndexPath) {
+        guard let cell = cell as? DefaultCell else { return }
+        cell.disposeBag = DisposeBag()
     }
 }
 

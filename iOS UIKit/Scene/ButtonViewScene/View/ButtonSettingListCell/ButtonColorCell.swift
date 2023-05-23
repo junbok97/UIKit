@@ -29,7 +29,9 @@ final class ButtonColorCell: DefaultColorCell, ButtonSettingListCellProtocol {
                 ButtonColor(colorType: colorType, color: color)
             }
             .distinctUntilChanged()
-            .bind(onNext: viewModel.colorCellDidSelected)
+            .bind(onNext: { [weak viewModel] color in
+                viewModel?.colorCellDidSelected(color)
+            })
             .disposed(by: disposeBag)
     }
 }

@@ -60,8 +60,8 @@ final class ButtonViewController: DefaultListViewController {
     
     override func attribute() {
         super.attribute()
-        navigationItem.title = ButtonViewControllerConstants.title
         navigationItem.largeTitleDisplayMode = .never
+        navigationItem.title = ButtonViewControllerConstants.title
         settingListConfigure()
     }
     
@@ -74,8 +74,13 @@ final class ButtonViewController: DefaultListViewController {
             targetButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
         ])
     }
+    
+    override func getDocumentURLString() -> String {
+        ButtonViewControllerConstants.documentURLString
+    }
         
     deinit {
+        settingList = UITableView()
         print("ButtonViewController Deinit")
     }
     
@@ -108,6 +113,11 @@ extension ButtonViewController: UITableViewDelegate {
         } else {
             viewModel.buttonSettingListItemSelected(dataSource[indexPath.section].items[indexPath.row])
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let cell = cell as? DefaultCell else { return }
+        cell.disposeBag = DisposeBag()
     }
 }
 

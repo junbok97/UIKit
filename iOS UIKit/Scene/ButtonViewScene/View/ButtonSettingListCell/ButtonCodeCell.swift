@@ -20,4 +20,5 @@ final class ButtonCodeCell: DefaultCodeCell, ButtonSettingListCellProtocol {
             .drive(self.rx.codeText)
             .disposed(by: disposeBag)
     }
+
 }

@@ -12,7 +12,12 @@ protocol DefaultViewControllerConstantsProtocol {
     static var defaultFontSize: CGFloat { get }
     static var defaultOffset: CGFloat { get }
     
+    static var documentURLString: String { get }
+    
     static var title: String { get }
+    
+    static var leftBarButtontImage: UIImage? { get }
+    static var rightBarButtontImage: UIImage? { get }
 }
 
 extension DefaultViewControllerConstantsProtocol {
@@ -20,11 +25,12 @@ extension DefaultViewControllerConstantsProtocol {
     static var defaultFontSize: CGFloat { 16.0 }
     static var defaultOffset: CGFloat { 12.0 }
     
+    static var documentURLString: String { "https://developer.apple.com/documentation/uikit" }
+    
     static var title: String { "Default" }
     
     static var leftBarButtontImage: UIImage? { UIImage(systemName: "chevron.backward") }
+    static var rightBarButtontImage: UIImage? { UIImage(systemName: "safari") }
 }
 
-struct DefaultViewControllerConstants: DefaultViewControllerConstantsProtocol {
-    
-}
+struct DefaultViewControllerConstants: DefaultViewControllerConstantsProtocol {}

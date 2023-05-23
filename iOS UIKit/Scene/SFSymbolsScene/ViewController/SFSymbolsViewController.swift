@@ -88,6 +88,10 @@ final class SFSymbolsViewController: DefaultViewController {
         navigationItem.searchController = searchController
     }
     
+    override func getDocumentURLString() -> String {
+        SFSymbolsViewControllerConstants.documentURLString
+    }
+    
     deinit {
         print("SFSymbolsViewController Deinit")
     }

@@ -19,6 +19,8 @@ protocol LabelViewControllerConstantsProtocol: DefaultViewControllerConstantsPro
 
 extension LabelViewControllerConstantsProtocol {
     static var title: String { "Label" }
+    static var documentURLString: String { "https://developer.apple.com/documentation/uikit/uilabel" }
+    
     static var targetLabelFontSize: Int { Int(LabelFontSizeCellConstants.sliderValue) }
     static var targetLabelFont: UIFont { .systemFont(ofSize: CGFloat(LabelFontSizeCellConstants.sliderValue)) }
     static var targetLabelOffset: CGFloat { 20 }

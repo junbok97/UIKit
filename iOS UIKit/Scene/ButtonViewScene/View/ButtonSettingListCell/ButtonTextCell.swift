@@ -27,7 +27,9 @@ final class ButtonTextCell: DefaultTextCell, ButtonSettingListCellProtocol {
                 guard let self = self, let text = text else { return nil }
                 return text == "" ? nil : ButtonText(titleType: self.titleType, text: text)
             }
-            .bind(onNext: viewModel.textDidChanged)
+            .bind(onNext: { [weak viewModel] text in
+                viewModel?.textDidChanged(text)
+            })
             .disposed(by: disposeBag)
     }
 }
