@@ -9,4 +9,5 @@ target 'iOS UIKit' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxDataSources'
+  pod 'SnapKit'
 end

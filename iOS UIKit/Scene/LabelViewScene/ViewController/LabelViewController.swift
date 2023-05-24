@@ -12,9 +12,9 @@ import RxDataSources
 
 final class LabelViewController: DefaultListViewController {
     
-    weak var coordinator: LabelCoordinatorProtocol?
+    private weak var coordinator: LabelCoordinatorProtocol?
     private var viewModel: LabelViewModel!
-    private var dataSource: RxTableViewSectionedReloadDataSource<LabelSettingListSectionModel>!
+    private lazy var dataSource: RxTableViewSectionedReloadDataSource<LabelSettingListSectionModel> = viewModel.labelSettingListDataSource()
     
     static func create(
         _ viewModel: LabelViewModel,
@@ -52,16 +52,15 @@ final class LabelViewController: DefaultListViewController {
     }
     
     func bind() {
-        let dataSource = viewModel.labelSettingListDataSource()
-        self.dataSource = dataSource
         
         viewModel.labelSettingListCellDatas
             .drive(settingList.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
         settingList.rx.itemSelected
-            .map { indexPath in
-                dataSource[indexPath.section].items[indexPath.row]
+            .compactMap { [weak dataSource] indexPath -> LabelSettingListSectionItemType? in
+                guard let dataSource = dataSource else { return nil }
+                return dataSource[indexPath.section].items[indexPath.row]
             }
             .bind(onNext: viewModel.labelSettingListItemSelected)
             .disposed(by: disposeBag)
@@ -125,10 +124,9 @@ final class LabelViewController: DefaultListViewController {
     deinit {
         print("LabelViewController Deinit")
     }
-}
-
-private extension LabelViewController {
-    func settingListConfigure() {
+    
+    override func settingListConfigure() {
+        super.settingListConfigure()
         LabelCodeCell.register(tableView: settingList)
         LabelTextCell.register(tableView: settingList)
         LabelFontCell.register(tableView: settingList)
@@ -136,9 +134,8 @@ private extension LabelViewController {
         LabelColorCell.register(tableView: settingList)
         LabelAlignmentCell.register(tableView: settingList)
         LabelNumberOfLinesCell.register(tableView: settingList)
-        DefaultSettingListHeaderView.register(tableView: settingList)
-        DefaultReloadCodeButtonCell.register(tableView: settingList)
     }
+
 }
 
 extension Reactive where Base: LabelViewController {

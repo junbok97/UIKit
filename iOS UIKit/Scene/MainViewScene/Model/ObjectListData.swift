@@ -19,7 +19,8 @@ struct ObjectListData {
             sectionHeader: .controls,
             items: [
                 .uiButton,
-                .uiSwitch
+                .uiSwitch,
+                .uiStepper
             ]
         ),
         ObjectSectionModel(

@@ -20,14 +20,18 @@ final class LabelModel {
         _ lines: Int
     ) -> String {
         """
-        let label = UILabel()
+        lazy var label: UIlabel = {
+            let label = UILabel()
+            
+            label.text = \"\(text)\"
+            label.textColor = \(textColor.cgColor.getRGBCode)
+            label.backgroundColor = \(backgroudColor.cgColor.getRGBCode)
+            label.font = \(fontType.code(ofSize: CGFloat(ofSize)))
+            label.textAlignment = \(alignment.code)
+            label.numberOfLines = \(lines)
         
-        label.text = \"\(text)\"
-        label.textColor = \(textColor.cgColor.getRGBCode)
-        label.backgroundColor = \(backgroudColor.cgColor.getRGBCode)
-        label.font = \(fontType.code(ofSize: CGFloat(ofSize)))
-        label.textAlignment = \(alignment.code)
-        label.numberOfLines = \(lines)
+            return label
+        }()
         """
     }
         

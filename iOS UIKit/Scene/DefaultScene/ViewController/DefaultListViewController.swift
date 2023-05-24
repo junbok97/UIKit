@@ -31,6 +31,7 @@ class DefaultListViewController: DefaultViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
+        settingListConfigure()
     }
     
     func layout() {
@@ -47,6 +48,20 @@ class DefaultListViewController: DefaultViewController {
             settingList.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             settingList.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+    
+    func settingListConfigure() {
+        DefaultCell.register(tableView: settingList)
+        DefaultCodeCell.register(tableView: settingList)
+        DefaultTextCell.register(tableView: settingList)
+        DefaultColorCell.register(tableView: settingList)
+        DefaultFontCell.register(tableView: settingList)
+        DefaultFontSizeCell.register(tableView: settingList)
+        DefaultLabelCell.register(tableView: settingList)
+        DefaultSwitchCell.register(tableView: settingList)
+        DefaultReloadCodeButtonCell.register(tableView: settingList)
+        DefaultTextFieldCell.register(tableView: settingList)
+        DefaultSettingListHeaderView.register(tableView: settingList)
     }
     
 }

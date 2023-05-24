@@ -29,14 +29,18 @@ extension LabelViewControllerConstantsProtocol {
 
     static var defaultLabelCode: String {
     """
-    let label = UILabel()
+    lazy var label: UIlabel = {
+        let label = UILabel()
+        
+        label.text = \"Label\"
+        label.textColor = .label
+        label.backgroundColor = .systemBackground
+        label.font = .systemFont(ofSize: 50)
+        label.textAlignment = .center
+        label.numberOfLines = 0
     
-    label.text = \"Label\"
-    label.textColor = .label
-    label.backgroundColor = .systemBackground
-    label.font = .systemFont(ofSize: 50)
-    label.textAlignment = .center
-    label.numberOfLines = 0
+        return label
+    }()
     """
     }
 }

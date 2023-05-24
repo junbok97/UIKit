@@ -23,7 +23,7 @@ class DefaultSwitchCell: DefaultCell {
         return label
     }()
     
-    private lazy var switchToggle: UISwitch = {
+    lazy var switchToggle: UISwitch = {
         let toggle = UISwitch()
         toggle.isOn = false
         toggle.translatesAutoresizingMaskIntoConstraints = false
@@ -49,7 +49,6 @@ class DefaultSwitchCell: DefaultCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         label.text = nil
-        switchToggle.isOn = false
     }
     
     required init?(coder: NSCoder) {
@@ -71,10 +70,10 @@ private extension DefaultSwitchCell {
         contentView.addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: DefaultViewControllerConstants.defaultOffset),
-            label.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: DefaultViewControllerConstants.defaultOffset),
-            label.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -DefaultViewControllerConstants.defaultOffset),
-            label.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -DefaultViewControllerConstants.defaultOffset)
+            stackView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: DefaultViewControllerConstants.defaultOffset),
+            stackView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: DefaultViewControllerConstants.defaultOffset),
+            stackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -DefaultViewControllerConstants.defaultOffset),
+            stackView.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -DefaultViewControllerConstants.defaultOffset)
         ])
     }
     
