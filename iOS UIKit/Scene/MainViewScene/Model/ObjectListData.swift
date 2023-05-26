@@ -20,7 +20,8 @@ struct ObjectListData {
             items: [
                 .uiButton,
                 .uiSwitch,
-                .uiStepper
+                .uiStepper,
+                .uiSlider
             ]
         ),
         ObjectSectionModel(

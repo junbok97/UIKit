@@ -23,33 +23,19 @@ class DefaultLabelCell: DefaultCell {
         return label
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        attribute()
-        layout()
-    }
-    
     override func prepareForReuse() {
         super.prepareForReuse()
         label.text = nil
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
     
     func setupLabelText(_ text: String) {
         label.text = text
     }
-}
-
-private extension DefaultLabelCell {
-    func attribute() {
-        backgroundColor = .systemBackground
-        selectionStyle = .none
-    }
     
-    func layout() {
+    override func layout() {
+        super.layout()
+        
         contentView.addSubview(label)
         
         NSLayoutConstraint.activate([
@@ -58,6 +44,7 @@ private extension DefaultLabelCell {
             label.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -DefaultViewControllerConstants.defaultOffset),
             label.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -DefaultViewControllerConstants.defaultOffset)
         ])
+
     }
-    
 }
+

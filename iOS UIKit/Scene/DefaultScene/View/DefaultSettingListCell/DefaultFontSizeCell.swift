@@ -76,19 +76,8 @@ class DefaultFontSizeCell: DefaultCell {
         return stackView
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        attribute()
-        layout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func attribute() {
-        backgroundColor = .systemBackground
-        selectionStyle = .none
+    override func attribute() {
+        super.attribute()
         fontSizeSlider.setValue(DefaultFontSizeCellConstants.sliderValue, animated: true)
         fontSizeSlider.rx.value
             .compactMap { Int($0) }
@@ -96,10 +85,8 @@ class DefaultFontSizeCell: DefaultCell {
             .disposed(by: disposeBag)
     }
     
-}
-
-private extension DefaultFontSizeCell {
-    func layout() {
+    override func layout() {
+        super.layout()
         contentView.addSubview(containerStackView)
         
         NSLayoutConstraint.activate([
@@ -123,7 +110,9 @@ private extension DefaultFontSizeCell {
                 constant: -DefaultViewControllerConstants.defaultOffset
             )
         ])
+
     }
+    
 }
 
 extension Reactive where Base: DefaultFontSizeCell {

@@ -12,7 +12,7 @@ import RxCocoa
 class DefaultFontCell: DefaultCell {
     
     class override var cellId: String {
-        get { DefaultTextCellConstants.cellId }
+        get { DefaultFontCellConstants.cellId }
     }
     
     var fontType: ObjectFontType = .regular {
@@ -34,24 +34,8 @@ class DefaultFontCell: DefaultCell {
         return label
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        attribute()
-        layout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-private extension DefaultFontCell {
-    func attribute() {
-        backgroundColor = .systemBackground
-        selectionStyle = .none
-    }
-    
-    func layout() {
+    override func layout() {
+        super.layout()
         contentView.addSubview(fontLabel)
         
         NSLayoutConstraint.activate([

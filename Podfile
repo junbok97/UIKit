@@ -10,4 +10,5 @@ target 'iOS UIKit' do
   pod 'RxCocoa'
   pod 'RxDataSources'
   pod 'SnapKit'
+  pod 'Then'
 end

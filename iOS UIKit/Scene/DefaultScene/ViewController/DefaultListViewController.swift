@@ -31,7 +31,19 @@ class DefaultListViewController: DefaultViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
+        attribute()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.view.endEditing(true)
+    }
+    
+    override func attribute() {
+        super.attribute()
+        navigationItem.largeTitleDisplayMode = .never
         settingListConfigure()
+        settingListEndEditing()
     }
     
     func layout() {
@@ -53,7 +65,7 @@ class DefaultListViewController: DefaultViewController {
     func settingListConfigure() {
         DefaultCell.register(tableView: settingList)
         DefaultCodeCell.register(tableView: settingList)
-        DefaultTextCell.register(tableView: settingList)
+        DefaultTextFieldCell.register(tableView: settingList)
         DefaultColorCell.register(tableView: settingList)
         DefaultFontCell.register(tableView: settingList)
         DefaultFontSizeCell.register(tableView: settingList)
@@ -64,4 +76,15 @@ class DefaultListViewController: DefaultViewController {
         DefaultSettingListHeaderView.register(tableView: settingList)
     }
     
+}
+
+private extension DefaultListViewController {
+    func settingListEndEditing() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        settingList.addGestureRecognizer(tapGesture)
+    }
+
+    @objc func dismissKeyboard(sender: UITapGestureRecognizer) {
+        settingList.endEditing(true)
+    }
 }

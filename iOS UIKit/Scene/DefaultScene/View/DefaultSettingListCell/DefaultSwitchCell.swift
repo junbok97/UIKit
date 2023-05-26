@@ -40,33 +40,18 @@ class DefaultSwitchCell: DefaultCell {
         return stackView
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        attribute()
-        layout()
-    }
-    
     override func prepareForReuse() {
         super.prepareForReuse()
         label.text = nil
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     func setupLabelText(_ text: String) {
         label.text = text
     }
-}
-
-private extension DefaultSwitchCell {
-    func attribute() {
-        backgroundColor = .systemBackground
-        selectionStyle = .none
-    }
     
-    func layout() {
+    override func layout() {
+        super.layout()
+        
         contentView.addSubview(stackView)
         
         NSLayoutConstraint.activate([
@@ -75,6 +60,6 @@ private extension DefaultSwitchCell {
             stackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -DefaultViewControllerConstants.defaultOffset),
             stackView.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -DefaultViewControllerConstants.defaultOffset)
         ])
+
     }
-    
 }

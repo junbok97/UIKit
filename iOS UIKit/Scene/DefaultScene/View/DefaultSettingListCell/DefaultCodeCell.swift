@@ -24,25 +24,8 @@ class DefaultCodeCell: DefaultCell {
         return label
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        attribute()
-        layout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}
-
-private extension DefaultCodeCell {
-    func attribute() {
-        backgroundColor = .systemBackground
-        selectionStyle = .none
-    }
-    
-    func layout() {
+    override func layout() {
+        super.layout()
         contentView.addSubview(codeLabel)
         
         NSLayoutConstraint.activate([
@@ -52,6 +35,7 @@ private extension DefaultCodeCell {
             codeLabel.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -DefaultViewControllerConstants.defaultOffset)
         ])
     }
+    
 }
 
 extension Reactive where Base: DefaultCodeCell {

@@ -32,29 +32,11 @@ class DefaultColorCell: DefaultCell {
         return color
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        attribute()
-        layout()
-    }
-    
     @objc private func changedColor() {
         selectedColorSubject.accept(colorWell.selectedColor ?? UIColor())
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}
 
-private extension DefaultColorCell {
-    func attribute() {
-        selectionStyle = .none
-        backgroundColor = .systemBackground
-    }
-    
-    func layout() {
+    override func layout() {
         [colorNameLabel, colorWell].forEach { contentView.addSubview($0) }
         
         NSLayoutConstraint.activate([

@@ -1,51 +1,31 @@
 //
-//  DefaultTextFieldCell.swift
+//  DefaultTextCell.swift
 //  iOS UIKit
 //
-//  Created by 이준복 on 2023/05/23.
+//  Created by 이준복 on 2023/05/14.
 //
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 class DefaultTextFieldCell: DefaultCell {
     
-    override class var cellId: String {
-        DefaultTextFieldCellConstants.cellId
+    class override var cellId: String {
+        get { DefaultTextFieldCellConstants.cellId }
     }
     
     lazy var textField: UITextField = {
-        let textField = UITextField()
-        textField.font = DefaultViewControllerConstants.defaultFont
+       let textField = UITextField()
         textField.placeholder = DefaultTextFieldCellConstants.placeHolder
+        textField.font = DefaultViewControllerConstants.defaultFont
+        textField.returnKeyType = .done
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        textField.placeholder = DefaultTextFieldCellConstants.placeHolder
-    }
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        attribute()
-        layout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}
-
-private extension DefaultTextFieldCell {
-    func attribute() {
-        backgroundColor = .systemBackground
-        selectionStyle = .none
-    }
-    
-    func layout() {
+    override func layout() {
+        super.layout()
         contentView.addSubview(textField)
         
         NSLayoutConstraint.activate([
@@ -54,5 +34,14 @@ private extension DefaultTextFieldCell {
             textField.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -DefaultViewControllerConstants.defaultOffset),
             textField.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -DefaultViewControllerConstants.defaultOffset)
         ])
+
+    }
+    
+}
+
+extension DefaultTextFieldCell: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

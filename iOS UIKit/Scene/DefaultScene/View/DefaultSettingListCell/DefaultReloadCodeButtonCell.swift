@@ -26,16 +26,6 @@ class DefaultReloadCodeButtonCell: DefaultCell {
         return button
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        attribute()
-        layout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     func setTableViewAndSection(
         _ tableView: UITableView,
         _ section: Int
@@ -43,19 +33,10 @@ class DefaultReloadCodeButtonCell: DefaultCell {
         self.tableView = tableView
         self.section = section
     }
-}
-
-private extension DefaultReloadCodeButtonCell {
-    @objc func reloadButtonDidTapped() {
-        tableView?.reloadSections([section], animationStyle: .automatic)
-    }
     
-    func attribute() {
-        backgroundColor = .systemBackground
-        selectionStyle = .none
-    }
-    
-    func layout() {
+    override func layout() {
+        super.layout()
+        
         contentView.addSubview(reloadButton)
         
         NSLayoutConstraint.activate([
@@ -64,5 +45,12 @@ private extension DefaultReloadCodeButtonCell {
             reloadButton.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -DefaultViewControllerConstants.defaultOffset),
             reloadButton.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -DefaultViewControllerConstants.defaultOffset)
         ])
+
+    }
+}
+
+private extension DefaultReloadCodeButtonCell {
+    @objc func reloadButtonDidTapped() {
+        tableView?.reloadSections([section], animationStyle: .automatic)
     }
 }

@@ -30,8 +30,10 @@ final class ChildCoordinatorFactory {
             return SwitchCoordinator(navigationController, self.parentCoordinator)
         case .sfSymbols:
             return SFSymbolsCoordinator(navigationController, self.parentCoordinator)
-        case.uiStepper:
+        case .uiStepper:
             return StepperCoordinator(navigationController, self.parentCoordinator)
+        case .uiSlider:
+            return SliderCoordinator(navigationController, self.parentCoordinator)
         default:
             return LabelCoordinator(navigationController, self.parentCoordinator)
         }
