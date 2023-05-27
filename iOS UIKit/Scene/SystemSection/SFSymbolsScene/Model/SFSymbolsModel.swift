@@ -10,19 +10,17 @@ import RxSwift
 import RxRelay
 
 final class SFSymbolsModel {
-    
-    let symbolSystemNameListStream = BehaviorRelay<[String]>(value: SFSymbolsSystemName.sfSymbolsSystemNameList)
 
-    func searchSFSymbolsSystemName(_ text: String) {
+    static func searchSFSymbolsSystemName(_ text: String) -> [String] {
         if text == "" {
-            symbolSystemNameListStream.accept(SFSymbolsSystemName.sfSymbolsSystemNameList)
+            return SFSymbolsSystemName.sfSymbolsSystemNameList
         } else {
-            symbolSystemNameListStream.accept(SFSymbolsSystemName.sfSymbolsSystemNameList.filter { $0.range(of: text, options: .caseInsensitive) != nil })
+            return SFSymbolsSystemName.sfSymbolsSystemNameList.filter { $0.range(of: text, options: .caseInsensitive) != nil }
         }
     }
     
-    func getSFSymbolsSystemName(_ index: Int) -> String {
-        return SFSymbolsSystemName.sfSymbolsSystemNameList.count <= index ? "" : SFSymbolsSystemName.sfSymbolsSystemNameList[index]
+    static func getSFSymbolsSystemName(_ index: Int) -> String {
+        SFSymbolsSystemName.sfSymbolsSystemNameList.count <= index ? "" : SFSymbolsSystemName.sfSymbolsSystemNameList[index]
     }
     
     deinit {

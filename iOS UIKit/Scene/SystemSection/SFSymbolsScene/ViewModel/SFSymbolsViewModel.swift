@@ -16,8 +16,7 @@ final class SFSymbolsViewModel {
     // ViewModel -> View
     let symbolSystemNameListDriver: Driver<[String]>
     
-    // View -> ViewModel
-    let serachSFSymbolSystemName = PublishRelay<String>()
+    let symbolSystemNameListStream = BehaviorRelay<[String]>(value: SFSymbolsSystemName.sfSymbolsSystemNameList)
     
 //    let sfSymbolsSystemNameStream = PublishRelay<String>()
     let popSFSymbolsViewController = PublishSubject<Void>()
@@ -25,16 +24,16 @@ final class SFSymbolsViewModel {
     let model = SFSymbolsModel()
     
     init() {
-        symbolSystemNameListDriver = model.symbolSystemNameListStream
+        symbolSystemNameListDriver = symbolSystemNameListStream
             .asDriver(onErrorDriveWith: .empty())
-        
-        serachSFSymbolSystemName
-            .bind(onNext: model.searchSFSymbolsSystemName)
-            .disposed(by: disposeBag)
+    }
+    
+    func serachSFSymbolSystemName(_ text: String) {
+        symbolSystemNameListStream.accept(SFSymbolsModel.searchSFSymbolsSystemName(text))
     }
     
     func getSFSymbolsSystemName(_ indexPath: IndexPath) -> String {
-        model.getSFSymbolsSystemName(indexPath.row)
+        SFSymbolsModel.getSFSymbolsSystemName(indexPath.row)
     }
     
     deinit {

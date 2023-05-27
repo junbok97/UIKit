@@ -34,7 +34,7 @@ final class SFSymbolsViewController: DefaultViewController {
     
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController()
-        searchController.searchBar.tintColor = .systemBackground
+        searchController.searchBar.tintColor = .label
         return searchController
     }()
     
@@ -51,7 +51,9 @@ final class SFSymbolsViewController: DefaultViewController {
     private func bind() {
         searchController.searchBar.rx.text
             .compactMap { $0 }
-            .bind(to: viewModel.serachSFSymbolSystemName)
+            .bind(onNext: { [weak viewModel] text in
+                viewModel?.serachSFSymbolSystemName(text)
+            })
             .disposed(by: disposeBag)
         
         viewModel.symbolSystemNameListDriver
@@ -82,7 +84,7 @@ final class SFSymbolsViewController: DefaultViewController {
     
     override func attribute() {
         super.attribute()
-        navigationItem.largeTitleDisplayMode = .always
+        navigationItem.largeTitleDisplayMode = .never
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.title = SFSymbolsViewControllerConstants.title
         navigationItem.searchController = searchController

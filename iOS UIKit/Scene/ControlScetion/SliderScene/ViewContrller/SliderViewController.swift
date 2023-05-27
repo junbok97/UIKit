@@ -77,19 +77,13 @@ final class SliderViewController: DefaultListViewController {
         viewModel.targetMaximumValue
             .drive(self.targetSlider.rx.maximumValue)
             .disposed(by: disposeBag)
-        
+
         viewModel.targetMinimumValue
             .drive(self.targetSlider.rx.minimumValue)
             .disposed(by: disposeBag)
         
         targetSlider.rx.value
             .bind(to: self.rx.targetSliderValueLabel)
-            .disposed(by: disposeBag)
-  
-        targetSlider.rx.value
-            .subscribe(onNext: {
-                print("TargetValue", $0)
-            })
             .disposed(by: disposeBag)
     }
     
@@ -177,4 +171,5 @@ extension Reactive where Base: SliderViewController {
             base.targetSlider.minimumTrackTintColor = color
         }
     }
+
 }
