@@ -29,15 +29,26 @@ final class SliderViewController: DefaultListViewController {
         return viewController
     }
     
-    lazy var targetSlider: UISlider = UISlider().then { slier in
-        slier.maximumValue = SliderViewControllerConstants.targetMaximumValue
-        slier.minimumValue = SliderViewControllerConstants.targetMinimumValue
-    }
+    lazy var targetSliderValueLabel: UILabel = {
+        let label = UILabel()
+        label.text = SliderViewControllerConstants.sliderValueLabelText
+        label.font = SliderViewControllerConstants.defaultFont
+        label.textColor = .label
+        label.textAlignment = .center
+        return label
+    }()
     
+    lazy var targetSlider: UISlider = UISlider().then { slider in
+        slider.maximumValue = SliderViewControllerConstants.targetMaximumValue
+        slider.minimumValue = SliderViewControllerConstants.targetMinimumValue
+    }
+
     @objc override func didTappedLeftBarButton() { coordinator?.finish() }
     
     func bind() {
+        targetSlider.setValue(SliderViewControllerConstants.targetValue, animated: true)
         settingList.rx.setDelegate(self)
+            .disposed(by: disposeBag)
         
         viewModel.sliderSettingListCellDatas
             .drive(settingList.rx.items(dataSource: dataSource))
@@ -62,22 +73,45 @@ final class SliderViewController: DefaultListViewController {
         viewModel.targetMinimumTrackTintColor
             .drive(self.rx.targetMinTrackColor)
             .disposed(by: disposeBag)
+        
+        viewModel.targetMaximumValue
+            .drive(self.targetSlider.rx.maximumValue)
+            .disposed(by: disposeBag)
+        
+        viewModel.targetMinimumValue
+            .drive(self.targetSlider.rx.minimumValue)
+            .disposed(by: disposeBag)
+        
+        targetSlider.rx.value
+            .bind(to: self.rx.targetSliderValueLabel)
+            .disposed(by: disposeBag)
+  
+        targetSlider.rx.value
+            .subscribe(onNext: {
+                print("TargetValue", $0)
+            })
+            .disposed(by: disposeBag)
     }
     
     override func attribute() {
         super.attribute()
         navigationItem.title = SliderViewControllerConstants.title
-        targetSlider.setValue(SliderViewControllerConstants.targetValue, animated: true)
     }
     
     override func layout() {
         super.layout()
-        
-        containerView.addSubview(targetSlider)
+        [targetSlider, targetSliderValueLabel].forEach {
+            containerView.addSubview($0)
+        }
         
         targetSlider.snp.makeConstraints { make in
-            make.top.bottom.leading.trailing.equalToSuperview().inset(SliderViewControllerConstants.defaultOffset)
-            
+            make.leading.trailing.equalToSuperview().inset(SliderViewControllerConstants.defaultOffset)
+            make.centerY.equalToSuperview()
+        }
+        
+        targetSliderValueLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(targetSlider.snp.top).offset(SliderViewControllerConstants.defaultOffset)
+            make.leading.trailing.top.equalToSuperview().inset(SliderViewControllerConstants.defaultOffset)
         }
     }
     
@@ -100,10 +134,20 @@ final class SliderViewController: DefaultListViewController {
 }
 
 extension SliderViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = DefaultSettingListHeaderView()
+        headerView.setupHeaderTitle(dataSource[section].sectionHeader.rawValue)
+        return headerView
+    }
 }
 
 extension Reactive where Base: SliderViewController {
+    var targetSliderValueLabel: Binder<Float> {
+        Binder(base) { base, value in
+            base.targetSliderValueLabel.text = String(format: "%lf", value)
+        }
+    }
+    
     var targetTintColor: Binder<UIColor> {
         Binder(base) { base, color in
             base.targetSlider.tintColor = color

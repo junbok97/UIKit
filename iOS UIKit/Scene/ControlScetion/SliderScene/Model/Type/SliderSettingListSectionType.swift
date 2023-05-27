@@ -10,5 +10,6 @@ import Foundation
 enum SliderSettingListSectionType: String {
     case code = "Code"
     case color = "Color"
-    case value = "Value"
+    case maximum = "Maximum Value"
+    case minimum = "Minimum Value"
 }

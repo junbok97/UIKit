@@ -12,6 +12,8 @@ import RxDataSources
  
 final class SliderViewModel {
     
+    let disposebag = DisposeBag()
+    
     // View -> ViewModel
     
     // value
@@ -25,6 +27,7 @@ final class SliderViewModel {
     let tintColor = BehaviorRelay<UIColor>(value: .tintColor)
     let backgroundColor = BehaviorRelay<UIColor?>(value: nil)
     
+    let sliderSettingCodeText = BehaviorRelay<String>(value: SliderViewControllerConstants.defaultSliderCode)
     
     // ViewModel -> View
     let sliderSettingListCellDatas: Driver<[SliderSettingListSectionModel]>
@@ -40,12 +43,12 @@ final class SliderViewModel {
     let targetMaximumTrackTintColor: Driver<UIColor?>
     let targetMinimumTrackTintColor: Driver<UIColor?>
     let targetTintColor: Driver<UIColor>
-    let targetBackgroundColor: Driver<UIColor?>    
+    let targetBackgroundColor: Driver<UIColor?>
     
     init() {
         sliderSettingListCellDatas = Observable.just(SliderSettingListData.settingListDatas).asDriver(onErrorDriveWith: .empty())
         
-        codeCellCodeLabelText = Observable.just("")
+        codeCellCodeLabelText = sliderSettingCodeText
             .asDriver(onErrorDriveWith: .empty())
         
         targetMaximumValue = maximumValueDidChanged
@@ -59,6 +62,22 @@ final class SliderViewModel {
         targetMaximumTrackTintColor = maximumTrackTintColor.asDriver()
         targetMinimumTrackTintColor = minimumTrackTintColor.asDriver()
         targetThumbTintColor = thumbTintColor.asDriver()
+        
+        sliderSettingToCode()
+    }
+    
+    func sliderSettingToCode() {
+        Observable.combineLatest(
+            maximumValueDidChanged,
+            minimumValueDidChanged,
+            tintColor,
+            backgroundColor,
+            thumbTintColor,
+            maximumTrackTintColor,
+            minimumTrackTintColor
+        ).map(SliderModel.codeLabelText)
+            .bind(to: sliderSettingCodeText)
+            .disposed(by: disposebag)
     }
     
     func sliderSettingListDataSource() -> RxTableViewSectionedReloadDataSource<SliderSettingListSectionModel> {

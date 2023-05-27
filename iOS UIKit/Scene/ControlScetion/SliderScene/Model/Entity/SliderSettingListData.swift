@@ -18,9 +18,15 @@ struct SliderSettingListData {
         ),
         
         SliderSettingListSectionModel(
-            sectionHeader: .value,
+            sectionHeader: .maximum,
             items: [
-                .value(valueType: .maximum),
+                .value(valueType: .maximum)
+            ]
+        ),
+        
+        SliderSettingListSectionModel(
+            sectionHeader: .minimum,
+            items: [
                 .value(valueType: .minimum)
             ]
         ),
