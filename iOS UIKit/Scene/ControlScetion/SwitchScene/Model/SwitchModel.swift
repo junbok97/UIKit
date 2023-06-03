@@ -8,6 +8,23 @@
 import Foundation
 import RxSwift
 
+protocol SwitchModelProtocol: ModelProtocol {
+    static func makecell(
+        _ sectionType: SwitchSettingListSectionType,
+        _ viewModel: SwitchViewModel,
+        _ tableView: UITableView,
+        _ indexPath: IndexPath,
+        _ sectionModelItem: SwitchSettingListSectionModel.Item
+    ) -> DefaultCell
+    
+    static func codeLabelText(
+        _ isOn: Bool,
+        _ onTintColor: UIColor,
+        _ thumbColor: UIColor,
+        _ backgroundColor: UIColor
+    ) -> String
+}
+
 final class SwitchModel {
     
     static func makecell(

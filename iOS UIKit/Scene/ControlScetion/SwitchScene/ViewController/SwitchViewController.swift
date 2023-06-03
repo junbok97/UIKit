@@ -12,20 +12,21 @@ import RxDataSources
 
 final class SwitchViewController: DefaultListViewController {
     private weak var coordinator: SwitchCoordinatorProtocol?
-    private var viewModel: SwitchViewModel!
+    private var viewModel: SwitchViewModelProtocol!
     private lazy var dataSource: RxTableViewSectionedReloadDataSource<SwitchSettingListSectionModel> = viewModel.switchSettingListDataSource()
     
     static func create(
-        _ viewModel: SwitchViewModel,
-        _ coordinator: SwitchCoordinatorProtocol
+        _ coordinator: SwitchCoordinatorProtocol,
+        _ viewModel: SwitchViewModelProtocol
     ) -> SwitchViewController {
         let viewController = SwitchViewController()
-        viewController.viewModel = viewModel
         viewController.coordinator = coordinator
+        viewController.viewModel = viewModel
         viewController.bind()
         return viewController
     }
     
+    // MARK: - UI 구현
     lazy var targetSwitch: UISwitch = {
         let toggle = UISwitch()
         toggle.isOn = true
@@ -38,7 +39,8 @@ final class SwitchViewController: DefaultListViewController {
     
     @objc override func didTappedLeftBarButton() { coordinator?.finish() }
     
-    func bind() {
+    // MARK: - 바인딩
+    private func bind() {
         viewModel.switchSettingListcellDatas
             .drive(settingList.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
@@ -64,6 +66,7 @@ final class SwitchViewController: DefaultListViewController {
             .disposed(by: disposeBag)
     }
     
+    // MARK: - 레이아웃
     override func attribute() {
         super.attribute()
         navigationItem.title = SwitchViewControllerConstants.title
@@ -96,6 +99,7 @@ final class SwitchViewController: DefaultListViewController {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension SwitchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = DefaultSettingListHeaderView()
@@ -104,6 +108,7 @@ extension SwitchViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - Reactive
 extension Reactive where Base: SwitchViewController {
     var targetOnTintColor: Binder<UIColor> {
         Binder(base) { base, color in

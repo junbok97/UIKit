@@ -23,7 +23,7 @@ final class StepperCoordinator: StepperCoordinatorProtocol {
     }
     
     func start() {
-        let viewController = StepperViewController.create(StepperViewModel(), self)
+        let viewController = StepperViewController.create(self, StepperViewModel())
         navigationController.pushViewController(viewController, animated: true)
     }
     

@@ -13,21 +13,22 @@ import SnapKit
 
 final class StepperViewController: DefaultListViewController {
     weak var coordinator: StepperCoordinatorProtocol?
-    private var viewModel: StepperViewModel!
+    private var viewModel: StepperViewModelProtocol!
     private lazy var dataSource: RxTableViewSectionedReloadDataSource<StepperSettingListSectionModel> =
     viewModel.stepperSettingListDataSource()
     
     static func create(
-        _ viewModel: StepperViewModel,
-        _ coordinator: StepperCoordinatorProtocol
+        _ coordinator: StepperCoordinatorProtocol,
+        _ viewModel: StepperViewModelProtocol
     ) -> StepperViewController {
         let viewController = StepperViewController()
-        viewController.viewModel = viewModel
         viewController.coordinator = coordinator
+        viewController.viewModel = viewModel
         viewController.bind()
         return viewController
     }
     
+    // MARK: - UI구현
     lazy var targetValueLabel: UILabel = {
         let label = UILabel()
         label.textColor = .label
@@ -57,7 +58,8 @@ final class StepperViewController: DefaultListViewController {
     
     @objc override func didTappedLeftBarButton() { coordinator?.finish() }
     
-    func bind() {
+    // MARK: - 바인딩
+    private func bind() {
         
         targetStepper.rx.value
             .bind(to: viewModel.targetStepperDidChanged)
@@ -97,6 +99,7 @@ final class StepperViewController: DefaultListViewController {
             
     }
     
+    // MARK: - 레이아웃
     override func attribute() {
         super.attribute()
         navigationItem.title = StepperViewControllerConstants.title
@@ -132,6 +135,7 @@ final class StepperViewController: DefaultListViewController {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension StepperViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = DefaultSettingListHeaderView()
@@ -140,6 +144,7 @@ extension StepperViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - Reactive
 extension Reactive where Base: StepperViewController {
     var targetValueLabelText: Binder<String> {
         Binder(base) { base, text in

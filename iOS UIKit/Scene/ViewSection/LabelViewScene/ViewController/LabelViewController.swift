@@ -13,20 +13,21 @@ import RxDataSources
 final class LabelViewController: DefaultListViewController {
     
     private weak var coordinator: LabelCoordinatorProtocol?
-    private var viewModel: LabelViewModel!
+    private var viewModel: LabelViewModelProtocol!
     private lazy var dataSource: RxTableViewSectionedReloadDataSource<LabelSettingListSectionModel> = viewModel.labelSettingListDataSource()
     
     static func create(
-        _ viewModel: LabelViewModel,
-        _ coordinator: LabelCoordinatorProtocol
+        _ coordinator: LabelCoordinatorProtocol,
+        _ viewModel: LabelViewModelProtocol
     ) -> LabelViewController {
         let viewController = LabelViewController()
-        viewController.viewModel = viewModel
         viewController.coordinator = coordinator
+        viewController.viewModel = viewModel
         viewController.bind()
         return viewController
     }
     
+    // MARK: - UI구현
     lazy var targetLabel: UILabel = {
         let label = UILabel()
         label.textColor = .label
@@ -41,17 +42,19 @@ final class LabelViewController: DefaultListViewController {
         return label
     }()
         
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        coordinator?.finish()
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         self.view.endEditing(true)
     }
     
-    func bind() {
+    // MARK: - 라이프사이클
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        coordinator?.finish()
+    }
+    
+    // MARK: - 바인딩
+    private func bind() {
         viewModel.labelSettingListCellDatas
             .drive(settingList.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
@@ -93,6 +96,7 @@ final class LabelViewController: DefaultListViewController {
             .disposed(by: disposeBag)
     }
     
+    // MARK: - 레이아웃
     override func attribute() {
         super.attribute()
         navigationItem.title = LabelViewControllerConstants.title
@@ -135,6 +139,17 @@ final class LabelViewController: DefaultListViewController {
 
 }
 
+// MARK: - UITableViewDelegate
+extension LabelViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = DefaultSettingListHeaderView()
+        headerView.setupHeaderTitle(dataSource[section].sectionHeader.rawValue)
+        return headerView
+    }
+
+}
+
+// MARK: - Reactive
 extension Reactive where Base: LabelViewController {
     
     var targetText: Binder<String> {
@@ -173,18 +188,4 @@ extension Reactive where Base: LabelViewController {
         }
     }
     
-}
-
-extension LabelViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = DefaultSettingListHeaderView()
-        headerView.setupHeaderTitle(dataSource[section].sectionHeader.rawValue)
-        return headerView
-    }
-    
-//    func tableView(_: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt _: IndexPath) {
-//        guard let cell = cell as? DefaultCell else { return }
-//        cell.disposeBag = DisposeBag()
-//    }
-
 }

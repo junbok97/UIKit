@@ -7,6 +7,24 @@
 
 import UIKit
 
+protocol StepperModelProtocol: ModelProtocol {
+    static func codeLabelText(
+        _ autorepeat: Bool,
+        _ wrap: Bool,
+        _ stepValue: Double,
+        _ minimum: Double,
+        _ maximum: Double
+    ) -> String
+    
+    static func makeCell(
+        _ sectionType: StepperSettingListSectionType,
+        _ viewModel: StepperViewModel,
+        _ tableView: UITableView,
+        _ indexPath: IndexPath,
+        _ sectionModelItem: StepperSettingListSectionModel.Item
+    ) -> DefaultCell
+}
+
 final class StepperModel {
     
     static func codeLabelText(

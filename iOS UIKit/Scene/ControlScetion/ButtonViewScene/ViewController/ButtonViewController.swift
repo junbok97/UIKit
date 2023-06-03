@@ -12,20 +12,21 @@ import RxDataSources
 final class ButtonViewController: DefaultListViewController {
     
     private weak var coordinator: ButtonCoordinatorProtocol?
-    private var viewModel: ButtonViewModel!
+    private var viewModel: ButtonViewModelProtocol!
     private lazy var dataSource: RxTableViewSectionedReloadDataSource<ButtonSettingListSectionModel> = viewModel.buttonSettingListDataSource()
     
     static func create(
-        _ viewModel: ButtonViewModel,
-        _ coordinator: ButtonCoordinatorProtocol
+        _ coordinator: ButtonCoordinatorProtocol,
+        _ viewModel: ButtonViewModelProtocol
     ) -> ButtonViewController {
         let viewController = ButtonViewController()
-        viewController.viewModel = viewModel
         viewController.coordinator = coordinator
+        viewController.viewModel = viewModel
         viewController.bind()
         return viewController
     }
     
+    // MARK: - UI구현
     lazy var targetButton: UIButton = {
         let button = UIButton(configuration: .filled())
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -36,6 +37,7 @@ final class ButtonViewController: DefaultListViewController {
         coordinator?.finish()
     }
     
+    // MARK: - 바인딩
     private func bind() {
         viewModel.buttonSettingListCellDatas
             .drive(settingList.rx.items(dataSource: dataSource))
@@ -55,6 +57,7 @@ final class ButtonViewController: DefaultListViewController {
         
     }
     
+    // MARK: - 레이아웃
     override func attribute() {
         super.attribute()
         navigationItem.title = ButtonViewControllerConstants.title
@@ -91,6 +94,7 @@ final class ButtonViewController: DefaultListViewController {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension ButtonViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = DefaultSettingListHeaderView()
@@ -112,6 +116,7 @@ extension ButtonViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - Reactive
 extension Reactive where Base: ButtonViewController {
     var targetTintColor: Binder<UIColor> {
         return Binder(base) { base, tintColor in

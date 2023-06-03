@@ -28,7 +28,7 @@ final class ButtonCoordinator: ButtonCoordinatorProtocol {
     }
 
     func start() {
-        let viewController = ButtonViewController.create(viewModel, self)
+        let viewController = ButtonViewController.create(self, viewModel)
         navigationController.pushViewController(viewController, animated: true)
     }
     

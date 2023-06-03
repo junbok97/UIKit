@@ -10,7 +10,23 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-final class ButtonViewModel {
+protocol ButtonViewModelProtocol: ViewModelProtocol {
+    
+    // View -> ViewModel
+    var buttonSettingListCellDatas: Driver<[ButtonSettingListSectionModel]> { get }
+    var targetButtonConfiguration: Driver<UIButton.Configuration> { get }
+    var targetTintColor: Driver<UIColor> { get }
+    var codeCellCodeLabelText: Driver<String> { get }
+    
+    func buttonSettingListDataSource() -> RxTableViewSectionedReloadDataSource<ButtonSettingListSectionModel>
+    func sfSymbolSeleted(_ sfSymbolName: String)
+    func textDidChanged(_ buttonText: ButtonText)
+    func fontSizeDidChanged(_ buttonFontSize: ButtonFontSize)
+    func colorCellDidSelected(_ buttonColor: ButtonColor)
+    func buttonSettingListItemSelected(_ itemType: ButtonSettingListItemType)
+}
+
+final class ButtonViewModel: ButtonViewModelProtocol {
     
     private let disposeBag = DisposeBag()
     
@@ -36,6 +52,13 @@ final class ButtonViewModel {
             .asDriver(onErrorDriveWith: .empty())
     }
     
+    deinit {
+        print("ButtonViewModel Deinit")
+    }
+}
+
+// ButtonConfigurationViewModel
+extension ButtonViewModel {
     func buttonSettingListDataSource() -> RxTableViewSectionedReloadDataSource<ButtonSettingListSectionModel> {
         RxTableViewSectionedReloadDataSource<ButtonSettingListSectionModel> {  dataSource, tableView, indexPath, sectionModelItem in
             ButtonModel.makeCell(
@@ -48,13 +71,6 @@ final class ButtonViewModel {
         } // RxTableViewSectionedReloadDataSource
     }
     
-    deinit {
-        print("ButtonViewModel Deinit")
-    }
-}
-
-// ButtonConfigurationViewModel
-extension ButtonViewModel {
     func sfSymbolSeleted(_ sfSymbolName: String) {
         buttonConfigurationViewModel.sfSymbolDidSeleted(sfSymbolName)
     }

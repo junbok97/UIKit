@@ -10,7 +10,43 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-final class LabelViewModel {
+protocol LabelViewModelProtocol: ViewModelProtocol {
+    // View -> ViewModel
+    var textCellDidChangedTextField: BehaviorRelay<String> { get }
+    
+    var titleColorDidSelected: BehaviorRelay<UIColor> { get }
+    var backgroundColorDidSelected: BehaviorRelay<UIColor> { get }
+    
+    var fontCellDidSelected: BehaviorRelay<ObjectFontType> { get }
+    var fontSizeCellDidChangedFontSizeSlider: BehaviorRelay<Int> { get }
+    var fontDidSelected: BehaviorRelay<UIFont> { get }
+
+    var alignmentCellDidSelected: BehaviorRelay<ObjectAlignmentType> { get }
+    var numberOfLinesCellDidChangedLineStepper: BehaviorRelay<Int> { get }
+    
+    var didItemSelectedLabelSettingList: PublishRelay<LabelSettingListSectionItemType> { get }
+    
+    // ViewModel -> View
+    var codeCellCodeLabelText: Driver<String> { get }
+    var numberOfLinesCellStepperValueLabelText: Driver<Int> { get }
+    var targetText: Driver<String> { get }
+    var targetFont: Driver<UIFont> { get }
+    var targetTitleColor: Driver<UIColor> { get }
+    var targetBackgroundColor: Driver<UIColor> { get }
+    var targetAlignment: Driver<ObjectAlignmentType> { get }
+    var targetNumberOfLines: Driver<Int> { get }
+    var labelSettingListCellDatas: Driver<[LabelSettingListSectionModel]> { get }
+    
+    var labelSettingCodeText: BehaviorRelay<String> { get }
+    
+    func didSeledtedFont()
+    func colorCellDidSelected(_ labelColor: LabelColor)
+    func labelSettingToCode()
+    func labelSettingListDataSource() -> RxTableViewSectionedReloadDataSource<LabelSettingListSectionModel>
+    func labelSettingListItemSelected(_ itemType: LabelSettingListSectionItemType)
+}
+
+final class LabelViewModel: LabelViewModelProtocol {
     
     private let disposeBag = DisposeBag()
     
@@ -41,8 +77,6 @@ final class LabelViewModel {
     let labelSettingListCellDatas: Driver<[LabelSettingListSectionModel]>
     
     let labelSettingCodeText = BehaviorRelay<String>(value: LabelViewControllerConstants.defaultLabelCode)
-    
-    private let labelModel = LabelModel()
     
     init() {
         labelSettingListCellDatas = Observable.just(LabelSettingListData.settingListDatas)
@@ -75,41 +109,24 @@ final class LabelViewModel {
         didSeledtedFont()
         labelSettingToCode()
     }
-    
-    func didSeledtedFont() {
-        Observable
-            .combineLatest(
-                fontCellDidSelected,
-                fontSizeCellDidChangedFontSizeSlider
-            ) { (fontType, ofSize) -> UIFont in
-                fontType.font(ofSize: CGFloat(ofSize))
-            }
-            .bind(to: fontDidSelected)
-            .disposed(by: disposeBag)
-    }
-    
-    func colorCellDidSelected(_ labelColor: LabelColor) {
-        switch labelColor.colorType {
-        case .titleColor:
-            titleColorDidSelected.accept(labelColor.color)
-        case .backgroundColor:
-            backgroundColorDidSelected.accept(labelColor.color)
-        }
-    }
 
-    func labelSettingToCode() {
-        Observable
-            .combineLatest(
-                textCellDidChangedTextField,
-                titleColorDidSelected,
-                backgroundColorDidSelected,
-                fontCellDidSelected,
-                fontSizeCellDidChangedFontSizeSlider,
-                alignmentCellDidSelected,
-                numberOfLinesCellDidChangedLineStepper
-            ).map(labelModel.codeLabelText)
-            .bind(to: labelSettingCodeText)
-            .disposed(by: disposeBag)
+    deinit {
+        print("LabeViewModel Deinit")
+    }
+    
+}
+
+extension LabelViewModel {
+    func labelSettingListDataSource() -> RxTableViewSectionedReloadDataSource<LabelSettingListSectionModel> {
+         RxTableViewSectionedReloadDataSource<LabelSettingListSectionModel> { dataSource, tableView, indexPath, sectionModelItem in
+            LabelModel.makeCell(
+                dataSource[indexPath.section].sectionHeader,
+                self,
+                tableView,
+                indexPath,
+                sectionModelItem
+            )
+        }
     }
     
     func labelSettingListItemSelected(_ itemType: LabelSettingListSectionItemType) {
@@ -123,20 +140,40 @@ final class LabelViewModel {
         }
     }
     
-    func labelSettingListDataSource() -> RxTableViewSectionedReloadDataSource<LabelSettingListSectionModel> {
-         RxTableViewSectionedReloadDataSource<LabelSettingListSectionModel> { dataSource, tableView, indexPath, sectionModelItem in
-            LabelModel.makeCell(
-                dataSource[indexPath.section].sectionHeader,
-                self,
-                tableView,
-                indexPath,
-                sectionModelItem
-            )
-        }
+    func labelSettingToCode() {
+        Observable
+            .combineLatest(
+                textCellDidChangedTextField,
+                titleColorDidSelected,
+                backgroundColorDidSelected,
+                fontCellDidSelected,
+                fontSizeCellDidChangedFontSizeSlider,
+                alignmentCellDidSelected,
+                numberOfLinesCellDidChangedLineStepper
+            ).map(LabelModel.codeLabelText)
+            .bind(to: labelSettingCodeText)
+            .disposed(by: disposeBag)
     }
 
-    deinit {
-        print("LabeViewModel Deinit")
+    func colorCellDidSelected(_ labelColor: LabelColor) {
+        switch labelColor.colorType {
+        case .titleColor:
+            titleColorDidSelected.accept(labelColor.color)
+        case .backgroundColor:
+            backgroundColorDidSelected.accept(labelColor.color)
+        }
     }
     
+    func didSeledtedFont() {
+        Observable
+            .combineLatest(
+                fontCellDidSelected,
+                fontSizeCellDidChangedFontSizeSlider
+            ) { (fontType, ofSize) -> UIFont in
+                fontType.font(ofSize: CGFloat(ofSize))
+            }
+            .bind(to: fontDidSelected)
+            .disposed(by: disposeBag)
+    }
+
 }

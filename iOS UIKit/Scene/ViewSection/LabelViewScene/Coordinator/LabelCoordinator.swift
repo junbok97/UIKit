@@ -23,7 +23,7 @@ final class LabelCoordinator: LabelCoordinatorProtocol {
     }
     
     func start() {
-        let viewController = LabelViewController.create(LabelViewModel(), self)
+        let viewController = LabelViewController.create(self, LabelViewModel())
         navigationController.pushViewController(viewController, animated: true)
     }
     

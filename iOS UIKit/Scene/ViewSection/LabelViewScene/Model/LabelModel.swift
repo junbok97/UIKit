@@ -8,9 +8,29 @@
 import Foundation
 import RxSwift
 
+protocol LabelModelProtocol: ModelProtocol {
+    static func codeLabelText(
+        _ text: String,
+        _ textColor: UIColor,
+        _ backgroudColor: UIColor,
+        _ fontType: ObjectFontType,
+        _ ofSize: Int,
+        _ alignment: ObjectAlignmentType,
+        _ lines: Int
+    ) -> String
+    
+    static func makeCell(
+        _ sectionType: LabelSettingListSectionType,
+        _ viewModel: LabelViewModel,
+        _ tableView: UITableView,
+        _ indexPath: IndexPath,
+        _ sectionModelItem: LabelSettingListSectionModel.Item
+    ) -> DefaultCell
+}
+
 final class LabelModel {
     
-    func codeLabelText(
+    static func codeLabelText(
         _ text: String,
         _ textColor: UIColor,
         _ backgroudColor: UIColor,

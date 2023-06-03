@@ -9,34 +9,81 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class ButtonConfigurationViewModel {
+protocol ButtonConfigurationViewModelProtocol: ViewModelProtocol {
+    var buttonStyleDidSelected: BehaviorRelay<ButtonStyleType> { get }
+    var buttonCornerStyleDidSelected: BehaviorRelay<ButtonCornerStyleType> { get }
+    
+    var titleAlignmentDidSelected: BehaviorRelay<ButtonTitleAlignmentType> { get }
+    
+    // Title
+    var titleTextDidChangedTextField: BehaviorRelay<String> { get }
+    var titleFontDidSelected: BehaviorRelay<ObjectFontType> { get }
+    var titleFontSizeDidChanged: BehaviorRelay<Int> { get }
+    var titleColorDidSelected: BehaviorRelay<UIColor?> { get }
+    
+    // SubTitle
+    var subTitleTextDidChangedTextField: BehaviorRelay<String> { get }
+    var subTitleFontDidSelected: BehaviorRelay<ObjectFontType> { get }
+    var subTitleFontSizeDidChanged: BehaviorRelay<Int> { get }
+    var subTitleColorDidSelected: BehaviorRelay<UIColor?> { get }
+    
+    // color
+    var tintColorSelected: BehaviorRelay<UIColor> { get }
+    var baseForegroundColorSelected: BehaviorRelay<UIColor?> { get }
+    var basebackgroundColorSelected: BehaviorRelay<UIColor?> { get }
+    
+    var sfSymbolDidSeleted: BehaviorRelay<String> { get }
+    var imagePlacementDidSelected: BehaviorRelay<ButtonImagePlacementType> { get }
+    
+    var buttonSettingCodeText: BehaviorRelay<String> { get }
+    var buttonConfigurationDidChanged: BehaviorRelay<UIButton.Configuration> { get }
+    
+    func colorCellDidSelected(_ buttonColor: ButtonColor)
+    func buttonSettingListItemSelected(_ itemType: ButtonSettingListItemType)
+    func sfSymbolDidSeleted(_ sfSymbolName: String)
+    func textDidChanged(_ buttonText: ButtonText)
+    func fontSizeDidChanged(_ buttonFontSize: ButtonFontSize)
+    func buttonSettingToCode()
+    func tintColorDidSelected(_ color: UIColor)
+    func titleColorDidSelected(_ color: UIColor)
+    func subTitleColorDidSelected(_ color: UIColor)
+    func baseForegroundColorSelected(_ color: UIColor)
+    func basebackgroundColorSelected(_ color: UIColor)
+    func buttonStyleDidSelected(_ buttonStyleType: ButtonStyleType)
+    func buttonCornerStyleDidSelected(_ cornerStyleType: ButtonCornerStyleType)
+    func titleAlignmentDidSelected(_ titleAligmentType: ButtonTitleAlignmentType)
+    func fontDidSeleted(_ titleType: ButtonTitleType, _ fontType: ObjectFontType)
+    func imagePlacementDidSelected(_ imagePlacementType: ButtonImagePlacementType)
+}
+
+final class ButtonConfigurationViewModel: ButtonConfigurationViewModelProtocol {
     
     private let disposeBag = DisposeBag()
     
-    private let buttonStyleDidSelected = BehaviorRelay<ButtonStyleType>(value: .filled)
-    private let buttonCornerStyleDidSelected = BehaviorRelay<ButtonCornerStyleType>(value: .dynamic)
+    let buttonStyleDidSelected = BehaviorRelay<ButtonStyleType>(value: .filled)
+    let buttonCornerStyleDidSelected = BehaviorRelay<ButtonCornerStyleType>(value: .dynamic)
     
-    private let titleAlignmentDidSelected = BehaviorRelay<ButtonTitleAlignmentType>(value: .automatic)
+    let titleAlignmentDidSelected = BehaviorRelay<ButtonTitleAlignmentType>(value: .automatic)
     
     // Title
-    private let titleTextDidChangedTextField = BehaviorRelay<String>(value: ButtonViewControllerConstants.targetTitleText)
-    private let titleFontDidSelected = BehaviorRelay<ObjectFontType>(value: .regular)
-    private let titleFontSizeDidChanged = BehaviorRelay<Int>(value: ButtonViewControllerConstants.targetTitleFontSize)
-    private let titleColorDidSelected = BehaviorRelay<UIColor?>(value: nil)
+    let titleTextDidChangedTextField = BehaviorRelay<String>(value: ButtonViewControllerConstants.targetTitleText)
+    let titleFontDidSelected = BehaviorRelay<ObjectFontType>(value: .regular)
+    let titleFontSizeDidChanged = BehaviorRelay<Int>(value: ButtonViewControllerConstants.targetTitleFontSize)
+    let titleColorDidSelected = BehaviorRelay<UIColor?>(value: nil)
     
     // SubTitle
-    private let subTitleTextDidChangedTextField = BehaviorRelay<String>(value: ButtonViewControllerConstants.targetSubTitleText)
-    private let subTitleFontDidSelected = BehaviorRelay<ObjectFontType>(value: .regular)
-    private let subTitleFontSizeDidChanged = BehaviorRelay<Int>(value: ButtonViewControllerConstants.targetTitleFontSize)
-    private let subTitleColorDidSelected = BehaviorRelay<UIColor?>(value: nil)
+    let subTitleTextDidChangedTextField = BehaviorRelay<String>(value: ButtonViewControllerConstants.targetSubTitleText)
+    let subTitleFontDidSelected = BehaviorRelay<ObjectFontType>(value: .regular)
+    let subTitleFontSizeDidChanged = BehaviorRelay<Int>(value: ButtonViewControllerConstants.targetTitleFontSize)
+    let subTitleColorDidSelected = BehaviorRelay<UIColor?>(value: nil)
     
     // color
     let tintColorSelected = BehaviorRelay<UIColor>(value: .tintColor)
-    private let baseForegroundColorSelected = BehaviorRelay<UIColor?>(value: nil)
-    private let basebackgroundColorSelected = BehaviorRelay<UIColor?>(value: nil)
+    let baseForegroundColorSelected = BehaviorRelay<UIColor?>(value: nil)
+    let basebackgroundColorSelected = BehaviorRelay<UIColor?>(value: nil)
     
-    private let sfSymbolDidSeleted = BehaviorRelay<String>(value: "")
-    private let imagePlacementDidSelected = BehaviorRelay<ButtonImagePlacementType>(value: .leading)
+    let sfSymbolDidSeleted = BehaviorRelay<String>(value: "")
+    let imagePlacementDidSelected = BehaviorRelay<ButtonImagePlacementType>(value: .leading)
     
     let buttonSettingCodeText = BehaviorRelay<String>(value: ButtonViewControllerConstants.defaultButtonCode)
     let buttonConfigurationDidChanged = BehaviorRelay<UIButton.Configuration>(value: .filled())
@@ -121,7 +168,7 @@ extension ButtonConfigurationViewModel {
             return
         }
     }
-
+    
     func sfSymbolDidSeleted(_ sfSymbolName: String) {
         sfSymbolDidSeleted.accept(sfSymbolName)
     }
@@ -143,10 +190,6 @@ extension ButtonConfigurationViewModel {
             subTitleFontSizeDidChanged.accept(buttonFontSize.fontSize)
         }
     }
-
-}
-
-private extension ButtonConfigurationViewModel {
     
     func buttonSettingToCode() {
         let styleCode = buttonStyleDidSelected.map { $0.code }

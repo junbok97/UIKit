@@ -10,9 +10,38 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-final class StepperViewModel {
+protocol StepperViewModelProtocol: ViewModelProtocol {
+    // View -> ViewModel
+    var targetStepperDidChanged: PublishRelay<Double> { get }
     
-    let disposebag = DisposeBag()
+    var stepValueDidChanged: BehaviorRelay<Double> { get }
+    var maximumValueDidChanged: BehaviorRelay<Double> { get }
+    var minimumValueDidChanged: BehaviorRelay<Double> { get }
+    var autorepeatIsOn: BehaviorRelay<Bool> { get }
+    var wrapIsOn: BehaviorRelay<Bool> { get }
+    
+    var stepperSettingCodeText: BehaviorRelay<String> { get }
+    
+    // ViewModel -> View
+    var targetVauleLabelText: Driver<String> { get }
+    var codeCellCodeLabelText: Driver<String> { get }
+    var stepperSettingListCellDatas: Driver<[StepperSettingListSectionModel]> { get }
+    
+    var targetStepValue: Driver<Double> { get }
+    var targetMaximumValue: Driver<Double> { get }
+    var targetMinimumValue: Driver<Double> { get }
+    var targetAutorepeat: Driver<Bool> { get }
+    var targetWrap: Driver<Bool> { get }
+    
+    func stepperSettingToCode()
+    func toggleIsOn(_ toggle: StepperToggle)
+    func valueCellDidChanged(_ stepperValue: StepperValue)
+    func stepperSettingListDataSource() -> RxTableViewSectionedReloadDataSource<StepperSettingListSectionModel>
+}
+
+final class StepperViewModel: StepperViewModelProtocol {
+    
+    private let disposebag = DisposeBag()
     
     // View -> ViewModel
     let targetStepperDidChanged = PublishRelay<Double>()
@@ -68,6 +97,26 @@ final class StepperViewModel {
         stepperSettingToCode()
     }
     
+
+   deinit {
+       print("StepperViewModel Deinit")
+   }
+   
+}
+
+extension StepperViewModel {
+    func stepperSettingListDataSource() -> RxTableViewSectionedReloadDataSource<StepperSettingListSectionModel> {
+        RxTableViewSectionedReloadDataSource<StepperSettingListSectionModel> { dataSource, tableView, indexPath, sectionModelItem in
+           StepperModel.makeCell(
+               dataSource[indexPath.section].sectionHeader,
+               self,
+               tableView,
+               indexPath,
+               sectionModelItem
+           )
+       }
+   }
+    
     func stepperSettingToCode() {
         Observable
             .combineLatest(
@@ -101,20 +150,4 @@ final class StepperViewModel {
         }
     }
     
-    func stepperSettingListDataSource() -> RxTableViewSectionedReloadDataSource<StepperSettingListSectionModel> {
-        RxTableViewSectionedReloadDataSource<StepperSettingListSectionModel> { dataSource, tableView, indexPath, sectionModelItem in
-           StepperModel.makeCell(
-               dataSource[indexPath.section].sectionHeader,
-               self,
-               tableView,
-               indexPath,
-               sectionModelItem
-           )
-       }
-   }
-
-   deinit {
-       print("StepperViewModel Deinit")
-   }
-   
 }

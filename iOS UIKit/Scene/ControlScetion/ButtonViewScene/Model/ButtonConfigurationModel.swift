@@ -7,7 +7,56 @@
 
 import UIKit
 
-final class ButtonConfigurationModel {
+protocol ButtonConfigurationModelProtocol: ModelProtocol {
+    static func makeTextAttribute(
+        _ fontType: ObjectFontType,
+        _ ofSize: Int,
+        _ color: UIColor?
+    ) -> UIConfigurationTextAttributesTransformer
+    
+    static func makeButtonConfiguration(
+        _ buttonStyle: ButtonStyleType,
+        _ titleAlignment: ButtonTitleAlignmentType,
+        _ titleText: String,
+        _ titleTextAttribute: UIConfigurationTextAttributesTransformer,
+        _ subTitleText: String,
+        _ subTitleTextAttribute: UIConfigurationTextAttributesTransformer
+    ) -> UIButton.Configuration
+    
+    static func settingButtonConfiguration(
+        _ configuration: UIButton.Configuration,
+        _ cornerStyle: ButtonCornerStyleType,
+        _ foregroundColor: UIColor?,
+        _ backgroundColor: UIColor?,
+        _ placementType: ButtonImagePlacementType,
+        _ sfSymbolSystemName: String
+    ) -> UIButton.Configuration
+    
+    static func configurationToCode(
+        _ style: String,
+        _ corner: String,
+        _ tintColor: UIColor?,
+        _ foregroundColor: UIColor?,
+        _ backgroundColor: UIColor?,
+        _ image: String,
+        _ imagePlacement: String
+    ) -> String
+    
+    static func titleTextAttributeToCode(
+        titleAlignment: String,
+        title: String,
+        titleFont: String,
+        titleColor: UIColor?
+    ) -> String
+    
+    static func subTitleTextAttributeToCode(
+        subTitle: String,
+        subTitleFont: String,
+        subTitleColor: UIColor?
+    ) -> String
+}
+
+final class ButtonConfigurationModel: ButtonConfigurationModelProtocol {
     
     static func makeTextAttribute(
         _ fontType: ObjectFontType,

@@ -8,6 +8,16 @@
 import Foundation
 import RxSwift
 
+protocol ButtonModelProtocol: ModelProtocol {
+    static func makeCell(
+        _ sectionType: ButtonSettingListSectionType,
+        _ viewModel: ButtonViewModel,
+        _ tableView: UITableView,
+        _ indexPath: IndexPath,
+        _ sectionModelItem: ButtonSettingListSectionModel.Item
+    ) -> DefaultCell
+}
+
 final class ButtonModel {
     
     static func makeCell(
