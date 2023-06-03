@@ -15,10 +15,10 @@ final class MainViewController: UIViewController {
     weak var coordinator: MainCoordinatorProtocol?
     
     private let disposeBag = DisposeBag()
-    private var viewModel: MainViewModel!
+    private var viewModel: MainViewModelProtocol!
     
     static func create(
-        _ viewModel: MainViewModel,
+        _ viewModel: MainViewModelProtocol,
         _ coordinator: MainCoordinatorProtocol
     ) -> MainViewController {
         let mainViewController = MainViewController()
@@ -28,6 +28,7 @@ final class MainViewController: UIViewController {
         return mainViewController
     }
     
+    // MARK: - UI 구현
     private lazy var searchController: UISearchController = {
        let searchController = UISearchController()
         return searchController
@@ -42,15 +43,20 @@ final class MainViewController: UIViewController {
         return tableView
     }()
     
+    
+    // MARK: - 라이프 사이클
     override func viewDidLoad() {
         super.viewDidLoad()
         attribute()
         layout()
     }
     
+    // MARK: - 바인딩
     func bind() {
         searchController.searchBar.rx.text
-            .bind(to: viewModel.searchObject)
+            .bind(onNext: { [weak viewModel] text in
+                viewModel?.searchObject(text)
+            })
             .disposed(by: disposeBag)
         
         let dataSource = viewModel.dataSource()
@@ -72,6 +78,7 @@ final class MainViewController: UIViewController {
     
 }
 
+// MARK: - 레이아웃
 private extension MainViewController {
     func setupNavigationItem() {
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -97,6 +104,7 @@ private extension MainViewController {
 
 }
 
+// MARK: - Reactive
 extension Reactive where Base: MainViewController {
     var showDetailViewController: Binder<ObjectType> {
         return Binder(base) { base, type in

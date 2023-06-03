@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SFSymbolsCoordinatorProtocol: CoordinatorProtocol {
-    
+    func start(_ buttonViewModel: ButtonViewModel)
 }
 
 final class SFSymbolsCoordinator: SFSymbolsCoordinatorProtocol {
@@ -27,12 +27,12 @@ final class SFSymbolsCoordinator: SFSymbolsCoordinatorProtocol {
     }
     
     func start() {
-        let viewController = SFSymbolsViewController.create(viewModel, self)
+        let viewController = SFSymbolsViewController.create(self, viewModel)
         navigationController.pushViewController(viewController, animated: true)
     }
     
     func start(_ buttonViewModel: ButtonViewModel) {
-        let viewController = SFSymbolsViewController.create(viewModel, self)
+        let viewController = SFSymbolsViewController.create(self, viewModel)
         viewController.bind(buttonViewModel)
         navigationController.pushViewController(viewController, animated: true)
     }

@@ -9,10 +9,46 @@ import Foundation
 import RxSwift
 import RxCocoa
 import RxDataSources
- 
-final class SliderViewModel {
+
+protocol SliderViewModelProtocol {
+    // value
+    var maximumValueDidChanged: BehaviorRelay<Float> { get }
+    var minimumValueDidChanged: BehaviorRelay<Float> { get }
     
-    let disposebag = DisposeBag()
+    // color
+    var thumbTintColor: BehaviorRelay<UIColor?> { get }
+    var maximumTrackTintColor: BehaviorRelay<UIColor?> { get }
+    var minimumTrackTintColor: BehaviorRelay<UIColor?> { get }
+    var tintColor: BehaviorRelay<UIColor> { get }
+    var backgroundColor: BehaviorRelay<UIColor?> { get }
+    
+    var sliderSettingCodeText: BehaviorRelay<String> { get }
+    
+    // ViewModel -> View
+    var sliderSettingListCellDatas: Driver<[SliderSettingListSectionModel]> { get }
+    
+    var codeCellCodeLabelText: Driver<String> { get }
+    
+    // value
+    var targetMaximumValue: Driver<Float> { get }
+    var targetMinimumValue: Driver<Float> { get }
+    
+    // color
+    var targetThumbTintColor: Driver<UIColor?> { get }
+    var targetMaximumTrackTintColor: Driver<UIColor?> { get }
+    var targetMinimumTrackTintColor: Driver<UIColor?> { get }
+    var targetTintColor: Driver<UIColor> { get }
+    var targetBackgroundColor: Driver<UIColor?> { get }
+    
+    func sliderSettingListDataSource() -> RxTableViewSectionedReloadDataSource<SliderSettingListSectionModel>
+    func sliderSettingToCode()
+    func valueCellDidChanged(_ sliderValue: SliderValue)
+    func colorCellDidSelected(_ sliderColor: SliderColor)
+}
+
+final class SliderViewModel: SliderViewModelProtocol {
+    
+    private let disposebag = DisposeBag()
     
     // View -> ViewModel
     
@@ -66,6 +102,24 @@ final class SliderViewModel {
         sliderSettingToCode()
     }
     
+    deinit {
+        print("SliderViewModel Deinit")
+    }
+}
+
+extension SliderViewModel {
+    func sliderSettingListDataSource() -> RxTableViewSectionedReloadDataSource<SliderSettingListSectionModel> {
+        RxTableViewSectionedReloadDataSource<SliderSettingListSectionModel> { dataSource, tableView, indexPath, sectionModelItem in
+            SliderModel.makeCell(
+                dataSource[indexPath.section].sectionHeader,
+                self,
+                tableView,
+                indexPath,
+                sectionModelItem
+            )
+        }
+    }
+    
     func sliderSettingToCode() {
         Observable.combineLatest(
             maximumValueDidChanged,
@@ -80,17 +134,6 @@ final class SliderViewModel {
             .disposed(by: disposebag)
     }
     
-    func sliderSettingListDataSource() -> RxTableViewSectionedReloadDataSource<SliderSettingListSectionModel> {
-        RxTableViewSectionedReloadDataSource<SliderSettingListSectionModel> { dataSource, tableView, indexPath, sectionModelItem in
-           SliderModel.makeCell(
-               dataSource[indexPath.section].sectionHeader,
-               self,
-               tableView,
-               indexPath,
-               sectionModelItem
-           )
-       }
-   }
     
     func valueCellDidChanged(_ sliderValue: SliderValue) {
         switch sliderValue.valueType {
@@ -100,13 +143,7 @@ final class SliderViewModel {
             minimumValueDidChanged.accept(sliderValue.value)
         }
     }
-
-    deinit {
-        print("SliderViewModel Deinit")
-    }
-}
-
-extension SliderViewModel {
+    
     func colorCellDidSelected(_ sliderColor: SliderColor) {
         switch sliderColor.colorType {
         case .tint:

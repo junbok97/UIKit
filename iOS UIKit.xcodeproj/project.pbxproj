@@ -118,6 +118,7 @@
 		CB80B1D729E53B7B00298F3C /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80B1D629E53B7B00298F3C /* MainCoordinator.swift */; };
 		CB80B1DD29E53F3300298F3C /* MainViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80B1DC29E53F3300298F3C /* MainViewControllerConstants.swift */; };
 		CB80B1F729E5468200298F3C /* ObjectListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80B1F629E5468200298F3C /* ObjectListCell.swift */; };
+		CB8689632A2B54D30067DC96 /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8689622A2B54D30067DC96 /* ModelProtocol.swift */; };
 		CB8F40402A161DF900AD9D89 /* SFSymbolsSystemName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8F403F2A161DF900AD9D89 /* SFSymbolsSystemName.swift */; };
 		CB9A9C872A10C6A40065F5A5 /* DefaultListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A9C862A10C6A40065F5A5 /* DefaultListViewController.swift */; };
 		CB9A9C892A10C8C90065F5A5 /* DefaultViewControllerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A9C882A10C8C90065F5A5 /* DefaultViewControllerConstants.swift */; };
@@ -306,6 +307,7 @@
 		CB80B1D629E53B7B00298F3C /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		CB80B1DC29E53F3300298F3C /* MainViewControllerConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerConstants.swift; sourceTree = "<group>"; };
 		CB80B1F629E5468200298F3C /* ObjectListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectListCell.swift; sourceTree = "<group>"; };
+		CB8689622A2B54D30067DC96 /* ModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProtocol.swift; sourceTree = "<group>"; };
 		CB8F403F2A161DF900AD9D89 /* SFSymbolsSystemName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbolsSystemName.swift; sourceTree = "<group>"; };
 		CB9A9C862A10C6A40065F5A5 /* DefaultListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultListViewController.swift; sourceTree = "<group>"; };
 		CB9A9C882A10C8C90065F5A5 /* DefaultViewControllerConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultViewControllerConstants.swift; sourceTree = "<group>"; };
@@ -1160,6 +1162,7 @@
 				CB1E8CE72A1BB8DD003F22AE /* SwitchSettingListCellProtocol.swift */,
 				CB742DB42A1CD2AF00BA51CC /* StepperSettingListCellProtocol.swift */,
 				CB46BF412A20D98C00736936 /* SliderSettingListCellProtocol.swift */,
+				CB8689622A2B54D30067DC96 /* ModelProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -1423,6 +1426,7 @@
 				CB742DD32A1E19C900BA51CC /* StepperToggle.swift in Sources */,
 				CBF4396B29C1C014003E85B3 /* AppDelegate.swift in Sources */,
 				CB7024AD2A10E264006194FB /* DefaultCodeCell.swift in Sources */,
+				CB8689632A2B54D30067DC96 /* ModelProtocol.swift in Sources */,
 				CB742DB32A1CD0CB00BA51CC /* DefaultTextFieldCellConstants.swift in Sources */,
 				CB1E8CDF2A1BB817003F22AE /* SwitchSettingListItemType.swift in Sources */,
 				CB742DA12A1CCE6000BA51CC /* StepperViewModel.swift in Sources */,
@@ -1734,7 +1738,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.2;
+				MARKETING_VERSION = 3.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail.junbok97.iOS-UIKit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1767,7 +1771,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.2;
+				MARKETING_VERSION = 3.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail.junbok97.iOS-UIKit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

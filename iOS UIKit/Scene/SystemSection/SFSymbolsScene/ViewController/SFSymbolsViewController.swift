@@ -12,19 +12,21 @@ final class SFSymbolsViewController: DefaultViewController {
 
     weak var coordinator: SFSymbolsCoordinatorProtocol?
 
-    private var viewModel: SFSymbolsViewModel!
+    private var viewModel: SFSymbolsViewModelProtocol!
     
     static func create(
-        _ viewModel: SFSymbolsViewModel,
-        _ coordinator: SFSymbolsCoordinator
+        _ coordinator: SFSymbolsCoordinator,
+        _ viewModel: SFSymbolsViewModelProtocol
     ) -> SFSymbolsViewController {
         let sfSymbolsViewController = SFSymbolsViewController()
-        sfSymbolsViewController.viewModel = viewModel
         sfSymbolsViewController.coordinator = coordinator
+        sfSymbolsViewController.viewModel = viewModel
         sfSymbolsViewController.bind()
         return sfSymbolsViewController
     }
     
+    
+    // MARK: - UI구현
     private lazy var sfSymbolsCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
         SFSymbolsCollectionViewCell.register(target: collectionView)
@@ -42,12 +44,15 @@ final class SFSymbolsViewController: DefaultViewController {
         coordinator?.finish()
     }
     
+    // MARK: - 라이프사이클
     override func viewDidLoad() {
         super.viewDidLoad()
         attribute()
         layout()
     }
     
+    
+    // MARK: - 바인딩
     private func bind() {
         searchController.searchBar.rx.text
             .compactMap { $0 }
@@ -100,6 +105,7 @@ final class SFSymbolsViewController: DefaultViewController {
     
 }
 
+// MARK: - 레이아웃
 private extension SFSymbolsViewController {
     
     func layout() {

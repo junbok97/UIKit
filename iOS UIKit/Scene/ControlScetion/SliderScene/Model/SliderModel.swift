@@ -7,7 +7,27 @@
 
 import UIKit
 
-final class SliderModel {
+protocol SliderModelProtocol: ModelProtocol {
+    static func codeLabelText(
+        _ maximumValue: Float,
+        _ minimumValue: Float,
+        _ tintColor: UIColor,
+        _ backgroundColor: UIColor?,
+        _ thumbTintColor: UIColor?,
+        _ maximumTrackTintColor: UIColor?,
+        _ minimumTrackTintColor: UIColor?
+    ) -> String
+    
+    static func makeCell(
+        _ sectionType: SliderSettingListSectionType,
+        _ viewModel: SliderViewModel,
+        _ tableView: UITableView,
+        _ indexPath: IndexPath,
+        _ sectionModelItem: SliderSettingListSectionModel.Item
+    ) -> DefaultCell
+}
+
+final class SliderModel: SliderModelProtocol {
     
     static func codeLabelText(
         _ maximumValue: Float,

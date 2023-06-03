@@ -10,7 +10,11 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-final class SwitchViewModel {
+protocol SwitchViewModelProtocol: ViewModelProtocol {
+    
+}
+
+final class SwitchViewModel: SwitchViewModelProtocol {
     
     private let disposeBag = DisposeBag()
     

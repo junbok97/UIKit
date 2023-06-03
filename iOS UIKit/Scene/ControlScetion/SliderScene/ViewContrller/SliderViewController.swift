@@ -14,21 +14,22 @@ import Then
 
 final class SliderViewController: DefaultListViewController {
     weak var coordinator: SliderCoordinatorProtocol?
-    private var viewModel: SliderViewModel!
+    private var viewModel: SliderViewModelProtocol!
     private lazy var dataSource: RxTableViewSectionedReloadDataSource<SliderSettingListSectionModel> =
     viewModel.sliderSettingListDataSource()
     
     static func create(
-        _ viewModel: SliderViewModel,
-        _ coordinator: SliderCoordinatorProtocol
+        _ coordinator: SliderCoordinatorProtocol,
+        _ viewModel: SliderViewModelProtocol
     ) -> SliderViewController {
         let viewController = SliderViewController()
-        viewController.viewModel = viewModel
         viewController.coordinator = coordinator
+        viewController.viewModel = viewModel
         viewController.bind()
         return viewController
     }
     
+    // MARK: - UI구현
     lazy var targetSliderValueLabel: UILabel = {
         let label = UILabel()
         label.text = SliderViewControllerConstants.sliderValueLabelText
@@ -45,7 +46,9 @@ final class SliderViewController: DefaultListViewController {
 
     @objc override func didTappedLeftBarButton() { coordinator?.finish() }
     
-    func bind() {
+    
+    // MARK: - 바인딩
+    private func bind() {
         targetSlider.setValue(SliderViewControllerConstants.targetValue, animated: true)
         settingList.rx.setDelegate(self)
             .disposed(by: disposeBag)
@@ -87,6 +90,7 @@ final class SliderViewController: DefaultListViewController {
             .disposed(by: disposeBag)
     }
     
+    // MARK: - 레이아웃
     override func attribute() {
         super.attribute()
         navigationItem.title = SliderViewControllerConstants.title
@@ -127,6 +131,7 @@ final class SliderViewController: DefaultListViewController {
     
 }
 
+// MARK: - UITableViewDelegate
 extension SliderViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = DefaultSettingListHeaderView()
@@ -135,6 +140,7 @@ extension SliderViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - Reactive
 extension Reactive where Base: SliderViewController {
     var targetSliderValueLabel: Binder<Float> {
         Binder(base) { base, value in

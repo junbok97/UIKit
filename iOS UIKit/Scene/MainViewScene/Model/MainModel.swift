@@ -9,14 +9,14 @@ import Foundation
 import RxDataSources
 import RxSwift
 
-final class MainModel {
-    
-    let objectListDataStream = BehaviorSubject<[ObjectSectionModel]>(value: ObjectListData.objectListDatas)
-    
-    func searchObject(_ title: String?) {
+protocol MainModelProtocol: ModelProtocol {
+    static func searchObject(_ title: String?) -> [ObjectSectionModel]
+}
+
+final class MainModel: MainModelProtocol {
+    static func searchObject(_ title: String?) -> [ObjectSectionModel] {
         guard let title = title, title != "" else {
-            objectListDataStream.onNext(ObjectListData.objectListDatas)
-            return
+            return ObjectListData.objectListDatas
         }
         
         let newSectionModel = ObjectListData.objectListDatas.compactMap { sectionModel in
@@ -25,7 +25,7 @@ final class MainModel {
             }
             return newobjects.count == 0 ? nil : ObjectSectionModel(sectionHeader: sectionModel.sectionHeader, items: newobjects)
         }
-        objectListDataStream.onNext(newSectionModel)
+        
+        return newSectionModel
     }
-    
 }

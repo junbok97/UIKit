@@ -15,6 +15,7 @@ final class SFSymbolsCollectionViewCell: UICollectionViewCell, UICollectionViewC
     
     private let disposeBag = DisposeBag()
     
+    // MARK: - UI 구현
     private lazy var symbolImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .secondarySystemBackground
@@ -77,6 +78,7 @@ final class SFSymbolsCollectionViewCell: UICollectionViewCell, UICollectionViewC
     
 }
 
+// MARK: - 레이아웃
 private extension SFSymbolsCollectionViewCell {
     func attribute() {
         backgroundColor = .systemBackground

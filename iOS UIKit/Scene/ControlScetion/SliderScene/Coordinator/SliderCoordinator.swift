@@ -23,7 +23,7 @@ final class SliderCoordinator: SliderCoordinatorProtocol {
     }
     
     func start() {
-        let viewController = SliderViewController.create(SliderViewModel(), self)
+        let viewController = SliderViewController.create(self, SliderViewModel())
         navigationController.pushViewController(viewController, animated: true)
     }
     

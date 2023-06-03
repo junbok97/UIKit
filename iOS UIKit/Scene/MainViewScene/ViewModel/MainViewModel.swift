@@ -10,27 +10,26 @@ import RxSwift
 import RxDataSources
 import RxCocoa
 
-final class MainViewModel {
+protocol MainViewModelProtocol: ViewModelProtocol {
+    var cellData: Driver<[ObjectSectionModel]> { get }
     
-    let disposeBag = DisposeBag()
+    func dataSource() -> RxTableViewSectionedReloadDataSource<ObjectSectionModel>
+    func searchObject(_ title: String?)
+}
+
+final class MainViewModel: MainViewModelProtocol {
     
-    // View -> ViewModel
-    let searchObject = PublishRelay<String?>()
+    private let disposeBag = DisposeBag()
+    
+    
+    let objectListDataStream = BehaviorRelay<[ObjectSectionModel]>(value: ObjectListData.objectListDatas)
     
     // ViewModel - > View
     let cellData: Driver<[ObjectSectionModel]>
     
     init() {
-        let mainModel = MainModel()
-        
-        cellData = mainModel.objectListDataStream
+        cellData = objectListDataStream
             .asDriver(onErrorDriveWith: .empty())
-        
-        searchObject
-            .subscribe(onNext: {
-                mainModel.searchObject($0)
-            })
-            .disposed(by: disposeBag)
     }
     
     func dataSource() -> RxTableViewSectionedReloadDataSource<ObjectSectionModel> {
@@ -45,6 +44,10 @@ final class MainViewModel {
         }
         
         return dataSource
+    }
+    
+    func searchObject(_ title: String?) {
+        objectListDataStream.accept(MainModel.searchObject(title))
     }
     
 }

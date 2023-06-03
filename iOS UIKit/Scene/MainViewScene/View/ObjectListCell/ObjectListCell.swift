@@ -12,6 +12,7 @@ final class ObjectListCell: UITableViewCell, UITableViewCellReigster {
     static var cellId: String = ObjectListCellConstants.cellId
     static var isFromNib: Bool = false
     
+    // MARK: - UI 구현
     private lazy var mainImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .lightGray
@@ -47,7 +48,7 @@ final class ObjectListCell: UITableViewCell, UITableViewCellReigster {
     
 }
 
-// MARK: - makeUI
+// MARK: - 레이아웃
 private extension ObjectListCell {
     func attribute() {
         accessoryType = .disclosureIndicator

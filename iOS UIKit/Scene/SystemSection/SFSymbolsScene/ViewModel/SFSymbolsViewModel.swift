@@ -9,19 +9,25 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class SFSymbolsViewModel {
+protocol SFSymbolsViewModelProtocol: ViewModelProtocol {
+    var symbolSystemNameListDriver: Driver<[String]> { get }
+    var symbolSystemNameListStream: BehaviorRelay<[String]> { get }
+    var popSFSymbolsViewController: PublishSubject<Void> { get }
+    
+    func serachSFSymbolSystemName(_ text: String)
+    func getSFSymbolsSystemName(_ indexPath: IndexPath) -> String
+}
+
+final class SFSymbolsViewModel: SFSymbolsViewModelProtocol {
     
     private let disposeBag = DisposeBag()
     
     // ViewModel -> View
     let symbolSystemNameListDriver: Driver<[String]>
-    
     let symbolSystemNameListStream = BehaviorRelay<[String]>(value: SFSymbolsSystemName.sfSymbolsSystemNameList)
     
-//    let sfSymbolsSystemNameStream = PublishRelay<String>()
+    // View -> ViewModel
     let popSFSymbolsViewController = PublishSubject<Void>()
-    
-    let model = SFSymbolsModel()
     
     init() {
         symbolSystemNameListDriver = symbolSystemNameListStream

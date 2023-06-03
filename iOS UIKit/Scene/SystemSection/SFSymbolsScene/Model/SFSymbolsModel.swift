@@ -9,6 +9,11 @@ import Foundation
 import RxSwift
 import RxRelay
 
+protocol SFSymbolsModelProtocol: ModelProtocol {
+    static func searchSFSymbolsSystemName(_ text: String) -> [String]
+    static func getSFSymbolsSystemName(_ index: Int) -> String
+}
+
 final class SFSymbolsModel {
 
     static func searchSFSymbolsSystemName(_ text: String) -> [String] {
