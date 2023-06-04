@@ -17,12 +17,12 @@ final class StepperToggleCell: DefaultSwitchCell, StepperSettingListCellProtocol
     private var toggleStream: Observable<StepperToggleType> = Observable.just(.autorepeat)
     
     func setup(_ item: StepperSettingListItemType) {
-        guard case let .toggle(toggleType: toggleType) = item else { return }
-        setupLabelText(toggleType.rawValue)
-        self.toggleStream = Observable.just(toggleType)
+        guard case let .toggle(type: type) = item else { return }
+        setupLabelText(type.rawValue)
+        self.toggleStream = Observable.just(type)
     }
     
-    func bind(_ viewModel: StepperViewModel) {
+    func bind(_ viewModel: StepperViewModelProtocol) {
         switchToggle.rx.isOn
             .withLatestFrom(toggleStream) { value, toggleType in
                 StepperToggle(toggleType: toggleType, value: value)

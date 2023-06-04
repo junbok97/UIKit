@@ -9,5 +9,5 @@ import Foundation
 
 protocol SliderSettingListCellProtocol {
     func setup(_ item: SliderSettingListItemType)
-    func bind(_ viewModel: SliderViewModel)
+    func bind(_ viewModel: SliderViewModelProtocol)
 }

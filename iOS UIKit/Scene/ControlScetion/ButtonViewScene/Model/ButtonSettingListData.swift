@@ -12,61 +12,61 @@ struct ButtonSettingListData {
         ButtonSettingListSectionModel(
             sectionHeader: .code,
             items: [
-                .code(codeType: .codeLabel),
-                .code(codeType: .reloadButton)
+                .code(type: .codeLabel),
+                .code(type: .reloadButton)
             ]
         ),
         ButtonSettingListSectionModel(
             sectionHeader: .buttonStyle,
             items: [
-                .buttonStyle(buttonStyle: .plain),
-                .buttonStyle(buttonStyle: .gray),
-                .buttonStyle(buttonStyle: .tinted),
-                .buttonStyle(buttonStyle: .filled)
+                .buttonStyle(type: .plain),
+                .buttonStyle(type: .gray),
+                .buttonStyle(type: .tinted),
+                .buttonStyle(type: .filled)
             ]
         ),
         ButtonSettingListSectionModel(
             sectionHeader: .cornerStyle,
             items: [
-                .corner(cornerStyleType: .fixed),
-                .corner(cornerStyleType: .dynamic),
-                .corner(cornerStyleType: .small),
-                .corner(cornerStyleType: .medium),
-                .corner(cornerStyleType: .large),
-                .corner(cornerStyleType: .capsule)
+                .corner(type: .fixed),
+                .corner(type: .dynamic),
+                .corner(type: .small),
+                .corner(type: .medium),
+                .corner(type: .large),
+                .corner(type: .capsule)
             ]
         ),
         ButtonSettingListSectionModel(
             sectionHeader: .titleAlignment,
             items: [
-                .buttonTitleAlignment(aligmentType: .automatic),
-                .buttonTitleAlignment(aligmentType: .leading),
-                .buttonTitleAlignment(aligmentType: .center),
-                .buttonTitleAlignment(aligmentType: .trailing)
+                .buttonTitleAlignment(type: .automatic),
+                .buttonTitleAlignment(type: .leading),
+                .buttonTitleAlignment(type: .center),
+                .buttonTitleAlignment(type: .trailing)
             ]
         ),
         ButtonSettingListSectionModel(
             sectionHeader: .titleText,
             items: [
-                .text(titleType: .title)
+                .text(type: .title)
             ]
         ),
         ButtonSettingListSectionModel(
             sectionHeader: .subTitleText,
             items: [
-                .text(titleType: .subTitle)
+                .text(type: .subTitle)
             ]
         ),
         ButtonSettingListSectionModel(
             sectionHeader: .titleFontSize,
             items: [
-                .fontSize(titleType: .title)
+                .fontSize(type: .title)
             ]
         ),
         ButtonSettingListSectionModel(
             sectionHeader: .subTitleFontSize,
             items: [
-                .fontSize(titleType: .subTitle)
+                .fontSize(type: .subTitle)
             ]
         ),
         
@@ -103,23 +103,23 @@ struct ButtonSettingListData {
         ButtonSettingListSectionModel(
             sectionHeader: .titleForegroundColor,
             items: [
-                .color(colorType: .titleColor)
+                .color(type: .titleColor)
             ]
         ),
         
         ButtonSettingListSectionModel(
             sectionHeader: .subTitleForegroundColor,
             items: [
-                .color(colorType: .subTitleColor)
+                .color(type: .subTitleColor)
             ]
         ),
         
         ButtonSettingListSectionModel(
             sectionHeader: .color,
             items: [
-                .color(colorType: .tintColor),
-                .color(colorType: .foregroundColor),
-                .color(colorType: .backgroundColor)
+                .color(type: .tintColor),
+                .color(type: .foregroundColor),
+                .color(type: .backgroundColor)
             ]
         ),
         
@@ -132,11 +132,11 @@ struct ButtonSettingListData {
         ButtonSettingListSectionModel(
             sectionHeader: .imagePlacement,
             items: [
-                .imagePlacement(placement: .all),
-                .imagePlacement(placement: .top),
-                .imagePlacement(placement: .leading),
-                .imagePlacement(placement: .trailing),
-                .imagePlacement(placement: .bottom)
+                .imagePlacement(type: .all),
+                .imagePlacement(type: .top),
+                .imagePlacement(type: .leading),
+                .imagePlacement(type: .trailing),
+                .imagePlacement(type: .bottom)
             ]
         )
     ]

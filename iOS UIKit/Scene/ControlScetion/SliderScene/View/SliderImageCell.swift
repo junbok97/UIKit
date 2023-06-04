@@ -16,7 +16,7 @@ final class SliderImageCell: DefaultLabelCell, SliderSettingListCellProtocol {
         
     }
     
-    func bind(_ viewModel: SliderViewModel) {
+    func bind(_ viewModel: SliderViewModelProtocol) {
         
     }
 }

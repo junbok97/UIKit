@@ -8,15 +8,15 @@
 import Foundation
 
 enum ButtonSettingListItemType {
-    case code(codeType: CodeSectionItemType)
-    case buttonStyle(buttonStyle: ButtonStyleType)
+    case code(type: CodeSectionItemType)
+    case buttonStyle(type: ButtonStyleType)
     case textConfigure
-    case text(titleType: ButtonTitleType)
+    case text(type: ButtonTitleType)
     case font(titleType: ButtonTitleType, fontType: ObjectFontType)
-    case fontSize(titleType: ButtonTitleType)
-    case buttonTitleAlignment(aligmentType: ButtonTitleAlignmentType)
-    case color(colorType: ButtonColorType)
+    case fontSize(type: ButtonTitleType)
+    case buttonTitleAlignment(type: ButtonTitleAlignmentType)
+    case color(type: ButtonColorType)
     case image
-    case imagePlacement(placement: ButtonImagePlacementType)
-    case corner(cornerStyleType: ButtonCornerStyleType)
+    case imagePlacement(type: ButtonImagePlacementType)
+    case corner(type: ButtonCornerStyleType)
 }

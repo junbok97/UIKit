@@ -16,14 +16,14 @@ final class ButtonColorCell: DefaultColorCell, ButtonSettingListCellProtocol {
     private var colorTypeStream: Observable<ButtonColorType> = Observable.just(.titleColor)
     
     func setup(_ item: ButtonSettingListItemType) {
-        guard case let .color(colorType: colorType) = item else { return }
-        self.colorTypeStream = Observable.just(colorType)
-        Observable.just(colorType.rawValue)
+        guard case let .color(type: type) = item else { return }
+        self.colorTypeStream = Observable.just(type)
+        Observable.just(type.rawValue)
             .bind(to: self.rx.colorNameLabelText)
             .disposed(by: disposeBag)
     }
     
-    func bind(_ viewModel: ButtonViewModel) {
+    func bind(_ viewModel: ButtonViewModelProtocol) {
         selectedColorSubject
             .withLatestFrom(colorTypeStream) { color, colorType in
                 ButtonColor(colorType: colorType, color: color)

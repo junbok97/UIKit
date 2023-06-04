@@ -9,5 +9,5 @@ import Foundation
 
 protocol ButtonSettingListCellProtocol {
     func setup(_ item: ButtonSettingListItemType)
-    func bind(_ viewModel: ButtonViewModel)
+    func bind(_ viewModel: ButtonViewModelProtocol)
 }

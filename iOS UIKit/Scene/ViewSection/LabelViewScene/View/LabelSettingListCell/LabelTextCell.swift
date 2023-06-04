@@ -17,7 +17,7 @@ final class LabelTextCell: DefaultTextFieldCell, LabelSettingListCellProtocol {
         textField.placeholder = LabelViewControllerConstants.title
     }
     
-    func bind(_ viewModel: LabelViewModel) {
+    func bind(_ viewModel: LabelViewModelProtocol) {
         textField.rx.text
             .compactMap { $0 == "" ? LabelViewControllerConstants.title : $0 }
             .bind(to: viewModel.textCellDidChangedTextField)

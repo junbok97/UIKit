@@ -140,7 +140,6 @@ extension LabelViewController: UITableViewDelegate {
         headerView.setupHeaderTitle(dataSource[section].sectionHeader.rawValue)
         return headerView
     }
-
 }
 
 // MARK: - Reactive

@@ -659,6 +659,7 @@
 		CB56395A2A2B62090032BB8B /* StackViewScene */ = {
 			isa = PBXGroup;
 			children = (
+				CBE160632A2C89BD00A69249 /* Protocol */,
 				CB56395B2A2B63DD0032BB8B /* Coordinator */,
 				CB56395E2A2B63E80032BB8B /* ViewController */,
 				CB5639672A2B6C160032BB8B /* View */,
@@ -718,10 +719,10 @@
 		CB5639682A2B6C1C0032BB8B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CB56398D2A2B794A0032BB8B /* StackViewModel.swift */,
 				CB5639762A2B6ED60032BB8B /* StackViewSettingListSectionModel.swift */,
 				CB56397F2A2B71590032BB8B /* StackViewColor.swift */,
 				CB5639812A2B719D0032BB8B /* StackViewSettingListData.swift */,
-				CB56398D2A2B794A0032BB8B /* StackViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -740,9 +741,9 @@
 		CB56397E2A2B71320032BB8B /* Type */ = {
 			isa = PBXGroup;
 			children = (
-				CB5639782A2B710A0032BB8B /* StackViewColorType.swift */,
-				CB56397A2A2B71140032BB8B /* StackViewSettingListItemType.swift */,
 				CB56397C2A2B71240032BB8B /* StackViewSettingListSectionType.swift */,
+				CB56397A2A2B71140032BB8B /* StackViewSettingListItemType.swift */,
+				CB5639782A2B710A0032BB8B /* StackViewColorType.swift */,
 				CB5639872A2B72980032BB8B /* StackViewAxisType.swift */,
 				CB5639832A2B72810032BB8B /* StackViewAlignmentType.swift */,
 				CB5639852A2B72920032BB8B /* StackViewDistributionType.swift */,
@@ -753,6 +754,7 @@
 		CB5714FD2A0A22BC00365646 /* SFSymbolsScene */ = {
 			isa = PBXGroup;
 			children = (
+				CBE160622A2C89B200A69249 /* Protocol */,
 				CB1BE68A2A0CE82100485B4F /* Coordinator */,
 				CB1BE6892A0CE81C00485B4F /* ViewController */,
 				CB1BE6862A0CE81100485B4F /* View */,
@@ -773,11 +775,13 @@
 		CB7024A72A10E001006194FB /* DefaultScene */ = {
 			isa = PBXGroup;
 			children = (
+				CBE160602A2C898500A69249 /* Protocol */,
 				CB7024A82A10E181006194FB /* ViewController */,
 				CB7024A92A10E186006194FB /* View */,
 				CB7024AA2A10E188006194FB /* ViewModel */,
 				CB7024AB2A10E18A006194FB /* Model */,
 				CB7024C82A10EF7A006194FB /* Constants */,
+				CB7024C72A10EF77006194FB /* Type */,
 			);
 			path = DefaultScene;
 			sourceTree = "<group>";
@@ -810,7 +814,6 @@
 		CB7024AB2A10E18A006194FB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CB7024C72A10EF77006194FB /* Type */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -924,6 +927,7 @@
 		CB742D9D2A1CCDFC00BA51CC /* StepperScene */ = {
 			isa = PBXGroup;
 			children = (
+				CBE160672A2C89E900A69249 /* Protocol */,
 				CB742DC32A1E0CAA00BA51CC /* Coordinator */,
 				CB742DC02A1E0C9500BA51CC /* ViewController */,
 				CB742DC42A1E0CB300BA51CC /* View */,
@@ -1048,6 +1052,7 @@
 		CB80B1D329E53AA700298F3C /* MainViewScene */ = {
 			isa = PBXGroup;
 			children = (
+				CBE160612A2C899500A69249 /* Protocol */,
 				CB1BE67A2A0CE75600485B4F /* Coordinator */,
 				CB1BE6792A0CE74D00485B4F /* ViewController */,
 				CB1BE67D2A0CE76B00485B4F /* View */,
@@ -1128,6 +1133,7 @@
 		CBAAA2422A08CC6C00773E0C /* ButtonViewScene */ = {
 			isa = PBXGroup;
 			children = (
+				CBE160682A2C89F600A69249 /* Protocol */,
 				CB9A9C812A10C5460065F5A5 /* Coordinator */,
 				CB1BE6852A0CE80500485B4F /* ViewController */,
 				CB9A9C822A10C5510065F5A5 /* View */,
@@ -1167,6 +1173,7 @@
 		CBB9CB462A1E505F003B3C18 /* SliderScene */ = {
 			isa = PBXGroup;
 			children = (
+				CBE160652A2C89D800A69249 /* Protocol */,
 				CBB9CB572A1E50BC003B3C18 /* Coordinator */,
 				CBB9CB582A1E50C0003B3C18 /* ViewContrller */,
 				CBB9CB592A1E50C3003B3C18 /* View */,
@@ -1276,18 +1283,6 @@
 		CBC6073D29C1C71F008B6BA9 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				CBC6073E29C1C733008B6BA9 /* UITableViewCellReigster.swift */,
-				CBC6074A29C1D28F008B6BA9 /* UITableViewHeaderFooterViewRegister.swift */,
-				CB5715042A0A2A5F00365646 /* UICollectionViewCellRegister.swift */,
-				CB80B1D429E53B0000298F3C /* CoordinatorProtocol.swift */,
-				CBAAA2452A08CCB600773E0C /* ViewModelProtocol.swift */,
-				CB7024B32A10E42F006194FB /* LabelSettingListCellProtocol.swift */,
-				CB3A90A72A12163F001CC138 /* ButtonSettingListCellProtocol.swift */,
-				CB1E8CE72A1BB8DD003F22AE /* SwitchSettingListCellProtocol.swift */,
-				CB742DB42A1CD2AF00BA51CC /* StepperSettingListCellProtocol.swift */,
-				CB46BF412A20D98C00736936 /* SliderSettingListCellProtocol.swift */,
-				CB8689622A2B54D30067DC96 /* ModelProtocol.swift */,
-				CB5639742A2B6CF10032BB8B /* StackViewSettingListCellProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -1303,6 +1298,7 @@
 		CBDD7F9A2A1B596E0081953C /* SwitchScene */ = {
 			isa = PBXGroup;
 			children = (
+				CBE160662A2C89E100A69249 /* Protocol */,
 				CBDD7F9D2A1B5A9F0081953C /* Coordinator */,
 				CBDD7F9E2A1B5AA80081953C /* ViewController */,
 				CB1E8CE22A1BB89B003F22AE /* View */,
@@ -1361,6 +1357,7 @@
 		CBDE6E1C29E54B0A0068BA0A /* LabelViewScene */ = {
 			isa = PBXGroup;
 			children = (
+				CBE160642A2C89C800A69249 /* Protocol */,
 				CB1BE6832A0CE7D200485B4F /* Coordinator */,
 				CB1BE6822A0CE7C500485B4F /* ViewController */,
 				CB1BE67F2A0CE7B800485B4F /* View */,
@@ -1370,6 +1367,81 @@
 				CB7024C62A10EF23006194FB /* Constatnts */,
 			);
 			path = LabelViewScene;
+			sourceTree = "<group>";
+		};
+		CBE160602A2C898500A69249 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				CBC6073E29C1C733008B6BA9 /* UITableViewCellReigster.swift */,
+				CBC6074A29C1D28F008B6BA9 /* UITableViewHeaderFooterViewRegister.swift */,
+				CB5715042A0A2A5F00365646 /* UICollectionViewCellRegister.swift */,
+				CB80B1D429E53B0000298F3C /* CoordinatorProtocol.swift */,
+				CBAAA2452A08CCB600773E0C /* ViewModelProtocol.swift */,
+				CB8689622A2B54D30067DC96 /* ModelProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		CBE160612A2C899500A69249 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		CBE160622A2C89B200A69249 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		CBE160632A2C89BD00A69249 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				CB5639742A2B6CF10032BB8B /* StackViewSettingListCellProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		CBE160642A2C89C800A69249 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				CB7024B32A10E42F006194FB /* LabelSettingListCellProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		CBE160652A2C89D800A69249 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				CB46BF412A20D98C00736936 /* SliderSettingListCellProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		CBE160662A2C89E100A69249 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				CB1E8CE72A1BB8DD003F22AE /* SwitchSettingListCellProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		CBE160672A2C89E900A69249 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				CB742DB42A1CD2AF00BA51CC /* StepperSettingListCellProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		CBE160682A2C89F600A69249 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				CB3A90A72A12163F001CC138 /* ButtonSettingListCellProtocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		CBF4395E29C1C014003E85B3 = {

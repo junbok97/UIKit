@@ -21,5 +21,5 @@ final class ButtonFontCell: DefaultFontCell, ButtonSettingListCellProtocol {
         self.titleType = titleType
     }
     
-    func bind(_ viewModel: ButtonViewModel) {}
+    func bind(_ viewModel: ButtonViewModelProtocol) {}
 }

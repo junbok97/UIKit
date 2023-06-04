@@ -12,41 +12,39 @@ struct StepperSettingListData {
         StepperSettingListSectionModel(
             sectionHeader: .code,
             items: [
-                .code(codeType: .codeLabel),
-                .code(codeType: .reloadButton)
+                .code(type: .codeLabel),
+                .code(type: .reloadButton)
             ]
         ),
         StepperSettingListSectionModel(
             sectionHeader: .Stepvalue,
             items: [
-                .value(valueType: .step)
+                .value(type: .step)
             ]
         ),
         StepperSettingListSectionModel(
             sectionHeader: .maximum,
             items: [
-                .value(valueType: .maximum)
+                .value(type: .maximum)
             ]
         ),
         StepperSettingListSectionModel(
             sectionHeader: .minimum,
             items: [
-                .value(valueType: .minimum)
+                .value(type: .minimum)
             ]
         ),
         StepperSettingListSectionModel(
             sectionHeader: .autorepeat,
             items: [
-                .toggle(toggleType: .autorepeat)
+                .toggle(type: .autorepeat)
             ]
         ),
         StepperSettingListSectionModel(
             sectionHeader: .wrap,
             items: [
-                .toggle(toggleType: .wrap)
+                .toggle(type: .wrap)
             ]
-        ),
-
-
+        )
     ]
 }

@@ -28,7 +28,7 @@ final class ButtonImageCell: DefaultLabelCell, ButtonSettingListCellProtocol {
     
     func setup(_ item: ButtonSettingListItemType) { }
     
-    func bind(_ viewModel: ButtonViewModel) { }
+    func bind(_ viewModel: ButtonViewModelProtocol) { }
     
     override func attribute() {
         super.attribute()

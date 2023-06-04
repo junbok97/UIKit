@@ -14,7 +14,7 @@ final class SwitchCodeCell: DefaultCodeCell, SwitchSettingListCellProtocol {
     }
     
     func setup(_ item: SwitchSettingListItemType) {}
-    func bind(_ viewModel: SwitchViewModel) {
+    func bind(_ viewModel: SwitchViewModelProtocol) {
         viewModel.codeCellCodeLabelText
             .drive(self.rx.codeText)
             .disposed(by: disposeBag)

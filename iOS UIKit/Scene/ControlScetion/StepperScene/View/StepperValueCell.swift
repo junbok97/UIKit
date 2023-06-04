@@ -17,13 +17,13 @@ final class StepperValueCell: DefaultTextFieldCell, StepperSettingListCellProtoc
     private var valueTypeStream: Observable<StepperValueType> = Observable.just(.step)
     
     func setup(_ item: StepperSettingListItemType) {
-        guard case let .value(valueType: valueType) = item else { return }
-        self.valueTypeStream = Observable.just(valueType)
-        textField.placeholder = valueType.rawValue
+        guard case let .value(type: type) = item else { return }
+        self.valueTypeStream = Observable.just(type)
+        textField.placeholder = type.rawValue
         textField.keyboardType = .decimalPad
     }
     
-    func bind(_ viewModel: StepperViewModel) {
+    func bind(_ viewModel: StepperViewModelProtocol) {
         textField.rx.text
             .compactMap { Double($0 ?? "") }
             .withLatestFrom(valueTypeStream) { value, valueType in

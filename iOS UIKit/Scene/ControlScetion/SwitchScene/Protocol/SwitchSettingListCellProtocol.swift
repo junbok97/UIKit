@@ -9,5 +9,5 @@ import Foundation
 
 protocol SwitchSettingListCellProtocol {
     func setup(_ item: SwitchSettingListItemType)
-    func bind(_ viewModel: SwitchViewModel)
+    func bind(_ viewModel: SwitchViewModelProtocol)
 }

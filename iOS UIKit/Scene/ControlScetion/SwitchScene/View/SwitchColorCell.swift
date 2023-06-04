@@ -23,7 +23,7 @@ final class SwitchColorCell: DefaultColorCell, SwitchSettingListCellProtocol {
             .disposed(by: disposeBag)
     }
     
-    func bind(_ viewModel: SwitchViewModel) {
+    func bind(_ viewModel: SwitchViewModelProtocol) {
         selectedColorSubject
             .withLatestFrom(colorTypeStream) { color, colorType in
                 SwitchColor(colorType: colorType, color: color)

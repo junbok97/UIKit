@@ -13,7 +13,7 @@ final class LabelCodeCell: DefaultCodeCell, LabelSettingListCellProtocol {
     
     func setup(_ item: LabelSettingListItemType) { }
 
-    func bind(_ viewModel: LabelViewModel) {
+    func bind(_ viewModel: LabelViewModelProtocol) {
         viewModel.codeCellCodeLabelText
             .drive(self.rx.codeText)
             .disposed(by: disposeBag)

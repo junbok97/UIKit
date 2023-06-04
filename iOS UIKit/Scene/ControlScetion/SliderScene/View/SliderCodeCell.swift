@@ -15,7 +15,7 @@ final class SliderCodeCell: DefaultCodeCell, SliderSettingListCellProtocol {
     
     func setup(_ item: SliderSettingListItemType) {}
     
-    func bind(_ viewModel: SliderViewModel) {
+    func bind(_ viewModel: SliderViewModelProtocol) {
         viewModel.codeCellCodeLabelText
             .drive(self.rx.codeText)
             .disposed(by: disposeBag)

@@ -8,7 +8,7 @@
 import Foundation
 
 enum StepperSettingListItemType {
-    case code(codeType: CodeSectionItemType)
-    case value(valueType: StepperValueType)
-    case toggle(toggleType: StepperToggleType)
+    case code(type: CodeSectionItemType)
+    case value(type: StepperValueType)
+    case toggle(type: StepperToggleType)
 }

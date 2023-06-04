@@ -64,8 +64,8 @@ final class LabelModel {
     ) -> DefaultCell {
         switch sectionType {
         case .code:
-            guard case let .code(codeType: codeType) =  sectionModelItem else { return DefaultCell() }
-            switch codeType {
+            guard case let .code(type: type) =  sectionModelItem else { return DefaultCell() }
+            switch type {
             case .codeLabel:
                 let cell = LabelCodeCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
                 cell.setup(sectionModelItem)

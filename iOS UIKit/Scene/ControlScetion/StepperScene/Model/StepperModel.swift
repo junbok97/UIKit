@@ -59,8 +59,8 @@ final class StepperModel {
     ) -> DefaultCell {
         switch sectionType {
         case .code:
-            guard case let .code(codeType: codeType) =  sectionModelItem else { return DefaultCell() }
-            switch codeType {
+            guard case let .code(type: type) =  sectionModelItem else { return DefaultCell() }
+            switch type {
             case .codeLabel:
                 let cell = StepperCodeCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
                 cell.bind(viewModel)

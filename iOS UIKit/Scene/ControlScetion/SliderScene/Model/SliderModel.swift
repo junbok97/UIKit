@@ -20,7 +20,7 @@ protocol SliderModelProtocol: ModelProtocol {
     
     static func makeCell(
         _ sectionType: SliderSettingListSectionType,
-        _ viewModel: SliderViewModel,
+        _ viewModel: SliderViewModelProtocol,
         _ tableView: UITableView,
         _ indexPath: IndexPath,
         _ sectionModelItem: SliderSettingListSectionModel.Item
@@ -58,7 +58,7 @@ final class SliderModel: SliderModelProtocol {
     
     static func makeCell(
         _ sectionType: SliderSettingListSectionType,
-        _ viewModel: SliderViewModel,
+        _ viewModel: SliderViewModelProtocol,
         _ tableView: UITableView,
         _ indexPath: IndexPath,
         _ sectionModelItem: SliderSettingListSectionModel.Item

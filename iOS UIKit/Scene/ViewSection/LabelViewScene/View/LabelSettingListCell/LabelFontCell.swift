@@ -14,10 +14,10 @@ final class LabelFontCell: DefaultFontCell, LabelSettingListCellProtocol {
     static override var cellId: String { LabelFontCellConstants.cellId }
     
     func setup(_ item: LabelSettingListItemType) {
-        guard case let .font(fontType: fontType) = item else { return }
-        self.fontType = fontType
+        guard case let .font(type: type) = item else { return }
+        self.fontType = type
     }
     
-    func bind(_ viewModel: LabelViewModel) { }
+    func bind(_ viewModel: LabelViewModelProtocol) { }
     
 }

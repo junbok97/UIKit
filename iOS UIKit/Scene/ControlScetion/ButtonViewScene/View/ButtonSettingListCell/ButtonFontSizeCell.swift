@@ -24,11 +24,11 @@ final class ButtonFontSizeCell: DefaultFontSizeCell, ButtonSettingListCellProtoc
     }
     
     func setup(_ item: ButtonSettingListItemType) {
-        guard case let .fontSize(titleType: titleType) = item else { return }
-        self.titleType = titleType
+        guard case let .fontSize(type: type) = item else { return }
+        self.titleType = type
     }
     
-    func bind(_ viewModel: ButtonViewModel) {
+    func bind(_ viewModel: ButtonViewModelProtocol) {
         fontSizeSlider.rx.value
             .map { Int($0) }
             .distinctUntilChanged()

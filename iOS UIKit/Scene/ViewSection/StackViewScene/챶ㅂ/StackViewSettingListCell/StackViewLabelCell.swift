@@ -28,5 +28,5 @@ final class StackViewLabelCell: DefaultLabelCell, StackViewSettingListCellProtoc
         }
     }
     
-    func bind(_ viewModel: StackViewViewModel) { }
+    func bind(_ viewModel: StackViewViewModelProtocol) { }
 }

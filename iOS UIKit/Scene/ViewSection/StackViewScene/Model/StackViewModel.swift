@@ -46,9 +46,11 @@ final class StackViewModel: StackViewModelProtocol {
             cell.setup(sectionModelItem)
             cell.bind(viewModel)
             return cell
-
         case .spacing:
-            <#code#>
+            let cell = StackViewSpacingCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+            cell.setup(sectionModelItem)
+            cell.bind(viewModel)
+            return cell
         case .color:
             let cell = StackViewColorCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
             cell.setup(sectionModelItem)

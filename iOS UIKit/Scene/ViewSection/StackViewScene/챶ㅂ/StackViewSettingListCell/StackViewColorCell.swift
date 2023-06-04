@@ -26,7 +26,7 @@ final class StackViewColorCell: DefaultColorCell, StackViewSettingListCellProtoc
             .disposed(by: disposeBag)
     }
     
-    func bind(_ viewModel: StackViewViewModel) {
+    func bind(_ viewModel: StackViewViewModelProtocol) {
         selectedColorSubject
             .withLatestFrom(colorTypeStream) { color, colorType in
                 StackViewColor(colorType: colorType, color: color)

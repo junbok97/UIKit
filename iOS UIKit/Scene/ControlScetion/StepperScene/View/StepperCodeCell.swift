@@ -15,7 +15,7 @@ final class StepperCodeCell: DefaultCodeCell, StepperSettingListCellProtocol {
     
     func setup(_ item: StepperSettingListItemType) {}
     
-    func bind(_ viewModel: StepperViewModel) {
+    func bind(_ viewModel: StepperViewModelProtocol) {
         viewModel.codeCellCodeLabelText
             .drive(self.rx.codeText)
             .disposed(by: disposeBag)

@@ -22,7 +22,7 @@ final class LabelAlignmentCell: DefaultLabelCell, LabelSettingListCellProtocol {
         setupLabelTextAlignment(type.aligment)
     }
     
-    func bind(_ viewModel: LabelViewModel) { }
+    func bind(_ viewModel: LabelViewModelProtocol) { }
     
 
 }

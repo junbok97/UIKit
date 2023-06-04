@@ -8,11 +8,11 @@
 import Foundation
 
 protocol StackViewSpacingCellConstantsProtocol: DefaultTextFieldCellConstantsProtocol {
-    
 }
 
 extension StackViewSpacingCellConstantsProtocol {
     static var cellId: String { "StackViewSpacingCell" }
+    static var placeHolder: String { "Spacing" }
 }
 
 struct StackViewSpacingCellConstants: StackViewSpacingCellConstantsProtocol { }

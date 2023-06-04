@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-protocol SliderViewModelProtocol {
+protocol SliderViewModelProtocol: ViewModelProtocol {
     // value
     var maximumValueDidChanged: BehaviorRelay<Float> { get }
     var minimumValueDidChanged: BehaviorRelay<Float> { get }

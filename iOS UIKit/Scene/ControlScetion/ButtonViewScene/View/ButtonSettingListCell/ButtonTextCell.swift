@@ -17,11 +17,11 @@ final class ButtonTextCell: DefaultTextFieldCell, ButtonSettingListCellProtocol 
     private var titleType: ButtonTitleType = .title
     
     func setup(_ item: ButtonSettingListItemType) {
-        guard case let .text(titleType: titleType) = item else { return }
-        self.titleType = titleType
+        guard case let .text(type: type) = item else { return }
+        self.titleType = type
     }
     
-    func bind(_ viewModel: ButtonViewModel) {
+    func bind(_ viewModel: ButtonViewModelProtocol) {
         textField.rx.text
             .compactMap { [weak self] text -> ButtonText? in
                 guard let self = self, let text = text else { return nil }

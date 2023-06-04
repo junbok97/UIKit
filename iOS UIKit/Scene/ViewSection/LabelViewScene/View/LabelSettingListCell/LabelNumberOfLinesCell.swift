@@ -57,7 +57,7 @@ final class LabelNumberOfLinesCell: DefaultCell, LabelSettingListCellProtocol {
     
     func setup(_ item: LabelSettingListItemType) { } 
     
-    func bind(_ viewModel: LabelViewModel) {
+    func bind(_ viewModel: LabelViewModelProtocol) {
         lineStepper.rx.value
             .map { Int($0) }
             .bind(to: viewModel.numberOfLinesCellDidChangedLineStepper)

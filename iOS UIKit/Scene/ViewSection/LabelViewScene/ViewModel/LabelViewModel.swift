@@ -131,10 +131,10 @@ extension LabelViewModel {
     
     func labelSettingListItemSelected(_ itemType: LabelSettingListItemType) {
         switch itemType {
-        case let .alignment(alignmentType: alignmentType):
-            alignmentCellDidSelected.accept(alignmentType)
-        case let .font(fontType: fontType):
-            fontCellDidSelected.accept(fontType)
+        case let .alignment(type: type):
+            alignmentCellDidSelected.accept(type)
+        case let .font(type: type):
+            fontCellDidSelected.accept(type)
         default:
             return
         }

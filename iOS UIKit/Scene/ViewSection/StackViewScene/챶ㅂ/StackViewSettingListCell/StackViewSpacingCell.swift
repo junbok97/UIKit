@@ -13,18 +13,20 @@ final class StackViewSpacingCell: DefaultTextFieldCell, StackViewSettingListCell
         StackViewSpacingCellConstants.cellId
     }
     
-    private var valueTypeStream: Observable<CGFloat> = Observable.just(10.0)
+    private var valueTypeStream: Observable<CGFloat> = Observable.just(StackViewControllerConstants.targetSpacing)
     
     func setup(_ item: StackViewSettingListItemType) {
         textField.keyboardType = .decimalPad
+        textField.placeholder = StackViewSpacingCellConstants.placeHolder
     }
     
-    func bind(_ viewModel: StackViewViewModel) {
+    func bind(_ viewModel: StackViewViewModelProtocol) {
         textField.rx.text
-            .compactMap { CGFloat($0 ?? "") }
+            .compactMap { Double($0 ?? "") }
+            .map { CGFloat($0) }
             .distinctUntilChanged()
             .bind(onNext: { [weak viewModel] value in
-                viewModel?.valueCellDidChanged(value)
+                viewModel?.spacingCellDidChanged(value)
             })
             .disposed(by: disposeBag)
     }

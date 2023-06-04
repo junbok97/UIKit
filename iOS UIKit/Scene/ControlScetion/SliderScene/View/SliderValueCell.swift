@@ -22,7 +22,7 @@ final class SliderValueCell: DefaultTextFieldCell, SliderSettingListCellProtocol
         textField.keyboardType = .decimalPad
     }
     
-    func bind(_ viewModel: SliderViewModel) {
+    func bind(_ viewModel: SliderViewModelProtocol) {
         textField.rx.text
             .compactMap { Float($0 ?? "") }
             .withLatestFrom(valueTypeStream) { value, valueType in

@@ -16,14 +16,14 @@ final class LabelColorCell: DefaultColorCell, LabelSettingListCellProtocol {
     private var colorTypeStream: Observable<LabelColorType> = Observable.just(.titleColor)
     
     func setup(_ item: LabelSettingListItemType) {
-        guard case let .color(colorType: colorType) = item else { return }
-        self.colorTypeStream = Observable.just(colorType)
-        Observable.just(colorType.rawValue)
+        guard case let .color(type: type) = item else { return }
+        self.colorTypeStream = Observable.just(type)
+        Observable.just(type.rawValue)
             .bind(to: self.rx.colorNameLabelText)
             .disposed(by: disposeBag)
     }
     
-    func bind(_ viewModel: LabelViewModel) {
+    func bind(_ viewModel: LabelViewModelProtocol) {
         selectedColorSubject
             .withLatestFrom(colorTypeStream) { color, colorType in
                 LabelColor(colorType: colorType, color: color)

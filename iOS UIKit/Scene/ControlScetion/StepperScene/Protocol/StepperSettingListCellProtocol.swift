@@ -9,5 +9,5 @@ import Foundation
 
 protocol StepperSettingListCellProtocol {
     func setup(_ item: StepperSettingListItemType)
-    func bind(_ viewModel: StepperViewModel)
+    func bind(_ viewModel: StepperViewModelProtocol)
 }

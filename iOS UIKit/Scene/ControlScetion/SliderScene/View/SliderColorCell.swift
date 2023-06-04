@@ -23,7 +23,7 @@ final class SliderColorCell: DefaultColorCell, SliderSettingListCellProtocol {
             .disposed(by: disposeBag)
     }
     
-    func bind(_ viewModel: SliderViewModel) {
+    func bind(_ viewModel: SliderViewModelProtocol) {
         selectedColorSubject
             .withLatestFrom(colorTypeStream) { color, colorType in
                 SliderColor(colorType: colorType, color: color)

@@ -13,7 +13,7 @@ final class StackViewCodeCell: DefaultCodeCell, StackViewSettingListCellProtocol
     
     func setup(_ item: StackViewSettingListItemType) { }
 
-    func bind(_ viewModel: StackViewViewModel) {
+    func bind(_ viewModel: StackViewViewModelProtocol) {
         viewModel.codeCellCodeLabelText
             .drive(self.rx.codeText)
             .disposed(by: disposeBag)

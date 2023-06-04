@@ -154,16 +154,16 @@ extension ButtonConfigurationViewModel {
     
     func buttonSettingListItemSelected(_ itemType: ButtonSettingListItemType) {
         switch itemType {
-        case let .buttonStyle(buttonStyle: buttonStyle):
-            buttonStyleDidSelected(buttonStyle)
-        case let .corner(cornerStyleType: cornerStyle):
-            buttonCornerStyleDidSelected(cornerStyle)
-        case let .buttonTitleAlignment(aligmentType: alignmentType):
-            titleAlignmentDidSelected(alignmentType)
+        case let .buttonStyle(type: type):
+            buttonStyleDidSelected(type)
+        case let .corner(type: type):
+            buttonCornerStyleDidSelected(type)
+        case let .buttonTitleAlignment(type: type):
+            titleAlignmentDidSelected(type)
         case let .font(titleType: titleType, fontType: fontType):
             fontDidSeleted(titleType, fontType)
-        case let .imagePlacement(placement: placement):
-            imagePlacementDidSelected(placement)
+        case let .imagePlacement(type: type):
+            imagePlacementDidSelected(type)
         default:
             return
         }

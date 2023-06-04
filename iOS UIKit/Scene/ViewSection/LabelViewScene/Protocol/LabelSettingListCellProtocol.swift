@@ -9,5 +9,5 @@ import Foundation
 
 protocol LabelSettingListCellProtocol {
     func setup(_ item: LabelSettingListItemType)
-    func bind(_ viewModel: LabelViewModel)
+    func bind(_ viewModel: LabelViewModelProtocol)
 }
