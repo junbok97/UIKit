@@ -68,6 +68,25 @@ final class StackViewModel: StackViewModelProtocol {
         }
     }
     
+    static func codeToString(_ configure: StackViewViewModel2.StackViewConfigure) -> String {
+        """
+        let objects: [UILabel] = [first, second, third]
+        
+        lazy var stackView: UIStackView = {
+            let stackView = UIStackView(arrangedSubviews: objects)
+            
+            stackView.axis = \(configure.axis.code)
+            stackView.spacing = \(String(format: "%lf", configure.spacing))
+            stackView.alignment = \(configure.alignment.code)
+            stackView.distribution = \(configure.distribution.code)
+            stackView.tintColor = \(configure.tintColor == nil ? "nil" : configure.tintColor!.cgColor.getRGBCode)
+            stackView.backgroundColor = \(configure.backgroundColor == nil ? "nil" : configure.backgroundColor!.cgColor.getRGBCode)
+            
+            return stackView
+        }()
+        """
+    }
+    
     static func codeLabelText(
         _ axis: StackViewAxisType,
         _ spacing: CGFloat,

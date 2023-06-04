@@ -38,9 +38,9 @@ protocol StackViewViewModelProtocol: ViewModelProtocol {
 }
 
 final class StackViewViewModel: StackViewViewModelProtocol {
-    
-    private let disposeBag = DisposeBag()
 
+    private let disposeBag = DisposeBag()
+    
     let stackViewSettingCodeText = BehaviorRelay<String>(value: StackViewCodeCellConstants.defaultLabelCode)
     let axisDidSelected = BehaviorRelay<StackViewAxisType>(value: StackViewControllerConstants.targetAxis)
     let spacingDidChanged = BehaviorRelay<CGFloat>(value: StackViewControllerConstants.targetSpacing)
@@ -143,4 +143,83 @@ extension StackViewViewModel {
         }
     }
     
+}
+
+
+final class StackViewViewModel2 {
+    
+    struct StackViewConfigure {
+        let axis: StackViewAxisType
+        let spacing: CGFloat
+        let alignment: StackViewAlignmentType
+        let distribution: StackViewDistributionType
+        let tintColor: UIColor?
+        let backgroundColor: UIColor?
+    }
+    
+    private let disposeBag = DisposeBag()
+        
+    private var axis: StackViewAxisType = StackViewControllerConstants.targetAxis
+    private var spacing: CGFloat = StackViewControllerConstants.targetSpacing
+    private var alignment: StackViewAlignmentType = StackViewControllerConstants.targetAlignment
+    private var distribution: StackViewDistributionType = StackViewControllerConstants.targetDistribution
+    private var tintColor: UIColor? = nil
+    private var backgroundColor: UIColor? = nil
+    
+    private let targetConfigureStream = PublishRelay<StackViewConfigure>()
+    private let codeCellStream = PublishRelay<String>()
+    
+    let targetConfigure: Driver<StackViewConfigure>
+    let codeCellText: Driver<String>
+    
+    init() {
+        targetConfigure = targetConfigureStream
+            .asDriver(onErrorDriveWith: .empty())
+        codeCellText = codeCellStream
+            .asDriver(onErrorDriveWith: .empty())
+    }
+    
+    func setTargetAxis(_ axis: StackViewAxisType) {
+        self.axis = axis
+        updateTarget()
+    }
+    
+    func setTargetSpacing(_ spacing: CGFloat) {
+        self.spacing = spacing
+        updateTarget()
+    }
+    
+    func setTargetAlignmet(_ alignmnet: StackViewAlignmentType) {
+        self.alignment = alignmnet
+        updateTarget()
+    }
+    
+    func setTargetDistribution(_ distribution: StackViewDistributionType) {
+        self.distribution = distribution
+        updateTarget()
+    }
+    
+    func setTargetTintColor(_ tintColor: UIColor?) {
+        self.tintColor = tintColor
+        updateTarget()
+    }
+    
+    func setTargetBackgroundColor(_ backgroundColor: UIColor?) {
+        self.backgroundColor = backgroundColor
+        updateTarget()
+    }
+    
+    func updateTarget() {
+        let configure = StackViewConfigure(
+            axis: axis,
+            spacing: spacing,
+            alignment: alignment,
+            distribution: distribution,
+            tintColor: tintColor,
+            backgroundColor: backgroundColor
+        )
+        codeCellStream.accept(StackViewModel.codeToString(configure))
+        targetConfigureStream.accept(configure)
+    }
+
 }
