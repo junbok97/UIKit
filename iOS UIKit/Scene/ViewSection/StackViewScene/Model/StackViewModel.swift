@@ -16,18 +16,11 @@ protocol StackViewModelProtocol: ModelProtocol {
         _ indexPath: IndexPath,
         _ sectionModelItem: StackViewSettingListSectionModel.Item
     ) -> DefaultCell
-    
-    static func codeLabelText(
-        _ axis: StackViewAxisType,
-        _ spacing: CGFloat,
-        _ alignment: StackViewAlignmentType,
-        _ distribution: StackViewDistributionType,
-        _ tintColor: UIColor?,
-        _ backgroundColor: UIColor?
-    ) -> String
+
+    static func codeToString(_ configure: StackViewViewModel.StackViewConfigure) -> String
 }
 
-final class StackViewModel: StackViewModelProtocol {
+final class StackViewModel {
     static func makeCell(
         _ sectionType: StackViewSettingListSectionType,
         _ viewModel: StackViewViewModel,
@@ -68,7 +61,7 @@ final class StackViewModel: StackViewModelProtocol {
         }
     }
     
-    static func codeToString(_ configure: StackViewViewModel2.StackViewConfigure) -> String {
+    static func codeToString(_ configure: StackViewViewModel.StackViewConfigure) -> String {
         """
         let objects: [UILabel] = [first, second, third]
         
@@ -81,32 +74,6 @@ final class StackViewModel: StackViewModelProtocol {
             stackView.distribution = \(configure.distribution.code)
             stackView.tintColor = \(configure.tintColor == nil ? "nil" : configure.tintColor!.cgColor.getRGBCode)
             stackView.backgroundColor = \(configure.backgroundColor == nil ? "nil" : configure.backgroundColor!.cgColor.getRGBCode)
-            
-            return stackView
-        }()
-        """
-    }
-    
-    static func codeLabelText(
-        _ axis: StackViewAxisType,
-        _ spacing: CGFloat,
-        _ alignment: StackViewAlignmentType,
-        _ distribution: StackViewDistributionType,
-        _ tintColor: UIColor?,
-        _ backgroundColor: UIColor?
-    ) -> String {
-        """
-        let objects: [UILabel] = [first, second, third]
-        
-        lazy var stackView: UIStackView = {
-            let stackView = UIStackView(arrangedSubviews: objects)
-            
-            stackView.axis = \(axis.code)
-            stackView.spacing = \(String(format: "%lf", spacing))
-            stackView.alignment = \(alignment.code)
-            stackView.distribution = \(distribution.code)
-            stackView.tintColor = \(tintColor == nil ? "nil" : tintColor!.cgColor.getRGBCode)
-            stackView.backgroundColor = \(backgroundColor == nil ? "nil" : backgroundColor!.cgColor.getRGBCode)
             
             return stackView
         }()

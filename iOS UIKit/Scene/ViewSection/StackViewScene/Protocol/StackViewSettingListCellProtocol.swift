@@ -9,5 +9,5 @@ import Foundation
 
 protocol StackViewSettingListCellProtocol {
     func setup(_ item: StackViewSettingListItemType)
-    func bind(_ viewModel: StackViewViewModelProtocol)
+    func bind(_ viewModel: StackViewViewModel)
 }

@@ -14,12 +14,12 @@ import RxDataSources
 final class StackViewController: DefaultListViewController {
     
     private weak var coordinator: StackViewCoordinatorProtocol?
-    private var viewModel: StackViewViewModelProtocol!
+    private var viewModel: StackViewViewModel!
     private lazy var dataSource: RxTableViewSectionedReloadDataSource<StackViewSettingListSectionModel> = viewModel.stackViewSettingListDataSource()
     
     static func create(
         _ coordinator: StackViewCoordinatorProtocol,
-        _ viewModel: StackViewViewModelProtocol
+        _ viewModel: StackViewViewModel
     ) -> StackViewController {
         let viewController = StackViewController()
         viewController.coordinator = coordinator
@@ -35,14 +35,14 @@ final class StackViewController: DefaultListViewController {
         label.text = StackViewControllerConstants.firstObjectTitle
         label.backgroundColor = StackViewControllerConstants.firstObjectBackgroundColor
     }
-
+    
     private lazy var secondObject: UILabel = UILabel().then { label in
         label.textAlignment = .center
         label.font = StackViewControllerConstants.objectFontSize
         label.text = StackViewControllerConstants.secondObjectTitle
         label.backgroundColor = StackViewControllerConstants.secondObjectBackgroundColor
     }
-                                                            
+    
     private lazy var thirdObject: UILabel = UILabel().then { label in
         label.textAlignment = .center
         label.font = StackViewControllerConstants.objectFontSize
@@ -53,9 +53,9 @@ final class StackViewController: DefaultListViewController {
     private lazy var arrangedSubviews: [UIView] = [firstObject, secondObject, thirdObject]
     
     lazy var targetStackView: UIStackView = UIStackView(arrangedSubviews: arrangedSubviews).then { stackView in
-        stackView.axis = .horizontal
-        stackView.alignment = .fill
-        stackView.distribution = .fillEqually
+        stackView.axis = StackViewControllerConstants.targetAxis.axis
+        stackView.alignment = StackViewControllerConstants.targetAlignment.alignment
+        stackView.distribution = StackViewControllerConstants.targetDistribution.distribution
         stackView.spacing = StackViewControllerConstants.targetSpacing
     }
     
@@ -71,14 +71,8 @@ final class StackViewController: DefaultListViewController {
             .rx.setDelegate(self)
             .disposed(by: disposeBag)
         
-        viewModel.stackViewSettingListCellDatas
+        Observable.just(StackViewSettingListData.settingListDatas).asDriver(onErrorDriveWith: .empty())
             .drive(settingList.rx.items(dataSource: dataSource))
-            .disposed(by: disposeBag)
-        
-        settingList.rx.itemSelected
-            .subscribe(onNext: {
-                print("itemSelected", $0)
-            })
             .disposed(by: disposeBag)
         
         settingList.rx.itemSelected
@@ -89,28 +83,8 @@ final class StackViewController: DefaultListViewController {
             .bind(onNext: viewModel.stackViewSettingListItemSelected)
             .disposed(by: disposeBag)
         
-        viewModel.targetAxis
-            .drive(self.rx.targetAxis)
-            .disposed(by: disposeBag)
-        
-        viewModel.targetSpacing
-            .drive(self.rx.targetSpacing)
-            .disposed(by: disposeBag)
-        
-        viewModel.targetAlignment
-            .drive(self.rx.targetAlignment)
-            .disposed(by: disposeBag)
-        
-        viewModel.targetDistribution
-            .drive(self.rx.targetDistribution)
-            .disposed(by: disposeBag)
-        
-        viewModel.targetTintColor
-            .drive(self.rx.targetTintColor)
-            .disposed(by: disposeBag)
-        
-        viewModel.targetBackgroundColor
-            .drive(self.rx.targetBackgroundColor)
+        viewModel.targetConfigure
+            .drive(self.rx.targetConfigure)
             .disposed(by: disposeBag)
     }
     
@@ -144,11 +118,11 @@ final class StackViewController: DefaultListViewController {
         StackViewColorCell.register(tableView: settingList)
         StackViewSpacingCell.register(tableView: settingList)
     }
-        
+    
     deinit {
         print("StackViewController Deinit")
     }
-
+    
 }
 
 // MARK: - UITableViewDelegate
@@ -162,39 +136,14 @@ extension StackViewController: UITableViewDelegate {
 
 // MARK: - Reactive
 extension Reactive where Base: StackViewController {
-    var targetTintColor: Binder<UIColor?> {
-        Binder(base) { base, color in
-            base.targetStackView.tintColor = color
-        }
-    }
-    
-    var targetBackgroundColor: Binder<UIColor?> {
-        Binder(base) { base, color in
-            base.targetStackView.backgroundColor = color
-        }
-    }
-    
-    var targetSpacing: Binder<CGFloat> {
-        Binder(base) { base, spacing in
-            base.targetStackView.spacing = spacing
-        }
-    }
-    
-    var targetAxis: Binder<StackViewAxisType> {
-        Binder(base) { base, type in
-            base.targetStackView.axis = type.axis
-        }
-    }
-    
-    var targetAlignment: Binder<StackViewAlignmentType> {
-        Binder(base) { base, type in
-            base.targetStackView.alignment = type.alignment
-        }
-    }
-    
-    var targetDistribution: Binder<StackViewDistributionType> {
-        Binder(base) { base, type in
-            base.targetStackView.distribution = type.distribution
+    var targetConfigure: Binder<StackViewViewModel.StackViewConfigure> {
+        Binder(base) { base, configure in
+            base.targetStackView.axis = configure.axis.axis
+            base.targetStackView.tintColor = configure.tintColor
+            base.targetStackView.backgroundColor = configure.backgroundColor
+            base.targetStackView.spacing = configure.spacing
+            base.targetStackView.alignment = configure.alignment.alignment
+            base.targetStackView.distribution = configure.distribution.distribution
         }
     }
 }
