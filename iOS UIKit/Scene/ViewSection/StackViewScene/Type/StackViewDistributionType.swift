@@ -29,4 +29,18 @@ enum StackViewDistributionType: String {
         }
     }
     
+    var code: String {
+        switch self {
+        case .fill:
+            return ".fill"
+        case .fillEqually:
+            return ".fillEqually"
+        case .fillProportionally:
+            return ".fillProportionally"
+        case .equalSpacing:
+            return ".equalSpacing"
+        case .equalCentering:
+            return ".equalCentering"
+        }
+    }
 }

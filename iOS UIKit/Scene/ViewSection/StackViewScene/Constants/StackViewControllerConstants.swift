@@ -16,10 +16,10 @@ protocol StackViewControllerConstantsProtocol: DefaultViewControllerConstantsPro
     static var thirdObjectTitle: String { get }
     static var thirdObjectBackgroundColor: UIColor { get }
     
-    static var targetAxis: NSLayoutConstraint.Axis { get }
+    static var targetAxis: StackViewAxisType { get }
     static var targetSpacing: CGFloat { get }
-    static var targetAlignment: UIStackView.Alignment { get }
-    static var targetDistribution: UIStackView.Distribution { get }
+    static var targetAlignment: StackViewAlignmentType { get }
+    static var targetDistribution: StackViewDistributionType { get }
     
 }
 
@@ -29,11 +29,10 @@ extension StackViewControllerConstantsProtocol {
         "https://developer.apple.com/documentation/uikit/uistackview"
     }
 
-    static var targetAxis: NSLayoutConstraint.Axis { .horizontal }
+    static var targetAxis: StackViewAxisType { .vertical }
     static var targetSpacing: CGFloat { 5.0 }
-    static var targetAlignment: UIStackView.Alignment { .fill }
-    static var targetDistribution: UIStackView.Distribution { .fillEqually }
-    
+    static var targetAlignment: StackViewAlignmentType { .fill }
+    static var targetDistribution: StackViewDistributionType { .fillEqually }
     
     static var objectFontSize: UIFont { .boldSystemFont(ofSize: 20) }
     static var firstObjectTitle: String { "First" }
@@ -42,6 +41,8 @@ extension StackViewControllerConstantsProtocol {
     static var secondObjectBackgroundColor: UIColor { .systemGray3 }
     static var thirdObjectTitle: String {  "Third"  }
     static var thirdObjectBackgroundColor: UIColor { .systemGray }
+    
+    
 }
 
 struct StackViewControllerConstants: StackViewControllerConstantsProtocol { }

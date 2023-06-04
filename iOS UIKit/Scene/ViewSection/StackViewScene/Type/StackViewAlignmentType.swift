@@ -25,4 +25,17 @@ enum StackViewAlignmentType: String {
             return.trailing
         }
     }
+    
+    var code: String {
+        switch self {
+        case .fill:
+            return ".fill"
+        case .leading:
+            return ".leading"
+        case .center:
+            return ".center"
+        case .trailing:
+            return ".trailing"
+        }
+    }
 }

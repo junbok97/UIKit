@@ -29,43 +29,35 @@ final class StackViewController: DefaultListViewController {
     }
     
     // MARK: - UI구현
-    private lazy var firstObject: UILabel = {
-       let label = UILabel()
+    private lazy var firstObject: UILabel = UILabel().then { label in
         label.textAlignment = .center
         label.font = StackViewControllerConstants.objectFontSize
         label.text = StackViewControllerConstants.firstObjectTitle
         label.backgroundColor = StackViewControllerConstants.firstObjectBackgroundColor
-        return label
-    }()
-    
-    private lazy var secondObject: UILabel = {
-       let label = UILabel()
+    }
+
+    private lazy var secondObject: UILabel = UILabel().then { label in
         label.textAlignment = .center
         label.font = StackViewControllerConstants.objectFontSize
         label.text = StackViewControllerConstants.secondObjectTitle
         label.backgroundColor = StackViewControllerConstants.secondObjectBackgroundColor
-        return label
-    }()
-    
-    private lazy var thirdObject: UILabel = {
-       let label = UILabel()
+    }
+                                                            
+    private lazy var thirdObject: UILabel = UILabel().then { label in
         label.textAlignment = .center
         label.font = StackViewControllerConstants.objectFontSize
         label.text = StackViewControllerConstants.thirdObjectTitle
         label.backgroundColor = StackViewControllerConstants.thirdObjectBackgroundColor
-        return label
-    }()
+    }
     
     private lazy var arrangedSubviews: [UIView] = [firstObject, secondObject, thirdObject]
     
-    lazy var targetStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: arrangedSubviews)
+    lazy var targetStackView: UIStackView = UIStackView(arrangedSubviews: arrangedSubviews).then { stackView in
         stackView.axis = .horizontal
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
         stackView.spacing = StackViewControllerConstants.targetSpacing
-        return stackView
-    }()
+    }
     
     // MARK: - 라이프사이클
     override func viewDidDisappear(_ animated: Bool) {
@@ -188,21 +180,21 @@ extension Reactive where Base: StackViewController {
         }
     }
     
-    var targetAxis: Binder<NSLayoutConstraint.Axis> {
-        Binder(base) { base, axis in
-            base.targetStackView.axis = axis
+    var targetAxis: Binder<StackViewAxisType> {
+        Binder(base) { base, type in
+            base.targetStackView.axis = type.axis
         }
     }
     
-    var targetAlignment: Binder<UIStackView.Alignment> {
-        Binder(base) { base, alignment in
-            base.targetStackView.alignment = alignment
+    var targetAlignment: Binder<StackViewAlignmentType> {
+        Binder(base) { base, type in
+            base.targetStackView.alignment = type.alignment
         }
     }
     
-    var targetDistribution: Binder<UIStackView.Distribution> {
-        Binder(base) { base, distribution in
-            base.targetStackView.distribution = distribution
+    var targetDistribution: Binder<StackViewDistributionType> {
+        Binder(base) { base, type in
+            base.targetStackView.distribution = type.distribution
         }
     }
 }

@@ -16,6 +16,15 @@ protocol StackViewModelProtocol: ModelProtocol {
         _ indexPath: IndexPath,
         _ sectionModelItem: StackViewSettingListSectionModel.Item
     ) -> DefaultCell
+    
+    static func codeLabelText(
+        _ axis: StackViewAxisType,
+        _ spacing: CGFloat,
+        _ alignment: StackViewAlignmentType,
+        _ distribution: StackViewDistributionType,
+        _ tintColor: UIColor?,
+        _ backgroundColor: UIColor?
+    ) -> String
 }
 
 final class StackViewModel: StackViewModelProtocol {
@@ -58,4 +67,31 @@ final class StackViewModel: StackViewModelProtocol {
             return cell
         }
     }
+    
+    static func codeLabelText(
+        _ axis: StackViewAxisType,
+        _ spacing: CGFloat,
+        _ alignment: StackViewAlignmentType,
+        _ distribution: StackViewDistributionType,
+        _ tintColor: UIColor?,
+        _ backgroundColor: UIColor?
+    ) -> String {
+        """
+        let objects: [UILabel] = [first, second, third]
+        
+        lazy var stackView: UIStackView = {
+            let stackView = UIStackView(arrangedSubviews: objects)
+            
+            stackView.axis = \(axis.code)
+            stackView.spacing = \(String(format: "%lf", spacing))
+            stackView.alignment = \(alignment.code)
+            stackView.distribution = \(distribution.code)
+            stackView.tintColor = \(tintColor == nil ? "nil" : tintColor!.cgColor.getRGBCode)
+            stackView.backgroundColor = \(backgroundColor == nil ? "nil" : backgroundColor!.cgColor.getRGBCode)
+            
+            return stackView
+        }()
+        """
+    }
+
 }

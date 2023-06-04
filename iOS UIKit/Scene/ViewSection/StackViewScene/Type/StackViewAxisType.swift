@@ -19,4 +19,13 @@ enum StackViewAxisType: String {
             return NSLayoutConstraint.Axis.vertical
         }
     }
+    
+    var code: String {
+        switch self {
+        case .horizontal:
+            return ".horizontal"
+        case .vertical:
+            return ".vertical"
+        }
+    }
 }

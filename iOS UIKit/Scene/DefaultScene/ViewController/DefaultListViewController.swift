@@ -38,7 +38,6 @@ class DefaultListViewController: DefaultViewController {
         super.attribute()
         navigationItem.largeTitleDisplayMode = .never
         settingListConfigure()
-        settingListEndEditing()
     }
     
     func layout() {
@@ -71,15 +70,4 @@ class DefaultListViewController: DefaultViewController {
         DefaultSettingListHeaderView.register(tableView: settingList)
     }
     
-}
-
-private extension DefaultListViewController {
-    func settingListEndEditing() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        settingList.addGestureRecognizer(tapGesture)
-    }
-
-    @objc func dismissKeyboard(sender: UITapGestureRecognizer) {
-        settingList.endEditing(true)
-    }
 }

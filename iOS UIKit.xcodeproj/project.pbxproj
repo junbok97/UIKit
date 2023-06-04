@@ -779,7 +779,6 @@
 				CB7024A82A10E181006194FB /* ViewController */,
 				CB7024A92A10E186006194FB /* View */,
 				CB7024AA2A10E188006194FB /* ViewModel */,
-				CB7024AB2A10E18A006194FB /* Model */,
 				CB7024C82A10EF7A006194FB /* Constants */,
 				CB7024C72A10EF77006194FB /* Type */,
 			);
@@ -809,13 +808,6 @@
 			children = (
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		CB7024AB2A10E18A006194FB /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		CB7024C52A10EEC9006194FB /* DefaultSettingListCell */ = {
@@ -1100,13 +1092,13 @@
 		CB9A9CA32A10DD8E0065F5A5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CB0277192A11FACE00FA8C15 /* ButtonSettingListSectionModel.swift */,
 				CB0277172A11FAAE00FA8C15 /* ButtonModel.swift */,
+				CBE4FA392A13D5A900479A8F /* ButtonConfigurationModel.swift */,
 				CBBBC88A2A134D8400213A2A /* ButtonSettingListData.swift */,
 				CBBBC88E2A13706E00213A2A /* ButtonText.swift */,
 				CBBBC8902A13707800213A2A /* ButtonFontSize.swift */,
 				CB1E8CC82A1BB249003F22AE /* ButtonColor.swift */,
-				CBE4FA392A13D5A900479A8F /* ButtonConfigurationModel.swift */,
-				CB0277192A11FACE00FA8C15 /* ButtonSettingListSectionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1278,13 +1270,6 @@
 				CB80B1F629E5468200298F3C /* ObjectListCell.swift */,
 			);
 			path = ObjectListCell;
-			sourceTree = "<group>";
-		};
-		CBC6073D29C1C71F008B6BA9 /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocol;
 			sourceTree = "<group>";
 		};
 		CBDD7F8C2A18D9F40081953C /* Extension */ = {
@@ -1459,7 +1444,6 @@
 			isa = PBXGroup;
 			children = (
 				CB9A9CA62A10DE360065F5A5 /* App */,
-				CBC6073D29C1C71F008B6BA9 /* Protocol */,
 				CBDD7F8C2A18D9F40081953C /* Extension */,
 				CB80B1D029E53A8D00298F3C /* Scene */,
 				CB9A9CA72A10DE3D0065F5A5 /* Resource */,
@@ -1959,7 +1943,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.3;
+				MARKETING_VERSION = 3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail.junbok97.iOS-UIKit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1992,7 +1976,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.3;
+				MARKETING_VERSION = 3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail.junbok97.iOS-UIKit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
