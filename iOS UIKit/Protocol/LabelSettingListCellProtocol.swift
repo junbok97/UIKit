@@ -8,6 +8,6 @@
 import Foundation
 
 protocol LabelSettingListCellProtocol {
-    func setup(_ item: LabelSettingListSectionItemType)
+    func setup(_ item: LabelSettingListItemType)
     func bind(_ viewModel: LabelViewModel)
 }

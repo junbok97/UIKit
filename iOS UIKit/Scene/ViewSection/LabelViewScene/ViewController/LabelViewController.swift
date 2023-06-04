@@ -41,12 +41,7 @@ final class LabelViewController: DefaultListViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-        
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        self.view.endEditing(true)
-    }
-    
+            
     // MARK: - 라이프사이클
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -60,7 +55,7 @@ final class LabelViewController: DefaultListViewController {
             .disposed(by: disposeBag)
         
         settingList.rx.itemSelected
-            .compactMap { [weak dataSource] indexPath -> LabelSettingListSectionItemType? in
+            .compactMap { [weak dataSource] indexPath -> LabelSettingListItemType? in
                 guard let dataSource = dataSource else { return nil }
                 return dataSource[indexPath.section].items[indexPath.row]
             }
@@ -122,10 +117,6 @@ final class LabelViewController: DefaultListViewController {
         coordinator?.finish()
     }
     
-    deinit {
-        print("LabelViewController Deinit")
-    }
-    
     override func settingListConfigure() {
         super.settingListConfigure()
         LabelCodeCell.register(tableView: settingList)
@@ -137,6 +128,9 @@ final class LabelViewController: DefaultListViewController {
         LabelNumberOfLinesCell.register(tableView: settingList)
     }
 
+    deinit {
+        print("LabelViewController Deinit")
+    }
 }
 
 // MARK: - UITableViewDelegate

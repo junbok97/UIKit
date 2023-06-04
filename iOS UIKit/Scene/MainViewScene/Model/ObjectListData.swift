@@ -12,7 +12,8 @@ struct ObjectListData {
         ObjectSectionModel(
             sectionHeader: .Views,
             items: [
-                .uiLabel
+                .uiLabel,
+                .uiStackView
             ]
         ),
         ObjectSectionModel(

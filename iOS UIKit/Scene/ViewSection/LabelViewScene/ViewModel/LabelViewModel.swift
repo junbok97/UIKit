@@ -24,7 +24,7 @@ protocol LabelViewModelProtocol: ViewModelProtocol {
     var alignmentCellDidSelected: BehaviorRelay<ObjectAlignmentType> { get }
     var numberOfLinesCellDidChangedLineStepper: BehaviorRelay<Int> { get }
     
-    var didItemSelectedLabelSettingList: PublishRelay<LabelSettingListSectionItemType> { get }
+    var didItemSelectedLabelSettingList: PublishRelay<LabelSettingListItemType> { get }
     
     // ViewModel -> View
     var codeCellCodeLabelText: Driver<String> { get }
@@ -43,7 +43,7 @@ protocol LabelViewModelProtocol: ViewModelProtocol {
     func colorCellDidSelected(_ labelColor: LabelColor)
     func labelSettingToCode()
     func labelSettingListDataSource() -> RxTableViewSectionedReloadDataSource<LabelSettingListSectionModel>
-    func labelSettingListItemSelected(_ itemType: LabelSettingListSectionItemType)
+    func labelSettingListItemSelected(_ itemType: LabelSettingListItemType)
 }
 
 final class LabelViewModel: LabelViewModelProtocol {
@@ -63,7 +63,7 @@ final class LabelViewModel: LabelViewModelProtocol {
     let alignmentCellDidSelected = BehaviorRelay<ObjectAlignmentType>(value: .center)
     let numberOfLinesCellDidChangedLineStepper = BehaviorRelay<Int>(value: LabelViewControllerConstants.targetLabelNumberOfLines)
     
-    let didItemSelectedLabelSettingList = PublishRelay<LabelSettingListSectionItemType>()
+    let didItemSelectedLabelSettingList = PublishRelay<LabelSettingListItemType>()
     
     // ViewModel -> View
     let codeCellCodeLabelText: Driver<String>
@@ -129,7 +129,7 @@ extension LabelViewModel {
         }
     }
     
-    func labelSettingListItemSelected(_ itemType: LabelSettingListSectionItemType) {
+    func labelSettingListItemSelected(_ itemType: LabelSettingListItemType) {
         switch itemType {
         case let .alignment(alignmentType: alignmentType):
             alignmentCellDidSelected.accept(alignmentType)

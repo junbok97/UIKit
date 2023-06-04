@@ -28,9 +28,12 @@ class DefaultLabelCell: DefaultCell {
         label.text = nil
     }
 
-    
     func setupLabelText(_ text: String) {
         label.text = text
+    }
+    
+    func setupLabelTextAlignment(_ alignment: NSTextAlignment) {
+        label.textAlignment = alignment
     }
     
     override func layout() {
@@ -47,4 +50,3 @@ class DefaultLabelCell: DefaultCell {
 
     }
 }
-

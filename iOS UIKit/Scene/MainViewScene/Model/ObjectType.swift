@@ -14,5 +14,6 @@ enum ObjectType: String {
     case uiSwitch = "UISwitch"
     case uiStepper = "UIStepper"
     case uiSlider = "UISlider"
+    case uiStackView = "UIStackView"
     case uiNavigationBar = "UINavigationBar"
 }

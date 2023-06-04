@@ -24,6 +24,8 @@ final class ChildCoordinatorFactory {
         switch type {
         case .uiLabel:
             return LabelCoordinator(navigationController, self.parentCoordinator)
+        case .uiStackView:
+            return StackViewCoordinator(navigationController, self.parentCoordinator)
         case .uiButton:
             return ButtonCoordinator(navigationController, self.parentCoordinator)
         case .uiSwitch:

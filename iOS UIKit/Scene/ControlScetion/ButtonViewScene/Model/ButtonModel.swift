@@ -18,7 +18,7 @@ protocol ButtonModelProtocol: ModelProtocol {
     ) -> DefaultCell
 }
 
-final class ButtonModel {
+final class ButtonModel: ButtonModelProtocol{
     
     static func makeCell(
         _ sectionType: ButtonSettingListSectionType,

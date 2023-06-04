@@ -14,9 +14,12 @@ struct LabelSettingListSectionModel {
 }
 
 extension LabelSettingListSectionModel: SectionModelType {
-    typealias Item = LabelSettingListSectionItemType
+    typealias Item = LabelSettingListItemType
     
-    init(original: LabelSettingListSectionModel, items: [LabelSettingListSectionItemType]) {
+    init(
+        original: LabelSettingListSectionModel,
+        items: [LabelSettingListItemType]
+    ) {
         self = original
         self.items = items
     }

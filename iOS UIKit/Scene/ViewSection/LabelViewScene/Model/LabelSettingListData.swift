@@ -12,8 +12,8 @@ struct LabelSettingListData {
         LabelSettingListSectionModel(
             sectionHeader: .code,
             items: [
-                .code(codeType: .codeLabel),
-                .code(codeType: .reloadButton)
+                .code(type: .codeLabel),
+                .code(type: .reloadButton)
             ]
         ),
         LabelSettingListSectionModel(
@@ -25,22 +25,22 @@ struct LabelSettingListData {
         LabelSettingListSectionModel(
             sectionHeader: .color,
             items: [
-                .color(colorType: .titleColor),
-                .color(colorType: .backgroundColor)
+                .color(type: .titleColor),
+                .color(type: .backgroundColor)
             ]
         ),
         LabelSettingListSectionModel(
             sectionHeader: .font,
             items: [
-                .font(fontType: .ultraLight),
-                .font(fontType: .thin),
-                .font(fontType: .light),
-                .font(fontType: .regular),
-                .font(fontType: .medium),
-                .font(fontType: .semibold),
-                .font(fontType: .bold),
-                .font(fontType: .heavy),
-                .font(fontType: .black)
+                .font(type: .ultraLight),
+                .font(type: .thin),
+                .font(type: .light),
+                .font(type: .regular),
+                .font(type: .medium),
+                .font(type: .semibold),
+                .font(type: .bold),
+                .font(type: .heavy),
+                .font(type: .black)
             ]
         ),
         LabelSettingListSectionModel(
@@ -52,11 +52,11 @@ struct LabelSettingListData {
         LabelSettingListSectionModel(
             sectionHeader: .alignment,
             items: [
-                .alignment(alignmentType: .natural),
-                .alignment(alignmentType: .left),
-                .alignment(alignmentType: .center),
-                .alignment(alignmentType: .right),
-                .alignment(alignmentType: .justified)
+                .alignment(type: .natural),
+                .alignment(type: .left),
+                .alignment(type: .center),
+                .alignment(type: .right),
+                .alignment(type: .justified)
             ]
         ),
         LabelSettingListSectionModel(

@@ -13,6 +13,7 @@ protocol MainModelProtocol: ModelProtocol {
     static func searchObject(_ title: String?) -> [ObjectSectionModel]
 }
 
+// TODO: Task로 전환예정
 final class MainModel: MainModelProtocol {
     static func searchObject(_ title: String?) -> [ObjectSectionModel] {
         guard let title = title, title != "" else {
