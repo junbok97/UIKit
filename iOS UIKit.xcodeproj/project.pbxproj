@@ -459,6 +459,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		CB09A0792A349062005BF352 /* DatePickerScene */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DatePickerScene;
+			sourceTree = "<group>";
+		};
 		CB1BE6792A0CE74D00485B4F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1010,6 +1017,7 @@
 		CB742DD42A1E200300BA51CC /* ControlScetion */ = {
 			isa = PBXGroup;
 			children = (
+				CB09A0792A349062005BF352 /* DatePickerScene */,
 				CBB9CB462A1E505F003B3C18 /* SliderScene */,
 				CBDD7F9A2A1B596E0081953C /* SwitchScene */,
 				CB742D9D2A1CCDFC00BA51CC /* StepperScene */,
