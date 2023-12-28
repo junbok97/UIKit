@@ -21,7 +21,6 @@ final class MainViewModel: MainViewModelProtocol {
     
     private let disposeBag = DisposeBag()
     
-    
     let objectListDataStream = BehaviorRelay<[ObjectSectionModel]>(value: ObjectListData.objectListDatas)
     
     // ViewModel - > View

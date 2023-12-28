@@ -18,7 +18,7 @@ extension StackViewSettingListSectionModel {
     
     init(
         original: StackViewSettingListSectionModel,
-        items: [StackViewSettingListItemType]
+        items: [Item]
     ) {
         self = original
         self.items = items

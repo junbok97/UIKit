@@ -93,3 +93,4 @@ private extension DefaultViewController {
         view.addGestureRecognizer(swipeGesture)
     }
 }
+

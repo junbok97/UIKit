@@ -12,6 +12,7 @@ import RxDataSources
 
 final class MainViewController: UIViewController {
     
+    
     weak var coordinator: MainCoordinatorProtocol?
     
     private let disposeBag = DisposeBag()
