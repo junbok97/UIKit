@@ -14,7 +14,7 @@
 - [🍎 UIKit 설치하기](apps.apple.com/kr/app/uikit/id6448916109)
 
 
-## 앱 실행 화면
+## ▶️ 앱 실행 화면
 
 <table>
     <tr>
@@ -28,3 +28,8 @@
     <td><img src="https://github.com/junbok97/iOS-UIKit/assets/71696675/c67e821d-83e2-483e-98fb-c6628b3c8919" style="width: 100%;"/></td>
   </tr>
 </table>
+
+
+## 🤔 트러블 슈팅
+- [하위 뷰의 frame이 잡히지 않을 때](https://junbok97.tistory.com/319)
+- [Cell에서 bind할 때 주의점](https://junbok97.tistory.com/315)
