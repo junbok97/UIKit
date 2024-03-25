@@ -128,9 +128,6 @@ final class LabelViewController: DefaultListViewController {
         LabelNumberOfLinesCell.register(tableView: settingList)
     }
 
-    deinit {
-        print("LabelViewController Deinit")
-    }
 }
 
 // MARK: - UITableViewDelegate

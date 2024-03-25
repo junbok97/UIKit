@@ -70,10 +70,7 @@ final class SwitchViewModel: SwitchViewModelProtocol {
         
         switchSettingToCode()
     }
-        
-    deinit {
-        print("SwitchViewModel Deinit")
-    }
+
 }
 
 extension SwitchViewModel {

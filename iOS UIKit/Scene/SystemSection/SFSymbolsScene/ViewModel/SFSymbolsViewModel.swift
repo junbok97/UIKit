@@ -42,8 +42,4 @@ final class SFSymbolsViewModel: SFSymbolsViewModelProtocol {
         SFSymbolsModel.getSFSymbolsSystemName(indexPath.row)
     }
     
-    deinit {
-        print("SFSymbolsViewModel Deinit")
-    }
-    
 }

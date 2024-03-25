@@ -27,8 +27,4 @@ final class StackViewCoordinator: StackViewCoordinatorProtocol {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    deinit {
-        print("StackViewCoordinator Deinit")
-    }
-
 }

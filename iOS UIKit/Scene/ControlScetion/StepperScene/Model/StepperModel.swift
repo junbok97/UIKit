@@ -82,8 +82,5 @@ final class StepperModel {
             return cell
         }
     }
-    
-    deinit {
-        print("StepperModel Deinit")
-    }
+
 }

@@ -110,10 +110,6 @@ final class LabelViewModel: LabelViewModelProtocol {
         labelSettingToCode()
     }
 
-    deinit {
-        print("LabeViewModel Deinit")
-    }
-    
 }
 
 extension LabelViewModel {

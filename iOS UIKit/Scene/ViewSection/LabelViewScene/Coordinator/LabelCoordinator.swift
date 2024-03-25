@@ -27,7 +27,4 @@ final class LabelCoordinator: LabelCoordinatorProtocol {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    deinit {
-        print("LabelCoordinator Deinit")
-    }
 }

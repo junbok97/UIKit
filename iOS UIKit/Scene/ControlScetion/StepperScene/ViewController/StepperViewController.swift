@@ -130,9 +130,6 @@ final class StepperViewController: DefaultListViewController {
         StepperToggleCell.register(tableView: settingList)
     }
     
-    deinit {
-        print("StepperViewController Deinit")
-    }
 }
 
 // MARK: - UITableViewDelegate

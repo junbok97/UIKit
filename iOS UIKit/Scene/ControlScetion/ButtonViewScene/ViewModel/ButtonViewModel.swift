@@ -51,10 +51,7 @@ final class ButtonViewModel: ButtonViewModelProtocol {
         codeCellCodeLabelText = buttonConfigurationViewModel.buttonSettingCodeText
             .asDriver(onErrorDriveWith: .empty())
     }
-    
-    deinit {
-        print("ButtonViewModel Deinit")
-    }
+
 }
 
 // ButtonConfigurationViewModel

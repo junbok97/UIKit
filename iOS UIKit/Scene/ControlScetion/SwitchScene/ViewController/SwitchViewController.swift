@@ -94,9 +94,6 @@ final class SwitchViewController: DefaultListViewController {
         SwitchColorCell.register(tableView: settingList)
     }
     
-    deinit {
-        print("SwitchViewController Deinit")
-    }
 }
 
 // MARK: - UITableViewDelegate

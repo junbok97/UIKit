@@ -101,10 +101,7 @@ final class SliderViewModel: SliderViewModelProtocol {
         
         sliderSettingToCode()
     }
-    
-    deinit {
-        print("SliderViewModel Deinit")
-    }
+
 }
 
 extension SliderViewModel {

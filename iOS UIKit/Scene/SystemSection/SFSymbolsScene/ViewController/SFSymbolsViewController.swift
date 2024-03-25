@@ -99,10 +99,6 @@ final class SFSymbolsViewController: DefaultViewController {
         SFSymbolsViewControllerConstants.documentURLString
     }
     
-    deinit {
-        print("SFSymbolsViewController Deinit")
-    }
-    
 }
 
 // MARK: - 레이아웃

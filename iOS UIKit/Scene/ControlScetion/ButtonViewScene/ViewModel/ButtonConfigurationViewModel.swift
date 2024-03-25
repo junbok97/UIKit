@@ -129,11 +129,7 @@ final class ButtonConfigurationViewModel: ButtonConfigurationViewModelProtocol {
         
         buttonSettingToCode()
     }
-    
-    deinit {
-        print("ButtonConfigurationViewModel Deinit")
-    }
-    
+       
 }
 
 extension ButtonConfigurationViewModel {

@@ -78,8 +78,4 @@ final class SwitchModel {
     """
     }
     
-    deinit {
-        print("SwitchModel Deinit")
-    }
-    
 }

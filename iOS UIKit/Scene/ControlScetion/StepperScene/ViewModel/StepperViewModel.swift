@@ -98,9 +98,6 @@ final class StepperViewModel: StepperViewModelProtocol {
     }
     
 
-   deinit {
-       print("StepperViewModel Deinit")
-   }
    
 }
 

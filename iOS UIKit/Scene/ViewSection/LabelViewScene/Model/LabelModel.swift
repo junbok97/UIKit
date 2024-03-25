@@ -109,7 +109,4 @@ final class LabelModel {
         } // Switch
     }
     
-    deinit {
-        print("LabeModel Deinit")
-    }
 }

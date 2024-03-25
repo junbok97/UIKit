@@ -28,8 +28,4 @@ final class SFSymbolsModel {
         SFSymbolsSystemName.sfSymbolsSystemNameList.count <= index ? "" : SFSymbolsSystemName.sfSymbolsSystemNameList[index]
     }
     
-    deinit {
-        print("SFSymbolsModel deinit")
-    }
-    
 }

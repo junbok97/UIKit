@@ -37,8 +37,5 @@ final class ButtonCoordinator: ButtonCoordinatorProtocol {
         childCoordinators.append(child)
         child.start(viewModel)
     }
-    
-    deinit {
-        print("ButtonCoordinator Deinit")
-    }
+
 }

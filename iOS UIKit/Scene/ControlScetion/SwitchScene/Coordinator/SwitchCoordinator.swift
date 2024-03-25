@@ -29,8 +29,4 @@ final class SwitchCoordinator: SwitchCoordinatorProtocol {
         navigationController.pushViewController(viewContrller, animated: true)
     }
     
-    deinit {
-        print("SwitchCoordinator Deinit")
-    }
-    
 }

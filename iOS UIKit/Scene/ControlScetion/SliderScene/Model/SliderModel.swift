@@ -93,7 +93,4 @@ final class SliderModel: SliderModelProtocol {
         }
     }
     
-    deinit {
-        print("SliderModel Deinit")
-    }
 }

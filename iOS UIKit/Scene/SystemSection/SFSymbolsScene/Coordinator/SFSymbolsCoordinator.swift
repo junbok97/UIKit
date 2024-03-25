@@ -37,7 +37,4 @@ final class SFSymbolsCoordinator: SFSymbolsCoordinatorProtocol {
         navigationController.pushViewController(viewController, animated: true)
     }
 
-    deinit {
-        print("SFSymbolsCoordinator Deinit")
-    }
 }

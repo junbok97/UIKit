@@ -125,10 +125,6 @@ final class SliderViewController: DefaultListViewController {
         SliderImageCell.register(tableView: settingList)
     }
     
-    deinit {
-        print("SliderViewController Deinit")
-    }
-    
 }
 
 // MARK: - UITableViewDelegate

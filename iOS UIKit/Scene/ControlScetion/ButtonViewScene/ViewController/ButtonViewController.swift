@@ -90,7 +90,6 @@ final class ButtonViewController: DefaultListViewController {
         
     deinit {
         settingList = UITableView()
-        print("ButtonViewController Deinit")
     }
 }
 

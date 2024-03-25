@@ -119,10 +119,6 @@ final class StackViewController: DefaultListViewController {
         StackViewSpacingCell.register(tableView: settingList)
     }
     
-    deinit {
-        print("StackViewController Deinit")
-    }
-    
 }
 
 // MARK: - UITableViewDelegate

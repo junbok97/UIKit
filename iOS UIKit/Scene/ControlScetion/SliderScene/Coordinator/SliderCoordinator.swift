@@ -27,8 +27,4 @@ final class SliderCoordinator: SliderCoordinatorProtocol {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    deinit {
-        print("StepperCoordinator Deinit")
-    }
-
 }

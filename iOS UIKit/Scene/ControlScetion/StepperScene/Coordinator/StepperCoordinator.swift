@@ -27,7 +27,4 @@ final class StepperCoordinator: StepperCoordinatorProtocol {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    deinit {
-        print("StepperCoordinator Deinit")
-    }
 }

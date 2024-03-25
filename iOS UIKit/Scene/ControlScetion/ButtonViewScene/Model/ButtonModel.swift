@@ -80,7 +80,5 @@ final class ButtonModel: ButtonModelProtocol{
         } // Switch
     } // makeCell
     
-    deinit {
-        print("ButtonModel Deinit")
-    }
+
 }
