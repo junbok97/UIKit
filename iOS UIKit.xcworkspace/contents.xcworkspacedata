@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
-   <FileRef
-      location = "group:iOS UIKit.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
+   <Group
+      location = "group:Projects"
+      name = "Projects">
+      <Group
+         location = "group:DesignSystem"
+         name = "DesignSystem">
+         <FileRef
+            location = "group:DesignKit/DesignKit.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "Core">
+         <FileRef
+            location = "group:Projects/Core/Extensions/Extensions.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "App">
+         <FileRef
+            location = "group:Projects/App/iOS UIKit.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
 </Workspace>
