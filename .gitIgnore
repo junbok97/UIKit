@@ -53,6 +53,7 @@ DerivedData/
 
 ### Xcode Patch ###
 *.xcodeproj/*
+*.xcworkspace/xcuserdata/
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
@@ -61,4 +62,6 @@ DerivedData/
 ### Projects ###
 *.xcodeproj
 *.xcworkspace
+
+
 
