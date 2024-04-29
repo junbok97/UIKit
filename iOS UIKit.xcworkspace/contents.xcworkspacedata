@@ -15,6 +15,9 @@
          location = "container:"
          name = "Core">
          <FileRef
+            location = "group:Projects/Core/ThirdPartyKit/ThirdPartyKit.xcodeproj">
+         </FileRef>
+         <FileRef
             location = "group:Projects/Core/Extensions/Extensions.xcodeproj">
          </FileRef>
       </Group>
