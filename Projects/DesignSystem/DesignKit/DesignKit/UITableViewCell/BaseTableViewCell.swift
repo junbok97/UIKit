@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BaseTableViewCell: UITableViewCell {
+public class BaseTableViewCell: UITableViewCell {
     
     // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -24,7 +24,7 @@ class BaseTableViewCell: UITableViewCell {
     
     // MARK: - Func
     
-    override func prepareForReuse() {
+    public override func prepareForReuse() {
         super.prepareForReuse()
         reset()
     }
