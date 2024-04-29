@@ -9,20 +9,22 @@ import UIKit
 
 class BaseView: UIView {
     
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupLayout()
         setupAttribute()
+        setupLayout()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupLayout()
         setupAttribute()
+        setupLayout()
     }
     
+    
+    // MARK: - Setup
+    func setupAttribute() { }    
     func setupLayout() { }
-    
-    func setupAttribute() { }
-    
+
 }
