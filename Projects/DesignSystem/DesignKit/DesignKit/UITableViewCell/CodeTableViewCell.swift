@@ -13,6 +13,7 @@ class CodeTableViewCell: BaseTableViewCell {
     private let codeLabel: UILabel = .init()
     
     // MARK: - Func
+    
     override func setAttribute() {
         super.setAttribute()
         
@@ -26,11 +27,17 @@ class CodeTableViewCell: BaseTableViewCell {
     override func setLayout() {
         super.setLayout()
         
+        
     }
+
     
     override func reset() {
         super.reset()
-        
+        codeLabel.text = Constants.CodeLabel.defaultText
+    }
+    
+    func setupCodeLabel(_ codeString: String) {
+        codeLabel.text = codeString
     }
     
 }
