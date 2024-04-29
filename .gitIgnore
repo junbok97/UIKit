@@ -1,6 +1,6 @@
 ### Xcode Patch ###
 *.xcodeproj/*
-*.xcworkspace/xcuserdata/
+*.xcworkspace/xcuserdata/*
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
@@ -62,4 +62,7 @@ DerivedData/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
+
+
+
 
