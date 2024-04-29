@@ -7,13 +7,44 @@
 
 import UIKit
 
+import SnapKit
+
+import DesignKit
+import Extensions
+
 final class ViewController: UIViewController {
 
+    
+    private let tableView = UITableView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.addSubview(tableView)
+        
+        tableView.register(CodeTableViewCell.self)
+        tableView.dataSource = self
+        
+        tableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+   
     }
 
 
+}
+
+extension ViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeue(CodeTableViewCell.self, for: indexPath)
+        return cell
+    }
+    
+    
 }
 
