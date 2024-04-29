@@ -7,7 +7,7 @@
 
 import UIKit
 
-import SnapKit
+import PinLayout
 import Extensions
 
 public final class CodeTableViewCell: BaseTableViewCell {
@@ -29,10 +29,7 @@ public final class CodeTableViewCell: BaseTableViewCell {
         super.setLayout()
         
         contentView.addSubview(codeLabel)
-        
-        codeLabel.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(Constants.inset)
-        }
+        codeLabel.pin.all(Constants.inset)
     }
 
     

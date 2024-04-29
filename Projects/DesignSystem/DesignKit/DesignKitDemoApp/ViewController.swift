@@ -7,7 +7,7 @@
 
 import UIKit
 
-import SnapKit
+import PinLayout
 
 import DesignKit
 import Extensions
@@ -25,9 +25,7 @@ final class ViewController: UIViewController {
         tableView.register(CodeTableViewCell.self)
         tableView.dataSource = self
         
-        tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        tableView.pin.all()
    
     }
 
