@@ -1,3 +1,15 @@
+### Xcode Patch ###
+*.xcodeproj/*
+*.xcworkspace/xcuserdata/
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcworkspace/contents.xcworkspacedata
+/*.gcno
+
+### Projects ###
+*.xcodeproj
+*.xcworkspace
+
 ### macOS ###
 # General
 .DS_Store
@@ -51,17 +63,6 @@ DerivedData/
 *.perspectivev3
 !default.perspectivev3
 
-### Xcode Patch ###
-*.xcodeproj/*
-*.xcworkspace/xcuserdata/
-!*.xcodeproj/project.pbxproj
-!*.xcodeproj/xcshareddata/
-!*.xcworkspace/contents.xcworkspacedata
-/*.gcno
-
-### Projects ###
-*.xcodeproj
-*.xcworkspace
 
 
 
