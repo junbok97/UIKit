@@ -7,7 +7,10 @@
 
 import UIKit
 
-class CodeTableViewCell: BaseTableViewCell {
+import SnapKit
+import Extensions
+
+public final class CodeTableViewCell: BaseTableViewCell {
     
     // MARK: - UI
     private let codeLabel: UILabel = .init()
@@ -20,14 +23,16 @@ class CodeTableViewCell: BaseTableViewCell {
         codeLabel.backgroundColor = .systemBackground
         codeLabel.text = Constants.CodeLabel.defaultText
         codeLabel.font = Constants.CodeLabel.font
-        codeLabel.layer.cornerRadius = Constants.CodeLabel.cornerRadius
-        codeLabel.clipsToBounds = true
     }
     
     override func setLayout() {
         super.setLayout()
         
+        contentView.addSubview(codeLabel)
         
+        codeLabel.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(Constants.inset)
+        }
     }
 
     
@@ -47,11 +52,11 @@ class CodeTableViewCell: BaseTableViewCell {
 private extension CodeTableViewCell {
     
     enum Constants {
+        static var inset: CGFloat { 10 }
         
         enum CodeLabel {
-            static var defaultText: String { "default" }
+            static var defaultText: String { "default Code" }
             static var font: UIFont { .systemFont(ofSize: 16) }
-            static var cornerRadius: CGFloat { 16 }
         }
         
     }
