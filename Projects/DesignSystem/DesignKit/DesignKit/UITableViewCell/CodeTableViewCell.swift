@@ -7,41 +7,46 @@
 
 import UIKit
 
-class CodeTableViewCell: BasicTableViewCell {
+class CodeTableViewCell: BaseTableViewCell {
     
+    // MARK: - UI
     private let codeLabel: UILabel = .init()
     
-    override func attribute() {
-        super.attribute()
+    // MARK: - Func
+    override func setAttribute() {
+        super.setAttribute()
         
         codeLabel.backgroundColor = .systemBackground
-        codeLabel.textColor = .label
+        codeLabel.text = Constants.CodeLabel.defaultText
         codeLabel.font = Constants.CodeLabel.font
-        codeLabel.numberOfLines = Constants.CodeLabel.numberOfLines
-        codeLabel.translatesAutoresizingMaskIntoConstraints = false
+        codeLabel.layer.cornerRadius = Constants.CodeLabel.cornerRadius
+        codeLabel.clipsToBounds = true
     }
     
-    override func layout() {
-        super.layout()
-        contentView.addSubview(codeLabel)
+    override func setLayout() {
+        super.setLayout()
+        
     }
     
     override func reset() {
         super.reset()
-        codeLabel.text = ""
+        
     }
     
 }
 
 
-
+// MARK: - Constants
 private extension CodeTableViewCell {
     
     enum Constants {
+        
         enum CodeLabel {
-            static let font: UIFont = .systemFont(ofSize: 16)
-            static let numberOfLines = 0
+            static var defaultText: String { "default" }
+            static var font: UIFont { .systemFont(ofSize: 16) }
+            static var cornerRadius: CGFloat { 16 }
         }
+        
     }
     
 }
