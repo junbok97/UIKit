@@ -1,5 +1,6 @@
 ### Xcode Patch ###
 *.xcodeproj/*
+*.xcworkspace/xcuserdata
 *.xcworkspace/xcuserdata/*
 *.xcuserstate
 !*.xcodeproj/project.pbxproj
