@@ -1,5 +1,9 @@
 # 🍎 UIKit
 
+- [🍎 AppStore에서 UIKit 설치하기](apps.apple.com/kr/app/uikit/id6448916109)
+- [📑 UIKit Wiki](https://github.com/junbok97/iOS-UIKit/wiki)
+
+
 ## 🛠️ 프로젝트 소개  
 <p align="center">
     <img src="https://github.com/junbok97/iOS-UIKit/assets/71696675/cffabc02-721d-423e-a7d0-b1d9b198b8bf" width=40% /> <br>
@@ -10,8 +14,7 @@
 </p>
 
 
-## 🏬 AppStore
-- [🍎 UIKit 설치하기](apps.apple.com/kr/app/uikit/id6448916109)
+
 
 
 ## ▶️ 앱 실행 화면
