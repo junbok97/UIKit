@@ -8,12 +8,20 @@
 import UIKit
 
 import PinLayout
+import RxSwift
 
 import DesignKit
 import Extensions
 
-final class ViewController: UIViewController {
-
+final class ViewController: UIViewController,
+                            InputTableViewCellListener {
+    
+    
+    private let inputSubject: PublishSubject<String> = .init()
+    private var disposBag = DisposeBag()
+    
+    var inputText: AnyObserver<String> { inputSubject.asObserver() }
+    
     
     private let tableView = UITableView()
     
@@ -23,14 +31,20 @@ final class ViewController: UIViewController {
         view.addSubview(tableView)
         
         tableView.register(CodeTableViewCell.self)
+        tableView.register(InputTableViewCell.self)
         tableView.dataSource = self
         
         tableView.pin.all()
+        
+        inputSubject.subscribe {
+            print($0)
+        }.disposed(by: disposBag)
    
     }
 
 
 }
+
 
 extension ViewController: UITableViewDataSource {
     
@@ -39,7 +53,8 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(CodeTableViewCell.self, for: indexPath)
+        let cell = tableView.dequeue(InputTableViewCell.self, for: indexPath)
+        cell.bind(self)
         return cell
     }
     

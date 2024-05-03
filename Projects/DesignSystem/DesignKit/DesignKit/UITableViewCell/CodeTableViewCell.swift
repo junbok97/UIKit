@@ -22,23 +22,24 @@ public final class CodeTableViewCell: BaseTableViewCell {
         
         codeLabel.backgroundColor = .systemBackground
         codeLabel.text = Constants.CodeLabel.defaultText
-        codeLabel.font = Constants.CodeLabel.font
+        codeLabel.font = DefaultConstants.font
     }
     
     override func setLayout() {
         super.setLayout()
         
         contentView.addSubview(codeLabel)
-        codeLabel.pin.all(Constants.inset)
+        codeLabel.pin.all(DefaultConstants.inset)
     }
 
     
     override func reset() {
         super.reset()
+        
         codeLabel.text = Constants.CodeLabel.defaultText
     }
     
-    func setupCodeLabel(_ codeString: String) {
+    public func setupCodeLabel(_ codeString: String) {
         codeLabel.text = codeString
     }
     
@@ -49,11 +50,9 @@ public final class CodeTableViewCell: BaseTableViewCell {
 private extension CodeTableViewCell {
     
     enum Constants {
-        static var inset: CGFloat { 10 }
         
         enum CodeLabel {
             static var defaultText: String { "default Code" }
-            static var font: UIFont { .systemFont(ofSize: 16) }
         }
         
     }
