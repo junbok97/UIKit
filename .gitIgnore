@@ -1,10 +1,13 @@
 ### Xcode Patch ###
 *.xcodeproj/*
 *.xcworkspace/xcuserdata
+*.xcworkspace/xcuserdata/
 *.xcworkspace/xcuserdata/*
 *.xcuserstate
 !*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata
 !*.xcodeproj/xcshareddata/
+!*.xcodeproj/xcshareddata/*
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 
