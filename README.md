@@ -33,6 +33,15 @@
 </table>
 
 
-## 🤔 트러블 슈팅
+# 🤷🏻 의사 결정록
+
+## 3️⃣ Third Party Library
+- [FlexLayout & PinLayout](https://github.com/junbok97/iOS-UIKit/wiki/%5BThird-Party-Library%5D-FlexLayout-&-PinLayout)
+
+# 🎯 Trouble Shooting
+- [SwiftLint Sandbox Error](https://github.com/junbok97/iOS-UIKit/wiki/%5BTrouble-Shooting%5D-SwiftLint-Sandbox-Error)
+- [SwiftLint 모듈에 적용하기](https://github.com/junbok97/iOS-UIKit/wiki/%5BTrouble-Shooting%5D-%1DSwiftLint-%EB%AA%A8%EB%93%88%EC%97%90-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0)
 - [하위 뷰의 frame이 잡히지 않을 때](https://junbok97.tistory.com/319)
 - [Cell에서 bind할 때 주의점](https://junbok97.tistory.com/315)
+
+
