@@ -7,25 +7,37 @@
       <Group
          location = "group:DesignSystem"
          name = "DesignSystem">
-         <FileRef
-            location = "group:DesignKit/DesignKit.xcodeproj">
-         </FileRef>
+         <Group
+            location = "group:DesignKit"
+            name = "DesignKit">
+            <FileRef
+               location = "group:DesignKit.xcodeproj">
+            </FileRef>
+         </Group>
       </Group>
       <Group
-         location = "container:"
+         location = "group:Core"
          name = "Core">
-         <FileRef
-            location = "group:Projects/Core/ThirdPartyKit/ThirdPartyKit.xcodeproj">
-         </FileRef>
-         <FileRef
-            location = "group:Projects/Core/Extensions/Extensions.xcodeproj">
-         </FileRef>
+         <Group
+            location = "group:Extensions"
+            name = "Extensions">
+            <FileRef
+               location = "group:Extensions.xcodeproj">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:ThirdPartyKit"
+            name = "ThirdPartyKit">
+            <FileRef
+               location = "group:ThirdPartyKit.xcodeproj">
+            </FileRef>
+         </Group>
       </Group>
       <Group
-         location = "container:"
+         location = "group:App"
          name = "App">
          <FileRef
-            location = "group:Projects/App/iOS UIKit.xcodeproj">
+            location = "group:iOS UIKit.xcodeproj">
          </FileRef>
       </Group>
    </Group>
