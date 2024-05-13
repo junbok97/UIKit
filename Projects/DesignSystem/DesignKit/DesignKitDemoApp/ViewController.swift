@@ -14,7 +14,7 @@ import DesignKit
 import Extensions
 
 final class ViewController: UIViewController,
-                            InputTableViewCellListener,
+                            DKInputTableViewCellListener,
                             ColorTableViewCellListener {
     
     
@@ -36,7 +36,7 @@ final class ViewController: UIViewController,
         view.addSubview(tableView)
         
         tableView.register(DKLabelTableViewCell.self)
-        tableView.register(InputTableViewCell.self)
+        tableView.register(DKInputTableViewCell.self)
         tableView.register(ColorTableViewCell.self)
         tableView.dataSource = self
         

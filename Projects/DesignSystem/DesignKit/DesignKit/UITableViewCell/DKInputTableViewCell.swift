@@ -13,11 +13,11 @@ import RxCocoa
 
 import Extensions
 
-public protocol InputTableViewCellListener: AnyObject {
+public protocol DKInputTableViewCellListener: AnyObject {
     var inputText: AnyObserver<String> { get }
 }
 
-public final class InputTableViewCell: DKBaseTableViewCell {
+public final class DKInputTableViewCell: DKBaseTableViewCell {
     
     // MARK: - Attribute
     private var disposeBag = DisposeBag()
@@ -49,7 +49,7 @@ public final class InputTableViewCell: DKBaseTableViewCell {
         inputTextField.placeholder = Constants.InputTextField.placeHolder
     }
     
-    public func bind(_ listener: InputTableViewCellListener) {
+    public func bind(_ listener: DKInputTableViewCellListener) {
     
         inputTextField.rx.text
             .compactMap { $0 }
@@ -60,7 +60,7 @@ public final class InputTableViewCell: DKBaseTableViewCell {
 }
 
 // MARK: - UITextFieldDelegate
-extension InputTableViewCell: UITextFieldDelegate {
+extension DKInputTableViewCell: UITextFieldDelegate {
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -70,7 +70,7 @@ extension InputTableViewCell: UITextFieldDelegate {
 }
 
 // MARK: - Constants
-private extension InputTableViewCell {
+private extension DKInputTableViewCell {
     
     enum Constants {
         
