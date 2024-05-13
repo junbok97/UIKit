@@ -1,5 +1,5 @@
 //
-//  LabelTableViewCell.swift
+//  DKLabelTableViewCell.swift
 //  DesignKit
 //
 //  Created by 이준복 on 3/25/24.
@@ -10,7 +10,7 @@ import UIKit
 import PinLayout
 import Extensions
 
-public final class LabelTableViewCell: BaseTableViewCell {
+public final class DKLabelTableViewCell: DKBaseTableViewCell {
     
     // MARK: - UI
     private let label: UILabel = .init()
@@ -53,7 +53,7 @@ public final class LabelTableViewCell: BaseTableViewCell {
 
 
 // MARK: - Constants
-private extension LabelTableViewCell {
+private extension DKLabelTableViewCell {
     
     enum Constants {
         

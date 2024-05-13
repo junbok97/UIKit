@@ -1,5 +1,5 @@
 //
-//  ColorTableViewCell.swift
+//  DKColorTableViewCell.swift
 //  DesignKit
 //
 //  Created by 이준복 on 5/9/24.
@@ -14,11 +14,11 @@ import RxCocoa
 
 import Extensions
 
-public protocol ColorTableViewCellListener: AnyObject {
+public protocol DKColorTableViewCellListener: AnyObject {
     var selectColor: AnyObserver<UIColor> { get }
 }
 
-public final class ColorTableViewCell: BaseTableViewCell {
+public final class DKColorTableViewCell: DKBaseTableViewCell {
     
     // MARK: - Attribute
     private var disposeBag = DisposeBag()
@@ -66,7 +66,7 @@ public final class ColorTableViewCell: BaseTableViewCell {
         titleLabel.text = title
     }
     
-    public func bind(_ listener: ColorTableViewCellListener) {
+    public func bind(_ listener: DKColorTableViewCellListener) {
         colorWell.rx.controlEvent(.valueChanged)
             .withUnretained(self)
             .compactMap { (object, _) -> UIColor? in
@@ -81,7 +81,7 @@ public final class ColorTableViewCell: BaseTableViewCell {
 
 // MARK: - Constants
 
-private extension ColorTableViewCell {
+private extension DKColorTableViewCell {
     
     enum Constants {
         enum TitleLabel {

@@ -1,5 +1,5 @@
 //
-//  BaseTableViewCell.swift
+//  DKBaseTableViewCell.swift
 //  DesignKit
 //
 //  Created by 이준복 on 3/25/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class BaseTableViewCell: UITableViewCell {
+public class DKBaseTableViewCell: UITableViewCell {
     
     // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
