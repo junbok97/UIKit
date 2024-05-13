@@ -14,7 +14,79 @@ import RxCocoa
 
 import Extensions
 
+public protocol ColorTableViewCellListener: AnyObject {
+    var selectColor: AnyObserver<UIColor> { get }
+}
+
 public final class ColorTableViewCell: BaseTableViewCell {
     
+    // MARK: - Attribute
+    private var disposeBag = DisposeBag()
     
+    // MARK: - UI
+    private let rootFlexContainer: UIView = UIView()
+    private let titleLabel: UILabel = .init()
+    private let colorWell: UIColorWell = .init()
+    
+    // MARK: - Func
+    
+    override func setAttribute() {
+        super.setAttribute()
+        
+        titleLabel.font = DefaultConstants.font
+        titleLabel.textColor = .label
+        titleLabel.text = Constants.TitleLabel.defaultText
+    }
+    
+    override func setLayout() {
+        super.setLayout()
+        
+        contentView.addSubview(rootFlexContainer)
+        
+        rootFlexContainer.flex.direction(.row).define { flex in
+            flex.addItem(titleLabel).grow(1)
+            flex.addItem(colorWell)
+        }
+    }
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        rootFlexContainer.pin.all(DefaultConstants.inset)
+        rootFlexContainer.flex.layout(mode: .adjustHeight)
+    }
+    
+    override func reset() {
+        super.reset()
+        
+        titleLabel.text = Constants.TitleLabel.defaultText
+        disposeBag = DisposeBag()
+    }
+    
+    public func setupTitleLabel(_ title: String) {
+        titleLabel.text = title
+    }
+    
+    public func bind(_ listener: ColorTableViewCellListener) {
+        colorWell.rx.controlEvent(.valueChanged)
+            .withUnretained(self)
+            .compactMap { (object, _) -> UIColor? in
+                object.colorWell.selectedColor
+            }
+            .distinctUntilChanged()
+            .bind(to: listener.selectColor)
+            .disposed(by: disposeBag)
+    }
+    
+}
+
+// MARK: - Constants
+
+private extension ColorTableViewCell {
+    
+    enum Constants {
+        enum TitleLabel {
+            static var defaultText: String { "default Color" }
+        }
+        
+    }
 }

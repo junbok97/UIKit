@@ -14,13 +14,18 @@ import DesignKit
 import Extensions
 
 final class ViewController: UIViewController,
-                            InputTableViewCellListener {
+                            InputTableViewCellListener,
+                            ColorTableViewCellListener {
     
     
-    private let inputSubject: PublishSubject<String> = .init()
+    private let inputTextSubject: PublishSubject<String> = .init()
+    private let selectColorSubject: PublishSubject<UIColor> = .init()
+    
     private var disposBag = DisposeBag()
     
-    var inputText: AnyObserver<String> { inputSubject.asObserver() }
+    
+    var inputText: AnyObserver<String> { inputTextSubject.asObserver() }
+    var selectColor: AnyObserver<UIColor> { selectColorSubject.asObserver() }
     
     
     private let tableView = UITableView()
@@ -32,11 +37,16 @@ final class ViewController: UIViewController,
         
         tableView.register(CodeTableViewCell.self)
         tableView.register(InputTableViewCell.self)
+        tableView.register(ColorTableViewCell.self)
         tableView.dataSource = self
         
         tableView.pin.all()
         
-        inputSubject.subscribe {
+        inputTextSubject.subscribe {
+            print($0)
+        }.disposed(by: disposBag)
+        
+        selectColorSubject.subscribe {
             print($0)
         }.disposed(by: disposBag)
    
@@ -53,7 +63,7 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(InputTableViewCell.self, for: indexPath)
+        let cell = tableView.dequeue(ColorTableViewCell.self, for: indexPath)
         cell.bind(self)
         return cell
     }
