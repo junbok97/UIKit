@@ -1,5 +1,5 @@
 //
-//  ColorTableViewCell.swift
+//  DKColorTableViewCell.swift
 //  DesignKit
 //
 //  Created by 이준복 on 5/9/24.

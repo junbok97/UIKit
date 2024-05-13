@@ -1,5 +1,5 @@
 //
-//  LabelTableViewCell.swift
+//  DKLabelTableViewCell.swift
 //  DesignKit
 //
 //  Created by 이준복 on 3/25/24.
