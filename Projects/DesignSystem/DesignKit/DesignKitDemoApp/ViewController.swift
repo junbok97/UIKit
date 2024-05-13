@@ -15,7 +15,7 @@ import Extensions
 
 final class ViewController: UIViewController,
                             DKInputTableViewCellListener,
-                            ColorTableViewCellListener {
+                            DKColorTableViewCellListener {
     
     
     private let inputTextSubject: PublishSubject<String> = .init()
@@ -37,7 +37,7 @@ final class ViewController: UIViewController,
         
         tableView.register(DKLabelTableViewCell.self)
         tableView.register(DKInputTableViewCell.self)
-        tableView.register(ColorTableViewCell.self)
+        tableView.register(DKColorTableViewCell.self)
         tableView.dataSource = self
         
         tableView.pin.all()
@@ -63,7 +63,7 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(ColorTableViewCell.self, for: indexPath)
+        let cell = tableView.dequeue(DKColorTableViewCell.self, for: indexPath)
         cell.bind(self)
         return cell
     }
