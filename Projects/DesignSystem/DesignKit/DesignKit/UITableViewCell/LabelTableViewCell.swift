@@ -22,14 +22,14 @@ public final class LabelTableViewCell: BaseTableViewCell {
         
         label.backgroundColor = .systemBackground
         label.text = Constants.Label.defaultText
-        label.font = DefaultConstants.font
+        label.font = DKDefaultConstants.font
     }
     
     override func setLayout() {
         super.setLayout()
         
         contentView.addSubview(label)
-        label.pin.all(DefaultConstants.inset)
+        label.pin.all(DKDefaultConstants.inset)
     }
 
     
@@ -39,8 +39,14 @@ public final class LabelTableViewCell: BaseTableViewCell {
         label.text = Constants.Label.defaultText
     }
     
-    public func setupLabel(_ text: String) {
+    public func setup(
+        _ text: String,
+        _ weight: UIFont.Weight = .regular,
+        _ textAlignment: NSTextAlignment = .left
+    ) {
         label.text = text
+        label.font = .systemFont(ofSize: DKDefaultConstants.fontSize, weight: weight)
+        label.textAlignment = textAlignment
     }
     
 }

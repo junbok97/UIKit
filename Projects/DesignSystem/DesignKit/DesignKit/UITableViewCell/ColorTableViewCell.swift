@@ -33,7 +33,7 @@ public final class ColorTableViewCell: BaseTableViewCell {
     override func setAttribute() {
         super.setAttribute()
         
-        titleLabel.font = DefaultConstants.font
+        titleLabel.font = DKDefaultConstants.font
         titleLabel.textColor = .label
         titleLabel.text = Constants.TitleLabel.defaultText
     }
@@ -51,7 +51,7 @@ public final class ColorTableViewCell: BaseTableViewCell {
     
     public override func layoutSubviews() {
         super.layoutSubviews()
-        rootFlexContainer.pin.all(DefaultConstants.inset)
+        rootFlexContainer.pin.all(DKDefaultConstants.inset)
         rootFlexContainer.flex.layout(mode: .adjustHeight)
     }
     
