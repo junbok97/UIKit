@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class BaseView: UIView {
+public class DKBaseView: UIView {
     
     // MARK: - Init
     override init(frame: CGRect) {

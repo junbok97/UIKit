@@ -1,5 +1,5 @@
 //
-//  InputTableViewCell.swift
+//  DKInputTableViewCell.swift
 //  DesignKit
 //
 //  Created by 이준복 on 5/3/24.
