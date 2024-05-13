@@ -50,6 +50,7 @@ public final class InputTableViewCell: BaseTableViewCell {
     }
     
     public func bind(_ listener: InputTableViewCellListener) {
+    
         inputTextField.rx.text
             .compactMap { $0 }
             .subscribe(listener.inputText)

@@ -11,7 +11,7 @@ enum DefaultConstants {
     
     
     
-    static var inset: CGFloat { 10 }
+    static var inset: CGFloat { 12 }
     static var font: UIFont { .systemFont(ofSize: 16) }
     
     static var documentURLString: String { "https://developer.apple.com/documentation/uikit" }
