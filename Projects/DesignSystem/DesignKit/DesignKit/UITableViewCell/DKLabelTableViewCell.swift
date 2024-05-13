@@ -10,7 +10,7 @@ import UIKit
 import PinLayout
 import Extensions
 
-public final class LabelTableViewCell: DKBaseTableViewCell {
+public final class DKLabelTableViewCell: DKBaseTableViewCell {
     
     // MARK: - UI
     private let label: UILabel = .init()
@@ -53,7 +53,7 @@ public final class LabelTableViewCell: DKBaseTableViewCell {
 
 
 // MARK: - Constants
-private extension LabelTableViewCell {
+private extension DKLabelTableViewCell {
     
     enum Constants {
         

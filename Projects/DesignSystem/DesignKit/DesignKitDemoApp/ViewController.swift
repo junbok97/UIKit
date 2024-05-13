@@ -35,7 +35,7 @@ final class ViewController: UIViewController,
         
         view.addSubview(tableView)
         
-        tableView.register(LabelTableViewCell.self)
+        tableView.register(DKLabelTableViewCell.self)
         tableView.register(InputTableViewCell.self)
         tableView.register(ColorTableViewCell.self)
         tableView.dataSource = self
