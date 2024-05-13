@@ -17,7 +17,7 @@ public protocol InputTableViewCellListener: AnyObject {
     var inputText: AnyObserver<String> { get }
 }
 
-public final class InputTableViewCell: BaseTableViewCell {
+public final class InputTableViewCell: DKBaseTableViewCell {
     
     // MARK: - Attribute
     private var disposeBag = DisposeBag()

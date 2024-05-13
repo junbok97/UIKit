@@ -10,7 +10,7 @@ import UIKit
 import PinLayout
 import Extensions
 
-public final class LabelTableViewCell: BaseTableViewCell {
+public final class LabelTableViewCell: DKBaseTableViewCell {
     
     // MARK: - UI
     private let label: UILabel = .init()

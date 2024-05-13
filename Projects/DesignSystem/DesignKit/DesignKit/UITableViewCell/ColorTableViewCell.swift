@@ -18,7 +18,7 @@ public protocol ColorTableViewCellListener: AnyObject {
     var selectColor: AnyObserver<UIColor> { get }
 }
 
-public final class ColorTableViewCell: BaseTableViewCell {
+public final class ColorTableViewCell: DKBaseTableViewCell {
     
     // MARK: - Attribute
     private var disposeBag = DisposeBag()

@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class BaseTableViewCell: UITableViewCell {
+public class DKBaseTableViewCell: UITableViewCell {
     
     // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
