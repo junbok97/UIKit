@@ -32,14 +32,14 @@ public final class InputTableViewCell: BaseTableViewCell {
         
         inputTextField.returnKeyType = .done
         inputTextField.placeholder = Constants.InputTextField.placeHolder
-        inputTextField.font = DefaultConstants.font
+        inputTextField.font = DKDefaultConstants.font
     }
     
     override func setLayout() {
         super.setLayout()
         
         contentView.addSubview(inputTextField)
-        inputTextField.pin.all(DefaultConstants.inset)
+        inputTextField.pin.all(DKDefaultConstants.inset)
     }
     
     override func reset() {
