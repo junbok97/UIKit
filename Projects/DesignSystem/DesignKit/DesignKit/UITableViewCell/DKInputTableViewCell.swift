@@ -14,7 +14,7 @@ import RxCocoa
 import Extensions
 
 public protocol DKInputTableViewCellListener: AnyObject {
-    var inputText: AnyObserver<String> { get }
+    func textChanged(_ text: String)
 }
 
 public final class DKInputTableViewCell: DKBaseTableViewCell {
@@ -53,7 +53,7 @@ public final class DKInputTableViewCell: DKBaseTableViewCell {
     
         inputTextField.rx.text
             .compactMap { $0 }
-            .subscribe(listener.inputText)
+            .bind(onNext: listener.textChanged)
             .disposed(by: disposeBag)
     }
     

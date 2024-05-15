@@ -15,7 +15,7 @@ import RxCocoa
 import Extensions
 
 public protocol DKColorTableViewCellListener: AnyObject {
-    var selectColor: AnyObserver<UIColor> { get }
+    func selectedColor(_ selectColor: UIColor)
 }
 
 public final class DKColorTableViewCell: DKBaseTableViewCell {
@@ -73,7 +73,7 @@ public final class DKColorTableViewCell: DKBaseTableViewCell {
                 object.colorWell.selectedColor
             }
             .distinctUntilChanged()
-            .bind(to: listener.selectColor)
+            .bind(onNext: listener.selectedColor)
             .disposed(by: disposeBag)
     }
     
