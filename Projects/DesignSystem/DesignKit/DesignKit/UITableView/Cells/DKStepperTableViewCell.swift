@@ -1,5 +1,5 @@
 //
-//  DKNumberOfLinesTableViewCell.swift
+//  DKStepperTableViewCell.swift
 //  DesignKit
 //
 //  Created by 이준복 on 5/13/24.
@@ -12,12 +12,12 @@ import FlexLayout
 import RxSwift
 import RxCocoa
 
-public protocol DKNumberOfLinesTableViewCellListener: AnyObject {
+public protocol DKStepperTableViewCellListener: AnyObject {
     var stepperChangedValue: AnyObserver<Double> { get }
     var stepperCurrentValue: Observable<Double> { get }
 }
 
-public final class DKNumberOfLinesTableViewCell: DKBaseTableViewCell {
+public final class DKStepperTableViewCell: DKBaseTableViewCell {
     
     // MARK: - Properties
     private var disposeBag = DisposeBag()
@@ -26,12 +26,6 @@ public final class DKNumberOfLinesTableViewCell: DKBaseTableViewCell {
     private let titleLabel: UILabel = .init()
     private let stepperCurrentValueLabel: UILabel = .init()
     private let stepper: UIStepper = .init()
-    
-    private let testView = {
-       let view = UIView()
-        view.backgroundColor = .red
-        return view
-    }()
     
     // MARK: - View Life Cycles
     public override func layoutSubviews() {
@@ -81,10 +75,16 @@ public final class DKNumberOfLinesTableViewCell: DKBaseTableViewCell {
         super.reset()
         
         disposeBag = DisposeBag()
+        titleLabel.text = Constants.TitleLabel.defaultText
         stepper.value = Constants.Stepper.defaultValue
     }
     
-    public func bind(_ listener: DKNumberOfLinesTableViewCellListener) {
+    public func setupTitle(_ title: String) {
+        titleLabel.text = title
+    }
+    
+    // MARK: - Bind
+    public func bind(_ listener: DKStepperTableViewCellListener) {
         stepper.rx.value
             .bind(to: listener.stepperChangedValue)
             .disposed(by: disposeBag)
@@ -100,11 +100,11 @@ public final class DKNumberOfLinesTableViewCell: DKBaseTableViewCell {
 }
 
 // MARK: - Constants
-private extension DKNumberOfLinesTableViewCell {
+private extension DKStepperTableViewCell {
     
     enum Constants {
         enum TitleLabel {
-            static var defaultText: String { "Lines" }
+            static var defaultText: String { "Stepper" }
         }
         
         enum StepperValueLabel {

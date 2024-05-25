@@ -17,9 +17,7 @@ public class DKBaseTableViewCell: UITableViewCell {
     }
     
     required init?(coder: NSCoder) {
-        super.init(style: .default, reuseIdentifier: nil)
-        setAttribute()
-        setLayout()
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Cell Life Cycle
@@ -37,7 +35,6 @@ public class DKBaseTableViewCell: UITableViewCell {
     }
     
     func setLayout() {}
-    
     func reset() {}
     
 }

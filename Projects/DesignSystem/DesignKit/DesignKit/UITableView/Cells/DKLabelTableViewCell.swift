@@ -32,7 +32,6 @@ public final class DKLabelTableViewCell: DKBaseTableViewCell {
         label.pin.all(DKDefaultConstants.padding)
     }
 
-    
     override func reset() {
         super.reset()
         

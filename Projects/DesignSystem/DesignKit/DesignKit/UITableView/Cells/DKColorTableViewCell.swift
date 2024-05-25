@@ -74,6 +74,7 @@ public final class DKColorTableViewCell: DKBaseTableViewCell {
         titleLabel.text = title
     }
     
+    // MARK: - Bind
     public func bind(_ listener: DKColorTableViewCellListener) {
         colorWell.rx.controlEvent(.valueChanged)
             .withUnretained(self)

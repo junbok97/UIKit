@@ -52,6 +52,7 @@ public final class DKInputTableViewCell: DKBaseTableViewCell {
         inputTextField.placeholder = placeholder
     }
     
+    // MARK: - Bind
     public func bind(_ listener: DKInputTableViewCellListener) {
         inputTextField.rx.text
             .compactMap { $0 }
