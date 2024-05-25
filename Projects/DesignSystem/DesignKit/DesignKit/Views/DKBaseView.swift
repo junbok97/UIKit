@@ -17,11 +17,8 @@ public class DKBaseView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupAttribute()
-        setupLayout()
+        fatalError("init(coder:) has not been implemented")
     }
-    
     
     // MARK: - Setup
     func setupAttribute() { }    

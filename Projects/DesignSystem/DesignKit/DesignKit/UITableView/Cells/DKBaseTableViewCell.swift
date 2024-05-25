@@ -17,25 +17,24 @@ public class DKBaseTableViewCell: UITableViewCell {
     }
     
     required init?(coder: NSCoder) {
-        super.init(style: .default, reuseIdentifier: nil)
-        setAttribute()
-        setLayout()
+        fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Func
+    // MARK: - Cell Life Cycle
     
     public override func prepareForReuse() {
         super.prepareForReuse()
         reset()
     }
     
+    // MARK: - View Methods
     func setAttribute() {
         backgroundColor = .systemBackground
         selectionStyle = .none
+        separatorInset = .zero
     }
     
     func setLayout() {}
-    
     func reset() {}
     
 }

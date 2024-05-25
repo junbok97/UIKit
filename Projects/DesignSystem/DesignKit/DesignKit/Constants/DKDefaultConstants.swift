@@ -10,7 +10,7 @@ import UIKit
 public enum DKDefaultConstants {
     
     
-    public static var inset: CGFloat { 12 }
+    public static var padding: CGFloat { 12 }
     public static var fontSize: CGFloat { 16 }
     public static var font: UIFont { .systemFont(ofSize: fontSize) }
     

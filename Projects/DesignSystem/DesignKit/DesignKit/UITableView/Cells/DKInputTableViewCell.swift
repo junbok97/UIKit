@@ -14,19 +14,18 @@ import RxCocoa
 import Extensions
 
 public protocol DKInputTableViewCellListener: AnyObject {
-    var inputText: AnyObserver<String> { get }
+    func textChanged(_ text: String)
 }
 
 public final class DKInputTableViewCell: DKBaseTableViewCell {
     
-    // MARK: - Attribute
+    // MARK: - Properties
     private var disposeBag = DisposeBag()
     
     // MARK: - UI
     private let inputTextField: UITextField = .init()
 
-    // MARK: - Func
-    
+    // MARK: - View Methods
     override func setAttribute() {
         super.setAttribute()
         
@@ -39,7 +38,7 @@ public final class DKInputTableViewCell: DKBaseTableViewCell {
         super.setLayout()
         
         contentView.addSubview(inputTextField)
-        inputTextField.pin.all(DKDefaultConstants.inset)
+        inputTextField.pin.all(DKDefaultConstants.padding)
     }
     
     override func reset() {
@@ -49,11 +48,15 @@ public final class DKInputTableViewCell: DKBaseTableViewCell {
         inputTextField.placeholder = Constants.InputTextField.placeHolder
     }
     
-    public func bind(_ listener: DKInputTableViewCellListener) {
+    public func setupPlaceholder(_ placeholder: String) {
+        inputTextField.placeholder = placeholder
+    }
     
+    // MARK: - Bind
+    public func bind(_ listener: DKInputTableViewCellListener) {
         inputTextField.rx.text
             .compactMap { $0 }
-            .subscribe(listener.inputText)
+            .bind(onNext: listener.textChanged)
             .disposed(by: disposeBag)
     }
     
@@ -67,13 +70,14 @@ extension DKInputTableViewCell: UITextFieldDelegate {
         return true
     }
     
+    
+    
 }
 
 // MARK: - Constants
 private extension DKInputTableViewCell {
     
     enum Constants {
-        
         enum InputTextField {
             static var placeHolder: String { "Input Text" }
         }
