@@ -7,10 +7,10 @@
 
 import UIKit
 
-class DKBaseViewController: UIViewController {
+public class DKBaseViewController: UIViewController {
     
     // MARK: - View Life Cycles
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         setupAttribte()

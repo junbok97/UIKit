@@ -42,6 +42,10 @@ final class ViewController: UIViewController,
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.dataSource = self
+        tableView.delegate = self
+        
+        navigationController?.navigationBar.tintColor = .label
+        navigationItem.backButtonTitle = ""
        
         tableView.pin.all()
         
@@ -68,11 +72,11 @@ final class ViewController: UIViewController,
 }
 
 
-extension ViewController: UITableViewDataSource {
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        3
-//    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        3
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 2 {
@@ -89,6 +93,12 @@ extension ViewController: UITableViewDataSource {
             return tableView.dequeue(DKColorTableViewCell.self, for: indexPath)
         } else {
             return tableView.dequeue(DKLabelTableViewCell.self, for: indexPath)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 2 {
+            navigationController?.pushViewController(DKTableViewController(), animated: true)
         }
     }
     
