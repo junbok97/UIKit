@@ -19,14 +19,13 @@ public protocol DKInputTableViewCellListener: AnyObject {
 
 public final class DKInputTableViewCell: DKBaseTableViewCell {
     
-    // MARK: - Attribute
+    // MARK: - Properties
     private var disposeBag = DisposeBag()
     
     // MARK: - UI
     private let inputTextField: UITextField = .init()
 
-    // MARK: - Func
-    
+    // MARK: - View Methods
     override func setAttribute() {
         super.setAttribute()
         
@@ -39,7 +38,7 @@ public final class DKInputTableViewCell: DKBaseTableViewCell {
         super.setLayout()
         
         contentView.addSubview(inputTextField)
-        inputTextField.pin.all(DKDefaultConstants.inset)
+        inputTextField.pin.all(DKDefaultConstants.padding)
     }
     
     override func reset() {
@@ -49,8 +48,11 @@ public final class DKInputTableViewCell: DKBaseTableViewCell {
         inputTextField.placeholder = Constants.InputTextField.placeHolder
     }
     
-    public func bind(_ listener: DKInputTableViewCellListener) {
+    public func setupPlaceholder(_ placeholder: String) {
+        inputTextField.placeholder = placeholder
+    }
     
+    public func bind(_ listener: DKInputTableViewCellListener) {
         inputTextField.rx.text
             .compactMap { $0 }
             .bind(onNext: listener.textChanged)
@@ -67,13 +69,14 @@ extension DKInputTableViewCell: UITextFieldDelegate {
         return true
     }
     
+    
+    
 }
 
 // MARK: - Constants
 private extension DKInputTableViewCell {
     
     enum Constants {
-        
         enum InputTextField {
             static var placeHolder: String { "Input Text" }
         }

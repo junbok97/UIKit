@@ -22,16 +22,18 @@ public class DKBaseTableViewCell: UITableViewCell {
         setLayout()
     }
     
-    // MARK: - Func
+    // MARK: - Cell Life Cycle
     
     public override func prepareForReuse() {
         super.prepareForReuse()
         reset()
     }
     
+    // MARK: - View Methods
     func setAttribute() {
         backgroundColor = .systemBackground
         selectionStyle = .none
+        separatorInset = .zero
     }
     
     func setLayout() {}

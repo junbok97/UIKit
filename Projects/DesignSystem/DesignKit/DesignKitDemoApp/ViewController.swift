@@ -17,7 +17,6 @@ final class ViewController: UIViewController,
                             DKInputTableViewCellListener,
                             DKColorTableViewCellListener {
     
-    
     private let inputTextSubject: PublishSubject<String> = .init()
     private let selectColorSubject: PublishSubject<UIColor> = .init()
     
@@ -28,18 +27,22 @@ final class ViewController: UIViewController,
     var selectColor: AnyObserver<UIColor> { selectColorSubject.asObserver() }
     
     
-    private let tableView = UITableView()
+    private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .white
         view.addSubview(tableView)
         
         tableView.register(DKLabelTableViewCell.self)
         tableView.register(DKInputTableViewCell.self)
         tableView.register(DKColorTableViewCell.self)
-        tableView.dataSource = self
+        tableView.register(DKNumberOfLinesTableViewCell.self)
         
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.dataSource = self
+       
         tableView.pin.all()
         
         inputTextSubject.subscribe {
@@ -51,6 +54,15 @@ final class ViewController: UIViewController,
         }.disposed(by: disposBag)
    
     }
+    
+
+    func textChanged(_ text: String) {
+        inputTextSubject.onNext(text)
+    }
+    
+    func colorSelected(_ selectedColor: UIColor) {
+        selectColorSubject.onNext(selectedColor)
+    }
 
 
 }
@@ -58,14 +70,26 @@ final class ViewController: UIViewController,
 
 extension ViewController: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        3
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        if section == 2 {
+            return 30
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(DKColorTableViewCell.self, for: indexPath)
-        cell.bind(self)
-        return cell
+        if indexPath.section == 0 {
+            return tableView.dequeue(DKNumberOfLinesTableViewCell.self, for: indexPath)
+        } else if indexPath.section == 1 {
+            return tableView.dequeue(DKColorTableViewCell.self, for: indexPath)
+        } else {
+            return tableView.dequeue(DKLabelTableViewCell.self, for: indexPath)
+        }
     }
     
     

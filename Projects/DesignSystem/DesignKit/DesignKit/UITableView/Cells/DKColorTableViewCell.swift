@@ -15,21 +15,35 @@ import RxCocoa
 import Extensions
 
 public protocol DKColorTableViewCellListener: AnyObject {
-    func selectedColor(_ selectColor: UIColor)
+    func colorSelected(_ selectedColor: UIColor)
 }
 
 public final class DKColorTableViewCell: DKBaseTableViewCell {
     
-    // MARK: - Attribute
+    // MARK: - Properties
     private var disposeBag = DisposeBag()
     
     // MARK: - UI
-    private let rootFlexContainer: UIView = UIView()
     private let titleLabel: UILabel = .init()
     private let colorWell: UIColorWell = .init()
     
-    // MARK: - Func
+    // MARK: - View Life Cycles
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        layout()
+    }
     
+    public override func sizeThatFits(_ size: CGSize) -> CGSize {
+        contentView.pin.width(size.width)
+        layout()
+        return contentView.frame.size
+    }
+    
+    // MARK: - View Methods
+    private func layout() {
+        contentView.flex.layout(mode: .adjustHeight)
+    }
+
     override func setAttribute() {
         super.setAttribute()
         
@@ -41,25 +55,19 @@ public final class DKColorTableViewCell: DKBaseTableViewCell {
     override func setLayout() {
         super.setLayout()
         
-        contentView.addSubview(rootFlexContainer)
-        
-        rootFlexContainer.flex.direction(.row).define { flex in
-            flex.addItem(titleLabel).grow(1)
-            flex.addItem(colorWell)
+        contentView.flex.padding(DKDefaultConstants.padding).define { flex in
+            flex.addItem().direction(.row).define { flex in
+                flex.addItem(titleLabel).grow(1)
+                flex.addItem(colorWell)
+            }
         }
-    }
-    
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        rootFlexContainer.pin.all(DKDefaultConstants.inset)
-        rootFlexContainer.flex.layout(mode: .adjustHeight)
     }
     
     override func reset() {
         super.reset()
         
-        titleLabel.text = Constants.TitleLabel.defaultText
         disposeBag = DisposeBag()
+        titleLabel.text = Constants.TitleLabel.defaultText
     }
     
     public func setupTitleLabel(_ title: String) {
@@ -73,20 +81,18 @@ public final class DKColorTableViewCell: DKBaseTableViewCell {
                 object.colorWell.selectedColor
             }
             .distinctUntilChanged()
-            .bind(onNext: listener.selectedColor)
+            .bind(onNext: listener.colorSelected)
             .disposed(by: disposeBag)
     }
     
 }
 
 // MARK: - Constants
-
 private extension DKColorTableViewCell {
     
     enum Constants {
         enum TitleLabel {
             static var defaultText: String { "default Color" }
         }
-        
     }
 }
