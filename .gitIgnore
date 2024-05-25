@@ -1,5 +1,5 @@
 ### Xcode Patch ###
-iOS UIKit.xcworkspace/xcuserdata/junbok.xcuserdatad/UserInterfaceState.xcuserstate
+iOS-UIKit.xcworkspace/xcuserdata/junbok.xcuserdatad/UserInterfaceState.xcuserstate
 *.xcodeproj/*
 *.xcworkspace/xcuserdata
 *.xcworkspace/xcuserdata/
@@ -68,7 +68,3 @@ DerivedData/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-
-
-
-
