@@ -8,9 +8,11 @@
 import Foundation
 
 enum ButtonColorType: String, Equatable {
+    
     case titleColor = "Title Color"
     case subTitleColor = "SubTitle Color"
     case tintColor = "Tint Color"
     case backgroundColor = "Background Color"
     case foregroundColor = "Foreground Color"
+    
 }

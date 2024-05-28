@@ -8,16 +8,22 @@
 import UIKit
 
 public extension UITableViewCell {
+    
     static var id: String {
         String(describing: self)
     }
+    
 }
 
+
 public extension UITableViewHeaderFooterView {
+    
     static var id: String {
         String(describing: self)
     }
+    
 }
+
 
 public extension UITableView {
     

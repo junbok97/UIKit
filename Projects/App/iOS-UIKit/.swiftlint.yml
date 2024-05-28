@@ -1,0 +1,21 @@
+only_rules:
+  - colon
+  - comma
+  - comment_spacing
+  - duplicate_imports
+  - leading_whitespace
+  - mark
+  - no_space_in_method_call
+  - opening_brace
+  - return_arrow_whitespace
+  - statement_position
+  - sorted_imports
+  - custom_rules
+
+custom_rules:
+  no_too_many_blank_lines:
+    name: "No too many blank lines"
+    regex: '((?:\s*\n){4,})'
+    message: "There are too many blank lines"
+    severity: error
+

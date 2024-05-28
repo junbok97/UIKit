@@ -8,6 +8,8 @@
 import Foundation
 
 struct ButtonFontSize {
+    
     let titleType: ButtonTitleType
     let fontSize: Int
+    
 }
