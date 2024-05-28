@@ -9,6 +9,7 @@ import Foundation
 import RxSwift
 
 final class ButtonColorCell: DefaultColorCell, ButtonSettingListCellProtocol {
+    
     static override var cellId: String {
         ButtonColorCellConstants.cellId
     }
@@ -34,4 +35,5 @@ final class ButtonColorCell: DefaultColorCell, ButtonSettingListCellProtocol {
             })
             .disposed(by: disposeBag)
     }
+    
 }

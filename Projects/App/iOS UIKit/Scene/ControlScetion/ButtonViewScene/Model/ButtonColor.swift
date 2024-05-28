@@ -8,6 +8,8 @@
 import UIKit
 
 struct ButtonColor: Equatable {
+    
     let colorType: ButtonColorType
     let color: UIColor
+    
 }

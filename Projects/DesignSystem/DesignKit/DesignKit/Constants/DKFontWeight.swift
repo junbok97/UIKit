@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum DKFontWeight {
+public enum DKFontWeight {
     
     case ultraLight
     case thin
@@ -19,7 +19,7 @@ enum DKFontWeight {
     case heavy
     case black
     
-    var title: String {
+    public var title: String {
         switch self {
         case .ultraLight: "UltraLight"
         case .thin: "Thin"
@@ -47,7 +47,7 @@ enum DKFontWeight {
         }
     }
     
-    func font(ofSize: CGFloat) -> UIFont {
+    public func font(ofSize: CGFloat) -> UIFont {
         switch self {
         case .ultraLight:
             return .systemFont(ofSize: ofSize, weight: .ultraLight)
@@ -70,7 +70,7 @@ enum DKFontWeight {
         }
     }
     
-    func code(ofSize: CGFloat) -> String {
+    public func code(ofSize: CGFloat) -> String {
         """
         .systemFont(
             ofSize: \(ofSize),
@@ -78,5 +78,5 @@ enum DKFontWeight {
         )
         """
     }
+    
 }
-

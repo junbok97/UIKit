@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class DKBaseViewController: UIViewController {
+open class DKBaseViewController: UIViewController {
     
     // MARK: - View Life Cycles
     public override func viewDidLoad() {
@@ -18,10 +18,10 @@ public class DKBaseViewController: UIViewController {
     }
     
     // MARK: - ViewMethods
-    func setupAttribte() {
+    public func setupAttribte() {
         view.backgroundColor = .systemBackground
     }
     
-    func setupLayout() { }
+    public func setupLayout() { }
     
 }

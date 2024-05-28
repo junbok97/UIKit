@@ -10,13 +10,13 @@ import UIKit
 import PinLayout
 import Extensions
 
-public final class DKTableViewController: DKBaseViewController {
+open class DKTableViewController: DKBaseViewController {
     
     // MARK: - UI
     public let tableView: UITableView = .init(frame: .zero, style: .insetGrouped)
     
     // MARK: - View Methods
-    override func setupAttribte() {
+    public override func setupAttribte() {
         super.setupAttribte()
         
         setupNaviBar()
@@ -24,7 +24,7 @@ public final class DKTableViewController: DKBaseViewController {
         tableView.rowHeight = UITableView.automaticDimension
     }
     
-    override func setupLayout() {
+    public override func setupLayout() {
         super.setupLayout()
         
         view.addSubview(tableView)
