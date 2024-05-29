@@ -24,14 +24,22 @@ public final class DKInputTableViewCell: DKBaseTableViewCell {
     
     // MARK: - UI
     private let inputTextField: UITextField = .init()
-
+    
     // MARK: - View Methods
     override func setAttribute() {
         super.setAttribute()
         
+        
+        inputTextField.autocorrectionType = .no
+        inputTextField.autocapitalizationType = .none
+        inputTextField.clearButtonMode = .never
+        inputTextField.enablesReturnKeyAutomatically = true
+        inputTextField.spellCheckingType = .no
+        inputTextField.rightViewMode = .always
         inputTextField.returnKeyType = .done
         inputTextField.placeholder = Constants.InputTextField.placeHolder
         inputTextField.font = DKDefaultConstants.font
+        inputTextField.delegate = self
     }
     
     override func setLayout() {
@@ -69,8 +77,6 @@ extension DKInputTableViewCell: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
-    
     
 }
 
