@@ -9,19 +9,22 @@ import UIKit
 
 open class DKBaseViewController: UIViewController {
     
-    // MARK: - View Life Cycles
-    public override func viewDidLoad() {
-        super.viewDidLoad()
+    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
         setupAttribte()
         setupLayout()
     }
     
+    public required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+        
     // MARK: - ViewMethods
-    public func setupAttribte() {
+    open func setupAttribte() {
         view.backgroundColor = .systemBackground
     }
     
-    public func setupLayout() { }
+    open func setupLayout() { }
     
 }

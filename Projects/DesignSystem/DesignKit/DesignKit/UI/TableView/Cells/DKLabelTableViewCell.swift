@@ -39,10 +39,10 @@ public final class DKLabelTableViewCell: DKBaseTableViewCell {
     }
     
     public func setup(
-        _ text: String,
-        _ ofSize: CGFloat = DKDefaultConstants.fontSize,
-        _ weight: UIFont.Weight = .regular,
-        _ textAlignment: NSTextAlignment = .left
+        text: String,
+        ofSize: CGFloat = DKDefaultConstants.fontSize,
+        weight: UIFont.Weight = .regular,
+        textAlignment: NSTextAlignment = .left
     ) {
         label.text = text
         label.font = .systemFont(ofSize: ofSize, weight: weight)

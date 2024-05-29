@@ -1,5 +1,5 @@
 //
-//  DKFontWeight.swift
+//  DKFontType.swift
 //  DesignKit
 //
 //  Created by 이준복 on 5/13/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-public enum DKFontWeight {
+public enum DKFontType {
     
     case ultraLight
     case thin
@@ -44,6 +44,29 @@ public enum DKFontWeight {
         case .bold: ".bold"
         case .heavy: ".heavy"
         case .black: ".black"
+        }
+    }
+    
+    public var weight: UIFont.Weight {
+        switch self {
+        case .ultraLight:
+            return .ultraLight
+        case .thin:
+            return .thin
+        case .light:
+            return .light
+        case .regular:
+            return .regular
+        case .medium:
+            return .medium
+        case .semibold:
+            return .semibold
+        case .bold:
+            return .bold
+        case .heavy:
+            return .heavy
+        case .black:
+            return .black
         }
     }
     

@@ -9,34 +9,35 @@ import UIKit
 
 import PinLayout
 
-final class DKTitleTableSectionHeaderView: DKBaseTableHeaderView {
+public final class DKTitleTableSectionHeaderView: DKBaseTableHeaderView {
+    
+    public static let height: CGFloat = 50
     
     // MARK: - UI
     private let titleLabel: UILabel = .init()
     
     // MARK: - View Methods
-    override func setupAttribute() {
+    public override func setupAttribute() {
         super.setupAttribute()
-        
-        backgroundColor = .secondarySystemBackground
         
         titleLabel.text = Constants.TitleLabel.defaultText
         titleLabel.font = Constants.TitleLabel.font
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    override func setupLayout() {
+    public override func setupLayout() {
         super.setupLayout()
         
         contentView.addSubviews(titleLabel)
-        titleLabel.pin
-            .left(Constants.TitleLabel.Offset.horizontal)
-            .right(Constants.TitleLabel.Offset.horizontal)
-            .top(Constants.TitleLabel.Offset.vertical)
-            .bottom(Constants.TitleLabel.Offset.vertical)
     }
     
-    override func reset() {
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        titleLabel.pin.all()
+    }
+    
+    public override func reset() {
         super.reset()
         
         titleLabel.text = Constants.TitleLabel.defaultText

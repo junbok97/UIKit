@@ -9,28 +9,30 @@ import UIKit
 
 import Extensions
 
-class DKBaseTableHeaderView: UITableViewHeaderFooterView {
+public class DKBaseTableHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Init
-    override init(reuseIdentifier: String?) {
+    public override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setupAttribute()
         setupLayout()
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Cell Life Cycle
-    override func prepareForReuse() {
+    public override func prepareForReuse() {
         super.prepareForReuse()
         reset()
     }
     
     // MARK: - Setup
-    func setupAttribute() { }
-    func setupLayout() { }
-    func reset() { }
+    public func setupAttribute() { 
+        contentView.backgroundColor = .secondarySystemBackground
+    }
+    public func setupLayout() { }
+    public func reset() { }
     
 }

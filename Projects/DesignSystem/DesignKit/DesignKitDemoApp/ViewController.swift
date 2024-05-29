@@ -98,7 +98,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 2 {
-            navigationController?.pushViewController(DKTableViewController(), animated: true)
+            navigationController?.pushViewController(DKListViewController(), animated: true)
         }
     }
     
