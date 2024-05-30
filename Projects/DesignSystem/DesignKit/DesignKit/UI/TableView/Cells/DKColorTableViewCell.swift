@@ -15,7 +15,7 @@ import RxCocoa
 import Extensions
 
 public protocol DKColorTableViewCellListener: AnyObject {
-    var colorSelected: AnyObserver<DKColor> { get }
+    var colorSelectedObserver: AnyObserver<DKColor> { get }
 }
 
 public final class DKColorTableViewCell: DKBaseTableViewCell {
@@ -45,16 +45,15 @@ public final class DKColorTableViewCell: DKBaseTableViewCell {
         contentView.flex.layout(mode: .adjustHeight)
     }
 
-    override func setAttribute() {
-        super.setAttribute()
+    override func setupAttribute() {
+        super.setupAttribute()
         
         titleLabel.font = DKDefaultConstants.font
         titleLabel.textColor = .label
-        titleLabel.text = Constants.TitleLabel.defaultText
     }
     
-    override func setLayout() {
-        super.setLayout()
+    override func setupLayout() {
+        super.setupLayout()
         
         contentView.flex.padding(DKDefaultConstants.padding).define { flex in
             flex.addItem().direction(.row).define { flex in
@@ -81,7 +80,7 @@ public final class DKColorTableViewCell: DKBaseTableViewCell {
                 return DKColor(color: color, colorType: colorType)
             }
             .distinctUntilChanged()
-            .bind(to: listener.colorSelected)
+            .bind(to: listener.colorSelectedObserver)
             .disposed(by: disposeBag)
     }
     

@@ -16,17 +16,16 @@ public final class DKLabelTableViewCell: DKBaseTableViewCell {
     private let label: UILabel = .init()
     
     // MARK: - View Methods
-    override func setAttribute() {
-        super.setAttribute()
+    override func setupAttribute() {
+        super.setupAttribute()
         
         label.backgroundColor = .systemBackground
-        label.text = Constants.Label.defaultText
         label.font = DKDefaultConstants.font
         label.numberOfLines = Constants.Label.numberOfLines
     }
     
-    override func setLayout() {
-        super.setLayout()
+    override func setupLayout() {
+        super.setupLayout()
         
         contentView.addSubview(label)
     }
@@ -36,6 +35,7 @@ public final class DKLabelTableViewCell: DKBaseTableViewCell {
         
         label.text = Constants.Label.defaultText
     }
+    
     
     // MARK: - View Drawing Cycle
     public override func layoutSubviews() {

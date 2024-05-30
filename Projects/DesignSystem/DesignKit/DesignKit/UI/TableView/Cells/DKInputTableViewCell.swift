@@ -26,8 +26,8 @@ public final class DKInputTableViewCell: DKBaseTableViewCell {
     private let inputTextField: UITextField = .init()
     
     // MARK: - View Methods
-    override func setAttribute() {
-        super.setAttribute()
+    override func setupAttribute() {
+        super.setupAttribute()
         
         
         inputTextField.autocorrectionType = .no
@@ -37,13 +37,12 @@ public final class DKInputTableViewCell: DKBaseTableViewCell {
         inputTextField.spellCheckingType = .no
         inputTextField.rightViewMode = .always
         inputTextField.returnKeyType = .done
-        inputTextField.placeholder = Constants.InputTextField.placeHolder
         inputTextField.font = DKDefaultConstants.font
         inputTextField.delegate = self
     }
     
-    override func setLayout() {
-        super.setLayout()
+    override func setupLayout() {
+        super.setupLayout()
         
         contentView.addSubview(inputTextField)
     }
@@ -52,6 +51,7 @@ public final class DKInputTableViewCell: DKBaseTableViewCell {
         super.reset()
         
         disposeBag = DisposeBag()
+        
         inputTextField.placeholder = Constants.InputTextField.placeHolder
     }
     
