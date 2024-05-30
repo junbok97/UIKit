@@ -13,7 +13,7 @@ enum UILabelSettingListItemType {
     
     case code
     case input
-    case color(title: String)
+    case color(type: DKColorType)
     case font(type: DKFontType)
     case fontSize
     case alignment(type: DKTextAlignmentType)

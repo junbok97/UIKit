@@ -15,13 +15,14 @@ import RxCocoa
 import Extensions
 
 public protocol DKColorTableViewCellListener: AnyObject {
-    func colorSelected(_ selectedColor: UIColor)
+    var colorSelected: AnyObserver<DKColor> { get }
 }
 
 public final class DKColorTableViewCell: DKBaseTableViewCell {
     
     // MARK: - Properties
     private var disposeBag = DisposeBag()
+    private var colorType: DKColorType?
     
     // MARK: - UI
     private let titleLabel: UILabel = .init()
@@ -70,20 +71,24 @@ public final class DKColorTableViewCell: DKBaseTableViewCell {
         titleLabel.text = Constants.TitleLabel.defaultText
     }
     
-    public func setupTitleLabel(_ title: String) {
-        titleLabel.text = title
-    }
-    
     // MARK: - Bind
     public func bind(_ listener: DKColorTableViewCellListener) {
         colorWell.rx.controlEvent(.valueChanged)
             .withUnretained(self)
-            .compactMap { (object, _) -> UIColor? in
-                object.colorWell.selectedColor
+            .compactMap { (object, _) -> DKColor? in
+                guard let color = object.colorWell.selectedColor,
+                      let colorType = object.colorType else { return nil }
+                return DKColor(color: color, colorType: colorType)
             }
             .distinctUntilChanged()
-            .bind(onNext: listener.colorSelected)
+            .bind(to: listener.colorSelected)
             .disposed(by: disposeBag)
+    }
+    
+    // MARK: - Logic
+    public func setupColorType(_ colorType: DKColorType) {
+        titleLabel.text = colorType.title
+        self.colorType = colorType
     }
     
 }

@@ -29,7 +29,6 @@ public final class DKLabelTableViewCell: DKBaseTableViewCell {
         super.setLayout()
         
         contentView.addSubview(label)
-        label.pin.all(DKDefaultConstants.padding)
     }
 
     override func reset() {
@@ -38,6 +37,14 @@ public final class DKLabelTableViewCell: DKBaseTableViewCell {
         label.text = Constants.Label.defaultText
     }
     
+    // MARK: - View Drawing Cycle
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        label.pin.all(DKDefaultConstants.padding)
+    }
+    
+    // MARK: - Logic
     public func setup(
         text: String,
         ofSize: CGFloat = DKDefaultConstants.fontSize,

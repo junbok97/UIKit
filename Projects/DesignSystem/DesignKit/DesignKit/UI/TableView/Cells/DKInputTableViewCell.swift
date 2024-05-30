@@ -46,7 +46,6 @@ public final class DKInputTableViewCell: DKBaseTableViewCell {
         super.setLayout()
         
         contentView.addSubview(inputTextField)
-        inputTextField.pin.all(DKDefaultConstants.padding)
     }
     
     override func reset() {
@@ -56,9 +55,13 @@ public final class DKInputTableViewCell: DKBaseTableViewCell {
         inputTextField.placeholder = Constants.InputTextField.placeHolder
     }
     
-    public func setupPlaceholder(_ placeholder: String) {
-        inputTextField.placeholder = placeholder
+    // MARK: - View Drawing Cycle
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        inputTextField.pin.all(DKDefaultConstants.padding)
     }
+    
     
     // MARK: - Bind
     public func bind(_ listener: DKInputTableViewCellListener) {
@@ -66,6 +69,10 @@ public final class DKInputTableViewCell: DKBaseTableViewCell {
             .compactMap { $0 }
             .bind(onNext: listener.textChanged)
             .disposed(by: disposeBag)
+    }
+    
+    public func setupPlaceholder(_ placeholder: String) {
+        inputTextField.placeholder = placeholder
     }
     
 }

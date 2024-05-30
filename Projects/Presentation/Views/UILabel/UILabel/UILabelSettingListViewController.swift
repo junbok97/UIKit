@@ -17,6 +17,12 @@ import PinLayout
 
 public final class UILabelSettingListViewController: DKListViewController {
     
+    // MARK: - Properties
+    private var disposeBag = DisposeBag()
+    
+    private let colorSubject: PublishSubject<DKColor> = .init()
+    
+    
     // MARK: - UI
     private let targetLabel: UILabel = .init()
     
@@ -90,7 +96,6 @@ extension UILabelSettingListViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let section = UILabelSettingListSectionType(rawValue: indexPath.section) else { return .init() }
         
-        
         switch section {
         case .code, .font, .alignment :
             let cell = tableView.dequeue(DKLabelTableViewCell.self, for: indexPath)
@@ -108,22 +113,27 @@ extension UILabelSettingListViewController: UITableViewDataSource {
                     textAlignment: alignmentType.aligment
                 )
             }
-
+            
             return cell
+            
         case .input:
             let cell = tableView.dequeue(DKInputTableViewCell.self, for: indexPath)
             return cell
+            
         case .color:
             let cell = tableView.dequeue(DKColorTableViewCell.self, for: indexPath)
+            cell.bind(self)
             
-            if case let .color(title) = Constants.TableView.items[safe: indexPath.section]?.items[safe: indexPath.row]  {
-                cell.setupTitleLabel(title)
+            if case let .color(type) = Constants.TableView.items[safe: indexPath.section]?.items[safe: indexPath.row]  {
+                cell.setupColorType(type)
             }
             
             return cell
+            
         case .fontSize:
             let cell = tableView.dequeue(DKLabelTableViewCell.self, for: indexPath)
             return cell
+            
         case .numberOfLines:
             let cell = tableView.dequeue(DKStepperTableViewCell.self, for: indexPath)
             return cell
@@ -146,6 +156,13 @@ extension UILabelSettingListViewController: UITableViewDelegate {
         headerView.setupTitle(title)
         return headerView
     }
+    
+}
+
+// MARK: - DKColorTableViewCellListener
+extension UILabelSettingListViewController: DKColorTableViewCellListener {
+    
+    public var colorSelected: AnyObserver<DKColor> { colorSubject.asObserver() }
     
 }
 
@@ -182,8 +199,8 @@ private extension UILabelSettingListViewController {
                 UILabelSettingListSectionModel(
                     sectionHeader: .color,
                     items: [
-                        .color(title: "TitleColor"),
-                        .color(title: "BackgroundColor")
+                        .color(type: .text),
+                        .color(type: .background)
                     ]
                 ),
                 UILabelSettingListSectionModel(
