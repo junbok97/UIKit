@@ -12,8 +12,8 @@ public class DKBaseTableViewCell: UITableViewCell {
     // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setAttribute()
-        setLayout()
+        setupAttribute()
+        setupLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -28,13 +28,15 @@ public class DKBaseTableViewCell: UITableViewCell {
     }
     
     // MARK: - View Methods
-    func setAttribute() {
+    func setupAttribute() {
         backgroundColor = .systemBackground
         selectionStyle = .none
         separatorInset = .zero
+        
+        reset()
     }
     
-    func setLayout() {}
+    func setupLayout() {}
     func reset() {}
     
 }

@@ -44,23 +44,20 @@ public final class DKStepperTableViewCell: DKBaseTableViewCell {
         contentView.flex.layout(mode: .adjustHeight)
     }
     
-    override func setAttribute() {
-        super.setAttribute()
+    override func setupAttribute() {
+        super.setupAttribute()
         
         titleLabel.font = DKDefaultConstants.font
-        titleLabel.text = Constants.TitleLabel.defaultText
         titleLabel.textAlignment = .left
         
         stepperCurrentValueLabel.font = DKDefaultConstants.font
-        stepperCurrentValueLabel.text = Constants.StepperValueLabel.defaultText
         stepperCurrentValueLabel.textAlignment = .center
         
-        stepper.value = Constants.Stepper.defaultValue
         stepper.minimumValue = Constants.Stepper.minimumValue
     }
     
-    override func setLayout() {
-        super.setLayout()
+    override func setupLayout() {
+        super.setupLayout()
         
         contentView.flex.padding(DKDefaultConstants.padding).define { flex in
             flex.addItem().direction(.row).define { flex in
@@ -75,8 +72,10 @@ public final class DKStepperTableViewCell: DKBaseTableViewCell {
         super.reset()
         
         disposeBag = DisposeBag()
-        titleLabel.text = Constants.TitleLabel.defaultText
+        
         stepper.value = Constants.Stepper.defaultValue
+        titleLabel.text = Constants.TitleLabel.defaultText
+        stepperCurrentValueLabel.text = Constants.StepperValueLabel.defaultText
     }
     
     public func setupTitle(_ title: String) {

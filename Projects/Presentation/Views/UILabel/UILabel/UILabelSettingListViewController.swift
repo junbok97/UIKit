@@ -35,6 +35,7 @@ public final class UILabelSettingListViewController: DKListViewController {
         tableView.register(DKLabelTableViewCell.self)
         tableView.register(DKInputTableViewCell.self)
         tableView.register(DKColorTableViewCell.self)
+        tableView.register(DKSliderTableViewCell.self)
         tableView.register(DKStepperTableViewCell.self)
         tableView.register(DKTitleTableSectionHeaderView.self)
         
@@ -131,7 +132,7 @@ extension UILabelSettingListViewController: UITableViewDataSource {
             return cell
             
         case .fontSize:
-            let cell = tableView.dequeue(DKLabelTableViewCell.self, for: indexPath)
+            let cell = tableView.dequeue(DKSliderTableViewCell.self, for: indexPath)
             return cell
             
         case .numberOfLines:
@@ -162,7 +163,7 @@ extension UILabelSettingListViewController: UITableViewDelegate {
 // MARK: - DKColorTableViewCellListener
 extension UILabelSettingListViewController: DKColorTableViewCellListener {
     
-    public var colorSelected: AnyObserver<DKColor> { colorSubject.asObserver() }
+    public var colorSelectedObserver: AnyObserver<DKColor> { colorSubject.asObserver() }
     
 }
 
