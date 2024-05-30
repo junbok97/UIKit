@@ -29,7 +29,6 @@ public final class DKInputTableViewCell: DKBaseTableViewCell {
     override func setupAttribute() {
         super.setupAttribute()
         
-        
         inputTextField.autocorrectionType = .no
         inputTextField.autocapitalizationType = .none
         inputTextField.clearButtonMode = .never
