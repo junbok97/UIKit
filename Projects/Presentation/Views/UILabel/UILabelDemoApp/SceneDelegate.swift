@@ -11,6 +11,7 @@ import UILabel
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    let reactor = UILabelSettingListViewReactor()
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -20,7 +21,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.backgroundColor = .systemBackground
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = UINavigationController(rootViewController: UILabelSettingListViewController())
+        
+        let vc = UILabelSettingListViewController(reator: reactor)
+        
+        vc.bind(reactor)
+        window?.rootViewController = UINavigationController(rootViewController: vc)
     }
 
     

@@ -11,6 +11,7 @@ import DesignKit
 import Extensions
 
 import Then
+import ReactorKit
 import RxSwift
 import RxCocoa
 import PinLayout
@@ -21,7 +22,20 @@ public final class UILabelSettingListViewController: DKListViewController,
                                                      DKSliderTableViewCellListener,
                                                      DKStepperTableViewCellListener {
     
+    public typealias Reactor = UILabelSettingListViewReactor
+    
+    public init(reator: Reactor) {
+        self.reator = reator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Properties
+    
+    private let reator: Reactor
     private var disposeBag = DisposeBag()
     
     private let fontTypeSubject: PublishSubject<DKFontType> = .init()
@@ -48,14 +62,14 @@ public final class UILabelSettingListViewController: DKListViewController,
         label.text = TargetLabel.text
         label.textColor = TargetLabel.textColor
         label.backgroundColor = TargetLabel.backgroundColor
-        label.font = .systemFont(ofSize: TargetLabel.fontSize, weight: TargetLabel.fontWeight)
-        label.textAlignment = TargetLabel.textAlignment
+        label.font = .systemFont(ofSize: TargetLabel.fontSize, weight: TargetLabel.fontType.weight)
+        label.textAlignment = TargetLabel.textAlignment.aligment
         label.numberOfLines = TargetLabel.numberOfLines
     }
     
     // MARK: - View Methods
-    public override func setupAttribte() {
-        super.setupAttribte()
+    public override func setupAttribute() {
+        super.setupAttribute()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -96,8 +110,78 @@ public final class UILabelSettingListViewController: DKListViewController,
     }
     
     // MARK: - Bind
-    public func bind(_ reactor: UILabelSettingListViewReactor) {
+    public func bind(_ reactor: Reactor) {
+        bindAction(reactor)
+        bindState(reactor)
+    }
+    
+}
+
+// MARK: - Bind
+private extension UILabelSettingListViewController {
+    
+    func bindAction(_ reactor: Reactor) {
+        inputTextSubject
+            .map { Reactor.Action.textChanged($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
         
+        textAlignmentSubject
+            .map { Reactor.Action.textAlignmentChanged($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+            
+        colorSubject
+            .map { Reactor.Action.colorChanged($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        fontTypeSubject
+            .map { Reactor.Action.fontTypeChanged($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        sliderValueSubject
+            .map { Reactor.Action.fontSizeChanged($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        stepperValueSubject
+            .map { Reactor.Action.numberOfLinesChanged($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+    }
+    
+    func bindState(_ reactor: Reactor) {
+        reactor.state
+            .map { $0.text }
+            .bind(to: targetLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state
+            .map { $0.textColor }
+            .bind(to: targetLabel.rx.textColor)
+            .disposed(by: disposeBag)
+        
+        reactor.state
+            .map { $0.backgroudColor }
+            .bind(to: targetLabel.rx.backgroundColor)
+            .disposed(by: disposeBag)
+        
+        reactor.state
+            .map { .systemFont(ofSize: $0.fontSize, weight: $0.fontType.weight) }
+            .bind(to: targetLabel.rx.font )
+            .disposed(by: disposeBag)
+        
+        reactor.state
+            .map { $0.textAlignment.aligment }
+            .bind(to: targetLabel.rx.textAlignment)
+            .disposed(by: disposeBag)
+        
+        reactor.state
+            .map { $0.numberOfLines }
+            .bind(to: targetLabel.rx.numberOfLines)
+            .disposed(by: disposeBag)
     }
     
 }
@@ -117,7 +201,12 @@ extension UILabelSettingListViewController: UITableViewDataSource {
         guard let section = UILabelSettingListSectionType(rawValue: indexPath.section) else { return .init() }
         
         switch section {
-        case .code, .fontWeight, .alignment :
+        case .code:
+            let cell = tableView.dequeue(DKLabelTableViewCell.self, for: indexPath)
+            cell.setup(text: reator.currentState.code)
+            return cell
+            
+        case .fontWeight, .alignment :
             let cell = tableView.dequeue(DKLabelTableViewCell.self, for: indexPath)
             
             if case let .fontWeight(fontType) = Constants.TableView.items[safe: indexPath.section]?.items[safe: indexPath.row] {
@@ -138,6 +227,7 @@ extension UILabelSettingListViewController: UITableViewDataSource {
             
         case .input:
             let cell = tableView.dequeue(DKInputTableViewCell.self, for: indexPath)
+            cell.setupPlaceholder(TargetLabel.text)
             cell.bind(self)
             return cell
             
@@ -154,13 +244,13 @@ extension UILabelSettingListViewController: UITableViewDataSource {
         case .fontSize:
             let cell = tableView.dequeue(DKSliderTableViewCell.self, for: indexPath)
             cell.bind(self)
-            cell.setupSliderValue(Float(TargetLabel.fontSize))
+            cell.setupSliderValue(Float(reator.currentState.fontSize))
             return cell
             
         case .numberOfLines:
             let cell = tableView.dequeue(DKStepperTableViewCell.self, for: indexPath)
             cell.bind(self)
-            cell.setupStepperValue(Double(TargetLabel.numberOfLines))
+            cell.setupStepperValue(Double(reator.currentState.numberOfLines))
             return cell
         }
     }
