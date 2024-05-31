@@ -10,21 +10,48 @@ import UIKit
 import DesignKit
 import Extensions
 
+import Then
 import RxSwift
 import RxCocoa
-import RxDataSources
 import PinLayout
 
-public final class UILabelSettingListViewController: DKListViewController {
+public final class UILabelSettingListViewController: DKListViewController,
+                                                     DKInputTableViewCellListener,
+                                                     DKColorTableViewCellListener,
+                                                     DKSliderTableViewCellListener,
+                                                     DKStepperTableViewCellListener {
     
     // MARK: - Properties
     private var disposeBag = DisposeBag()
     
-    private let colorSubject: PublishSubject<DKColor> = .init()
+    private let fontTypeSubject: PublishSubject<DKFontType> = .init()
+    private let textAlignmentSubject: PublishSubject<DKTextAlignmentType> = .init()
     
+    // DKInputTableViewCellListener
+    private let inputTextSubject: PublishSubject<String> = .init()
+    public var inputTextChanged: AnyObserver<String> { inputTextSubject.asObserver() }
+    
+    // DKColorTableViewCellListener
+    private let colorSubject: PublishSubject<DKColor> = .init()
+    public var colorSelectedObserver: AnyObserver<DKColor> { colorSubject.asObserver() }
+    
+    // DKSliderTableViewCellListener
+    private let sliderValueSubject: PublishSubject<Float> = .init()
+    public var sliderValueChangedObserver: AnyObserver<Float> { sliderValueSubject.asObserver() }
+    
+    // DKStepperTableViewCellListener
+    private let stepperValueSubject: PublishSubject<Double> = .init()
+    public var stepperValueChanged: AnyObserver<Double> { stepperValueSubject.asObserver() }
     
     // MARK: - UI
-    private let targetLabel: UILabel = .init()
+    private let targetLabel = UILabel().then { label in
+        label.text = TargetLabel.text
+        label.textColor = TargetLabel.textColor
+        label.backgroundColor = TargetLabel.backgroundColor
+        label.font = .systemFont(ofSize: TargetLabel.fontSize, weight: TargetLabel.fontWeight)
+        label.textAlignment = TargetLabel.textAlignment
+        label.numberOfLines = TargetLabel.numberOfLines
+    }
     
     // MARK: - View Methods
     public override func setupAttribte() {
@@ -38,13 +65,6 @@ public final class UILabelSettingListViewController: DKListViewController {
         tableView.register(DKSliderTableViewCell.self)
         tableView.register(DKStepperTableViewCell.self)
         tableView.register(DKTitleTableSectionHeaderView.self)
-        
-        
-        targetLabel.font = Constants.TargetLabel.font
-        targetLabel.text = Constants.TargetLabel.text
-        targetLabel.textColor = .label
-        targetLabel.textAlignment = .center
-        targetLabel.backgroundColor = .systemBackground
     }
     
     public override func setupLayout() {
@@ -80,7 +100,6 @@ public final class UILabelSettingListViewController: DKListViewController {
         
     }
     
-    
 }
 
 // MARK: - UITableViewDataSource
@@ -98,10 +117,10 @@ extension UILabelSettingListViewController: UITableViewDataSource {
         guard let section = UILabelSettingListSectionType(rawValue: indexPath.section) else { return .init() }
         
         switch section {
-        case .code, .font, .alignment :
+        case .code, .fontWeight, .alignment :
             let cell = tableView.dequeue(DKLabelTableViewCell.self, for: indexPath)
             
-            if case let .font(fontType) = Constants.TableView.items[safe: indexPath.section]?.items[safe: indexPath.row] {
+            if case let .fontWeight(fontType) = Constants.TableView.items[safe: indexPath.section]?.items[safe: indexPath.row] {
                 cell.setup(
                     text: fontType.title,
                     weight: fontType.weight
@@ -119,6 +138,7 @@ extension UILabelSettingListViewController: UITableViewDataSource {
             
         case .input:
             let cell = tableView.dequeue(DKInputTableViewCell.self, for: indexPath)
+            cell.bind(self)
             return cell
             
         case .color:
@@ -133,10 +153,14 @@ extension UILabelSettingListViewController: UITableViewDataSource {
             
         case .fontSize:
             let cell = tableView.dequeue(DKSliderTableViewCell.self, for: indexPath)
+            cell.bind(self)
+            cell.setupSliderValue(Float(TargetLabel.fontSize))
             return cell
             
         case .numberOfLines:
             let cell = tableView.dequeue(DKStepperTableViewCell.self, for: indexPath)
+            cell.bind(self)
+            cell.setupStepperValue(Double(TargetLabel.numberOfLines))
             return cell
         }
     }
@@ -158,12 +182,15 @@ extension UILabelSettingListViewController: UITableViewDelegate {
         return headerView
     }
     
-}
-
-// MARK: - DKColorTableViewCellListener
-extension UILabelSettingListViewController: DKColorTableViewCellListener {
-    
-    public var colorSelectedObserver: AnyObserver<DKColor> { colorSubject.asObserver() }
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if case let .fontWeight(fontType) = Constants.TableView.items[safe: indexPath.section]?.items[safe: indexPath.row] {
+            fontTypeSubject.onNext(fontType)
+        } else if case let .alignment(type: alignmentType) = Constants.TableView.items[safe: indexPath.section]?.items[safe: indexPath.row]  {
+            textAlignmentSubject.onNext(alignmentType)
+        }
+        
+    }
     
 }
 
@@ -176,11 +203,6 @@ private extension UILabelSettingListViewController {
         
         enum NaviRightBarButtonItem {
             static var documentURLString: String { "https://developer.apple.com/documentation/uikit/uilabel" }
-        }
-        
-        enum TargetLabel {
-            static var text: String { "Label" }
-            static var font: UIFont { .systemFont(ofSize: 50) }
         }
         
         enum TableView {
@@ -205,17 +227,17 @@ private extension UILabelSettingListViewController {
                     ]
                 ),
                 UILabelSettingListSectionModel(
-                    sectionHeader: .font,
+                    sectionHeader: .fontWeight,
                     items: [
-                        .font(type: .ultraLight),
-                        .font(type: .thin),
-                        .font(type: .light),
-                        .font(type: .regular),
-                        .font(type: .medium),
-                        .font(type: .semibold),
-                        .font(type: .bold),
-                        .font(type: .heavy),
-                        .font(type: .black)
+                        .fontWeight(type: .ultraLight),
+                        .fontWeight(type: .thin),
+                        .fontWeight(type: .light),
+                        .fontWeight(type: .regular),
+                        .fontWeight(type: .medium),
+                        .fontWeight(type: .semibold),
+                        .fontWeight(type: .bold),
+                        .fontWeight(type: .heavy),
+                        .fontWeight(type: .black)
                     ]
                 ),
                 UILabelSettingListSectionModel(
@@ -246,3 +268,4 @@ private extension UILabelSettingListViewController {
     }
     
 }
+

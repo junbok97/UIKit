@@ -20,7 +20,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.backgroundColor = .systemBackground
         window?.makeKeyAndVisible()
         
-        
         window?.rootViewController = UINavigationController(rootViewController: UILabelSettingListViewController())
     }
 

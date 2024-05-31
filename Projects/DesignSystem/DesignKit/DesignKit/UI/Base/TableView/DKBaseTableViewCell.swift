@@ -29,11 +29,11 @@ public class DKBaseTableViewCell: UITableViewCell {
     
     // MARK: - View Methods
     func setupAttribute() {
+        reset()
+        
         backgroundColor = .systemBackground
         selectionStyle = .none
         separatorInset = .zero
-        
-        reset()
     }
     
     func setupLayout() {}

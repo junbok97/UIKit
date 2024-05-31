@@ -29,7 +29,9 @@ public class DKBaseTableHeaderView: UITableViewHeaderFooterView {
     }
     
     // MARK: - Setup
-    public func setupAttribute() { 
+    public func setupAttribute() {
+        reset()
+        
         contentView.backgroundColor = .secondarySystemBackground
     }
     public func setupLayout() { }

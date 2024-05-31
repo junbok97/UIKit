@@ -9,25 +9,25 @@ import UIKit
 
 open class DKListViewController: DKBaseViewController {
     
-    public let containerView: UIView = .init()
-    public let tableView: UITableView = .init(frame: .zero, style: .insetGrouped)
+    // MARK: - UI
+    public let containerView = UIView().then { view in
+        view.clipsToBounds = true
+        view.layer.cornerRadius = Constants.ContainerView.cornerRadius
+        view.backgroundColor = .secondarySystemBackground
+    }
+    public let tableView = UITableView(frame: .zero, style: .insetGrouped).then { tableView in
+        tableView.separatorStyle = .singleLine
+        tableView.backgroundColor = .secondarySystemBackground
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.sectionHeaderHeight = UITableView.automaticDimension
+    }
     
     // MARK: - View Methods
     open override func setupAttribte() {
         super.setupAttribte()
         
         view.backgroundColor = .secondarySystemBackground
-        
-        containerView.clipsToBounds = true
-        containerView.layer.cornerRadius = Constants.ContainerView.cornerRadius
-        containerView.backgroundColor = .secondarySystemBackground
-         
-        tableView.separatorStyle = .singleLine
-        tableView.backgroundColor = .secondarySystemBackground
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = UITableView.automaticDimension
-        tableView.sectionHeaderHeight = UITableView.automaticDimension
-        
         setupNaviBar()
     }
     

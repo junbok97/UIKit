@@ -11,6 +11,7 @@ import PinLayout
 import FlexLayout
 import RxSwift
 import RxCocoa
+import Then
 
 import Extensions
 
@@ -25,8 +26,11 @@ public final class DKColorTableViewCell: DKBaseTableViewCell {
     private var colorType: DKColorType?
     
     // MARK: - UI
-    private let titleLabel: UILabel = .init()
-    private let colorWell: UIColorWell = .init()
+    private let titleLabel = UILabel().then { label in
+        label.font = DKDefaultConstants.font
+        label.textColor = .label
+    }
+    private let colorWell = UIColorWell()
     
     // MARK: - View Life Cycles
     public override func layoutSubviews() {
@@ -43,13 +47,6 @@ public final class DKColorTableViewCell: DKBaseTableViewCell {
     // MARK: - View Methods
     private func layout() {
         contentView.flex.layout(mode: .adjustHeight)
-    }
-
-    override func setupAttribute() {
-        super.setupAttribute()
-        
-        titleLabel.font = DKDefaultConstants.font
-        titleLabel.textColor = .label
     }
     
     override func setupLayout() {

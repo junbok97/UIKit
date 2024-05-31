@@ -10,11 +10,12 @@ import UIKit
 import PinLayout
 import RxSwift
 import RxCocoa
+import Then
 
 import Extensions
 
 public protocol DKInputTableViewCellListener: AnyObject {
-    func textChanged(_ text: String)
+    var inputTextChanged: AnyObserver<String> { get }
 }
 
 public final class DKInputTableViewCell: DKBaseTableViewCell {
@@ -23,20 +24,21 @@ public final class DKInputTableViewCell: DKBaseTableViewCell {
     private var disposeBag = DisposeBag()
     
     // MARK: - UI
-    private let inputTextField: UITextField = .init()
+    private let inputTextField = UITextField().then { textField in
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
+        textField.clearButtonMode = .never
+        textField.enablesReturnKeyAutomatically = true
+        textField.spellCheckingType = .no
+        textField.rightViewMode = .always
+        textField.returnKeyType = .done
+        textField.font = DKDefaultConstants.font
+    }
     
     // MARK: - View Methods
     override func setupAttribute() {
         super.setupAttribute()
         
-        inputTextField.autocorrectionType = .no
-        inputTextField.autocapitalizationType = .none
-        inputTextField.clearButtonMode = .never
-        inputTextField.enablesReturnKeyAutomatically = true
-        inputTextField.spellCheckingType = .no
-        inputTextField.rightViewMode = .always
-        inputTextField.returnKeyType = .done
-        inputTextField.font = DKDefaultConstants.font
         inputTextField.delegate = self
     }
     
@@ -61,12 +63,11 @@ public final class DKInputTableViewCell: DKBaseTableViewCell {
         inputTextField.pin.all(DKDefaultConstants.padding)
     }
     
-    
     // MARK: - Bind
     public func bind(_ listener: DKInputTableViewCellListener) {
         inputTextField.rx.text
             .compactMap { $0 }
-            .bind(onNext: listener.textChanged)
+            .bind(to: listener.inputTextChanged)
             .disposed(by: disposeBag)
     }
     

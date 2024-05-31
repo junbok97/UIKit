@@ -8,22 +8,20 @@
 import UIKit
 
 import PinLayout
+import Then
+
 import Extensions
 
 public final class DKLabelTableViewCell: DKBaseTableViewCell {
     
     // MARK: - UI
-    private let label: UILabel = .init()
-    
-    // MARK: - View Methods
-    override func setupAttribute() {
-        super.setupAttribute()
-        
+    private let label = UILabel().then { label in
         label.backgroundColor = .systemBackground
         label.font = DKDefaultConstants.font
         label.numberOfLines = Constants.Label.numberOfLines
     }
     
+    // MARK: - View Methods
     override func setupLayout() {
         super.setupLayout()
         

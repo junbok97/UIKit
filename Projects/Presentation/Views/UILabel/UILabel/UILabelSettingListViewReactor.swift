@@ -5,8 +5,7 @@
 //  Created by 이준복 on 5/29/24.
 //
 
-import Foundation
-
+import UIKit
 
 import ReactorKit
 import RxSwift
@@ -29,8 +28,13 @@ public final class UILabelSettingListViewReactor: Reactor {
     
     // MARK: - State
     public struct State {
-        var text: String = "Label"
-        var fontSize: CGFloat = 20
+        var text = TargetLabel.text
+        var textColor = TargetLabel.textColor
+        var backgroudColor = TargetLabel.backgroundColor
+        var fontWeight = TargetLabel.fontWeight
+        var fontSize = TargetLabel.fontSize
+        var textAlignment = TargetLabel.textAlignment
+        var numberOfLines = TargetLabel.numberOfLines
     }
     
     

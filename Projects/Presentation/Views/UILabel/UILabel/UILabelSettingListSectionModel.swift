@@ -8,6 +8,8 @@
 import Foundation
 
 struct UILabelSettingListSectionModel {
+    
     var sectionHeader: UILabelSettingListSectionType
     var items: [UILabelSettingListItemType]
+    
 }

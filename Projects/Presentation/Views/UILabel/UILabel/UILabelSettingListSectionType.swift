@@ -12,7 +12,7 @@ enum UILabelSettingListSectionType: Int {
     case code
     case input
     case color
-    case font
+    case fontWeight
     case fontSize
     case alignment
     case numberOfLines
@@ -22,7 +22,7 @@ enum UILabelSettingListSectionType: Int {
         case .code: "Code"
         case .input: "Input"
         case .color: "Color"
-        case .font: "Font"
+        case .fontWeight: "Font Weight"
         case .fontSize: "Font Size"
         case .alignment: "Alignment"
         case .numberOfLines: "Number Of Lines"

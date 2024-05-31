@@ -14,17 +14,12 @@ public final class DKTitleTableSectionHeaderView: DKBaseTableHeaderView {
     public static let height: CGFloat = 50
     
     // MARK: - UI
-    private let titleLabel: UILabel = .init()
-    
-    // MARK: - View Methods
-    public override func setupAttribute() {
-        super.setupAttribute()
-        
-        titleLabel.text = Constants.TitleLabel.defaultText
-        titleLabel.font = Constants.TitleLabel.font
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+    private let titleLabel = UILabel().then { label in
+        label.text = Constants.TitleLabel.defaultText
+        label.font = Constants.TitleLabel.font
     }
     
+    // MARK: - View Methods
     public override func setupLayout() {
         super.setupLayout()
         

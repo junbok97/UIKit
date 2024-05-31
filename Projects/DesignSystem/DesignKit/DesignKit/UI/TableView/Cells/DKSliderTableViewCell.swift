@@ -23,10 +23,22 @@ public final class DKSliderTableViewCell: DKBaseTableViewCell {
     private var disposeBag = DisposeBag()
     
     // MARK: - UI
-    private let minimumValueLabel: UILabel = .init()
-    private let maximumValueLabel: UILabel = .init()
-    private let sliderValueLabel: UILabel = .init()
-    private let slider: UISlider = .init()
+    private let minimumValueLabel = UILabel().then { label in
+        label.text = Constants.MinimumValueLabel.text
+        label.textAlignment = .center
+    }
+    private let sliderValueLabel = UILabel().then { label in
+        label.text = Constants.SliderValueLabel.text
+        label.textAlignment = .center
+    }
+    private let maximumValueLabel = UILabel().then { label in
+        label.text = Constants.MaximumValueLabel.text
+        label.textAlignment = .center
+    }
+    private let slider = UISlider().then { slider in
+        slider.minimumValue = Constants.Slider.minimumValue
+        slider.maximumValue = Constants.Slider.maximimValue
+    }
     
     // MARK: - View Life Cycles
     public override func layoutSubviews() {
@@ -43,20 +55,6 @@ public final class DKSliderTableViewCell: DKBaseTableViewCell {
     // MARK: - ViewMethods
     private func layout() {
         contentView.flex.layout(mode: .adjustHeight)
-    }
-    
-    override func setupAttribute() {
-        slider.minimumValue = Constants.Slider.minimumValue
-        slider.maximumValue = Constants.Slider.maximimValue
-        
-        super.setupAttribute()
-        
-        minimumValueLabel.text = Constants.MinimumValueLabel.text
-        minimumValueLabel.textAlignment = .center
-        sliderValueLabel.text = Constants.SliderValueLabel.text
-        sliderValueLabel.textAlignment = .center
-        maximumValueLabel.text = Constants.MaximumValueLabel.text
-        maximumValueLabel.textAlignment = .center
     }
     
     override func setupLayout() {
@@ -99,6 +97,10 @@ public final class DKSliderTableViewCell: DKBaseTableViewCell {
         slider.rx.value
             .bind(to: listener.sliderValueChangedObserver)
             .disposed(by: disposeBag)
+    }
+    
+    public func setupSliderValue(_ value: Float) {
+        slider.setValue(value, animated: true)
     }
     
 }

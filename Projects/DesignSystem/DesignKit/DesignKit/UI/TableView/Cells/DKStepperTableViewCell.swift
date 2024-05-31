@@ -11,10 +11,10 @@ import PinLayout
 import FlexLayout
 import RxSwift
 import RxCocoa
+import Then
 
 public protocol DKStepperTableViewCellListener: AnyObject {
-    var stepperChangedValue: AnyObserver<Double> { get }
-    var stepperCurrentValue: Observable<Double> { get }
+    var stepperValueChanged: AnyObserver<Double> { get }
 }
 
 public final class DKStepperTableViewCell: DKBaseTableViewCell {
@@ -23,9 +23,14 @@ public final class DKStepperTableViewCell: DKBaseTableViewCell {
     private var disposeBag = DisposeBag()
     
     // MARK: - UI
-    private let titleLabel: UILabel = .init()
-    private let stepperCurrentValueLabel: UILabel = .init()
-    private let stepper: UIStepper = .init()
+    private let stepperValueLabel = UILabel().then { label in
+        label.font = DKDefaultConstants.font
+        label.textAlignment = .left
+    }
+    private let stepper = UIStepper().then { stepper in
+        stepper.maximumValue = Constants.Stepper.maximumValue
+        stepper.minimumValue = Constants.Stepper.minimumValue
+    }
     
     // MARK: - View Life Cycles
     public override func layoutSubviews() {
@@ -44,25 +49,12 @@ public final class DKStepperTableViewCell: DKBaseTableViewCell {
         contentView.flex.layout(mode: .adjustHeight)
     }
     
-    override func setupAttribute() {
-        super.setupAttribute()
-        
-        titleLabel.font = DKDefaultConstants.font
-        titleLabel.textAlignment = .left
-        
-        stepperCurrentValueLabel.font = DKDefaultConstants.font
-        stepperCurrentValueLabel.textAlignment = .center
-        
-        stepper.minimumValue = Constants.Stepper.minimumValue
-    }
-    
     override func setupLayout() {
         super.setupLayout()
         
         contentView.flex.padding(DKDefaultConstants.padding).define { flex in
             flex.addItem().direction(.row).define { flex in
-                flex.addItem(titleLabel).grow(1)
-                flex.addItem(stepperCurrentValueLabel).paddingRight(DKDefaultConstants.padding).paddingLeft(DKDefaultConstants.padding)
+                flex.addItem(stepperValueLabel).grow(1)
                 flex.addItem(stepper)
             }
         }
@@ -72,28 +64,27 @@ public final class DKStepperTableViewCell: DKBaseTableViewCell {
         super.reset()
         
         disposeBag = DisposeBag()
+
+        stepperValueLabel.text = Constants.StepperValueLabel.defaultText
         
         stepper.value = Constants.Stepper.defaultValue
-        titleLabel.text = Constants.TitleLabel.defaultText
-        stepperCurrentValueLabel.text = Constants.StepperValueLabel.defaultText
+        stepper.rx.value
+            .withUnretained(self)
+            .bind { object, stepperValue in
+                object.stepperValueLabel.text = "\(Int(stepperValue))"
+            }
+            .disposed(by: disposeBag)
     }
     
-    public func setupTitle(_ title: String) {
-        titleLabel.text = title
+    public func setupStepperValue(_ value: Double) {
+        stepper.value = value
     }
     
     // MARK: - Bind
     public func bind(_ listener: DKStepperTableViewCellListener) {
         stepper.rx.value
-            .bind(to: listener.stepperChangedValue)
+            .bind(to: listener.stepperValueChanged)
             .disposed(by: disposeBag)
-        
-        listener.stepperCurrentValue
-            .withUnretained(self)
-            .subscribe(on: MainScheduler.instance)
-            .bind { object, currentValue in
-                object.stepperCurrentValueLabel.text = "\(currentValue)"
-            }.disposed(by: disposeBag)
     }
     
 }
@@ -102,10 +93,6 @@ public final class DKStepperTableViewCell: DKBaseTableViewCell {
 private extension DKStepperTableViewCell {
     
     enum Constants {
-        enum TitleLabel {
-            static var defaultText: String { "Stepper" }
-        }
-        
         enum StepperValueLabel {
             static var defaultText: String { "\(Int(Constants.Stepper.defaultValue))" }
         }
@@ -113,6 +100,7 @@ private extension DKStepperTableViewCell {
         enum Stepper {
             static var defaultValue: Double { 1 }
             static var minimumValue: Double { 0 }
+            static var maximumValue: Double { 100 }
         }
     }
     
