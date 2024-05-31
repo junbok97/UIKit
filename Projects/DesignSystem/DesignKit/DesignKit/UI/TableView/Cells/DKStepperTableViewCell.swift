@@ -24,12 +24,14 @@ public final class DKStepperTableViewCell: DKBaseTableViewCell {
     
     // MARK: - UI
     private let stepperValueLabel = UILabel().then { label in
+        label.text = Constants.StepperValueLabel.defaultText
         label.font = DKDefaultConstants.font
         label.textAlignment = .left
     }
     private let stepper = UIStepper().then { stepper in
         stepper.maximumValue = Constants.Stepper.maximumValue
         stepper.minimumValue = Constants.Stepper.minimumValue
+        stepper.value = Constants.Stepper.defaultValue
     }
     
     // MARK: - View Life Cycles
@@ -64,10 +66,7 @@ public final class DKStepperTableViewCell: DKBaseTableViewCell {
         super.reset()
         
         disposeBag = DisposeBag()
-
-        stepperValueLabel.text = Constants.StepperValueLabel.defaultText
         
-        stepper.value = Constants.Stepper.defaultValue
         stepper.rx.value
             .withUnretained(self)
             .bind { object, stepperValue in
@@ -78,6 +77,7 @@ public final class DKStepperTableViewCell: DKBaseTableViewCell {
     
     public func setupStepperValue(_ value: Double) {
         stepper.value = value
+        stepperValueLabel.text = "\(Int(value))"
     }
     
     // MARK: - Bind

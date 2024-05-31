@@ -7,14 +7,16 @@
 
 import UIKit
 
+import DesignKit
+
 enum TargetLabel {
     
     static var text: String { "Label" }
     static var textColor: UIColor { .label }
     static var backgroundColor: UIColor { .systemBackground }
-    static var fontWeight: UIFont.Weight { .regular }
+    static var fontType: DKFontType { .regular }
     static var fontSize: CGFloat { 50 }
-    static var textAlignment: NSTextAlignment { .center }
+    static var textAlignment: DKTextAlignmentType { .center }
     static var numberOfLines: Int { 1 }
     
 }

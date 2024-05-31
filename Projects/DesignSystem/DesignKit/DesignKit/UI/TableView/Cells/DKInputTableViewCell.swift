@@ -32,6 +32,7 @@ public final class DKInputTableViewCell: DKBaseTableViewCell {
         textField.spellCheckingType = .no
         textField.rightViewMode = .always
         textField.returnKeyType = .done
+        textField.placeholder = Constants.InputTextField.placeHolder
         textField.font = DKDefaultConstants.font
     }
     
@@ -52,8 +53,6 @@ public final class DKInputTableViewCell: DKBaseTableViewCell {
         super.reset()
         
         disposeBag = DisposeBag()
-        
-        inputTextField.placeholder = Constants.InputTextField.placeHolder
     }
     
     // MARK: - View Drawing Cycle
@@ -67,6 +66,7 @@ public final class DKInputTableViewCell: DKBaseTableViewCell {
     public func bind(_ listener: DKInputTableViewCellListener) {
         inputTextField.rx.text
             .compactMap { $0 }
+            .distinctUntilChanged()
             .bind(to: listener.inputTextChanged)
             .disposed(by: disposeBag)
     }

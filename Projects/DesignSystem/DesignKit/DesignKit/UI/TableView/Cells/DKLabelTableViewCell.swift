@@ -16,8 +16,8 @@ public final class DKLabelTableViewCell: DKBaseTableViewCell {
     
     // MARK: - UI
     private let label = UILabel().then { label in
+        label.textColor = .label
         label.backgroundColor = .systemBackground
-        label.font = DKDefaultConstants.font
         label.numberOfLines = Constants.Label.numberOfLines
     }
     
@@ -27,13 +27,13 @@ public final class DKLabelTableViewCell: DKBaseTableViewCell {
         
         contentView.addSubview(label)
     }
-
+    
     override func reset() {
         super.reset()
         
+        label.font = DKDefaultConstants.font
         label.text = Constants.Label.defaultText
     }
-    
     
     // MARK: - View Drawing Cycle
     public override func layoutSubviews() {
@@ -41,6 +41,14 @@ public final class DKLabelTableViewCell: DKBaseTableViewCell {
         
         label.pin.all(DKDefaultConstants.padding)
     }
+    
+    public override func sizeThatFits(_ size: CGSize) -> CGSize {
+        let availableSize = CGSize(width: size.width, height: CGFloat.greatestFiniteMagnitude)
+        return CGSize(
+            width: size.width,
+            height: label.sizeThatFits(availableSize).height + (DKDefaultConstants.padding * 2))
+    }
+
     
     // MARK: - Logic
     public func setup(

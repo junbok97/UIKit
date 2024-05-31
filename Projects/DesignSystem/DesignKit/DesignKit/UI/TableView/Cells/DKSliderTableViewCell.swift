@@ -38,6 +38,7 @@ public final class DKSliderTableViewCell: DKBaseTableViewCell {
     private let slider = UISlider().then { slider in
         slider.minimumValue = Constants.Slider.minimumValue
         slider.maximumValue = Constants.Slider.maximimValue
+        slider.setValue(Constants.Slider.defaultValue, animated: true)
     }
     
     // MARK: - View Life Cycles
@@ -79,11 +80,6 @@ public final class DKSliderTableViewCell: DKBaseTableViewCell {
         
         disposeBag = DisposeBag()
         
-        minimumValueLabel.text = Constants.MinimumValueLabel.text
-        sliderValueLabel.text = Constants.SliderValueLabel.text
-        maximumValueLabel.text = Constants.MaximumValueLabel.text
-        
-        slider.setValue(Constants.Slider.defaultValue, animated: true)
         slider.rx.value
             .withUnretained(self)
             .bind { object, sliderValue in
