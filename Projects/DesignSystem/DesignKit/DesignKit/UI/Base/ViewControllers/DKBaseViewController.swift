@@ -12,7 +12,7 @@ open class DKBaseViewController: UIViewController {
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
-        setupAttribte()
+        setupAttribute()
         setupLayout()
     }
     
@@ -21,7 +21,7 @@ open class DKBaseViewController: UIViewController {
     }
         
     // MARK: - ViewMethods
-    open func setupAttribte() {
+    open func setupAttribute() {
         view.backgroundColor = .systemBackground
     }
     

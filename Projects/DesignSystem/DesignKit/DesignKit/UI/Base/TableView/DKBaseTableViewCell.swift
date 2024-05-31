@@ -38,5 +38,5 @@ public class DKBaseTableViewCell: UITableViewCell {
     
     func setupLayout() {}
     func reset() {}
-    
+        
 }
