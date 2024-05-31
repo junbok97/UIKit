@@ -24,8 +24,8 @@ open class DKListViewController: DKBaseViewController {
     }
     
     // MARK: - View Methods
-    open override func setupAttribte() {
-        super.setupAttribte()
+    open override func setupAttribute() {
+        super.setupAttribute()
         
         view.backgroundColor = .secondarySystemBackground
         setupNaviBar()
