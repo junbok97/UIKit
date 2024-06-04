@@ -36,7 +36,6 @@ public final class DKCodeTableViewCell: DKBaseTableViewCell {
         button.setTitle(Constants.CopyButton.title, for: .normal)
     }
     
-    
     // MARK: - View Methods
     override func setupLayout() {
         super.setupLayout()
@@ -44,7 +43,6 @@ public final class DKCodeTableViewCell: DKBaseTableViewCell {
         scrollContentView.flex.define { flex in
             flex.addItem(codeLabel)
         }
-        
         scrollView.addSubview(scrollContentView)
         contentView.addSubview(scrollView)
     }
@@ -63,9 +61,11 @@ public final class DKCodeTableViewCell: DKBaseTableViewCell {
         scrollView.pin
             .horizontally()
             .vertically(DKDefaultConstants.padding)
+        
         scrollContentView.pin
             .vertically()
             .left()
+        
         scrollContentView.flex.layout(mode: .adjustWidth)
         scrollView.contentSize = scrollContentView.frame.size
     }
