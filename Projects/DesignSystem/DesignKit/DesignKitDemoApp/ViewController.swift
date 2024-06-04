@@ -8,24 +8,11 @@
 import UIKit
 
 import PinLayout
-import RxSwift
 
 import DesignKit
 import Extensions
 
-final class ViewController: UIViewController,
-                            DKInputTableViewCellListener,
-                            DKColorTableViewCellListener {
-    
-    private let inputTextSubject: PublishSubject<String> = .init()
-    private let selectColorSubject: PublishSubject<UIColor> = .init()
-    
-    private var disposBag = DisposeBag()
-    
-    
-    var inputText: AnyObserver<String> { inputTextSubject.asObserver() }
-    var selectColor: AnyObserver<UIColor> { selectColorSubject.asObserver() }
-    
+final class ViewController: UIViewController {
     
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     
@@ -39,6 +26,7 @@ final class ViewController: UIViewController,
         tableView.register(DKInputTableViewCell.self)
         tableView.register(DKColorTableViewCell.self)
         tableView.register(DKStepperTableViewCell.self)
+        tableView.register(DKCodeTableViewCell.self)
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.dataSource = self
@@ -48,27 +36,8 @@ final class ViewController: UIViewController,
         navigationItem.backButtonTitle = ""
        
         tableView.pin.all()
-        
-        inputTextSubject.subscribe {
-            print($0)
-        }.disposed(by: disposBag)
-        
-        selectColorSubject.subscribe {
-            print($0)
-        }.disposed(by: disposBag)
-   
     }
-    
-
-    func textChanged(_ text: String) {
-        inputTextSubject.onNext(text)
-    }
-    
-    func colorSelected(_ selectedColor: UIColor) {
-        selectColorSubject.onNext(selectedColor)
-    }
-
-
+ 
 }
 
 
@@ -90,7 +59,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             return tableView.dequeue(DKStepperTableViewCell.self, for: indexPath)
         } else if indexPath.section == 1 {
-            return tableView.dequeue(DKColorTableViewCell.self, for: indexPath)
+            return tableView.dequeue(DKCodeTableViewCell.self, for: indexPath)
         } else {
             return tableView.dequeue(DKLabelTableViewCell.self, for: indexPath)
         }
