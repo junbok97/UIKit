@@ -24,7 +24,7 @@ enum UILabelSettingListSectionType: Int {
         case .color: "Color"
         case .fontWeight: "Font Weight"
         case .fontSize: "Font Size"
-        case .alignment: "Alignment"
+        case .alignment: "Text Alignment"
         case .numberOfLines: "Number Of Lines"
         }
     }

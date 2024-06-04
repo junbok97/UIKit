@@ -40,7 +40,6 @@ public final class UILabelSettingListViewReactor: Reactor {
         case setFontSize(CGFloat)
         case setTextAlignment(DKTextAlignmentType)
         case setNumberOfLines(Int)
-        case updateCode
     }
     
     // MARK: - State
@@ -48,14 +47,14 @@ public final class UILabelSettingListViewReactor: Reactor {
         
         var code: String {
         """
-        private let label: UIlabel = {
+        private let label: UILabel = {
             let label = UILabel()
             
             label.text = \"\(text)\"
             label.textAlignment = \(textAlignment.code)
             label.textColor = \(textColor.cgColor.getRGBCode)
             label.backgroundColor = \(backgroudColor.cgColor.getRGBCode)
-            label.font = \(fontType.code(ofSize: CGFloat(fontSize)))
+            label.font = \(fontType.code(ofSize: fontSize))
             label.numberOfLines = \(numberOfLines)
             return label
         }()
@@ -77,9 +76,7 @@ public final class UILabelSettingListViewReactor: Reactor {
             
         case var .textChanged(text):
             text =  text.isEmpty ? TargetLabel.text : text
-            return Observable.concat([
-                Observable.just(Mutation.setText(text))
-            ])
+            return Observable.just(Mutation.setText(text))
             
         case let .textAlignmentChanged(alignment):
             return Observable.just(Mutation.setTextAlignment(alignment))
@@ -111,8 +108,6 @@ public final class UILabelSettingListViewReactor: Reactor {
     
     public func reduce(state: State, mutation: Mutation) -> State {
         switch mutation {
-        case .updateCode:
-            return state
             
         case let .setText(text):
             var newState = state

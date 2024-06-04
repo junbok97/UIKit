@@ -96,7 +96,7 @@ public enum DKFontType {
     public func code(ofSize: CGFloat) -> String {
         """
         .systemFont(
-            ofSize: \(ofSize),
+            ofSize: \(Int(ofSize)),
             weight: \(type)
         )
         """

@@ -7,12 +7,20 @@
 
 import UIKit
 
+import RxSwift
 import PinLayout
 import Then
 
 import Extensions
 
+public protocol DKLabelTableViewCellListener: AnyObject {
+    var textObservable: Observable<String> { get }
+}
+
 public final class DKLabelTableViewCell: DKBaseTableViewCell {
+    
+    // MARK: - Properties
+    private var disposeBag = DisposeBag()
     
     // MARK: - UI
     private let label = UILabel().then { label in
@@ -30,6 +38,8 @@ public final class DKLabelTableViewCell: DKBaseTableViewCell {
     
     override func reset() {
         super.reset()
+        
+        disposeBag = DisposeBag()
         
         label.font = DKDefaultConstants.font
         label.text = Constants.Label.defaultText
@@ -49,6 +59,11 @@ public final class DKLabelTableViewCell: DKBaseTableViewCell {
             height: label.sizeThatFits(availableSize).height + (DKDefaultConstants.padding * 2))
     }
 
+    public func bind(_ listener: DKLabelTableViewCellListener) {
+        listener.textObservable
+            .bind(to: label.rx.text)
+            .disposed(by: disposeBag)
+    }
     
     // MARK: - Logic
     public func setup(

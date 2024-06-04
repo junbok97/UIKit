@@ -17,15 +17,16 @@ import RxCocoa
 import PinLayout
 
 public final class UILabelSettingListViewController: DKListViewController,
+                                                     DKLabelTableViewCellListener,
                                                      DKInputTableViewCellListener,
                                                      DKColorTableViewCellListener,
                                                      DKSliderTableViewCellListener,
                                                      DKStepperTableViewCellListener {
-    
+
     public typealias Reactor = UILabelSettingListViewReactor
     
-    public init(reator: Reactor) {
-        self.reator = reator
+    public init(reactor: Reactor) {
+        self.reactor = reactor
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -35,11 +36,15 @@ public final class UILabelSettingListViewController: DKListViewController,
     
     // MARK: - Properties
     
-    private let reator: Reactor
+    private let reactor: Reactor
     private var disposeBag = DisposeBag()
     
     private let fontTypeSubject: PublishSubject<DKFontType> = .init()
     private let textAlignmentSubject: PublishSubject<DKTextAlignmentType> = .init()
+    
+    // DKLabelTableViewCellListener
+    private let codeSubejct: PublishSubject<String> = .init()
+    public var textObservable: Observable<String> { codeSubejct.asObservable() }
     
     // DKInputTableViewCellListener
     private let inputTextSubject: PublishSubject<String> = .init()
@@ -154,6 +159,11 @@ private extension UILabelSettingListViewController {
     
     func bindState(_ reactor: Reactor) {
         reactor.state
+            .map { $0.code }
+            .bind(to: codeSubejct)
+            .disposed(by: disposeBag)
+        
+        reactor.state
             .map { $0.text }
             .bind(to: targetLabel.rx.text)
             .disposed(by: disposeBag)
@@ -194,16 +204,17 @@ extension UILabelSettingListViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        Constants.TableView.items[section].items.count
+        Constants.TableView.items[safe: section]?.items.count ?? 0
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let section = UILabelSettingListSectionType(rawValue: indexPath.section) else { return .init() }
+        guard let section = Constants.TableView.items[safe: indexPath.section]?.sectionHeader else { return .init() }
         
         switch section {
         case .code:
             let cell = tableView.dequeue(DKLabelTableViewCell.self, for: indexPath)
-            cell.setup(text: reator.currentState.code)
+            cell.setup(text: reactor.currentState.code)
+            cell.bind(self)
             return cell
             
         case .fontWeight, .alignment :
@@ -244,13 +255,13 @@ extension UILabelSettingListViewController: UITableViewDataSource {
         case .fontSize:
             let cell = tableView.dequeue(DKSliderTableViewCell.self, for: indexPath)
             cell.bind(self)
-            cell.setupSliderValue(Float(reator.currentState.fontSize))
+            cell.setupSliderValue(Float(reactor.currentState.fontSize))
             return cell
             
         case .numberOfLines:
             let cell = tableView.dequeue(DKStepperTableViewCell.self, for: indexPath)
             cell.bind(self)
-            cell.setupStepperValue(Double(reator.currentState.numberOfLines))
+            cell.setupStepperValue(Double(reactor.currentState.numberOfLines))
             return cell
         }
     }
@@ -265,8 +276,7 @@ extension UILabelSettingListViewController: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let title = UILabelSettingListSectionType(rawValue: section)?.title else { return nil }
-        
+        guard let title = Constants.TableView.items[safe: section]?.sectionHeader.title else { return nil }
         let headerView = tableView.dequeue(DKTitleTableSectionHeaderView.self)
         headerView.setupTitle(title)
         return headerView
@@ -310,13 +320,6 @@ private extension UILabelSettingListViewController {
                     ]
                 ),
                 UILabelSettingListSectionModel(
-                    sectionHeader: .color,
-                    items: [
-                        .color(type: .text),
-                        .color(type: .background)
-                    ]
-                ),
-                UILabelSettingListSectionModel(
                     sectionHeader: .fontWeight,
                     items: [
                         .fontWeight(type: .ultraLight),
@@ -344,6 +347,13 @@ private extension UILabelSettingListViewController {
                         .alignment(type: .center),
                         .alignment(type: .right),
                         .alignment(type: .justified)
+                    ]
+                ),
+                UILabelSettingListSectionModel(
+                    sectionHeader: .color,
+                    items: [
+                        .color(type: .text),
+                        .color(type: .background)
                     ]
                 ),
                 UILabelSettingListSectionModel(

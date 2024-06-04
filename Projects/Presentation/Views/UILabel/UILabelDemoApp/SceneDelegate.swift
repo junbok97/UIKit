@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         
         
-        let vc = UILabelSettingListViewController(reator: reactor)
+        let vc = UILabelSettingListViewController(reactor: reactor)
         
         vc.bind(reactor)
         window?.rootViewController = UINavigationController(rootViewController: vc)
