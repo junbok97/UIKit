@@ -11,11 +11,7 @@ import RxSwift
 import PinLayout
 import Then
 
-import Extensions
-
-public protocol DKLabelTableViewCellListener: AnyObject {
-    var textObservable: Observable<String> { get }
-}
+import CoreKit
 
 public final class DKLabelTableViewCell: DKBaseTableViewCell {
     
@@ -57,12 +53,6 @@ public final class DKLabelTableViewCell: DKBaseTableViewCell {
         return CGSize(
             width: size.width,
             height: label.sizeThatFits(availableSize).height + (DKDefaultConstants.padding * 2))
-    }
-
-    public func bind(_ listener: DKLabelTableViewCellListener) {
-        listener.textObservable
-            .bind(to: label.rx.text)
-            .disposed(by: disposeBag)
     }
     
     // MARK: - Logic

@@ -11,12 +11,11 @@ import RxSwift
 import PinLayout
 import Then
 
-import Extensions
+import CoreKit
 
 public protocol DKCodeTableViewCellListener: AnyObject {
     var codeObservable: Observable<String> { get }
 }
-
 
 public final class DKCodeTableViewCell: DKBaseTableViewCell {
     
@@ -24,27 +23,28 @@ public final class DKCodeTableViewCell: DKBaseTableViewCell {
     private var disposeBag = DisposeBag()
     
     // MARK: - UI
-    private let containerView = UIView()
     private let scrollView = UIScrollView()
     private let scrollContentView = UIView()
     private let codeLabel = UILabel().then { label in
+        label.text = Constants.CodeLabel.defaultText
         label.textColor = .label
         label.backgroundColor = .systemBackground
         label.numberOfLines = Constants.CodeLabel.numberOfLines
-    }
-    private let copyButton = UIButton(configuration: .filled()).then { button in
-        button.setTitle(Constants.CopyButton.title, for: .normal)
     }
     
     // MARK: - View Methods
     override func setupLayout() {
         super.setupLayout()
         
-        scrollContentView.flex.define { flex in
-            flex.addItem(codeLabel)
+        contentView.flex.direction(.column).define { flex in
+            flex.addItem(scrollView)
         }
+        
+        scrollContentView.flex.direction(.row).define { flex in
+            flex.addItem(codeLabel).grow(1)
+        }
+        
         scrollView.addSubview(scrollContentView)
-        contentView.addSubview(scrollView)
     }
     
     override func reset() {
@@ -54,13 +54,9 @@ public final class DKCodeTableViewCell: DKBaseTableViewCell {
         codeLabel.text = Constants.CodeLabel.defaultText
     }
     
-    // MARK: - View Drawing Cycle
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        scrollView.pin
-            .horizontally()
-            .vertically(DKDefaultConstants.padding)
+    private func layout() {
+        contentView.pin.all()
+        contentView.flex.layout()
         
         scrollContentView.pin
             .vertically()
@@ -70,19 +66,22 @@ public final class DKCodeTableViewCell: DKBaseTableViewCell {
         scrollView.contentSize = scrollContentView.frame.size
     }
     
-    public override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let availableSize = CGSize(width: size.width, height: CGFloat.greatestFiniteMagnitude)
-        return CGSize(
-            width: size.width,
-            height: codeLabel.sizeThatFits(availableSize).height + DKDefaultConstants.padding)
+    // MARK: - View Drawing Cycle
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        layout()
     }
-
 
     // MARK: - Bind
     public func bind(_ listener: DKCodeTableViewCellListener) {
-        listener.codeObservable
-            .bind(to: codeLabel.rx.text)
-            .disposed(by: disposeBag)
+//        listener.codeObservable
+//            .bind(to: codeLabel.rx.text)
+//            .disposed(by: disposeBag)
+    }
+    
+    public func setupCode(_ code: String) {
+//        codeLabel.text = code
     }
     
 }

@@ -7,8 +7,8 @@
 
 import UIKit
 
+import CoreKit
 import DesignKit
-import Extensions
 
 import Then
 import ReactorKit
@@ -17,7 +17,7 @@ import RxCocoa
 import PinLayout
 
 public final class UILabelSettingListViewController: DKListViewController,
-                                                     DKLabelTableViewCellListener,
+                                                     DKCodeTableViewCellListener,
                                                      DKInputTableViewCellListener,
                                                      DKColorTableViewCellListener,
                                                      DKSliderTableViewCellListener,
@@ -44,7 +44,7 @@ public final class UILabelSettingListViewController: DKListViewController,
     
     // DKLabelTableViewCellListener
     private let codeSubejct: PublishSubject<String> = .init()
-    public var textObservable: Observable<String> { codeSubejct.asObservable() }
+    public var codeObservable: Observable<String> { codeSubejct.asObservable() }
     
     // DKInputTableViewCellListener
     private let inputTextSubject: PublishSubject<String> = .init()
@@ -78,6 +78,7 @@ public final class UILabelSettingListViewController: DKListViewController,
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(DKCodeTableViewCell.self)
         tableView.register(DKLabelTableViewCell.self)
         tableView.register(DKInputTableViewCell.self)
         tableView.register(DKColorTableViewCell.self)
@@ -212,8 +213,8 @@ extension UILabelSettingListViewController: UITableViewDataSource {
         
         switch section {
         case .code:
-            let cell = tableView.dequeue(DKLabelTableViewCell.self, for: indexPath)
-            cell.setup(text: reactor.currentState.code)
+            let cell = tableView.dequeue(DKCodeTableViewCell.self.self, for: indexPath)
+            cell.setupCode(reactor.currentState.code)
             cell.bind(self)
             return cell
             

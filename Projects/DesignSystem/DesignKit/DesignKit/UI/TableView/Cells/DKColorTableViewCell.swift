@@ -13,7 +13,7 @@ import RxSwift
 import RxCocoa
 import Then
 
-import Extensions
+import CoreKit
 
 public protocol DKColorTableViewCellListener: AnyObject {
     var colorSelectedObserver: AnyObserver<DKColor> { get }

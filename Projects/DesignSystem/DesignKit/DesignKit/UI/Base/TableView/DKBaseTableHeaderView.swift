@@ -7,7 +7,7 @@
 
 import UIKit
 
-import Extensions
+import CoreKit
 
 public class DKBaseTableHeaderView: UITableViewHeaderFooterView {
     

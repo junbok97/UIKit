@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 import Then
 
-import Extensions
+import CoreKit
 
 public protocol DKInputTableViewCellListener: AnyObject {
     var inputTextChanged: AnyObserver<String> { get }
