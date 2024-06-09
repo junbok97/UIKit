@@ -22,7 +22,7 @@ public final class UILabelSettingListViewController: DKListViewController,
                                                      DKColorTableViewCellListener,
                                                      DKSliderTableViewCellListener,
                                                      DKStepperTableViewCellListener {
-
+    
     public typealias Reactor = UILabelSettingListViewReactor
     
     public init(reactor: Reactor) {
@@ -42,7 +42,9 @@ public final class UILabelSettingListViewController: DKListViewController,
     private let fontTypeSubject: PublishSubject<DKFontType> = .init()
     private let textAlignmentSubject: PublishSubject<DKTextAlignmentType> = .init()
     
-    // DKLabelTableViewCellListener
+    // DKCodeTableViewCellListener
+    private let tableViewReloadSubject: PublishSubject<CGFloat> = .init()
+    public var tableViewReload: AnyObserver<CGFloat> { tableViewReloadSubject.asObserver() }
     private let codeSubejct: PublishSubject<String> = .init()
     public var codeObservable: Observable<String> { codeSubejct.asObservable() }
     
@@ -119,6 +121,12 @@ public final class UILabelSettingListViewController: DKListViewController,
     public func bind(_ reactor: Reactor) {
         bindAction(reactor)
         bindState(reactor)
+        
+        tableViewReloadSubject
+            .distinctUntilChanged()
+            .bind(with: self) { object, _ in
+                object.tableView.reloadData()
+            }.disposed(by: disposeBag)
     }
     
 }
@@ -158,6 +166,7 @@ private extension UILabelSettingListViewController {
             .disposed(by: disposeBag)
         
         stepperValueSubject
+            .distinctUntilChanged()
             .map { Reactor.Action.numberOfLinesChanged($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)

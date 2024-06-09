@@ -8,6 +8,7 @@
 import UIKit
 
 import RxSwift
+import RxCocoa
 import PinLayout
 import Then
 
@@ -15,11 +16,14 @@ import CoreKit
 
 public protocol DKCodeTableViewCellListener: AnyObject {
     var codeObservable: Observable<String> { get }
+    var tableViewReload: AnyObserver<CGFloat> { get }
 }
 
 public final class DKCodeTableViewCell: DKBaseTableViewCell {
     
     // MARK: - Properties
+    private var cellHeightSubject: PublishSubject<CGFloat> = .init()
+    
     private var disposeBag = DisposeBag()
 
     // MARK: - UI
@@ -61,6 +65,7 @@ public final class DKCodeTableViewCell: DKBaseTableViewCell {
     public override func sizeThatFits(_ size: CGSize) -> CGSize {
         contentView.pin.width(size.width)
         layout()
+        cellHeightSubject.onNext(contentView.frame.size.height)
         return contentView.frame.size
     }
 
@@ -72,6 +77,11 @@ public final class DKCodeTableViewCell: DKBaseTableViewCell {
                 object.codeLabel.flex.markDirty()
                 object.sizeToFit()
             })
+            .disposed(by: disposeBag)
+        
+        cellHeightSubject
+            .distinctUntilChanged()
+            .bind(to: listener.tableViewReload)
             .disposed(by: disposeBag)
     }
     

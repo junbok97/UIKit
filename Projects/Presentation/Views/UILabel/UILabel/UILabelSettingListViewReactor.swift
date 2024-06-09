@@ -60,7 +60,7 @@ public final class UILabelSettingListViewReactor: Reactor {
         }()
         """
         }
-        
+
         var text: String = TargetLabel.text
         var textColor: UIColor = TargetLabel.textColor
         var backgroudColor: UIColor = TargetLabel.backgroundColor
@@ -107,42 +107,19 @@ public final class UILabelSettingListViewReactor: Reactor {
     
     // MARK: - Reduce
     public func reduce(state: State, mutation: Mutation) -> State {
+        var newState = state
+        
         switch mutation {
-        case let .setText(text):
-            var newState = state
-            newState.text = text
-            return newState
-            
-        case let .setTextColor(textColor):
-            var newState = state
-            newState.textColor = textColor
-            return newState
-            
-        case let .setBackgroundColor(backgroundColor):
-            var newState = state
-            newState.backgroudColor = backgroundColor
-            return newState
-            
-        case let .setFontType(fontType):
-            var newState = state
-            newState.fontType = fontType
-            return newState
-            
-        case let .setFontSize(fontSize):
-            var newState = state
-            newState.fontSize = CGFloat(fontSize)
-            return newState
-            
-        case let .setTextAlignment(textAlignment):
-            var newState = state
-            newState.textAlignment = textAlignment
-            return newState
-            
-        case let .setNumberOfLines(numberOfLines):
-            var newState = state
-            newState.numberOfLines = numberOfLines
-            return newState
+        case let .setText(text): newState.text = text
+        case let .setTextColor(textColor): newState.textColor = textColor
+        case let .setBackgroundColor(backgroundColor): newState.backgroudColor = backgroundColor
+        case let .setFontType(fontType): newState.fontType = fontType
+        case let .setFontSize(fontSize): newState.fontSize = CGFloat(fontSize)
+        case let .setTextAlignment(textAlignment): newState.textAlignment = textAlignment
+        case let .setNumberOfLines(numberOfLines): newState.numberOfLines = numberOfLines
         }
+        
+        return newState
     }
-    
+
 }
