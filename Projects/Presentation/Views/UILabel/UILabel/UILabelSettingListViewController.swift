@@ -123,31 +123,36 @@ public final class UILabelSettingListViewController: DKListViewController,
     
 }
 
-// MARK: - Bind
+// MARK: - BindAction
 private extension UILabelSettingListViewController {
     
     func bindAction(_ reactor: Reactor) {
         inputTextSubject
+            .distinctUntilChanged()
             .map { Reactor.Action.textChanged($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
         textAlignmentSubject
+            .distinctUntilChanged()
             .map { Reactor.Action.textAlignmentChanged($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
             
         colorSubject
+            .distinctUntilChanged()
             .map { Reactor.Action.colorChanged($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
         fontTypeSubject
+            .distinctUntilChanged()
             .map { Reactor.Action.fontTypeChanged($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
         sliderValueSubject
+            .distinctUntilChanged()
             .map { Reactor.Action.fontSizeChanged($0) }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
@@ -158,9 +163,15 @@ private extension UILabelSettingListViewController {
             .disposed(by: disposeBag)
     }
     
+}
+
+// MARK: - BindState
+private extension UILabelSettingListViewController {
+    
     func bindState(_ reactor: Reactor) {
         reactor.state
             .map { $0.code }
+            .distinctUntilChanged()
             .bind(to: codeSubejct)
             .disposed(by: disposeBag)
         
@@ -284,13 +295,19 @@ extension UILabelSettingListViewController: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         if case let .fontWeight(fontType) = Constants.TableView.items[safe: indexPath.section]?.items[safe: indexPath.row] {
             fontTypeSubject.onNext(fontType)
         } else if case let .alignment(type: alignmentType) = Constants.TableView.items[safe: indexPath.section]?.items[safe: indexPath.row]  {
             textAlignmentSubject.onNext(alignmentType)
         }
-        
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
+    }
+    
+    public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
     }
     
 }

@@ -21,10 +21,8 @@ public final class DKCodeTableViewCell: DKBaseTableViewCell {
     
     // MARK: - Properties
     private var disposeBag = DisposeBag()
-    
+
     // MARK: - UI
-    private let scrollView = UIScrollView()
-    private let scrollContentView = UIView()
     private let codeLabel = UILabel().then { label in
         label.text = Constants.CodeLabel.defaultText
         label.textColor = .label
@@ -36,15 +34,9 @@ public final class DKCodeTableViewCell: DKBaseTableViewCell {
     override func setupLayout() {
         super.setupLayout()
         
-        contentView.flex.direction(.column).define { flex in
-            flex.addItem(scrollView)
-        }
-        
-        scrollContentView.flex.direction(.row).define { flex in
+        contentView.flex.padding(DKDefaultConstants.padding).define { flex in
             flex.addItem(codeLabel).grow(1)
         }
-        
-        scrollView.addSubview(scrollContentView)
     }
     
     override func reset() {
@@ -56,14 +48,7 @@ public final class DKCodeTableViewCell: DKBaseTableViewCell {
     
     private func layout() {
         contentView.pin.all()
-        contentView.flex.layout()
-        
-        scrollContentView.pin
-            .vertically()
-            .left()
-        
-        scrollContentView.flex.layout(mode: .adjustWidth)
-        scrollView.contentSize = scrollContentView.frame.size
+        contentView.flex.layout(mode: .adjustHeight)
     }
     
     // MARK: - View Drawing Cycle
@@ -72,16 +57,27 @@ public final class DKCodeTableViewCell: DKBaseTableViewCell {
         
         layout()
     }
+    
+    public override func sizeThatFits(_ size: CGSize) -> CGSize {
+        contentView.pin.width(size.width)
+        layout()
+        return contentView.frame.size
+    }
 
     // MARK: - Bind
     public func bind(_ listener: DKCodeTableViewCellListener) {
-//        listener.codeObservable
-//            .bind(to: codeLabel.rx.text)
-//            .disposed(by: disposeBag)
+        listener.codeObservable
+            .bind(with: self, onNext: { object, code in
+                object.codeLabel.text = code
+                object.codeLabel.flex.markDirty()
+                object.sizeToFit()
+            })
+            .disposed(by: disposeBag)
     }
     
     public func setupCode(_ code: String) {
-//        codeLabel.text = code
+        codeLabel.text = code
+        setNeedsLayout()
     }
     
 }

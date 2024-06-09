@@ -18,7 +18,7 @@ public final class UILabelSettingListViewReactor: Reactor {
     // MARK: - Init
     public init() {}
     
-    // MARK: - Property
+    // MARK: - Properties
     public let initialState = State()
     
     // MARK: - Action
@@ -70,10 +70,9 @@ public final class UILabelSettingListViewReactor: Reactor {
         var numberOfLines: Int = TargetLabel.numberOfLines
     }
     
-    
+    // MARK: - Mutate
     public func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-            
         case var .textChanged(text):
             text =  text.isEmpty ? TargetLabel.text : text
             return Observable.just(Mutation.setText(text))
@@ -106,9 +105,9 @@ public final class UILabelSettingListViewReactor: Reactor {
         
     }
     
+    // MARK: - Reduce
     public func reduce(state: State, mutation: Mutation) -> State {
         switch mutation {
-            
         case let .setText(text):
             var newState = state
             newState.text = text
@@ -144,9 +143,6 @@ public final class UILabelSettingListViewReactor: Reactor {
             newState.numberOfLines = numberOfLines
             return newState
         }
-        
     }
-    
-    
     
 }

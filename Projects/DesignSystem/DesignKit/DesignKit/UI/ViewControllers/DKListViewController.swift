@@ -44,15 +44,13 @@ open class DKListViewController: DKBaseViewController {
         containerView.pin
             .margin(Constants.margin)
             .top(view.pin.safeArea)
-            .left(view.pin.safeArea)
-            .right(view.pin.safeArea)
+            .horizontally(view.pin.safeArea)
             .height(Constants.ContainerView.height)
          
         tableView.pin
             .marginTop(Constants.margin)
             .below(of: containerView)
-            .left(view.pin.safeArea)
-            .right(view.pin.safeArea)
+            .horizontally(view.pin.safeArea)
             .bottom(view.pin.safeArea)
     }
     
