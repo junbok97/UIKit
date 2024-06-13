@@ -123,6 +123,7 @@ public final class UILabelSettingListViewController: DKListViewController,
         bindState(reactor)
         
         tableViewReloadSubject
+            .observe(on:MainScheduler.asyncInstance)
             .distinctUntilChanged()
             .bind(with: self) { object, _ in
                 object.tableView.reloadData()
