@@ -11,7 +11,6 @@ import DesignKit
 
 enum UILabelSettingListItemType {
     
-    case code
     case input
     case color(type: DKColorType)
     case fontWeight(type: DKFontType)

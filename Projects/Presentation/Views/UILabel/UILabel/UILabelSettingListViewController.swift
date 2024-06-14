@@ -80,7 +80,6 @@ public final class UILabelSettingListViewController: DKListViewController,
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(DKCodeTableViewCell.self)
         tableView.register(DKLabelTableViewCell.self)
         tableView.register(DKInputTableViewCell.self)
         tableView.register(DKColorTableViewCell.self)
@@ -233,12 +232,6 @@ extension UILabelSettingListViewController: UITableViewDataSource {
         guard let section = Constants.TableView.items[safe: indexPath.section]?.sectionHeader else { return .init() }
         
         switch section {
-        case .code:
-            let cell = tableView.dequeue(DKCodeTableViewCell.self.self, for: indexPath)
-            cell.setupCode(reactor.currentState.code)
-            cell.bind(self)
-            return cell
-            
         case .fontWeight, .alignment :
             let cell = tableView.dequeue(DKLabelTableViewCell.self, for: indexPath)
             
@@ -311,15 +304,7 @@ extension UILabelSettingListViewController: UITableViewDelegate {
             textAlignmentSubject.onNext(alignmentType)
         }
     }
-    
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        UITableView.automaticDimension
-    }
-    
-    public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        UITableView.automaticDimension
-    }
-    
+        
 }
 
 // MARK: - Constants
@@ -335,12 +320,6 @@ private extension UILabelSettingListViewController {
         
         enum TableView {
             static var items: [UILabelSettingListSectionModel] {[
-                UILabelSettingListSectionModel(
-                    sectionHeader: .code,
-                    items: [
-                        .code
-                    ]
-                ),
                 UILabelSettingListSectionModel(
                     sectionHeader: .input,
                     items: [
