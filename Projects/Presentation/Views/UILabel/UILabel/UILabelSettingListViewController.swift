@@ -17,7 +17,6 @@ import RxCocoa
 import PinLayout
 
 public final class UILabelSettingListViewController: DKListViewController,
-                                                     DKCodeTableViewCellListener,
                                                      DKInputTableViewCellListener,
                                                      DKColorTableViewCellListener,
                                                      DKSliderTableViewCellListener,
@@ -43,8 +42,6 @@ public final class UILabelSettingListViewController: DKListViewController,
     private let textAlignmentSubject: PublishSubject<DKTextAlignmentType> = .init()
     
     // DKCodeTableViewCellListener
-    private let tableViewReloadSubject: PublishSubject<CGFloat> = .init()
-    public var tableViewReload: AnyObserver<CGFloat> { tableViewReloadSubject.asObserver() }
     private let codeSubejct: PublishSubject<String> = .init()
     public var codeObservable: Observable<String> { codeSubejct.asObservable() }
     
@@ -120,13 +117,14 @@ public final class UILabelSettingListViewController: DKListViewController,
     public func bind(_ reactor: Reactor) {
         bindAction(reactor)
         bindState(reactor)
-        
-        tableViewReloadSubject
-            .observe(on:MainScheduler.asyncInstance)
-            .distinctUntilChanged()
+
+        codeButton.rx.tap
             .bind(with: self) { object, _ in
-                object.tableView.reloadData()
-            }.disposed(by: disposeBag)
+                let codeVC = DKCodeViewController()
+                
+                object.present(UINavigationController(rootViewController: codeVC), animated: true)
+            }
+            .disposed(by: disposeBag)
     }
     
 }

@@ -23,8 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         let vc = UILabelSettingListViewController(reactor: reactor)
-        
         vc.bind(reactor)
+        
         window?.rootViewController = UINavigationController(rootViewController: vc)
     }
 

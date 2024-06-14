@@ -87,9 +87,9 @@ private extension DKListViewController {
         navigationItem.leftBarButtonItem?.tintColor = .label
         navigationItem.rightBarButtonItem?.tintColor = .label
         
-        navigationController?.navigationBar.tintColor = .label
         navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationBar.backgroundColor = .systemBackground
+        navigationController?.navigationBar.tintColor = .systemBackground
+        navigationController?.navigationBar.backgroundColor = .systemBackground   
     }
     
     func naviRightBarButtonItem() {
