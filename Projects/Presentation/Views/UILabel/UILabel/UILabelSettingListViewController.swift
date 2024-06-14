@@ -41,9 +41,7 @@ public final class UILabelSettingListViewController: DKListViewController,
     private let fontTypeSubject: PublishSubject<DKFontType> = .init()
     private let textAlignmentSubject: PublishSubject<DKTextAlignmentType> = .init()
     
-    // DKCodeTableViewCellListener
-    private let codeSubejct: PublishSubject<String> = .init()
-    public var codeObservable: Observable<String> { codeSubejct.asObservable() }
+    private let codeSubejct: BehaviorRelay<String> = .init(value: "")
     
     // DKInputTableViewCellListener
     private let inputTextSubject: PublishSubject<String> = .init()
@@ -121,8 +119,9 @@ public final class UILabelSettingListViewController: DKListViewController,
         codeButton.rx.tap
             .bind(with: self) { object, _ in
                 let codeVC = DKCodeViewController()
-                
-                object.present(UINavigationController(rootViewController: codeVC), animated: true)
+                let naviVC = UINavigationController(rootViewController: codeVC)
+                codeVC.setupCode(object.codeSubejct.value)
+                object.present(naviVC, animated: true)
             }
             .disposed(by: disposeBag)
     }

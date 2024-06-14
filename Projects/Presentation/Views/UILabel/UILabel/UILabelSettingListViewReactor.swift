@@ -51,6 +51,7 @@ public final class UILabelSettingListViewReactor: Reactor {
             let label = UILabel()
             
             label.text = \"\(text)\"
+        
             label.textAlignment = \(textAlignment.code)
             label.textColor = \(textColor.cgColor.getRGBCode)
             label.backgroundColor = \(backgroudColor.cgColor.getRGBCode)
