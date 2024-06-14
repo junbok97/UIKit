@@ -41,8 +41,6 @@ public final class UILabelSettingListViewController: DKListViewController,
     private let fontTypeSubject: PublishSubject<DKFontType> = .init()
     private let textAlignmentSubject: PublishSubject<DKTextAlignmentType> = .init()
     
-    private let codeSubejct: BehaviorRelay<String> = .init(value: "")
-    
     // DKInputTableViewCellListener
     private let inputTextSubject: PublishSubject<String> = .init()
     public var inputTextChanged: AnyObserver<String> { inputTextSubject.asObserver() }
@@ -115,15 +113,6 @@ public final class UILabelSettingListViewController: DKListViewController,
     public func bind(_ reactor: Reactor) {
         bindAction(reactor)
         bindState(reactor)
-
-        codeButton.rx.tap
-            .bind(with: self) { object, _ in
-                let codeVC = DKCodeViewController()
-                let naviVC = UINavigationController(rootViewController: codeVC)
-                codeVC.setupCode(object.codeSubejct.value)
-                object.present(naviVC, animated: true)
-            }
-            .disposed(by: disposeBag)
     }
     
 }
@@ -178,7 +167,7 @@ private extension UILabelSettingListViewController {
         reactor.state
             .map { $0.code }
             .distinctUntilChanged()
-            .bind(to: codeSubejct)
+            .bind(to: codeRelay)
             .disposed(by: disposeBag)
         
         reactor.state

@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import RxCocoa
 
 open class DKListViewController: DKBaseViewController {
+    
+    // MARK: - Properties
+    public let codeRelay: BehaviorRelay<String> = .init(value: "")
     
     // MARK: - UI
     public let containerView = UIView().then { view in
@@ -16,7 +20,7 @@ open class DKListViewController: DKBaseViewController {
         view.backgroundColor = .secondarySystemBackground
     }
     
-    public let codeButton = UIButton(configuration: .filled()).then { button in
+    private let codeButton = UIButton(configuration: .filled()).then { button in
         button.setTitle(Constants.CodeButton.title, for: .normal)
     }
     
@@ -34,6 +38,11 @@ open class DKListViewController: DKBaseViewController {
         
         view.backgroundColor = .secondarySystemBackground
         setupNaviBar()
+        codeButton.addTarget(
+            self,
+            action: #selector(codeButtonDidTapped),
+            for: .touchUpInside
+        )
     }
     
     open override func setupLayout() {
@@ -76,7 +85,7 @@ open class DKListViewController: DKBaseViewController {
     
 }
 
-// MARK: - NaviBar
+// MARK: - Logic
 private extension DKListViewController {
     
     func setupNaviBar() {
@@ -88,8 +97,6 @@ private extension DKListViewController {
         navigationItem.rightBarButtonItem?.tintColor = .label
         
         navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationBar.tintColor = .systemBackground
-        navigationController?.navigationBar.backgroundColor = .systemBackground   
     }
     
     func naviRightBarButtonItem() {
@@ -105,6 +112,15 @@ private extension DKListViewController {
     func naviRightBarButtonItemDidTapped() {
         guard let url = URL(string: getAppleDeveloperDocumentation()) else { return }
         UIApplication.shared.open(url, options: [:])
+    }
+    
+    
+    @objc
+    func codeButtonDidTapped() {
+        let codeVC = DKCodeViewController()
+        let naviVC = UINavigationController(rootViewController: codeVC)
+        codeVC.setupCode(codeRelay.value)
+        present(naviVC, animated: true)
     }
     
 }
