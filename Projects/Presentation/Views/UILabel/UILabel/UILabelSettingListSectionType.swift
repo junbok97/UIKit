@@ -8,8 +8,7 @@
 import Foundation
 
 enum UILabelSettingListSectionType: Int {
-    
-    case code
+
     case input
     case color
     case fontWeight
@@ -19,7 +18,6 @@ enum UILabelSettingListSectionType: Int {
     
     var title: String {
         switch self {
-        case .code: "Code"
         case .input: "Input"
         case .color: "Color"
         case .fontWeight: "Font Weight"

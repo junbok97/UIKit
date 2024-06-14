@@ -16,7 +16,7 @@ open class DKListViewController: DKBaseViewController {
         view.backgroundColor = .secondarySystemBackground
     }
     
-    private let codeButton = UIButton(configuration: .filled()).then { button in
+    public let codeButton = UIButton(configuration: .filled()).then { button in
         button.setTitle(Constants.CodeButton.title, for: .normal)
     }
     
