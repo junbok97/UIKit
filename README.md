@@ -36,7 +36,8 @@
 # 🤷🏻 의사 결정록
 
 ## 3️⃣ Third Party Library
-- [FlexLayout & PinLayout](https://github.com/junbok97/iOS-UIKit/wiki/%5BThird-Party-Library%5D-FlexLayout-&-PinLayout)
+- [ReatorKit](https://github.com/junbok97/iOS-UIKit/wiki/%5BThird-Party-Library%5D-ReatorKit)
+- [PinLayout & FlexLayout](https://github.com/junbok97/iOS-UIKit/wiki/%5BThird-Party-Library%5D-PinLayout-&-FlexLayout)
 
 # 🎯 Trouble Shooting
 - [SwiftLint Sandbox Error](https://github.com/junbok97/iOS-UIKit/wiki/%5BTrouble-Shooting%5D-SwiftLint-Sandbox-Error)
